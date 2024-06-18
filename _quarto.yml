@@ -1,0 +1,25 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Моделирование морфологии трансдьюсерами 2024/2025"
+  author: 
+  - name: Т. Б. Казакова
+  - name: Г. А. Мороз
+  repo-url: https://agricolamz.github.io/2025_morphological_transducers/
+  chapters:
+    - index.qmd
+    - 01_introduction_to_transducers.qmd
+    - 02_technical_introduction.qmd
+    - 03_first_morphological_transducers.qmd
+    - 04_phonolocial_rules.qmd
+    - 05_quality_checks.qmd
+    - references.qmd
+
+bibliography: references.bib
+language: custom.yml
+
+format:
+  html:
+    theme: cosmo

@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Моделирование морфологии трансдьюсерами 2024/2025",
+    "section": "",
+    "text": "Введение\nДанные материалы являются конспектом курса Т. Б. Казаковой и Г. А. Мороза ‘Моделирование морфологии трансдьюссерами’ 2024-2025",
+    "crumbs": [
+      "Введение"
+    ]
+  },
+  {
+    "objectID": "02_technical_introduction.html",
+    "href": "02_technical_introduction.html",
+    "title": "2  Техническое введение",
+    "section": "",
+    "text": "2.1 Введение в командную строку на linux",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Техническое введение</span>"
+    ]
+  },
+  {
+    "objectID": "02_technical_introduction.html#lexd",
+    "href": "02_technical_introduction.html#lexd",
+    "title": "2  Техническое введение",
+    "section": "2.2 lexd",
+    "text": "2.2 lexd",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Техническое введение</span>"
+    ]
+  },
+  {
+    "objectID": "02_technical_introduction.html#hfst",
+    "href": "02_technical_introduction.html#hfst",
+    "title": "2  Техническое введение",
+    "section": "2.3 hfst",
+    "text": "2.3 hfst",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Техническое введение</span>"
+    ]
+  },
+  {
+    "objectID": "02_technical_introduction.html#make",
+    "href": "02_technical_introduction.html#make",
+    "title": "2  Техническое введение",
+    "section": "2.4 Make",
+    "text": "2.4 Make",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Техническое введение</span>"
+    ]
+  },
+  {
+    "objectID": "02_technical_introduction.html#gitignore",
+    "href": "02_technical_introduction.html#gitignore",
+    "title": "2  Техническое введение",
+    "section": "2.5 .gitignore",
+    "text": "2.5 .gitignore",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Техническое введение</span>"
+    ]
+  },
+  {
+    "objectID": "02_technical_introduction.html#git-hooks",
+    "href": "02_technical_introduction.html#git-hooks",
+    "title": "2  Техническое введение",
+    "section": "2.6 git hooks",
+    "text": "2.6 git hooks",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Техническое введение</span>"
+    ]
+  }
+]
