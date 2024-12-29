@@ -14,7 +14,7 @@
     "href": "01_introduction_to_transducers.html",
     "title": "1  Автоматический морфологический анализ",
     "section": "",
-    "text": "1.1 Stemming\nМорфологический анализ, как его обычно видят лингвисты, обычно включает в себя несколько вещей:\nВ зависимости от целей люди делают акцент на разные аспекты морфологического анализа. Для многих NLP задач полезным является приведение к начальной форме, лингвистический корпусной анализ практически невозможен без заранее определенных морфологических форм, и все три необходимы для представления языкового материала в научной работе.\n(Porter 1980)\n(Singh и Gupta 2017)",
+    "text": "1.1 Приведение к основе (stemming)\nМорфологический анализ, как его обычно видят лингвисты, обычно включает в себя несколько вещей:\nВ зависимости от целей люди делают акцент на разные аспекты морфологического анализа. Для многих NLP задач полезным является приведение к начальной форме, лингвистический корпусной анализ практически невозможен без заранее определенных морфологических форм, и все три необходимы для представления языкового материала в научной работе. Также стоит помнить, что для разных целей могут быть важны разные категории: например, для согласования может быть важна несловоизменительная для существительных (чаще всего) категория рода.\nДостаточно широкое применение в ранюю эпоху NLP получили методы, которые позволяют привести словоформы к основе или квазиоснове. Эта процедура помогала уменьшить разнообразие форм в тексте, что облегчало поиск и извлечение информации.\n(Porter 1980)\n(Singh и Gupta 2017)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Автоматический морфологический анализ</span>"
     ]
@@ -34,7 +34,7 @@
     "href": "01_introduction_to_transducers.html#нейросети",
     "title": "1  Автоматический морфологический анализ",
     "section": "1.3 Нейросети",
-    "text": "1.3 Нейросети",
+    "text": "1.3 Нейросети\nОбычно, если много данных, люди используют нейросети. Для морфологического анализа русского языка их использовали в следующих работах (Arefyev, Gratsianova, и Popov 2018; Sorokin и Kravtsova 2018; E. Bolshakova и Sapin 2019; EI Bolshakova и Sapin 2019; E. I. Bolshakova и Sapin 2020; Garipov, Morozov, и Glazkova 2023). Используются разные архитектуры:\n\ncвёрточные нейронные сеть (convolutional neural network, CNN);\nдеревья решения с градиентным бустингом (decision trees with gradient boosting);\nДвунаправленная длинная цепь элементов краткосрочной памяти (Biderectional long short-term memory network, Bi-LSTM);\nдругие",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Автоматический морфологический анализ</span>"
     ]
@@ -44,7 +44,7 @@
     "href": "01_introduction_to_transducers.html#морфологические-трансдьюссеры",
     "title": "1  Автоматический морфологический анализ",
     "section": "1.4 Морфологические трансдьюссеры",
-    "text": "1.4 Морфологические трансдьюссеры\n\n\n\n\nPorter, M. F. 1980. «An algorithm for suffix stripping». Program 14 (3): 130–37. https://doi.org/10.1108/eb046814.\n\n\nSingh, J., и V. Gupta. 2017. «A systematic review of text stemming techniques». Artificial Intelligence Review 48: 157–217.",
+    "text": "1.4 Морфологические трансдьюссеры\n\n\n\n\nArefyev, N. V., T. Y. Gratsianova, и K. P. Popov. 2018. «Morphological segmentation with sequence to sequence neural network». В KКомпьютерная лингвистика и интеллектуальные технологии, 85–95.\n\n\nBolshakova, E. I., и A. S. Sapin. 2020. «An Experimental Study of Neural Morpheme Segmentation Models for Russian Word Forms.» В CMCL, 79–89.\n\n\nBolshakova, EI, и AS Sapin. 2019. «Comparing models of morpheme analysis for Russian words based on machine learning». В Компьютерная лингвистика и интеллектуальные технологии, 104–13.\n\n\nBolshakova, E., и A. Sapin. 2019. «Bi-LSTM model for morpheme segmentation of Russian words». В Artificial Intelligence and Natural Language: 8th Conference, AINL 2019, Tartu, Estonia, November 20–22, 2019, Proceedings 8, 151–60. Springer.\n\n\nGaripov, T., D. Morozov, и A. Glazkova. 2023. «Generalization ability of CNN-based Morpheme Segmentation». В 2023 Ivannikov Ispras Open Conference (ISPRAS), 58–62. IEEE.\n\n\nPorter, M. F. 1980. «An algorithm for suffix stripping». Program 14 (3): 130–37. https://doi.org/10.1108/eb046814.\n\n\nSingh, J., и V. Gupta. 2017. «A systematic review of text stemming techniques». Artificial Intelligence Review 48: 157–217.\n\n\nSorokin, Alexey, и Anastasia Kravtsova. 2018. «Deep convolutional networks for supervised morpheme segmentation of Russian language». В Artificial Intelligence and Natural Language: 7th International Conference, AINL 2018, St. Petersburg, Russia, October 17–19, 2018, Proceedings 7, 3–10. Springer.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Автоматический морфологический анализ</span>"
     ]
