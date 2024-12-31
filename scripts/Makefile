@@ -2,8 +2,8 @@
 
 .PHONY: requirements
 requirements:
-	curl https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
-	sudo apt-get install lexd
+curl https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
+sudo apt-get install lexd
 
 compare.sh:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/scripts/compare.sh
