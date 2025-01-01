@@ -13,8 +13,8 @@ task.generator.hfst: task.lexd
 task.analyzer.hfst: task.generator.hfst
 	hfst-invert task.generator.hfst -o task.analyzer.hfst
 
-for_test_%.csv:
+for_test_%.txt:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
-test_%: task.generator.hfst for_test_%.csv
+test_%: task.generator.hfst for_test_%.txt
 	bash compare.sh $^
