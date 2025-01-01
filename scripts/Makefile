@@ -1,6 +1,6 @@
 .DEFAULT_GOAL: requirements
 
-.PHONY: requirements
+.PHONY: requirements clean
 
 requirements:
 	curl https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
@@ -16,6 +16,8 @@ task.analyzer.hfst: task.generator.hfst
 for_test_%.txt:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
-test_%: task.generator.hfst for_test_%.txt
-	bash compare.sh $^
+clean:
 	rm for_test_*
+
+test_%: task.generator.hfst for_test_%.txt clean
+	bash compare.sh $^
