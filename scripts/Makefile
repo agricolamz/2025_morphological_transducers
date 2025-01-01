@@ -17,4 +17,4 @@ for_test_%.csv:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
 test_%: task.generator.hfst for_test_%.csv
-	bash compare.sh $< test.pass.txt
+	bash compare.sh $^
