@@ -1,2 +1,2 @@
-sing<v><pres><p3><sg>:sings
+sing<v><pres><3><sg>:sings
 walk<v><pres>:walk
