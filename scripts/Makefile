@@ -1,6 +1,6 @@
 .DEFAULT_GOAL: requirements
 
-.PHONY: requirements clean
+.PHONY: requirements
 
 requirements:
 	curl https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
@@ -16,6 +16,10 @@ task.analyzer.hfst: task.generator.hfst
 for_test_%.txt:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
-test_%: task.generator.hfst for_test_%.txt
-	bash compare.sh $^
+test_%: for_test_%.txt task.generator.hfst result
+	if [ $(hfst-fst2strings task.generator.hfst $< | grep -f $< -c) = $(cat $< | wc -l) ]; then
+		echo "Passing all tests"
+	else
+		echo "NOT Passing some tests"
+	fi
 	rm -f for_test_*
