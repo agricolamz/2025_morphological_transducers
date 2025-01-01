@@ -18,3 +18,4 @@ for_test_%.txt:
 
 test_%: task.generator.hfst for_test_%.txt
 	bash compare.sh $^
+	rm for_test_*
