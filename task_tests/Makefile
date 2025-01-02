@@ -23,3 +23,4 @@ test_%: for_test_%.txt task.generator.hfst
 	else\
 		echo "Some tests are NOT passing";\
 	fi
+
