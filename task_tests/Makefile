@@ -15,6 +15,9 @@ task.analyzer.hfst: task.generator.hfst
 for_test_%.txt:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
+forms: task.generator.hfst
+	hfst-fst2strings task.generator.hfst
+
 test_%: for_test_%.txt task.generator.hfst
 	@$(eval EXPECTED=`cat $< | wc -l`)
 	@$(eval OBSERVED=`hfst-fst2strings task.generator.hfst | grep -cf $<`)
