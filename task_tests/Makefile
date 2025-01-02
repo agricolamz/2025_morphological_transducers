@@ -1,6 +1,6 @@
 .DEFAULT_GOAL: requirements
 
-.PHONY: requirements
+.PHONY: requirements forms
 
 requirements:
 	curl https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
