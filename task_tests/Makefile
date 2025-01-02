@@ -19,8 +19,8 @@ test_%: for_test_%.txt task.generator.hfst
 	@$(eval EXPECTED=`cat $< | wc -l`)
 	@$(eval OBSERVED=`hfst-fst2strings task.generator.hfst | grep -cf $<`)
 	@if [ "$(EXPECTED)" = "$(OBSERVED)" ]; then\
-  	echo "All tests pass";\
+  	echo "\e[32mAll tests pass\e[0m";\
 	else\
-		echo "Some tests are NOT passing";\
+		echo "\e[31mSome tests are NOT passing\e[0m";\
 	fi
-
+	rm -f *.hfst
