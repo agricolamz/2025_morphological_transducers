@@ -23,4 +23,4 @@ test_%: for_test_%.txt task.generator.hfst
 	else\
 		echo "\e[31mSome tests are NOT passing\e[0m";\
 	fi
-	rm -f *.hfst
+	@rm -f *.hfst
