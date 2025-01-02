@@ -16,10 +16,10 @@ for_test_%.txt:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
 test_%: for_test_%.txt task.generator.hfst
-	hfst-fst2strings task.generator.hfst | grep -cf $<
-	cat $< | wc -l
-ifeq ($(hfst-fst2strings task.generator.hfst | grep -cf $<), $(cat $< | wc -l))
-	@echo All tests passed.
-else
-	@echo NOT all tests passed.
-endif
+	@$(eval EXPECTED=`cat $< | wc -l`)
+	@$(eval OBSERVED=`hfst-fst2strings task.generator.hfst | grep -cf $<`)
+	@if [ "$(EXPECTED)" = "$(OBSERVED)" ]; then\
+  	echo "All tests pass";\
+	else\
+		echo "Some tests are NOT passing";\
+	fi
