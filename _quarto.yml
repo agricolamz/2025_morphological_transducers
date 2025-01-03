@@ -7,7 +7,7 @@ book:
   author: 
   - name: Т. Б. Казакова
   - name: Г. А. Мороз
-  repo-url: https://agricolamz.github.io/2025_morphological_transducers/
+  repo-url: https://github.com/agricolamz/2025_morphological_transducers/
   chapters:
     - index.qmd
     - 01_introduction_to_transducers.qmd
