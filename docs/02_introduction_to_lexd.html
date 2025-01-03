@@ -288,7 +288,7 @@ div.csl-indent {
 </section>
 <section id="программа-lexd" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="программа-lexd"><span class="header-section-number">2.2</span> Программа <code>lexd</code></h2>
-<p>У программы <code>lexd</code> есть подробный <a href="https://github.com/apertium/lexd/blob/main/Usage.md">туториал</a>. Данный раздел основан на нем. Давайте подробнее рассмотрим <code>lexd</code> файл, который мы с вами видели в прошлом разделе:</p>
+<p>У программы <code>lexd</code> есть подробный <a href="https://github.com/apertium/lexd/blob/main/Usage.md">туториал</a>. Данный раздел основан на нем. Давайте подробнее рассмотрим <code>lexd</code> файл, который мы видели в прошлом разделе:</p>
 <div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a><span class="in">VerbRoot VerbInfl   </span></span>
@@ -328,6 +328,150 @@ div.csl-indent {
 <span data-code-cell="annotated-cell-6" data-code-lines="12" data-code-annotation="6">Пример морфемы с несколькими морфологическими тегами.</span>
 </dd>
 </dl>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Задание 02_02
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ниже представлен фрагмент ицаринской (даргинские, нахско-дагестанские) парадигмы из <span class="citation" data-cites="sumbatova03">(<a href="references.html#ref-sumbatova03" role="doc-biblioref">Sumbatova и Mutalov 2003</a>)</span>. Попробуйте смоделировать ее при помощи <code>lexd</code>. Для корректного моделирования формы sup.lat нужна морфонология, так что при моделировании используйте форму в скобках.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>форма</th>
+<th>козел</th>
+<th>медведь</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>abs</td>
+<td><em>q’atsa</em></td>
+<td><em>sːika</em></td>
+</tr>
+<tr class="even">
+<td>erg</td>
+<td><em>q’atsal</em></td>
+<td><em>sːikal</em></td>
+</tr>
+<tr class="odd">
+<td>gen</td>
+<td><em>q’atsala</em></td>
+<td><em>sːikala</em></td>
+</tr>
+<tr class="even">
+<td>com</td>
+<td><em>q’atsatsːilli</em></td>
+<td><em>sːikatsːilli</em></td>
+</tr>
+<tr class="odd">
+<td>sup.lat</td>
+<td><em>q’atsaj</em> (&lt; <em>q’atsaji</em>)</td>
+<td><em>sːikaj</em> (&lt; <em>sːikaji)</em></td>
+</tr>
+<tr class="even">
+<td>sup.ess</td>
+<td><em>q’atsajib</em></td>
+<td><em>sːikajib</em></td>
+</tr>
+<tr class="odd">
+<td>sup.dir</td>
+<td><em>q’atsajibal</em></td>
+<td><em>sːikajibal</em></td>
+</tr>
+<tr class="even">
+<td>sup.el</td>
+<td><em>q’atsajir</em></td>
+<td><em>sːikajir</em></td>
+</tr>
+<tr class="odd">
+<td>sub.lat</td>
+<td><em>q’atsaʁu</em></td>
+<td><em>sːikaʁu</em></td>
+</tr>
+<tr class="even">
+<td>sub.ess</td>
+<td><em>q’atsaʁub</em></td>
+<td><em>sːikaʁub</em></td>
+</tr>
+<tr class="odd">
+<td>sub.dir</td>
+<td><em>q’atsaʁubal</em></td>
+<td><em>sːikaʁubal</em></td>
+</tr>
+<tr class="even">
+<td>sub.el</td>
+<td><em>q’atsaʁur</em></td>
+<td><em>sːikaʁur</em></td>
+</tr>
+<tr class="odd">
+<td>ant.lat</td>
+<td><em>q’atsasa</em></td>
+<td><em>sːikasa</em></td>
+</tr>
+<tr class="even">
+<td>ant.ess</td>
+<td><em>q’atsasab</em></td>
+<td><em>sːikasab</em></td>
+</tr>
+<tr class="odd">
+<td>ant.dir</td>
+<td><em>q’atsasabal</em></td>
+<td><em>sːikasabal</em></td>
+</tr>
+<tr class="even">
+<td>ant.el</td>
+<td><em>q’atsasar</em></td>
+<td><em>sːikasar</em></td>
+</tr>
+<tr class="odd">
+<td>post.lat</td>
+<td><em>q’atsaha</em></td>
+<td><em>sːikaha</em></td>
+</tr>
+<tr class="even">
+<td>post.ess</td>
+<td><em>q’atsahab</em></td>
+<td><em>sːikahab</em></td>
+</tr>
+<tr class="odd">
+<td>post.dir</td>
+<td><em>q’atsahabal</em></td>
+<td><em>sːikahabal</em></td>
+</tr>
+<tr class="even">
+<td>post.el</td>
+<td><em>q’atsahar</em></td>
+<td><em>sːikahar</em></td>
+</tr>
+<tr class="odd">
+<td>il.lat</td>
+<td><em>q’atsatsːi</em></td>
+<td><em>sːikatsːi</em></td>
+</tr>
+<tr class="even">
+<td>in.ess</td>
+<td><em>q’atsatsːib</em></td>
+<td><em>sːikatsːib</em></td>
+</tr>
+<tr class="odd">
+<td>in.dir</td>
+<td><em>q’atsatsːibal</em></td>
+<td><em>sːikatsːibal</em></td>
+</tr>
+<tr class="even">
+<td>in.el</td>
+<td><em>q’atsatsːir</em></td>
+<td><em>sːikatsːir</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -336,6 +480,9 @@ Lindén, K., E. Axelson, S. Hardwick, T. A. Pirinen, и M. Silfverberg. 2011. <s
 </div>
 <div id="ref-ortiz05" class="csl-entry" role="listitem">
 Ortiz Rojas, S., M. L. Forcada, и G. Ramı́rez Sánchez. 2005. <span>«Construcci<span>ó</span>n y minimizaci<span>ó</span>n eficiente de transductores de letras a partir de diccionarios con paradigmas»</span>. <em>Procesamiento del lenguaje natural</em> 35: 51–57.
+</div>
+<div id="ref-sumbatova03" class="csl-entry" role="listitem">
+Sumbatova, N. R., и R. O. Mutalov. 2003. <em>A grammar of <span>I</span>tsari <span>D</span>argwa</em>. Muenchen: Lincom Europa.
 </div>
 <div id="ref-swanson21" class="csl-entry" role="listitem">
 Swanson, D., и N. Howell. 2021. <span>«Lexd: A finitestate lexicon compiler for non-suffixational morphologies»</span>. В <em>Multilingual Facilitation</em>, 133–46.

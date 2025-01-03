@@ -58,7 +58,7 @@ $ make test_02_01
 
 ## Программа `lexd`
 
-У программы `lexd` есть подробный [туториал](https://github.com/apertium/lexd/blob/main/Usage.md). Данный раздел основан на нем. Давайте подробнее рассмотрим `lexd` файл, который мы с вами видели в прошлом разделе:
+У программы `lexd` есть подробный [туториал](https://github.com/apertium/lexd/blob/main/Usage.md). Данный раздел основан на нем. Давайте подробнее рассмотрим `lexd` файл, который мы видели в прошлом разделе:
 
 ```{{lexd}}
 PATTERNS            # <1>
@@ -81,3 +81,37 @@ LEXICON VerbInfl    # <4>
 5. Пример нулевой морфемы.
 6. Пример морфемы с несколькими морфологическими тегами.
 
+::: {.callout-note}
+
+###### Задание 02_02 
+
+Ниже представлен фрагмент ицаринской (даргинские, нахско-дагестанские) парадигмы из [@sumbatova03]. Попробуйте смоделировать ее при помощи `lexd`. Для корректного моделирования формы sup.lat нужна морфонология, так что при моделировании используйте форму в скобках. При моделировании придется покривить душой: *-b* в формах ess и dir --- инфикс классного показателя. Помните, что каждый морфологический тег следует обрамлять в отдельные треугольные скобки. 
+
+| форма    | козел                    | медведь                |
+|----------|--------------------------|------------------------|
+| abs      | _q’atsa_                 | _sːika_                |
+| erg      | _q’atsal_                | _sːikal_               |
+| gen      | _q’atsala_               | _sːikala_              |
+| com      | _q’atsatsːilli_          | _sːikatsːilli_         |
+| sup.lat  | _q’atsaj_ (< _q’atsaji_) | _sːikaj_ (< _sːikaji)_ |
+| sup.ess  | _q’atsajib_              | _sːikajib_             |
+| sup.dir  | _q’atsajibal_            | _sːikajibal_           |
+| sup.el   | _q’atsajir_              | _sːikajir_             |
+| sub.lat  | _q’atsaʁu_               | _sːikaʁu_              |
+| sub.ess  | _q’atsaʁub_              | _sːikaʁub_             |
+| sub.dir  | _q’atsaʁubal_            | _sːikaʁubal_           |
+| sub.el   | _q’atsaʁur_              | _sːikaʁur_             |
+| ant.lat  | _q’atsasa_               | _sːikasa_              |
+| ant.ess  | _q’atsasab_              | _sːikasab_             |
+| ant.dir  | _q’atsasabal_            | _sːikasabal_           |
+| ant.el   | _q’atsasar_              | _sːikasar_             |
+| post.lat | _q’atsaha_               | _sːikaha_              |
+| post.ess | _q’atsahab_              | _sːikahab_             |
+| post.dir | _q’atsahabal_            | _sːikahabal_           |
+| post.el  | _q’atsahar_              | _sːikahar_             |
+| in.lat   | _q’atsatsːi_             | _sːikatsːi_            |
+| in.ess   | _q’atsatsːib_            | _sːikatsːib_           |
+| in.dir   | _q’atsatsːibal_          | _sːikatsːibal_         |
+| in.el    | _q’atsatsːir_            | _sːikatsːir_           |
+
+:::
