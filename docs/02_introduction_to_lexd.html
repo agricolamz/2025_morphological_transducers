@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -170,6 +204,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link active" data-scroll-target="#техническое-введение"><span class="header-section-number">2.1</span> Техническое введение</a></li>
+  <li><a href="#введение-в-lexd" id="toc-введение-в-lexd" class="nav-link" data-scroll-target="#введение-в-lexd"><span class="header-section-number">2.2</span> Введение в <code>lexd</code></a></li>
   </ul>
 </nav>
     </div>
@@ -206,40 +241,93 @@ div.csl-indent {
 <ul>
 <li>скачиваем интсрукции для установки <code>lexd</code> и <code>hfst</code> и дальнейшей работы с ними, записанные в простом текстовом файле, которые можно прочитать, если открыть <a href="https://shorturl.at/0bBXE">ссылку</a> из команды. Команда <code>make</code> запускает установку. Для того, чтобы это работало в Google Colab нужно перед командой нужно поставить восклицательный знак: <code>!curl ...</code>. Знак доллара означает, что дальше следует команда командной строки, не надо его никуда копировать.</li>
 </ul>
-<pre><code>$ curl https://shorturl.at/0bBXE -o Makefile; make</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl https://shorturl.at/0bBXE -o Makefile; make</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>дальше мы ожидаем, что вы создадите в коллабе или у себя на компьютере (если у вас Linux), файл с названием <code>task.lexd</code>. В Google Colab для этого достаточно вставить первой строкой кодового блока <code>%%writefile task.lexd</code>. Вот пример такого файла:</li>
 </ul>
-<pre><code>PATTERNS
-VerbRoot VerbInfl
-
-LEXICON VerbRoot
-sing&lt;v&gt;:sing
-walk&lt;v&gt;:walk
-dance&lt;v&gt;:dance
-
-LEXICON VerbInfl
-&lt;pres&gt;:
-&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:s</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">VerbRoot VerbInfl</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON VerbRoot</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">sing&lt;v&gt;:sing</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">walk&lt;v&gt;:walk</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">dance&lt;v&gt;:dance</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON VerbInfl</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;pres&gt;:</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:s</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>После того, как вы установили нужные программы и создали файл, можно посмотреть формы и разборы, которые генерируются трансдьюссером. Это можно сделать следующей командой (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
 </ul>
-<pre><code>$ make forms
-
-sing&lt;v&gt;&lt;pres&gt;:sing
-sing&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:sings
-walk&lt;v&gt;&lt;pres&gt;:walk
-walk&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:walks
-dance&lt;v&gt;&lt;pres&gt;:dance
-dance&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:dances</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make forms</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">sing&lt;v&gt;&lt;pres&gt;:sing</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">sing&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:sings</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">walk&lt;v&gt;&lt;pres&gt;:walk</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">walk&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:walks</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">dance&lt;v&gt;&lt;pres&gt;:dance</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">dance&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:dances</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>В ходе курса мы будем разбирать разные лингвистические задачи. У каждой задачи есть номер и автоматический тест, который его проверяет. Чтобы запустить автоматическую проверку следует ввести команду, где первое число – номер раздела, а второе число – номер задачи. Например, для того, чтобы проверить, работает ли проверка задания попробуйте запустить следующую команду:</li>
 </ul>
-<pre><code>$ make test_02_01</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_02_01</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Чтобы окончательно посмотреть все варианты, попробуйте изменить последнюю строчку файла <code>task.lexd</code> на <code>&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:S</code> и снова перезапустить команду:</li>
 </ul>
-<pre><code>$ make test_02_01</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_02_01</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="введение-в-lexd" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="введение-в-lexd"><span class="header-section-number">2.2</span> Введение в <code>lexd</code></h2>
+<p>У программы <code>lexd</code> есть подробный <a href="https://github.com/apertium/lexd/blob/main/Usage.md">туториал</a>. Данный раздел основан на нем. Давайте подробнее рассмотрим <code>lexd</code> файл, который мы с вами видели в прошлом разделе:</p>
+<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a><span class="in">VerbRoot VerbInfl   </span></span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON VerbRoot</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a><span class="in">sing&lt;v&gt;:sing</span></span>
+<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7" aria-hidden="true" tabindex="-1"></a><span class="in">walk&lt;v&gt;:walk</span></span>
+<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8" aria-hidden="true" tabindex="-1"></a><span class="in">dance&lt;v&gt;:dance</span></span>
+<span id="annotated-cell-6-9"><a href="#annotated-cell-6-9" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-6-10" class="code-annotation-target"><a href="#annotated-cell-6-10" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON VerbInfl</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-6-11" class="code-annotation-target"><a href="#annotated-cell-6-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;pres&gt;:</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-6-12" class="code-annotation-target"><a href="#annotated-cell-6-12" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:s</span></span>
+<span id="annotated-cell-6-13"><a href="#annotated-cell-6-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="1">Обязательный раздел <code>PATTERNS</code>, в котором каждая строка сообщает, как могут соединяться элементы из разных групп лексикона.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="2">Группа лексикона которая состоит из слова <code>LEXICON</code> и имя, под которым данная группа появляется в разделе <code>PATTERNS</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="6" data-code-annotation="3">Наполнение группы. Первым идет разбор, а потом после двоеточия языковой материал. Морфологические теги принято записывать в треугольных скобках.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="10" data-code-annotation="4">Вторая группа <code>LEXICON</code> и ее имя.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="11" data-code-annotation="5">Пример нулевой морфемы.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="12" data-code-annotation="6">Пример морфемы с несколькими морфологическими тегами.</span>
+</dd>
+</dl>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
