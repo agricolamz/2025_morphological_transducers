@@ -204,7 +204,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link active" data-scroll-target="#техническое-введение"><span class="header-section-number">2.1</span> Техническое введение</a></li>
-  <li><a href="#введение-в-lexd" id="toc-введение-в-lexd" class="nav-link" data-scroll-target="#введение-в-lexd"><span class="header-section-number">2.2</span> Введение в <code>lexd</code></a></li>
+  <li><a href="#программа-lexd" id="toc-программа-lexd" class="nav-link" data-scroll-target="#программа-lexd"><span class="header-section-number">2.2</span> Программа <code>lexd</code></a></li>
   </ul>
 </nav>
     </div>
@@ -242,7 +242,7 @@ div.csl-indent {
 <li>скачиваем интсрукции для установки <code>lexd</code> и <code>hfst</code> и дальнейшей работы с ними, записанные в простом текстовом файле, которые можно прочитать, если открыть <a href="https://shorturl.at/0bBXE">ссылку</a> из команды. Команда <code>make</code> запускает установку. Для того, чтобы это работало в Google Colab нужно перед командой нужно поставить восклицательный знак: <code>!curl ...</code>. Знак доллара означает, что дальше следует команда командной строки, не надо его никуда копировать.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl https://shorturl.at/0bBXE -o Makefile; make</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile -o Makefile; make</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>дальше мы ожидаем, что вы создадите в коллабе или у себя на компьютере (если у вас Linux), файл с названием <code>task.lexd</code>. В Google Colab для этого достаточно вставить первой строкой кодового блока <code>%%writefile task.lexd</code>. Вот пример такого файла:</li>
@@ -286,8 +286,8 @@ div.csl-indent {
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_02_01</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="введение-в-lexd" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="введение-в-lexd"><span class="header-section-number">2.2</span> Введение в <code>lexd</code></h2>
+<section id="программа-lexd" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="программа-lexd"><span class="header-section-number">2.2</span> Программа <code>lexd</code></h2>
 <p>У программы <code>lexd</code> есть подробный <a href="https://github.com/apertium/lexd/blob/main/Usage.md">туториал</a>. Данный раздел основан на нем. Давайте подробнее рассмотрим <code>lexd</code> файл, который мы с вами видели в прошлом разделе:</p>
 <div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
