@@ -54,7 +54,4 @@ grViz('
 ```
 
 
-```{r}
-knitr::include_graphics("")
-```
 

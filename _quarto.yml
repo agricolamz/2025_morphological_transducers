@@ -11,10 +11,8 @@ book:
   chapters:
     - index.qmd
     - 01_introduction_to_transducers.qmd
-    - 02_technical_introduction.qmd
-    - 03_first_morphological_transducers.qmd
-    - 04_phonolocial_rules.qmd
-    - 05_quality_checks.qmd
+    - 02_introduction_to_lexd.qmd
+    - 03_phonolocial_rules.qmd
     - references.qmd
 
 bibliography: references.bib
