@@ -7,10 +7,12 @@ requirements:
 	sudo apt-get install hfst lexd
 
 task.generator.hfst: task.lexd
-	@lexd task.lexd | hfst-txt2fst -o $@
-	@if [ -f "task.twol"]; then\
+	@lexd task.lexd | hfst-txt2fst -o lexd.hfst
+	@if test -f "task.twol"; then\
   	hfst-twolc task.twol -o twol.hfst;\
-  	hfst-compose-intersect task.generator.hfst $@;\
+  	hfst-compose-intersect lexd.hfst twol.hfst -o $@;\
+  else\
+  	mv lexd.hfst $@;\
 	fi
 
 task.analyzer.hfst: task.generator.hfst
@@ -20,7 +22,7 @@ for_test_%.txt:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
 forms: task.generator.hfst
-	@hfst-fst2strings task.generator.hfst
+	@hfst-fst2strings $^
 	@rm -f *.hfst
 
 test_%: for_test_%.txt task.generator.hfst
