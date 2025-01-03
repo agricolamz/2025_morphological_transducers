@@ -204,8 +204,11 @@ div.csl-indent {
 </ul>
 <p>Это консольная программа, работающая на юниксоподобных системах. Чтобы избежать сложностей на начальных этапах курса, мы решили вначале познакомиться с синтаксисом <code>lexd</code> и попробовать описывать разные языковые явления, не затрудняя всех установкой и запуском данных программ у себя на компьютере. В связи с этим мы предлагаем выучить следующие четыре команды, которые будут работать на операционных системах Linux, основанных на Debian/Ubuntu, и в Google Colab:</p>
 <ul>
-<li><code>curl https://shorturl.at/0bBXE -o Makefile; make</code> — скачиваем интсрукции для установки <code>lexd</code> и <code>hfst</code> и дальнейшей работы с ними, записанные в простом текстовом файле, которые можно прочитать, если открыть <a href="https://shorturl.at/0bBXE">ссылку</a> из команды. Команда <code>make</code> запускает установку. Для того, чтобы это работало в Google Colab нужно перед командой нужно поставить восклицательный знак: <code>!curl https://shorturl.at/0bBXE -o Makefile; make</code></li>
-<li>дальше мы ожидаем, что Вы создадите в коллабе или у себя на компьютере (если у вас Linux), файл с названием <code>task.lexd</code>. В Google Colab для этого достаточно вставить первой строкой кодового блока <code>%%writefile task.lexd</code>. Вот пример такого файла:</li>
+<li>скачиваем интсрукции для установки <code>lexd</code> и <code>hfst</code> и дальнейшей работы с ними, записанные в простом текстовом файле, которые можно прочитать, если открыть <a href="https://shorturl.at/0bBXE">ссылку</a> из команды. Команда <code>make</code> запускает установку. Для того, чтобы это работало в Google Colab нужно перед командой нужно поставить восклицательный знак: <code>!curl ...</code>. Знак доллара означает, что дальше следует команда командной строки, не надо его никуда копировать.</li>
+</ul>
+<pre><code>$ curl https://shorturl.at/0bBXE -o Makefile; make</code></pre>
+<ul>
+<li>дальше мы ожидаем, что вы создадите в коллабе или у себя на компьютере (если у вас Linux), файл с названием <code>task.lexd</code>. В Google Colab для этого достаточно вставить первой строкой кодового блока <code>%%writefile task.lexd</code>. Вот пример такого файла:</li>
 </ul>
 <pre><code>PATTERNS
 VerbRoot VerbInfl
@@ -219,17 +222,24 @@ LEXICON VerbInfl
 &lt;pres&gt;:
 &lt;pres&gt;&lt;3&gt;&lt;sg&gt;:s</code></pre>
 <ul>
-<li>После того, как Вы установили нужные программы и создали файл, можно посмотреть формы и разборы, которые генерируются трансдьюссером. Это можно сделать следующей командой (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
+<li>После того, как вы установили нужные программы и создали файл, можно посмотреть формы и разборы, которые генерируются трансдьюссером. Это можно сделать следующей командой (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
 </ul>
-<pre><code>make forms</code></pre>
+<pre><code>$ make forms
+
+sing&lt;v&gt;&lt;pres&gt;:sing
+sing&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:sings
+walk&lt;v&gt;&lt;pres&gt;:walk
+walk&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:walks
+dance&lt;v&gt;&lt;pres&gt;:dance
+dance&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:dances</code></pre>
 <ul>
 <li>В ходе курса мы будем разбирать разные лингвистические задачи. У каждой задачи есть номер и автоматический тест, который его проверяет. Чтобы запустить автоматическую проверку следует ввести команду, где первое число – номер раздела, а второе число – номер задачи. Например, для того, чтобы проверить, работает ли проверка задания попробуйте запустить следующую команду:</li>
 </ul>
-<pre><code>make test_02_01</code></pre>
+<pre><code>$ make test_02_01</code></pre>
 <ul>
 <li>Чтобы окончательно посмотреть все варианты, попробуйте изменить последнюю строчку файла <code>task.lexd</code> на <code>&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:S</code> и снова перезапустить команду:</li>
 </ul>
-<pre><code>make test_02_01</code></pre>
+<pre><code>$ make test_02_01</code></pre>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -237,7 +247,7 @@ LEXICON VerbInfl
 Lindén, K., E. Axelson, S. Hardwick, T. A. Pirinen, и M. Silfverberg. 2011. <span>«Hfst—framework for compiling and applying morphologies»</span>. В <em>Systems and Frameworks for Computational Morphology: Second International Workshop, SFCM 2011, Zurich, Switzerland, August 26, 2011. Proceedings 2</em>, 67–85. Springer.
 </div>
 <div id="ref-ortiz05" class="csl-entry" role="listitem">
-Ortiz Rojas, Sergio, Mikel L Forcada, и Gema Ramı́rez Sánchez. 2005. <span>«Construcci<span>ó</span>n y minimizaci<span>ó</span>n eficiente de transductores de letras a partir de diccionarios con paradigmas»</span>. <em>Procesamiento del lenguaje natural</em> 35: 51–57.
+Ortiz Rojas, S., M. L. Forcada, и G. Ramı́rez Sánchez. 2005. <span>«Construcci<span>ó</span>n y minimizaci<span>ó</span>n eficiente de transductores de letras a partir de diccionarios con paradigmas»</span>. <em>Procesamiento del lenguaje natural</em> 35: 51–57.
 </div>
 <div id="ref-swanson21" class="csl-entry" role="listitem">
 Swanson, D., и N. Howell. 2021. <span>«Lexd: A finitestate lexicon compiler for non-suffixational morphologies»</span>. В <em>Multilingual Facilitation</em>, 133–46.
