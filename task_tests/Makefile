@@ -7,7 +7,11 @@ requirements:
 	sudo apt-get install hfst lexd
 
 task.generator.hfst: task.lexd
-	@lexd task.lexd | hfst-txt2fst -o task.generator.hfst
+	@lexd task.lexd | hfst-txt2fst -o $@
+	@if [ -f "task.twol"]; then\
+  	hfst-twolc task.twol -o twol.hfst;\
+  	hfst-compose-intersect task.generator.hfst $@;\
+	fi
 
 task.analyzer.hfst: task.generator.hfst
 	@hfst-invert task.generator.hfst -o task.analyzer.hfst

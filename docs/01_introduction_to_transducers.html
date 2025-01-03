@@ -88,6 +88,11 @@ div.csl-indent {
     "search-label": "Поиск"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/viz-1.8.2/viz.js"></script>
+<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="site_libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 </head>
@@ -144,7 +149,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_technical_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Техническое введение</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Введение в <code>lexd</code></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,9 +187,11 @@ div.csl-indent {
    
   <ul>
   <li><a href="#приведение-к-основе-stemming" id="toc-приведение-к-основе-stemming" class="nav-link active" data-scroll-target="#приведение-к-основе-stemming"><span class="header-section-number">1.1</span> Приведение к основе (stemming)</a></li>
-  <li><a href="#hmm" id="toc-hmm" class="nav-link" data-scroll-target="#hmm"><span class="header-section-number">1.2</span> HMM</a></li>
-  <li><a href="#нейросети" id="toc-нейросети" class="nav-link" data-scroll-target="#нейросети"><span class="header-section-number">1.3</span> Нейросети</a></li>
-  <li><a href="#морфологические-трансдьюссеры" id="toc-морфологические-трансдьюссеры" class="nav-link" data-scroll-target="#морфологические-трансдьюссеры"><span class="header-section-number">1.4</span> Морфологические трансдьюссеры</a></li>
+  <li><a href="#нейросети" id="toc-нейросети" class="nav-link" data-scroll-target="#нейросети"><span class="header-section-number">1.2</span> Нейросети</a></li>
+  <li><a href="#морфологические-трансдьюссеры" id="toc-морфологические-трансдьюссеры" class="nav-link" data-scroll-target="#морфологические-трансдьюссеры"><span class="header-section-number">1.3</span> Морфологические трансдьюссеры</a>
+  <ul class="collapse">
+  <li><a href="#конечные-автоматы" id="toc-конечные-автоматы" class="nav-link" data-scroll-target="#конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -223,11 +230,8 @@ div.csl-indent {
 <p><span class="citation" data-cites="porter80">(<a href="references.html#ref-porter80" role="doc-biblioref">Porter 1980</a>)</span></p>
 <p><span class="citation" data-cites="singh17">(<a href="references.html#ref-singh17" role="doc-biblioref">Singh и Gupta 2017</a>)</span></p>
 </section>
-<section id="hmm" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="hmm"><span class="header-section-number">1.2</span> HMM</h2>
-</section>
-<section id="нейросети" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="нейросети"><span class="header-section-number">1.3</span> Нейросети</h2>
+<section id="нейросети" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="нейросети"><span class="header-section-number">1.2</span> Нейросети</h2>
 <p>Обычно, если много данных, люди используют нейросети. Для морфологического анализа русского языка их использовали в следующих работах <span class="citation" data-cites="arefyev18 sorokin18 bolshakova19a bolshakova19b bolshakova20 garipov23">(<a href="references.html#ref-arefyev18" role="doc-biblioref">Arefyev, Gratsianova, и Popov 2018</a>; <a href="references.html#ref-sorokin18" role="doc-biblioref">Sorokin и Kravtsova 2018</a>; <a href="references.html#ref-bolshakova19a" role="doc-biblioref">E. Bolshakova и Sapin 2019</a>; <a href="references.html#ref-bolshakova19b" role="doc-biblioref">EI Bolshakova и Sapin 2019</a>; <a href="references.html#ref-bolshakova20" role="doc-biblioref">E. I. Bolshakova и Sapin 2020</a>; <a href="references.html#ref-garipov23" role="doc-biblioref">Garipov, Morozov, и Glazkova 2023</a>)</span>. Используются разные архитектуры:</p>
 <ul>
 <li>cвёрточные нейронные сеть (convolutional neural network, CNN);</li>
@@ -236,8 +240,17 @@ div.csl-indent {
 <li>другие</li>
 </ul>
 </section>
-<section id="морфологические-трансдьюссеры" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="морфологические-трансдьюссеры"><span class="header-section-number">1.4</span> Морфологические трансдьюссеры</h2>
+<section id="морфологические-трансдьюссеры" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="морфологические-трансдьюссеры"><span class="header-section-number">1.3</span> Морфологические трансдьюссеры</h2>
+<section id="конечные-автоматы" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</h3>
+<p>Теория автоматов — это дисциплина на стыке математики и компьютерных наук, которая появилась в XX веке. Первые конечных автоматов были предложены в работах <span class="citation" data-cites="mealy55 moore56">(<a href="references.html#ref-mealy55" role="doc-biblioref">Mealy 1955</a>; <a href="references.html#ref-moore56" role="doc-biblioref">Moore 1956</a>)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-60350d858a365158194a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-60350d858a365158194a">{"x":{"diagram":"\n  digraph G { rankdir=\"LR\"\n  node [fontname=\"Brill\",shape=circle,fontsize=14,fixedsize=true]\n  edge [fontname=\"Brill\",fontsize=18]\n  0 [label=\"0\"];\n  1 [label=\"1\"];\n  0 -> 1 [label=\"вверх\"];\n  0 -> 0 [label=\"вниз\"];\n  1 -> 1 [label=\"вверх\"];\n  1 -> 0 [label=\"вниз\"];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -256,6 +269,12 @@ Bolshakova, E., и A. Sapin. 2019. <span>«Bi-LSTM model for morpheme segmentati
 <div id="ref-garipov23" class="csl-entry" role="listitem">
 Garipov, T., D. Morozov, и A. Glazkova. 2023. <span>«Generalization ability of CNN-based Morpheme Segmentation»</span>. В <em>2023 Ivannikov Ispras Open Conference (ISPRAS)</em>, 58–62. IEEE.
 </div>
+<div id="ref-mealy55" class="csl-entry" role="listitem">
+Mealy, G. H. 1955. <span>«A method for synthesizing sequential circuits»</span>. <em>The Bell System Technical Journal</em> 34 (5): 1045–79.
+</div>
+<div id="ref-moore56" class="csl-entry" role="listitem">
+Moore, E. F. 1956. <span>«Gedanken-experiments on sequential machines»</span>. <em>Automata studies</em> 34: 129–53.
+</div>
 <div id="ref-porter80" class="csl-entry" role="listitem">
 Porter, M. F. 1980. <span>«An algorithm for suffix stripping»</span>. <em>Program</em> 14 (3): 130–37. <a href="https://doi.org/10.1108/eb046814">https://doi.org/10.1108/eb046814</a>.
 </div>
@@ -266,6 +285,7 @@ Singh, J., и V. Gupta. 2017. <span>«A systematic review of text stemming techn
 Sorokin, Alexey, и Anastasia Kravtsova. 2018. <span>«Deep convolutional networks for supervised morpheme segmentation of Russian language»</span>. В <em>Artificial Intelligence and Natural Language: 7th International Conference, AINL 2018, St. Petersburg, Russia, October 17–19, 2018, Proceedings 7</em>, 3–10. Springer.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -693,8 +713,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02_technical_introduction.html" class="pagination-link" aria-label="Техническое введение">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Техническое введение</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02_technical_introduction.html" class="pagination-link" aria-label="Введение в `lexd`">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Введение в <code>lexd</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
