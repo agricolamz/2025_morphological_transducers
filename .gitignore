@@ -1,3 +1,4 @@
 /.quarto/
 .Rproj.user
 2read*
+task_tests/*_decrypted.txt

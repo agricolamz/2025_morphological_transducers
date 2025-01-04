@@ -28,8 +28,10 @@ editor_options:
 
 - cвёрточные нейронные сеть (convolutional neural network, CNN);
 - деревья решения с градиентным бустингом (decision trees with gradient boosting);
-- Двунаправленная длинная цепь элементов краткосрочной памяти (Biderectional long short-term memory network, Bi-LSTM);
-- другие
+- двунаправленная длинная цепь элементов краткосрочной памяти (Biderectional long short-term memory network, Bi-LSTM);
+- и другие.
+
+Другой важный проект, который можно упомянуть в этом разделе: [UDPipe](https://ufal.mff.cuni.cz/udpipe/2) --- проект, основанный на размечанных в формате [Universal Dependencies трибанках](https://universaldependencies.org/) большого количества языков  [@straka18]. Отметим, что их задача амбициознее: они строят модель, совмещающая морфологический парсер и синтаксический парсер дерева зависимостей. Внутри: длинная цепь элементов краткосрочной памяти (LSTM), которая работает на основе векторного представления слов.
 
 ## Морфологические трансдьюссеры
 
@@ -39,6 +41,8 @@ editor_options:
 
 ```{r}
 #| eval: false
+#| echo: false
+
 library(DiagrammeR)
 grViz('
   digraph G { rankdir="LR"
