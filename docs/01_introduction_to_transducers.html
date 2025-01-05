@@ -170,7 +170,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#приведение-к-основе-stemming" id="toc-приведение-к-основе-stemming" class="nav-link active" data-scroll-target="#приведение-к-основе-stemming"><span class="header-section-number">1.1</span> Приведение к основе (stemming)</a></li>
-  <li><a href="#нейросети" id="toc-нейросети" class="nav-link" data-scroll-target="#нейросети"><span class="header-section-number">1.2</span> Нейросети</a></li>
+  <li><a href="#много-данных" id="toc-много-данных" class="nav-link" data-scroll-target="#много-данных"><span class="header-section-number">1.2</span> Много данных</a></li>
   <li><a href="#морфологические-трансдьюссеры" id="toc-морфологические-трансдьюссеры" class="nav-link" data-scroll-target="#морфологические-трансдьюссеры"><span class="header-section-number">1.3</span> Морфологические трансдьюссеры</a>
   <ul class="collapse">
   <li><a href="#конечные-автоматы" id="toc-конечные-автоматы" class="nav-link" data-scroll-target="#конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</a></li>
@@ -214,8 +214,8 @@ div.csl-indent {
 <p><span class="citation" data-cites="porter80">(<a href="references.html#ref-porter80" role="doc-biblioref">Porter 1980</a>)</span></p>
 <p><span class="citation" data-cites="singh17">(<a href="references.html#ref-singh17" role="doc-biblioref">Singh и Gupta 2017</a>)</span></p>
 </section>
-<section id="нейросети" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="нейросети"><span class="header-section-number">1.2</span> Нейросети</h2>
+<section id="много-данных" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="много-данных"><span class="header-section-number">1.2</span> Много данных</h2>
 <p>Обычно, если много данных, люди используют нейросети. Для морфологического анализа русского языка их использовали в следующих работах <span class="citation" data-cites="arefyev18 sorokin18 bolshakova19a bolshakova19b bolshakova20 garipov23">(<a href="references.html#ref-arefyev18" role="doc-biblioref">Arefyev, Gratsianova, и Popov 2018</a>; <a href="references.html#ref-sorokin18" role="doc-biblioref">Sorokin и Kravtsova 2018</a>; <a href="references.html#ref-bolshakova19a" role="doc-biblioref">E. Bolshakova и Sapin 2019</a>; <a href="references.html#ref-bolshakova19b" role="doc-biblioref">EI Bolshakova и Sapin 2019</a>; <a href="references.html#ref-bolshakova20" role="doc-biblioref">E. I. Bolshakova и Sapin 2020</a>; <a href="references.html#ref-garipov23" role="doc-biblioref">Garipov, Morozov, и Glazkova 2023</a>)</span>. Используются разные архитектуры:</p>
 <ul>
 <li>cвёрточные нейронные сеть (convolutional neural network, CNN);</li>
@@ -224,6 +224,7 @@ div.csl-indent {
 <li>и другие.</li>
 </ul>
 <p>Другой важный проект, который можно упомянуть в этом разделе: <a href="https://ufal.mff.cuni.cz/udpipe/2">UDPipe</a> — проект, основанный на размечанных в формате <a href="https://universaldependencies.org/">Universal Dependencies трибанках</a> большого количества языков <span class="citation" data-cites="straka18">(<a href="references.html#ref-straka18" role="doc-biblioref">Straka 2018</a>)</span>. Отметим, что их задача амбициознее: они строят модель, совмещающая морфологический парсер и синтаксический парсер дерева зависимостей. Внутри: длинная цепь элементов краткосрочной памяти (LSTM), которая работает на основе векторного представления слов.</p>
+<p>Также стоит упомянуть проект <a href="http://morpho.aalto.fi/projects/morpho/">Morfessor</a>, в котором используют скрытые марковские цепи (HMM) <span class="citation" data-cites="gronroos14">(<a href="references.html#ref-gronroos14" role="doc-biblioref">Grönroos и др. 2014</a>)</span>.</p>
 </section>
 <section id="морфологические-трансдьюссеры" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="морфологические-трансдьюссеры"><span class="header-section-number">1.3</span> Морфологические трансдьюссеры</h2>
@@ -287,6 +288,9 @@ Bolshakova, E., и A. Sapin. 2019. <span>«Bi-LSTM model for morpheme segmentati
 </div>
 <div id="ref-garipov23" class="csl-entry" role="listitem">
 Garipov, T., D. Morozov, и A. Glazkova. 2023. <span>«Generalization ability of CNN-based Morpheme Segmentation»</span>. В <em>2023 Ivannikov Ispras Open Conference (ISPRAS)</em>, 58–62. IEEE.
+</div>
+<div id="ref-gronroos14" class="csl-entry" role="listitem">
+Grönroos, S.-A., S. Virpioja, P. Smit, и M. Kurimo. 2014. <span>«Morfessor <span>F</span>lat<span>C</span>at: An <span>HMM</span>-based method for unsupervised and semi-supervised learning of morphology»</span>. В <em>Proceedings of COLING 2014, the 25th International Conference on Computational Linguistics: Technical Papers</em>, 1177–85.
 </div>
 <div id="ref-mealy55" class="csl-entry" role="listitem">
 Mealy, G. H. 1955. <span>«A method for synthesizing sequential circuits»</span>. <em>The Bell System Technical Journal</em> 34 (5): 1045–79.

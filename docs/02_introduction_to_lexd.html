@@ -204,7 +204,12 @@ div.csl-indent {
    
   <ul>
   <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link active" data-scroll-target="#техническое-введение"><span class="header-section-number">2.1</span> Техническое введение</a></li>
-  <li><a href="#программа-lexd" id="toc-программа-lexd" class="nav-link" data-scroll-target="#программа-lexd"><span class="header-section-number">2.2</span> Программа <code>lexd</code></a></li>
+  <li><a href="#программа-lexd" id="toc-программа-lexd" class="nav-link" data-scroll-target="#программа-lexd"><span class="header-section-number">2.2</span> Программа <code>lexd</code></a>
+  <ul class="collapse">
+  <li><a href="#теги" id="toc-теги" class="nav-link" data-scroll-target="#теги"><span class="header-section-number">2.2.1</span> Теги</a></li>
+  <li><a href="#операции-в-части-pattern" id="toc-операции-в-части-pattern" class="nav-link" data-scroll-target="#операции-в-части-pattern"><span class="header-section-number">2.2.2</span> Операции в части Pattern</a></li>
+  <li><a href="#инфиксы" id="toc-инфиксы" class="nav-link" data-scroll-target="#инфиксы"><span class="header-section-number">2.2.3</span> Инфиксы</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -288,7 +293,7 @@ div.csl-indent {
 </section>
 <section id="программа-lexd" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="программа-lexd"><span class="header-section-number">2.2</span> Программа <code>lexd</code></h2>
-<p>У программы <code>lexd</code> есть подробный <a href="https://github.com/apertium/lexd/blob/main/Usage.md">туториал</a>. Данный раздел основан на нем. Давайте подробнее рассмотрим <code>lexd</code> файл, который мы видели в прошлом разделе:</p>
+<p>У программы <code>lexd</code> есть подробный <a href="https://github.com/apertium/lexd/blob/main/Usage.md">туториал</a>, так что данный раздел во многом опирается на него. Давайте подробнее рассмотрим <code>lexd</code> файл, который мы видели в прошлом разделе:</p>
 <div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a><span class="in">VerbRoot VerbInfl   </span></span>
@@ -328,6 +333,7 @@ div.csl-indent {
 <span data-code-cell="annotated-cell-6" data-code-lines="12" data-code-annotation="6">Пример морфемы с несколькими морфологическими тегами.</span>
 </dd>
 </dl>
+<p>Отметим, что можно создавать свои именнованные подразделы <code>PATTERN</code>, которые потом можно использовать в разделе <code>PATTERNS</code>.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -338,7 +344,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ниже представлен фрагмент ицаринской (даргинские, нахско-дагестанские) парадигмы из <span class="citation" data-cites="sumbatova03">(<a href="references.html#ref-sumbatova03" role="doc-biblioref">Sumbatova и Mutalov 2003</a>)</span>. Попробуйте смоделировать ее при помощи <code>lexd</code>. Для корректного моделирования формы sup.lat нужна морфонология, так что при моделировании используйте форму в скобках. При моделировании придется покривить душой: <em>-b</em> в формах ess и dir — инфикс классного показателя. Помните, что каждый морфологический тег следует обрамлять в отдельные треугольные скобки, например, <code>sːika&lt;n&gt;&lt;ant&gt;&lt;dir&gt;:sːikasabal</code>.</p>
+<p>Ниже представлен фрагмент ицаринской (даргинские, нахско-дагестанские) парадигмы из <span class="citation" data-cites="sumbatova03">(<a href="references.html#ref-sumbatova03" role="doc-biblioref">Sumbatova и Mutalov 2003</a>)</span>. Попробуйте смоделировать ее при помощи <code>lexd</code>. Для корректного моделирования формы sup.lat нужна морфонология, так что при моделировании используйте форму в скобках. При моделировании придется покривить душой: <em>-b</em> в формах ess и dir — инфикс классного показателя. Помните, что каждый морфологический тег следует обрамлять в отдельные треугольные скобки, например, <code>sːika&lt;n&gt;&lt;ant&gt;&lt;dir&gt;:sːikasabal</code>. Для ориентации в нашем lexd файле 26 строк.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -472,9 +478,130 @@ div.csl-indent {
 </table>
 </div>
 </div>
+<section id="теги" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="теги"><span class="header-section-number">2.2.1</span> Теги</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Задание 02_03
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ниже представлен фрагмент финской парадигмы <span class="citation" data-cites="karlsson13">(<a href="references.html#ref-karlsson13" role="doc-biblioref">Karlsson 2013</a>)</span>, как видно, здесь слова двух словоизменительных типов. Попробуйте смоделировать представленную парадигму, используя теги.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>glosses</th>
+<th>зал</th>
+<th>общежитие</th>
+<th>дверь</th>
+<th>зима</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>nom.sg</td>
+<td><em>sali</em></td>
+<td><em>hostelli</em></td>
+<td><em>ovi</em></td>
+<td><em>talvi</em></td>
+</tr>
+<tr class="even">
+<td>acc.sg</td>
+<td><em>sali</em></td>
+<td><em>hostelli</em></td>
+<td><em>ovi</em></td>
+<td><em>talvi</em></td>
+</tr>
+<tr class="odd">
+<td>gen.sg</td>
+<td><em>salin</em></td>
+<td><em>hostellin</em></td>
+<td><em>oven</em></td>
+<td><em>talven</em></td>
+</tr>
+<tr class="even">
+<td>prt.sg</td>
+<td><em>salia</em></td>
+<td><em>hostellia</em></td>
+<td><em>ovea</em></td>
+<td><em>talvea</em></td>
+</tr>
+<tr class="odd">
+<td>in.ess.sg</td>
+<td><em>salissa</em></td>
+<td><em>hostellissa</em></td>
+<td><em>ovessa</em></td>
+<td><em>talvessa</em></td>
+</tr>
+<tr class="even">
+<td>in.abl.sg</td>
+<td><em>salista</em></td>
+<td><em>hostellista</em></td>
+<td><em>ovesta</em></td>
+<td><em>talvesta</em></td>
+</tr>
+<tr class="odd">
+<td>at.ess.sg</td>
+<td><em>salilla</em></td>
+<td><em>hostellilla</em></td>
+<td><em>ovella</em></td>
+<td><em>talvella</em></td>
+</tr>
+<tr class="even">
+<td>at.abl.sg</td>
+<td><em>salilta</em></td>
+<td><em>hostellilta</em></td>
+<td><em>ovelta</em></td>
+<td><em>talvelta</em></td>
+</tr>
+<tr class="odd">
+<td>at.all.sg</td>
+<td><em>salille</em></td>
+<td><em>hostellille</em></td>
+<td><em>ovelle</em></td>
+<td><em>talvelle</em></td>
+</tr>
+<tr class="even">
+<td>frml.sg</td>
+<td><em>salina</em></td>
+<td><em>hostellina</em></td>
+<td><em>ovena</em></td>
+<td><em>talvena</em></td>
+</tr>
+<tr class="odd">
+<td>trans.sg</td>
+<td><em>saliksi</em></td>
+<td><em>hostelliksi</em></td>
+<td><em>oveksi</em></td>
+<td><em>talveksi</em></td>
+</tr>
+<tr class="even">
+<td>priv.sg</td>
+<td><em>salitta</em></td>
+<td><em>hostellitta</em></td>
+<td><em>ovetta</em></td>
+<td><em>talvetta</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="операции-в-части-pattern" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="операции-в-части-pattern"><span class="header-section-number">2.2.2</span> Операции в части Pattern</h3>
+</section>
+<section id="инфиксы" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="инфиксы"><span class="header-section-number">2.2.3</span> Инфиксы</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-karlsson13" class="csl-entry" role="listitem">
+Karlsson, F. 2013. <em>Finnish: An essential grammar</em>. Routledge.
+</div>
 <div id="ref-linden11" class="csl-entry" role="listitem">
 Lindén, K., E. Axelson, S. Hardwick, T. A. Pirinen, и M. Silfverberg. 2011. <span>«Hfst—framework for compiling and applying morphologies»</span>. В <em>Systems and Frameworks for Computational Morphology: Second International Workshop, SFCM 2011, Zurich, Switzerland, August 26, 2011. Proceedings 2</em>, 67–85. Springer.
 </div>
@@ -488,6 +615,7 @@ Sumbatova, N. R., и R. O. Mutalov. 2003. <em>A grammar of <span>I</span>tsari <
 Swanson, D., и N. Howell. 2021. <span>«Lexd: A finitestate lexicon compiler for non-suffixational morphologies»</span>. В <em>Multilingual Facilitation</em>, 133–46.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
