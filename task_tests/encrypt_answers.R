@@ -1,6 +1,6 @@
 library(tidyverse)
 
-password <- ""
+password <- read_lines("task_tests/secret.txt")
 
 list.files("task_tests", pattern = "_decrypted.txt", full.names = TRUE) |> 
   walk(function(file){
