@@ -210,6 +210,7 @@ div.csl-indent {
 <section id="приведение-к-основе-stemming" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="приведение-к-основе-stemming"><span class="header-section-number">1.1</span> Приведение к основе (stemming)</h2>
 <p>Достаточно широкое применение в ранюю эпоху NLP получили методы, которые позволяют привести словоформы к основе или квазиоснове. Эта процедура помогала уменьшить разнообразие форм в тексте, что облегчало поиск и извлечение информации.</p>
+<p>TBC</p>
 <p><span class="citation" data-cites="porter80">(<a href="references.html#ref-porter80" role="doc-biblioref">Porter 1980</a>)</span></p>
 <p><span class="citation" data-cites="singh17">(<a href="references.html#ref-singh17" role="doc-biblioref">Singh и Gupta 2017</a>)</span></p>
 </section>
@@ -229,6 +230,46 @@ div.csl-indent {
 <section id="конечные-автоматы" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</h3>
 <p>Теория автоматов — это дисциплина на стыке математики и компьютерных наук, которая появилась в XX веке. Первые конечных автоматов были предложены в работах <span class="citation" data-cites="mealy55 moore56">(<a href="references.html#ref-mealy55" role="doc-biblioref">Mealy 1955</a>; <a href="references.html#ref-moore56" role="doc-biblioref">Moore 1956</a>)</span>.</p>
+<p>Под автоматами мы понимаем абстрактные машины, которые принимают разные состояния, а изменение состояний вызывается некоторым действием:</p>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout="[[1,4],[1,4]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<p><img src="images/01_01_light_switch.jpg" class="img-fluid" width="400"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
+<p><img src="images/01_02_light_switch_automaton.png" class="img-fluid" width="311"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
+<p><img src="images/01_03_turnstile.jpg" class="img-fluid" width="306"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 80.0%;justify-content: center;">
+<p><img src="images/01_04_turnstile_automaton.png" class="img-fluid" width="311"></p>
+</div>
+</div>
+</div>
+<p>Мы не будем давать формального определения конечных автоматов, а перечислим свойства:</p>
+<ul>
+<li>алфавит, который автомат понимает;</li>
+<li>конечное количество состояний;</li>
+<li>переходы между состояниями;</li>
+<li>одно начальное состояние (часто обозначют нулем);</li>
+<li>набор конечных состояний (часто обозначают двойным кружочком).</li>
+</ul>
+<p>Конечные автоматы можно использовать для верефикации поданного на вход слов:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/01_05_elephant.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">

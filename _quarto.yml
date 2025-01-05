@@ -19,6 +19,10 @@ callout-appearance: simple
 callout-icon: false
 bibliography: references.bib
 language: custom.yml
+execute: 
+  echo: false
+  warning: false
+fig-align: center
 
 format:
   html:
