@@ -134,7 +134,6 @@ LEXICON VerbInfl    # <4>
 | prt.sg    | _salia_   | _hostellia_   | _ovea_   | _talvea_   |
 | in.ess.sg | _salissa_ | _hostellissa_ | _ovessa_ | _talvessa_ |
 | in.abl.sg | _salista_ | _hostellista_ | _ovesta_ | _talvesta_ |
-| in.all.sg | _saliin_  | _hostelliin_  | _oveen_  | _talveen_  |
 | at.ess.sg | _salilla_ | _hostellilla_ | _ovella_ | _talvella_ |
 | at.abl.sg | _salilta_ | _hostellilta_ | _ovelta_ | _talvelta_ |
 | at.all.sg | _salille_ | _hostellille_ | _ovelle_ | _talvelle_ |
