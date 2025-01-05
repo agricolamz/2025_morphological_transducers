@@ -126,20 +126,21 @@ LEXICON VerbInfl    # <4>
 
 Ниже представлен фрагмент финской парадигмы [@karlsson13], как видно, здесь слова двух словоизменительных типов. Попробуйте смоделировать представленную парадигму, используя теги.
 
-| форма     | зал       | закон      | дверь    | зима       |
-|-----------|-----------|------------|----------|------------|
-| nom.sg    | _sali_    | _tunti_    | _ovi_    | _talvi_    |
-| acc.sg    | _sali_    | _tunti_    | _ovi_    | _talvi_    |
-| gen.sg    | _salin_   | _tunnin_   | _oven_   | _talven_   |
-| prt.sg    | _salia_   | _tuntia_   | _ovea_   | _talvea_   |
-| in.ess.sg | _salissa_ | _tunnissa_ | _ovessa_ | _talvessa_ |
-| in.abl.sg | _salista_ | _tunnista_ | _ovesta_ | _talvesta_ |
-| at.ess.sg | _salilla_ | _tunnilla_ | _ovella_ | _talvella_ |
-| at.abl.sg | _salilta_ | _tunnilta_ | _ovelta_ | _talvelta_ |
-| at.all.sg | _salille_ | _tunnille_ | _ovelle_ | _talvelle_ |
-| frml.sg   | _salina_  | _tuntina_  | _ovena_  | _talvena_  |
-| trans.sg  | _saliksi_ | _tunniksi_ | _oveksi_ | _talveksi_ |
-| priv.sg   | _salitta_ | _tunnitta_ | _ovetta_ | _talvetta_ |
+| glosses   | зал       | общежитие     | дверь    | зима       |
+|-----------|-----------|---------------|----------|------------|
+| nom.sg    | _sali_    | _hostelli_    | _ovi_    | _talvi_    |
+| acc.sg    | _sali_    | _hostelli_    | _ovi_    | _talvi_    |
+| gen.sg    | _salin_   | _hostellin_   | _oven_   | _talven_   |
+| prt.sg    | _salia_   | _hostellia_   | _ovea_   | _talvea_   |
+| in.ess.sg | _salissa_ | _hostellissa_ | _ovessa_ | _talvessa_ |
+| in.abl.sg | _salista_ | _hostellista_ | _ovesta_ | _talvesta_ |
+| in.all.sg | _saliin_  | _hostelliin_  | _oveen_  | _talveen_  |
+| at.ess.sg | _salilla_ | _hostellilla_ | _ovella_ | _talvella_ |
+| at.abl.sg | _salilta_ | _hostellilta_ | _ovelta_ | _talvelta_ |
+| at.all.sg | _salille_ | _hostellille_ | _ovelle_ | _talvelle_ |
+| frml.sg   | _salina_  | _hostellina_  | _ovena_  | _talvena_  |
+| trans.sg  | _saliksi_ | _hostelliksi_ | _oveksi_ | _talveksi_ |
+| priv.sg   | _salitta_ | _hostellitta_ | _ovetta_ | _talvetta_ |
 
 :::
 
