@@ -1,6 +1,6 @@
 library(tidyverse)
 
-password <- "2025_morphological_transducers"
+password <- ""
 
 list.files("task_tests", pattern = "_decrypted.txt", full.names = TRUE) |> 
   walk(function(file){
