@@ -106,18 +106,127 @@ grViz('
   3 [label="3"];
   4 [label="4: ✔️",shape=doublecircle];
   5 [label="5: ✘",shape=doublecircle];
-  0 -> 1 [label="s"];
-  0 -> 5 [label="not s"];
-  1 -> 2 [label="o"];
-  1 -> 5 [label="not o"];
-  2 -> 3 [label="n"];
-  2 -> 5 [label="not n"];
-  3 -> 4 [label="g"];
-  3 -> 5 [label="not g"];
+  0 -> 1 [label="с"];
+  0 -> 5 [label="не с"];
+  1 -> 2 [label="л"];
+  1 -> 5 [label="не л"];
+  2 -> 3 [label="о"];
+  2 -> 5 [label="не о"];
+  3 -> 4 [label="н"];
+  3 -> 5 [label="не н"];
 }') 
 ```
 
 ```{r}
-#| out-width: 100%
+#| out-width: 70%
+
 knitr::include_graphics("images/01_05_elephant.png")
+```
+
+Если программа смогла пройти путь до конечного состояния (обозначен двойным кружочком), значит операция завершилась успехом, в остальных случаях --- неудачей. Обычно путь ведущей к неудаче не отображают.
+
+```{r}
+#| eval: false
+
+grViz('
+  digraph G { rankdir="LR"
+  node [fontname="Brill",shape=circle,fontsize=14,fixedsize=true]
+  edge [fontname="Brill",fontsize=16]
+  0 [label="0"];
+  1 [label="1"];
+  2 [label="2"];
+  4 [label="️4",shape=doublecircle];
+  0 -> 1 [label="с"];
+  1 -> 2 [label="л"];
+  2 -> 3 [label="о"];
+  3 -> 4 [label="н"];
+}') 
+```
+
+```{r}
+#| out-width: 70%
+
+knitr::include_graphics("images/01_06_elephant_short.png")
+```
+
+Можно сделать так, чтобы автомат верефицировал несколько слов:
+
+```{r}
+#| eval: false
+
+grViz('
+  digraph G { rankdir="LR"
+  node [fontname="Brill",shape=circle,fontsize=14,fixedsize=true]
+  edge [fontname="Brill",fontsize=16]
+  0 [label="0"];
+  1 [label="1"];
+  2 [label="2"];
+  5 [label="5"];
+  6 [label="6"];
+  7 [label="7"];
+  8 [label="8"];
+  9 [label="9"];
+  10 [label="10"];
+  11 [label="11"];
+  12 [label="12"];
+  4 [label="4",shape=doublecircle];
+  
+  0 -> 1 [label="с"];
+  1 -> 2 [label="л"];
+  2 -> 3 [label="о"];
+  3 -> 4 [label="н"];
+  
+  0 -> 5 [label="у"];
+  5 -> 6 [label="к"];
+  6 -> 7 [label="л"];
+  7 -> 8 [label="о"];
+  8 -> 4 [label="н"];
+  
+  0 -> 9 [label="к"];
+  9 -> 10 [label="у"];
+  10 -> 11 [label="л"];
+  11 -> 12 [label="о"];
+  12 -> 4 [label="н"];
+}')
+```
+
+```{r}
+#| out-width: 70%
+
+knitr::include_graphics("images/01_07_multiple_words.png")
+```
+
+Полученный автомат можно оптимизировать, так, чтобы там было меньше узлов, а задачи он решал те же самые:
+
+```{r}
+#| eval: false
+
+grViz('
+  digraph G { rankdir="LR"
+  node [fontname="Brill",shape=circle,fontsize=14,fixedsize=true]
+  edge [fontname="Brill",fontsize=16]
+  0 [label="0"];
+  1 [label="1"];
+  2 [label="2"];
+  5 [label="5"];
+  6 [label="6"];
+  4 [label="4",shape=doublecircle];
+  
+  0 -> 1 [label="с"];
+  1 -> 2 [label="л"];
+  2 -> 3 [label="о"];
+  3 -> 4 [label="н"];
+  
+  0 -> 5 [label="у"];
+  5 -> 1 [label="к"];
+  
+  0 -> 6 [label="к"];
+  6 -> 1 [label="у"];
+}')
+```
+
+```{r}
+#| out-width: 70%
+
+knitr::include_graphics("images/01_08_multiple_words_optimized.png")
 ```
