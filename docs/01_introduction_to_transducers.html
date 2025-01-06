@@ -174,7 +174,7 @@ div.csl-indent {
   <li><a href="#от-автоматов-к-морфологическим-трансдьюссерам" id="toc-от-автоматов-к-морфологическим-трансдьюссерам" class="nav-link" data-scroll-target="#от-автоматов-к-морфологическим-трансдьюссерам"><span class="header-section-number">1.3</span> От автоматов к морфологическим трансдьюссерам</a>
   <ul class="collapse">
   <li><a href="#конечные-автоматы" id="toc-конечные-автоматы" class="nav-link" data-scroll-target="#конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</a></li>
-  <li><a href="#трансдьюссеры" id="toc-трансдьюссеры" class="nav-link" data-scroll-target="#трансдьюссеры"><span class="header-section-number">1.3.2</span> Трансдьюссеры</a></li>
+  <li><a href="#трансдьюсеры" id="toc-трансдьюсеры" class="nav-link" data-scroll-target="#трансдьюсеры"><span class="header-section-number">1.3.2</span> Трансдьюсеры</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -309,9 +309,61 @@ div.csl-indent {
 </div>
 </div>
 <p>Существуют математические работы, доказывающие, что для любого регулярного языка существует детерминированный конечный автомат с наименьшим возможным числом состояний. Такой автомат единственен с точностью до изоморфизма.</p>
+<p>Важно отметить, что в данном разделе наши автоматы были представлены диаграммами состояний, однако автомат можно представить и в виде таблицы переходов, в которой каждая строка соотвествует одному состоянию, а столбцу допустимый входной символ (и выходной, если речь о трансдьюсерах).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>исходное состояние</th>
+<th>следующее состояние</th>
+<th>входной символ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>с</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2</td>
+<td>л</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>3</td>
+<td>о</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>4</td>
+<td>н</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>5</td>
+<td>у</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>1</td>
+<td>к</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>6</td>
+<td>к</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>1</td>
+<td>у</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="трансдьюссеры" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="трансдьюссеры"><span class="header-section-number">1.3.2</span> Трансдьюссеры</h3>
+<section id="трансдьюсеры" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="трансдьюсеры"><span class="header-section-number">1.3.2</span> Трансдьюсеры</h3>
 <p>Все что мы рассмотрели до этого момента позволяло лишь принимать/отвергать слова, поданные на вход. Если мы немного усложним автомат, добавив в него еще выходной алфавит, то мы получим трансдьюсер (в <a href="https://ru.wikipedia.org/wiki/Конечный_автомат_с_выходом">русской википедии</a> они названы конечными автоматами с выходом). Мы будем использовать обновленную нотацию: то, что пресдтавлено на вход мы пишется слева от двоеточия, а то, что получается на выходе — справа.</p>
 <div class="cell">
 <div class="cell-output-display">
