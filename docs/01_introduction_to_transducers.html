@@ -210,10 +210,16 @@ div.csl-indent {
 <p>В зависимости от целей люди делают акцент на разные аспекты морфологического анализа. Для многих NLP задач полезным является приведение к начальной форме, лингвистический корпусной анализ практически невозможен без заранее определенных морфологических форм, и все три необходимы для представления языкового материала в научной работе. Также стоит помнить, что для разных задач могут быть важны разные категории, например, лингвисты, когда приводят примеры, редко перечисляют несловоизменительную информацию (например, род для существительных), которая может быть важна в каких-то задачах.</p>
 <section id="приведение-к-основе-stemming" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="приведение-к-основе-stemming"><span class="header-section-number">1.1</span> Приведение к основе (stemming)</h2>
-<p>Достаточно широкое применение в ранюю эпоху NLP получили методы, которые позволяют привести словоформы к основе или квазиоснове. Эта процедура помогала уменьшить разнообразие форм в тексте, что облегчало поиск и извлечение информации.</p>
-<p>TBC</p>
-<p><span class="citation" data-cites="porter80">(<a href="references.html#ref-porter80" role="doc-biblioref">Porter 1980</a>)</span></p>
-<p><span class="citation" data-cites="singh17">(<a href="references.html#ref-singh17" role="doc-biblioref">Singh и Gupta 2017</a>)</span></p>
+<p>Достаточно широкое применение в ранюю эпоху NLP получили методы, которые позволяют привести словоформы к основе или квазиоснове. Эта процедура помогала уменьшить разнообразие форм в тексте, что облегчало поиск и извлечение информации. В работе <span class="citation" data-cites="singh17">(<a href="references.html#ref-singh17" role="doc-biblioref">Singh и Gupta 2017</a>)</span> приводится целая классификация стемеров:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/01_00_stemmers.png" class="img-fluid figure-img" width="815"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="много-данных" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="много-данных"><span class="header-section-number">1.2</span> Много данных</h2>
@@ -368,8 +374,19 @@ div.csl-indent {
 <li>в системах автоматического перевода близкородственных языков</li>
 <li>и др.</li>
 </ul>
-<p>Композиция трансдьюсеров TBC</p>
-<p>Закончим эту главу перечислением преимуществ трансдьюссеров. Оптимизированный трансдьюсер является оптимальным с точки зрения объема требуемой памяти для хранения и скорости поиска. Композиция трансдьюсеров открывает большой и богатый мир, которые позволяет создавать и комбинировать между собой очень разные инструменты.</p>
+<p>С трансдьюсерами можно делать много разных операций: - объединение (конечные и начальные состояния совпадают, все промежуточные сохраняются); - конкатенация (конечное состояние одного трансдьюсера становится начальным состоянием другого); - пересечение (в особых случаях; - вычитание (в особых случаях); - композиция (обсудим ниже).</p>
+<p>Композиция трансдьюсеров аналогична функциям <code>join</code> для таблиц. После композиции трансдьюсера &lt;x, y&gt; и &lt;y, z&gt; получается новый трансдьюсер &lt;x, z&gt;.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/01_11_transducer_composition.png" class="img-fluid figure-img" width="1902"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Именно при помощи композиции трансдьюсеров можно объединять трансдьюсеры с разными “целями”: например, трансдьюсер, который приводит к начальной форме и пишет морфологические теги, с трансдьюсером, который переводит основы.</p>
+<p>Закончим перечислением преимуществ трансдьюссеров. Оптимизированный трансдьюсер является оптимальным с точки зрения объема требуемой памяти для хранения и скорости поиска. Композиция трансдьюсеров открывает большой и богатый мир, которые позволяет создавать и комбинировать между собой очень разные инструменты.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -399,9 +416,6 @@ Mealy, G. H. 1955. <span>«A method for synthesizing sequential circuits»</span
 </div>
 <div id="ref-moore56" class="csl-entry" role="listitem">
 Moore, E. F. 1956. <span>«Gedanken-experiments on sequential machines»</span>. <em>Automata studies</em> 34: 129–53.
-</div>
-<div id="ref-porter80" class="csl-entry" role="listitem">
-Porter, M. F. 1980. <span>«An algorithm for suffix stripping»</span>. <em>Program</em> 14 (3): 130–37. <a href="https://doi.org/10.1108/eb046814">https://doi.org/10.1108/eb046814</a>.
 </div>
 <div id="ref-singh17" class="csl-entry" role="listitem">
 Singh, J., и V. Gupta. 2017. <span>«A systematic review of text stemming techniques»</span>. <em>Artificial Intelligence Review</em> 48: 157–217.
