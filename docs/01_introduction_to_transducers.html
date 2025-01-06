@@ -171,7 +171,7 @@ div.csl-indent {
   <ul>
   <li><a href="#приведение-к-основе-stemming" id="toc-приведение-к-основе-stemming" class="nav-link active" data-scroll-target="#приведение-к-основе-stemming"><span class="header-section-number">1.1</span> Приведение к основе (stemming)</a></li>
   <li><a href="#много-данных" id="toc-много-данных" class="nav-link" data-scroll-target="#много-данных"><span class="header-section-number">1.2</span> Много данных</a></li>
-  <li><a href="#морфологические-трансдьюссеры" id="toc-морфологические-трансдьюссеры" class="nav-link" data-scroll-target="#морфологические-трансдьюссеры"><span class="header-section-number">1.3</span> Морфологические трансдьюссеры</a>
+  <li><a href="#от-автоматов-к-морфологическим-трансдьюссерам" id="toc-от-автоматов-к-морфологическим-трансдьюссерам" class="nav-link" data-scroll-target="#от-автоматов-к-морфологическим-трансдьюссерам"><span class="header-section-number">1.3</span> От автоматов к морфологическим трансдьюссерам</a>
   <ul class="collapse">
   <li><a href="#конечные-автоматы" id="toc-конечные-автоматы" class="nav-link" data-scroll-target="#конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</a></li>
   <li><a href="#трансдьюссеры" id="toc-трансдьюссеры" class="nav-link" data-scroll-target="#трансдьюссеры"><span class="header-section-number">1.3.2</span> Трансдьюссеры</a></li>
@@ -217,7 +217,7 @@ div.csl-indent {
 </section>
 <section id="много-данных" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="много-данных"><span class="header-section-number">1.2</span> Много данных</h2>
-<p>Обычно, если много данных, люди используют нейросети. Для морфологического анализа русского языка их использовали в следующих работах <span class="citation" data-cites="arefyev18 sorokin18 bolshakova19a bolshakova19b bolshakova20 garipov23">(<a href="references.html#ref-arefyev18" role="doc-biblioref">Arefyev, Gratsianova, и Popov 2018</a>; <a href="references.html#ref-sorokin18" role="doc-biblioref">Sorokin и Kravtsova 2018</a>; <a href="references.html#ref-bolshakova19a" role="doc-biblioref">E. Bolshakova и Sapin 2019</a>; <a href="references.html#ref-bolshakova19b" role="doc-biblioref">EI Bolshakova и Sapin 2019</a>; <a href="references.html#ref-bolshakova20" role="doc-biblioref">E. I. Bolshakova и Sapin 2020</a>; <a href="references.html#ref-garipov23" role="doc-biblioref">Garipov, Morozov, и Glazkova 2023</a>)</span>. Используются разные архитектуры:</p>
+<p>Обычно, если много данных, люди используют нейросети. Для морфологического анализа русского языка их использовали в следующих работах <span class="citation" data-cites="arefyev18 sorokin18 bolshakova19a bolshakova19b bolshakova20 garipov23">(<a href="references.html#ref-arefyev18" role="doc-biblioref">Arefyev, Gratsianova, и Popov 2018</a>; <a href="references.html#ref-sorokin18" role="doc-biblioref">Sorokin и Kravtsova 2018</a>; <a href="references.html#ref-bolshakova19a" role="doc-biblioref">Bolshakova и Sapin 2019a</a>, <a href="references.html#ref-bolshakova19b" role="doc-biblioref">2019b</a>, <a href="references.html#ref-bolshakova20" role="doc-biblioref">2020</a>; <a href="references.html#ref-garipov23" role="doc-biblioref">Garipov, Morozov, и Glazkova 2023</a>)</span>. Используются разные архитектуры:</p>
 <ul>
 <li>cвёрточные нейронные сеть (convolutional neural network, CNN);</li>
 <li>деревья решения с градиентным бустингом (decision trees with gradient boosting);</li>
@@ -227,11 +227,11 @@ div.csl-indent {
 <p>Другой важный проект, который можно упомянуть в этом разделе: <a href="https://ufal.mff.cuni.cz/udpipe/2">UDPipe</a> — проект, основанный на размечанных в формате <a href="https://universaldependencies.org/">Universal Dependencies трибанках</a> большого количества языков <span class="citation" data-cites="straka18">(<a href="references.html#ref-straka18" role="doc-biblioref">Straka 2018</a>)</span>. Отметим, что их задача амбициознее: они строят модель, совмещающая морфологический парсер и синтаксический парсер дерева зависимостей. Внутри: длинная цепь элементов краткосрочной памяти (LSTM), которая работает на основе векторного представления слов.</p>
 <p>Также стоит упомянуть проект <a href="http://morpho.aalto.fi/projects/morpho/">Morfessor</a>, в котором используют скрытые марковские цепи (HMM) <span class="citation" data-cites="gronroos14">(<a href="references.html#ref-gronroos14" role="doc-biblioref">Grönroos и др. 2014</a>)</span>.</p>
 </section>
-<section id="морфологические-трансдьюссеры" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="морфологические-трансдьюссеры"><span class="header-section-number">1.3</span> Морфологические трансдьюссеры</h2>
+<section id="от-автоматов-к-морфологическим-трансдьюссерам" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="от-автоматов-к-морфологическим-трансдьюссерам"><span class="header-section-number">1.3</span> От автоматов к морфологическим трансдьюссерам</h2>
 <section id="конечные-автоматы" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</h3>
-<p>Теория автоматов — это дисциплина на стыке математики и компьютерных наук, которая появилась в XX веке. Первые конечных автоматов были предложены в работах <span class="citation" data-cites="mealy55 moore56">(<a href="references.html#ref-mealy55" role="doc-biblioref">Mealy 1955</a>; <a href="references.html#ref-moore56" role="doc-biblioref">Moore 1956</a>)</span>.</p>
+<p>Теория автоматов — это дисциплина на стыке математики и компьютерных наук, которая появилась в XX веке. Первые конечных автоматов были предложены в работах <span class="citation" data-cites="mealy55 moore56">(<a href="references.html#ref-mealy55" role="doc-biblioref">Mealy 1955</a>; <a href="references.html#ref-moore56" role="doc-biblioref">Moore 1956</a>)</span>. Данный раздел основан на первой главе из <span class="citation" data-cites="beesley03">(<a href="references.html#ref-beesley03" role="doc-biblioref">Beesley и Karttunen 2003</a>: 1–42)</span>.</p>
 <p>Под автоматами мы понимаем абстрактные машины, которые принимают разные состояния, а изменение состояний вызывается некоторым действием:</p>
 <div>
 
@@ -305,7 +305,7 @@ div.csl-indent {
 </section>
 <section id="трансдьюссеры" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="трансдьюссеры"><span class="header-section-number">1.3.2</span> Трансдьюссеры</h3>
-<p>Все что мы рассмотрели до этого момента позволяло лишь принимать/отвергать слова, поданные на вход. Если мы немного усложним автомат, добавив в него еще выходной алфавит, то мы получим трансдьюсер (в <a href="https://ru.wikipedia.org/wiki/Конечный_автомат_с_выходом">русской википедии</a> они названы конечными автоматами с выходом). В результате то, что пресдтавлено на вход в нашей натации пишется слева от двоеточия, а то, что получается на выходе — справа.</p>
+<p>Все что мы рассмотрели до этого момента позволяло лишь принимать/отвергать слова, поданные на вход. Если мы немного усложним автомат, добавив в него еще выходной алфавит, то мы получим трансдьюсер (в <a href="https://ru.wikipedia.org/wiki/Конечный_автомат_с_выходом">русской википедии</a> они названы конечными автоматами с выходом). Мы будем использовать обновленную нотацию: то, что пресдтавлено на вход мы пишется слева от двоеточия, а то, что получается на выходе — справа.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -320,7 +320,7 @@ div.csl-indent {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="images/01_10_morphology.png" class="img-fluid figure-img" width="1919"></p>
+<p><img src="images/01_10_morphology.png" class="img-fluid figure-img" width="1917"></p>
 </figure>
 </div>
 </div>
@@ -359,20 +359,34 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
+<p>Лингвистические трансдьюсеры можно использовать для</p>
+<ul>
+<li>морфологического анализа</li>
+<li>транслитерации/транскрипции</li>
+<li>предективного ввода</li>
+<li>в системах проверки правописания</li>
+<li>в системах автоматического перевода близкородственных языков</li>
+<li>и др.</li>
+</ul>
+<p>Композиция трансдьюсеров TBC</p>
+<p>Закончим эту главу перечислением преимуществ трансдьюссеров. Оптимизированный трансдьюсер является оптимальным с точки зрения объема требуемой памяти для хранения и скорости поиска. Композиция трансдьюсеров открывает большой и богатый мир, которые позволяет создавать и комбинировать между собой очень разные инструменты.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-arefyev18" class="csl-entry" role="listitem">
 Arefyev, N. V., T. Y. Gratsianova, и K. P. Popov. 2018. <span>«Morphological segmentation with sequence to sequence neural network»</span>. В <em>KКомпьютерная лингвистика и интеллектуальные технологии</em>, 85–95.
 </div>
-<div id="ref-bolshakova20" class="csl-entry" role="listitem">
-Bolshakova, E. I., и A. S. Sapin. 2020. <span>«An Experimental Study of Neural Morpheme Segmentation Models for Russian Word Forms.»</span> В <em>CMCL</em>, 79–89.
-</div>
-<div id="ref-bolshakova19b" class="csl-entry" role="listitem">
-Bolshakova, EI, и AS Sapin. 2019. <span>«Comparing models of morpheme analysis for Russian words based on machine learning»</span>. В <em>Компьютерная лингвистика и интеллектуальные технологии</em>, 104–13.
+<div id="ref-beesley03" class="csl-entry" role="listitem">
+Beesley, K. R., и L. Karttunen. 2003. <em>Finite State Morphology: Xerox tools and techniques</em>. Stanford: Center for Study of Language Information.
 </div>
 <div id="ref-bolshakova19a" class="csl-entry" role="listitem">
-Bolshakova, E., и A. Sapin. 2019. <span>«Bi-LSTM model for morpheme segmentation of Russian words»</span>. В <em>Artificial Intelligence and Natural Language: 8th Conference, AINL 2019, Tartu, Estonia, November 20–22, 2019, Proceedings 8</em>, 151–60. Springer.
+Bolshakova, E. I., и A. S. Sapin. 2019a. <span>«Bi-LSTM model for morpheme segmentation of Russian words»</span>. В <em>Artificial Intelligence and Natural Language: 8th Conference, AINL 2019, Tartu, Estonia, November 20–22, 2019, Proceedings 8</em>, 151–60. Springer.
+</div>
+<div id="ref-bolshakova19b" class="csl-entry" role="listitem">
+———. 2019b. <span>«Comparing models of morpheme analysis for Russian words based on machine learning»</span>. В <em>Компьютерная лингвистика и интеллектуальные технологии</em>, 104–13.
+</div>
+<div id="ref-bolshakova20" class="csl-entry" role="listitem">
+———. 2020. <span>«An Experimental Study of Neural Morpheme Segmentation Models for Russian Word Forms.»</span> В <em>CMCL</em>, 79–89.
 </div>
 <div id="ref-garipov23" class="csl-entry" role="listitem">
 Garipov, T., D. Morozov, и A. Glazkova. 2023. <span>«Generalization ability of CNN-based Morpheme Segmentation»</span>. В <em>2023 Ivannikov Ispras Open Conference (ISPRAS)</em>, 58–62. IEEE.
