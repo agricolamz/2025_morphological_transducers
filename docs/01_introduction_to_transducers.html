@@ -171,10 +171,11 @@ div.csl-indent {
   <ul>
   <li><a href="#приведение-к-основе-stemming" id="toc-приведение-к-основе-stemming" class="nav-link active" data-scroll-target="#приведение-к-основе-stemming"><span class="header-section-number">1.1</span> Приведение к основе (stemming)</a></li>
   <li><a href="#много-данных" id="toc-много-данных" class="nav-link" data-scroll-target="#много-данных"><span class="header-section-number">1.2</span> Много данных</a></li>
-  <li><a href="#от-автоматов-к-морфологическим-трансдьюссерам" id="toc-от-автоматов-к-морфологическим-трансдьюссерам" class="nav-link" data-scroll-target="#от-автоматов-к-морфологическим-трансдьюссерам"><span class="header-section-number">1.3</span> От автоматов к морфологическим трансдьюссерам</a>
+  <li><a href="#другие-правиловые-подходы" id="toc-другие-правиловые-подходы" class="nav-link" data-scroll-target="#другие-правиловые-подходы"><span class="header-section-number">1.3</span> Другие правиловые подходы</a></li>
+  <li><a href="#от-автоматов-к-морфологическим-трансдьюсерам" id="toc-от-автоматов-к-морфологическим-трансдьюсерам" class="nav-link" data-scroll-target="#от-автоматов-к-морфологическим-трансдьюсерам"><span class="header-section-number">1.4</span> От автоматов к морфологическим трансдьюсерам</a>
   <ul class="collapse">
-  <li><a href="#конечные-автоматы" id="toc-конечные-автоматы" class="nav-link" data-scroll-target="#конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</a></li>
-  <li><a href="#трансдьюсеры" id="toc-трансдьюсеры" class="nav-link" data-scroll-target="#трансдьюсеры"><span class="header-section-number">1.3.2</span> Трансдьюсеры</a></li>
+  <li><a href="#конечные-автоматы" id="toc-конечные-автоматы" class="nav-link" data-scroll-target="#конечные-автоматы"><span class="header-section-number">1.4.1</span> Конечные автоматы</a></li>
+  <li><a href="#трансдьюсеры" id="toc-трансдьюсеры" class="nav-link" data-scroll-target="#трансдьюсеры"><span class="header-section-number">1.4.2</span> Трансдьюсеры</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -233,10 +234,19 @@ div.csl-indent {
 <p>Другой важный проект, который можно упомянуть в этом разделе: <a href="https://ufal.mff.cuni.cz/udpipe/2">UDPipe</a> — проект, основанный на размечанных в формате <a href="https://universaldependencies.org/">Universal Dependencies трибанках</a> большого количества языков <span class="citation" data-cites="straka18">(<a href="references.html#ref-straka18" role="doc-biblioref">Straka 2018</a>)</span>. Отметим, что их задача амбициознее: они строят модель, совмещающая морфологический парсер и синтаксический парсер дерева зависимостей. Внутри: длинная цепь элементов краткосрочной памяти (LSTM), которая работает на основе векторного представления слов.</p>
 <p>Также стоит упомянуть проект <a href="http://morpho.aalto.fi/projects/morpho/">Morfessor</a>, в котором используют скрытые марковские цепи (HMM) <span class="citation" data-cites="gronroos14">(<a href="references.html#ref-gronroos14" role="doc-biblioref">Grönroos и др. 2014</a>)</span>.</p>
 </section>
-<section id="от-автоматов-к-морфологическим-трансдьюссерам" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="от-автоматов-к-морфологическим-трансдьюссерам"><span class="header-section-number">1.3</span> От автоматов к морфологическим трансдьюссерам</h2>
-<section id="конечные-автоматы" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="конечные-автоматы"><span class="header-section-number">1.3.1</span> Конечные автоматы</h3>
+<section id="другие-правиловые-подходы" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="другие-правиловые-подходы"><span class="header-section-number">1.3</span> Другие правиловые подходы</h2>
+<p>Стоит отметить, что существуют не основанные на трансдьюсерах правиловые подходы, например,</p>
+<ul>
+<li>проект <code>uniparser-morph</code> Тимофея Архангельского <span class="citation" data-cites="arkhangelskiy12">(<a href="references.html#ref-arkhangelskiy12" role="doc-biblioref">Архангельский 2012</a>)</span>;</li>
+<li>нечто, что работает в SIL Fieldworks;</li>
+<li>множество узконаправленных парсеров, написанных для конкертных языков.</li>
+</ul>
+</section>
+<section id="от-автоматов-к-морфологическим-трансдьюсерам" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="от-автоматов-к-морфологическим-трансдьюсерам"><span class="header-section-number">1.4</span> От автоматов к морфологическим трансдьюсерам</h2>
+<section id="конечные-автоматы" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="конечные-автоматы"><span class="header-section-number">1.4.1</span> Конечные автоматы</h3>
 <p>Теория автоматов — это дисциплина на стыке математики и компьютерных наук, которая появилась в XX веке. Первые конечных автоматов были предложены в работах <span class="citation" data-cites="mealy55 moore56">(<a href="references.html#ref-mealy55" role="doc-biblioref">Mealy 1955</a>; <a href="references.html#ref-moore56" role="doc-biblioref">Moore 1956</a>)</span>. Данный раздел основан на первой главе из <span class="citation" data-cites="beesley03">(<a href="references.html#ref-beesley03" role="doc-biblioref">Beesley и Karttunen 2003</a>: 1–42)</span>.</p>
 <p>Под автоматами мы понимаем абстрактные машины, которые принимают разные состояния, а изменение состояний вызывается некоторым действием:</p>
 <div>
@@ -362,8 +372,8 @@ div.csl-indent {
 </tbody>
 </table>
 </section>
-<section id="трансдьюсеры" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="трансдьюсеры"><span class="header-section-number">1.3.2</span> Трансдьюсеры</h3>
+<section id="трансдьюсеры" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="трансдьюсеры"><span class="header-section-number">1.4.2</span> Трансдьюсеры</h3>
 <p>Все что мы рассмотрели до этого момента позволяло лишь принимать/отвергать слова, поданные на вход. Если мы немного усложним автомат, добавив в него еще выходной алфавит, то мы получим трансдьюсер (в <a href="https://ru.wikipedia.org/wiki/Конечный_автомат_с_выходом">русской википедии</a> они названы конечными автоматами с выходом). Мы будем использовать обновленную нотацию: то, что пресдтавлено на вход мы пишется слева от двоеточия, а то, что получается на выходе — справа.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -478,6 +488,9 @@ Sorokin, Alexey, и Anastasia Kravtsova. 2018. <span>«Deep convolutional networ
 </div>
 <div id="ref-straka18" class="csl-entry" role="listitem">
 Straka, Milan. 2018. <span>«UDPipe 2.0 prototype at <span>CoNLL</span> 2018 <span>UD</span> shared task»</span>. В <em>Proceedings of the CoNLL 2018 shared task: Multilingual parsing from raw text to universal dependencies</em>, 197–207.
+</div>
+<div id="ref-arkhangelskiy12" class="csl-entry" role="listitem">
+Архангельский, Т. А. 2012. <span>«Принципы построения морфологического парсера для разноструктурных языков»</span>. Phdthesis, Московский государственный университет им. М. В. Ломоносова.
 </div>
 </div>
 </section>
