@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Введение в twol: морфонология – Конечные автоматы в морфологическом анализе 2024/2025</title>
+<title>3&nbsp; Введение в twol: (мор)фонология – Конечные автоматы в морфологическом анализе 2024/2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -81,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_phonolocial_rules.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Введение в <code>twol</code>: морфонология</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_phonolocial_rules.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Введение в <code>twol</code>: (мор)фонология</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -130,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_phonolocial_rules.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Введение в <code>twol</code>: морфонология</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Введение в <code>twol</code>: (мор)фонология</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -152,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Введение в <code>twol</code>: морфонология</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Введение в <code>twol</code>: (мор)фонология</span></h1>
 </div>
 
 
@@ -169,8 +189,74 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Задание 03_01
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В <span class="citation" data-cites="itkin07">(<a href="references.html#ref-itkin07" role="doc-biblioref">Иткин 2007</a>: 118)</span> описывается чередование <em>н</em>~<em>н’</em> в русском языке. Попробуйте написать трансдьюсор, моделирующий следующие формы:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>nom.sg</th>
+<th>dat.sg</th>
+<th>ins.pl</th>
+<th>gen.pl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>башня</em></td>
+<td><em>башней</em></td>
+<td><em>башнями</em></td>
+<td><em>башен</em></td>
+</tr>
+<tr class="even">
+<td><em>песня</em></td>
+<td><em>песней</em></td>
+<td><em>песнями</em></td>
+<td><em>песен</em></td>
+</tr>
+<tr class="odd">
+<td><em>бойня</em></td>
+<td><em>бойней</em></td>
+<td><em>бойнями</em></td>
+<td><em>боен</em></td>
+</tr>
+<tr class="even">
+<td><em>деревня</em></td>
+<td><em>деревней</em></td>
+<td><em>деревнями</em></td>
+<td><em>деревень</em></td>
+</tr>
+<tr class="odd">
+<td><em>кухня</em></td>
+<td><em>кухней</em></td>
+<td><em>кухнями</em></td>
+<td><em>кухонь</em></td>
+</tr>
+<tr class="even">
+<td><em>Таня</em></td>
+<td><em>Таней</em></td>
+<td><em>Танями</em></td>
+<td><em>Тань</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-itkin07" class="csl-entry" role="listitem">
+Иткин, И. Б. 2007. <em>Русская морфонология</em>. Москва: Гнозис.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
