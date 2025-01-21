@@ -206,9 +206,10 @@ div.csl-indent {
   <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link active" data-scroll-target="#техническое-введение"><span class="header-section-number">2.1</span> Техническое введение</a></li>
   <li><a href="#программа-lexd" id="toc-программа-lexd" class="nav-link" data-scroll-target="#программа-lexd"><span class="header-section-number">2.2</span> Программа <code>lexd</code></a>
   <ul class="collapse">
-  <li><a href="#теги" id="toc-теги" class="nav-link" data-scroll-target="#теги"><span class="header-section-number">2.2.1</span> Теги</a></li>
-  <li><a href="#операции-в-части-pattern" id="toc-операции-в-части-pattern" class="nav-link" data-scroll-target="#операции-в-части-pattern"><span class="header-section-number">2.2.2</span> Операции в части Pattern</a></li>
-  <li><a href="#инфиксы" id="toc-инфиксы" class="nav-link" data-scroll-target="#инфиксы"><span class="header-section-number">2.2.3</span> Инфиксы</a></li>
+  <li><a href="#операторы" id="toc-операторы" class="nav-link" data-scroll-target="#операторы"><span class="header-section-number">2.2.1</span> Операторы</a></li>
+  <li><a href="#теги" id="toc-теги" class="nav-link" data-scroll-target="#теги"><span class="header-section-number">2.2.2</span> Теги</a></li>
+  <li><a href="#операции-в-части-pattern" id="toc-операции-в-части-pattern" class="nav-link" data-scroll-target="#операции-в-части-pattern"><span class="header-section-number">2.2.3</span> Операции в части Pattern</a></li>
+  <li><a href="#инфиксы" id="toc-инфиксы" class="nav-link" data-scroll-target="#инфиксы"><span class="header-section-number">2.2.4</span> Инфиксы</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -478,8 +479,40 @@ div.csl-indent {
 </table>
 </div>
 </div>
-<section id="теги" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="теги"><span class="header-section-number">2.2.1</span> Теги</h3>
+<section id="операторы" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="операторы"><span class="header-section-number">2.2.1</span> Операторы</h3>
+<p>Квантификация напоминает регулярные выражения:</p>
+<ul>
+<li><code>?</code> — ноль или один раз</li>
+<li><code>*</code> — ноль и более раз</li>
+<li><code>+</code> — один и более раз</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root Negation? </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>То же самое что и</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">Root Negation</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>|</code> — оператор или</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root PastInflection|PresentInflection</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>То же самое что и</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root PastInflection</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">Root PresentInflection</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="теги" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="теги"><span class="header-section-number">2.2.2</span> Теги</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -591,11 +624,11 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="операции-в-части-pattern" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="операции-в-части-pattern"><span class="header-section-number">2.2.2</span> Операции в части Pattern</h3>
+<section id="операции-в-части-pattern" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="операции-в-части-pattern"><span class="header-section-number">2.2.3</span> Операции в части Pattern</h3>
 </section>
-<section id="инфиксы" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="инфиксы"><span class="header-section-number">2.2.3</span> Инфиксы</h3>
+<section id="инфиксы" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="инфиксы"><span class="header-section-number">2.2.4</span> Инфиксы</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">

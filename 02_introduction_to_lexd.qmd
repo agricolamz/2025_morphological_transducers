@@ -118,6 +118,42 @@ LEXICON VerbInfl    # <4>
 
 :::
 
+### Операторы
+
+Квантификация напоминает регулярные выражения:
+
+- `?` --- ноль или один раз
+- `*` --- ноль и более раз
+- `+` --- один и более раз
+
+```{{lexd}}
+PATTERNS
+Root Negation? 
+```
+
+То же самое что и
+
+```{{lexd}}
+PATTERNS
+Root
+Root Negation
+```
+
+- `|` --- оператор или
+
+```{{lexd}}
+PATTERNS
+Root PastInflection|PresentInflection
+```
+
+То же самое что и
+
+```{{lexd}}
+PATTERNS
+Root PastInflection
+Root PresentInflection
+```
+
 ### Теги
 
 
