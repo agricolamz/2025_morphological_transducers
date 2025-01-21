@@ -120,6 +120,8 @@ LEXICON VerbInfl    # <4>
 
 ### Теги
 
+
+
 ::: {.callout-note}
 
 ###### Задание 02_03
@@ -144,5 +146,7 @@ LEXICON VerbInfl    # <4>
 :::
 
 ### Операции в части Pattern
+
+
 
 ### Инфиксы
