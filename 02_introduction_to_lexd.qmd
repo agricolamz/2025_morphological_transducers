@@ -123,8 +123,10 @@ LEXICON VerbInfl    # <4>
 Квантификация напоминает регулярные выражения:
 
 - `?` --- ноль или один раз
-- `*` --- ноль и более раз
+- `*` --- ноль и более раз [^why_star]
 - `+` --- один и более раз
+
+[^why_star]: Мы какое-то время думали, зачем это может быть нужно и придумали только странные сценарии типа *пра-пра-пра-пра-бабушка*. Но вообще это параждает циклы, от которых одни проблемы.
 
 ```{{lexd}}
 PATTERNS
@@ -152,6 +154,22 @@ Root PastInflection|PresentInflection
 PATTERNS
 Root PastInflection
 Root PresentInflection
+```
+
+- Кроме того есть операторы, названные в матералах lexd ситом, `>` и `<`:
+
+```{{lexd}}
+PATTERNS
+VerbRoot > TAM > CLITICS
+```
+
+То же самое что и
+
+```{{lexd}}
+PATTERNS
+VerbRoot
+VerbRoot TAM
+VerbRoot TAM CLITICS
 ```
 
 ### Теги
