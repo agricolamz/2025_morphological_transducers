@@ -81,7 +81,33 @@ LEXICON VerbInfl    # <4>
 5. Пример нулевой морфемы.
 6. Пример морфемы с несколькими морфологическими тегами.
 
-Отметим, что можно создавать свои именнованные подразделы `PATTERN`, которые потом можно использовать в разделе `PATTERNS`.
+Отметим, что можно создавать свои именнованные подразделы `PATTERN`, которые потом можно использовать в разделе `PATTERNS`, например:
+
+```{{lexd}}
+PATTERNS
+VerbStem Tense PersonNumber
+
+PATTERN VerbStem            # <1>
+VerbRoot
+VerbRoot Causative
+
+LEXICON VerbRoot
+...
+
+LEXICON Causative
+...
+
+LEXICON Tense 
+...
+
+LEXICON PersonNumber
+...
+```
+
+1. Именованный раздел `PATTERN`, который используется потом в разделе `PATTERNS`.
+
+Таким образом, в каждом файле `lexd` должен быть раздел `PATTERNS`, содержащий в себе переменные, которые могут быть заданы либо в разделе `PATTERN`, либо в разделе `LEXICON`, либо их анонимные варианты (см. раздел @sec-anonymous).
+
 
 ::: {.callout-note}
 
@@ -171,6 +197,110 @@ VerbRoot
 VerbRoot TAM
 VerbRoot TAM CLITICS
 ```
+
+### Анонимные разделы {#sec-anonymous}
+
+Некоторые фрагменты аннотации можно вставлять прямо в раздел `PATTERNS`. Для этого используются квадртные скобки.
+
+```{{lexd}}
+PATTERNS
+NounStem [<n>:] NounNumber
+
+LEXICON NounStem
+sock
+ninja
+
+LEXICON NounNumber
+<sg>:
+<pl>:s
+```
+
+Таким образом мы избегаем ненужного повторения:
+
+```{{lexd}}
+PATTERNS
+NounStem NounNumber
+
+LEXICON NounStem
+sock<n>:sock            # <1>
+ninja<n>:ninja          # <2>  
+
+LEXICON NounNumber
+<sg>:
+<pl>:s
+```
+
+1. Ненужное повторение `<n>`;
+2. Ненужное повторение `<n>`.
+
+В мануале это трюк назван *Anonymous Lexicon*, видимо, потому что предполагается, что мы таким образом избегаем создания дополнительного раздела `LEXICON`:
+
+```{{lexd}}
+PATTERNS
+NounStem NounTag NounNumber
+
+LEXICON NounTag              # <1>
+<n>:
+
+LEXICON NounStem
+sock
+ninja
+
+LEXICON NounNumber
+<sg>:
+<pl>:s
+```
+
+1. Лишний раздел `LEXICON`, который можно было бы не создавать.
+
+По аналогии с анонимным разделом `LEXICON` есть анонимный раздел `PATTERN`. Для этого используются круглые скобки.
+
+```{{lexd}}
+PATTERNS
+(VerbRoot Causative?) | AuxRoot Tense PersonNumber
+
+LEXICON VerbRoot
+...
+
+LEXICON Causative
+...
+
+LEXICON AuxRoot
+...
+
+LEXICON Tense 
+...
+
+LEXICON PersonNumber
+...
+```
+
+То же самое что и
+
+```{{lexd}}
+PATTERNS
+VerbStem | AuxRoot Tense PersonNumber
+
+PATTERN VerbStem              # <1>
+VerbRoot Causative?
+
+LEXICON VerbRoot
+...
+
+LEXICON Causative
+...
+
+LEXICON AuxRoot
+...
+
+LEXICON Tense 
+...
+
+LEXICON PersonNumber
+...
+```
+
+1. Лишний раздел `PATTERN`, который можно было бы не создавать.
 
 ### Теги
 
