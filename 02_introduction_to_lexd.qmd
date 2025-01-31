@@ -442,6 +442,114 @@ LEXICON Inflection
 <pos>:ин
 ```
 
+Авторы `lexd` добавили возможность взаимодействия тегов, чтобы не надо было писать одно и то же.
+
+- `(A B)[x]  = (A[x] B) | (A B[x])`
+
+::: {.panel-tabset}
+
+###### `lexd`
+
+```{{lexd}}
+PATTERNS
+(A B)[x]
+
+LEXICON A
+aaa[x]
+bbb
+
+LEXICON B
+AAA[x]
+BBB
+```
+
+###### Результат
+
+```
+aaaAAA
+aaaBBB
+bbbAAA
+```
+:::
+
+- `(A B)[-x] = A[-x] B[-x]`
+
+::: {.panel-tabset}
+
+###### `lexd`
+
+```{{lexd}}
+PATTERNS
+(A B)[-x]
+
+LEXICON A
+aaa[x]
+bbb
+
+LEXICON B
+AAA[x]
+BBB
+```
+
+###### Результат
+
+```
+bbbBBB
+```
+:::
+
+- `A[|[x,y]] = A[x] | A[y]`
+
+::: {.panel-tabset}
+
+###### `lexd`
+
+```{{lexd}}
+PATTERNS
+A[|[x,y]]
+
+LEXICON A
+aaa[x]
+bbb[y]
+ccc
+```
+
+###### Результат
+
+```
+aaa
+bbb
+```
+:::
+
+- `A[^[x,y]] = A[x,-y] | A[-x,y]`
+
+::: {.panel-tabset}
+
+###### `lexd`
+
+```{{lexd}}
+PATTERNS
+A[^[x,y]]
+
+LEXICON A
+aaa[x]
+bbb[y]
+ccc[z]
+ddd[x,y]
+eee[x,z]
+fff[y,z]
+```
+
+###### Результат
+
+```
+aaa
+eee
+bbb
+fff 
+```
+:::
 
 ::: {.callout-note}
 
