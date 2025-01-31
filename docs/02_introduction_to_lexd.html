@@ -209,8 +209,8 @@ div.csl-indent {
   <li><a href="#операторы" id="toc-операторы" class="nav-link" data-scroll-target="#операторы"><span class="header-section-number">2.2.1</span> Операторы</a></li>
   <li><a href="#sec-anonymous" id="toc-sec-anonymous" class="nav-link" data-scroll-target="#sec-anonymous"><span class="header-section-number">2.2.2</span> Анонимные разделы</a></li>
   <li><a href="#теги" id="toc-теги" class="nav-link" data-scroll-target="#теги"><span class="header-section-number">2.2.3</span> Теги</a></li>
-  <li><a href="#операции-в-части-pattern" id="toc-операции-в-части-pattern" class="nav-link" data-scroll-target="#операции-в-части-pattern"><span class="header-section-number">2.2.4</span> Операции в части Pattern</a></li>
-  <li><a href="#инфиксы" id="toc-инфиксы" class="nav-link" data-scroll-target="#инфиксы"><span class="header-section-number">2.2.5</span> Инфиксы</a></li>
+  <li><a href="#моделирование-разрывных-морфем-инфиксы-редупликация-семитские-корни" id="toc-моделирование-разрывных-морфем-инфиксы-редупликация-семитские-корни" class="nav-link" data-scroll-target="#моделирование-разрывных-морфем-инфиксы-редупликация-семитские-корни"><span class="header-section-number">2.2.4</span> Моделирование разрывных морфем: инфиксы, редупликация, семитские корни</a></li>
+  <li><a href="#регулярные-выражения" id="toc-регулярные-выражения" class="nav-link" data-scroll-target="#регулярные-выражения"><span class="header-section-number">2.2.5</span> Регулярные выражения</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -362,7 +362,7 @@ div.csl-indent {
 <span data-code-cell="annotated-cell-7" data-code-lines="5" data-code-annotation="1">Именованный раздел <code>PATTERN</code>, который используется потом в разделе <code>PATTERNS</code>.</span>
 </dd>
 </dl>
-<p>Таким образом, в каждом файле <code>lexd</code> должен быть раздел <code>PATTERNS</code>, содержащий в себе переменные, которые могут быть заданы либо в разделе <code>PATTERN</code>, либо в разделе <code>LEXICON</code>, либо их анонимные варианты (см. раздел <a href="#sec-anonymous" class="quarto-xref"><span>Раздел 2.2.2</span></a>). Также разные разделы можно переименовывать при помощи группы <code>ALIAS</code>, но если вы подумаете, что вам это нужно, посмотрите пример, в мануале <code>lexd</code>.</p>
+<p>Таким образом, в каждом файле <code>lexd</code> должен быть раздел <code>PATTERNS</code>, содержащий в себе переменные, которые могут быть заданы либо в разделе <code>PATTERN</code>, либо в разделе <code>LEXICON</code>, либо их анонимные варианты (см. раздел <a href="#sec-anonymous" class="quarto-xref"><span>Раздел 2.2.2</span></a>). Также разные разделы можно переименовывать при помощи группы <code>ALIAS</code> (см. мануал). Комментарии можно оформлять при помощи хэша <code>#</code>.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -515,47 +515,123 @@ div.csl-indent {
 <li><code>*</code> — ноль и более раз <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 <li><code>+</code> — один и более раз</li>
 </ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Сокращенный вариант</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Развернутый вариант</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root Negation? </span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>То же самое что и</p>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root Negation?</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Root</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Negation</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">Root Negation</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Root</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Negation</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <ul>
-<li><code>|</code> — оператор или</li>
+<li><code>|</code> — оператор или (можно с пробелами вокруг)</li>
 </ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Сокращенный вариант</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Развернутый вариант</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root PastInflection|PresentInflection</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>То же самое что и</p>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Root</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON PastInflection</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON PresentInflection</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root PastInflection</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">Root PresentInflection</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Root</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON PastInflection</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON PresentInflection</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <ul>
-<li>Кроме того есть операторы, названные в матералах lexd ситом, <code>&gt;</code> и <code>&lt;</code>:</li>
+<li>Кроме того есть операторы, названные в матералах <code>lexd</code> ситом, <code>&gt;</code> и <code>&lt;</code>:</li>
 </ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Сокращенный вариант</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Развернутый вариант</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">VerbRoot &gt; TAM &gt; CLITICS</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>То же самое что и</p>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Root</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON TAM</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON CLITICS</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">VerbRoot</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="in">VerbRoot TAM</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">VerbRoot TAM CLITICS</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Root</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON TAM</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON CLITICS</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="sec-anonymous" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="sec-anonymous"><span class="header-section-number">2.2.2</span> Анонимные разделы</h3>
 <p>Некоторые фрагменты аннотации можно вставлять прямо в раздел <code>PATTERNS</code>. Для этого используются квадртные скобки.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Сокращенный вариант</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Развернутый вариант 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Развернутый вариант 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">NounStem [&lt;n&gt;:] NounNumber</span></span>
@@ -568,30 +644,22 @@ div.csl-indent {
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;sg&gt;:</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;pl&gt;:s</span></span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Таким образом мы избегаем ненужного повторения:</p>
-<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
-<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
-<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a><span class="in">NounStem NounNumber</span></span>
-<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON NounStem</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-6" class="code-annotation-target"><a href="#annotated-cell-15-6" aria-hidden="true" tabindex="-1"></a><span class="in">sock&lt;n&gt;:sock</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7" aria-hidden="true" tabindex="-1"></a><span class="in">ninja&lt;n&gt;:ninja</span></span>
-<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-15-9"><a href="#annotated-cell-15-9" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON NounNumber</span></span>
-<span id="annotated-cell-15-10"><a href="#annotated-cell-15-10" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;sg&gt;:</span></span>
-<span id="annotated-cell-15-11"><a href="#annotated-cell-15-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;pl&gt;:s</span></span>
-<span id="annotated-cell-15-12"><a href="#annotated-cell-15-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="6" data-code-annotation="1">Ненужное повторение <code>&lt;n&gt;</code>;</span>
-</dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="7" data-code-annotation="2">Ненужное повторение <code>&lt;n&gt;</code>.</span>
-</dd>
-</dl>
-<p>В мануале это трюк назван <em>Anonymous Lexicon</em>, видимо, потому что предполагается, что мы таким образом избегаем создания дополнительного раздела <code>LEXICON</code>:</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="in">NounStem NounNumber</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON NounStem</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="in">sock&lt;n&gt;:sock</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="in">ninja&lt;n&gt;:ninja</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON NounNumber</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;sg&gt;:</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;pl&gt;:s</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
 <div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a><span class="in">NounStem NounTag NounNumber</span></span>
@@ -610,30 +678,39 @@ div.csl-indent {
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="5" data-code-annotation="1">Лишний раздел <code>LEXICON</code>, который можно было бы не создавать.</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="5" data-code-annotation="1">Новый раздел <code>LEXICON</code>.</span>
 </dd>
 </dl>
+</div>
+</div>
+</div>
+<p>В мануале это трюк назван <em>Anonymous LEXICON</em>, видимо, потому что предполагается, что мы таким образом избегаем создания дополнительного раздела <code>LEXICON</code> (см. развернутый пример 2).</p>
 <p>По аналогии с анонимным разделом <code>LEXICON</code> есть анонимный раздел <code>PATTERN</code>. Для этого используются круглые скобки.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="in">(VerbRoot Causative?) | AuxRoot Tense PersonNumber</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON VerbRoot</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Causative</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON AuxRoot</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Tense </span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON PersonNumber</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>То же самое что и</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Сокращенный вариант</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Развернутый вариант</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">(VerbRoot Causative?) | AuxRoot Tense PersonNumber</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON VerbRoot</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Causative</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON AuxRoot</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Tense </span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON PersonNumber</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <div class="sourceCode" id="annotated-cell-18"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="annotated-cell-18-2"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
 <span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a><span class="in">VerbStem | AuxRoot Tense PersonNumber</span></span>
@@ -659,9 +736,12 @@ div.csl-indent {
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="5" data-code-annotation="1">Лишний раздел <code>PATTERN</code>, который можно было бы не создавать.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="5" data-code-annotation="1">Новый раздел <code>PATTERN</code>.</span>
 </dd>
 </dl>
+</div>
+</div>
+</div>
 </section>
 <section id="теги" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="теги"><span class="header-section-number">2.2.3</span> Теги</h3>
@@ -675,7 +755,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ниже представлен фрагмент финской парадигмы <span class="citation" data-cites="karlsson13">(<a href="references.html#ref-karlsson13" role="doc-biblioref">Karlsson 2013</a>)</span>, как видно, здесь слова двух словоизменительных типов. Попробуйте смоделировать представленную парадигму, используя теги.</p>
+<p>Ниже представлен фрагмент финской (фино-угорские, уральские) парадигмы <span class="citation" data-cites="karlsson13">(<a href="references.html#ref-karlsson13" role="doc-biblioref">Karlsson 2013</a>)</span>, как видно, здесь слова двух словоизменительных типов. Попробуйте смоделировать представленную парадигму, используя теги.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -776,11 +856,190 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="операции-в-части-pattern" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="операции-в-части-pattern"><span class="header-section-number">2.2.4</span> Операции в части Pattern</h3>
+<section id="моделирование-разрывных-морфем-инфиксы-редупликация-семитские-корни" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="моделирование-разрывных-морфем-инфиксы-редупликация-семитские-корни"><span class="header-section-number">2.2.4</span> Моделирование разрывных морфем: инфиксы, редупликация, семитские корни</h3>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Задание 02_04
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ниже дан фрагмент парадигмы слова ‘каждый’ в гагатлинском диалекте андийского языка (андийские, нахско-дагестанские) <span class="citation" data-cites="salimov2010">(<a href="references.html#ref-salimov2010" role="doc-biblioref">Салимов 2010</a>)</span>. Попробуйте смоделировать в <code>lexd</code> представленную парадигму. Наши ожидания от разбора: <code>живжив&lt;inan2&gt;&lt;ad&gt;&lt;ell&gt;&lt;pl&gt;:жирожиролихакку</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>глоссы</th>
+<th>m</th>
+<th>f</th>
+<th>an</th>
+<th>inan1</th>
+<th>inan2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>abs.sg</td>
+<td><em>живжив</em></td>
+<td><em>жийжий</em></td>
+<td><em>жибжиб</em></td>
+<td><em>жибжиб</em></td>
+<td><em>жиржир</em></td>
+</tr>
+<tr class="even">
+<td>abs.pl</td>
+<td><em>живоживол</em></td>
+<td><em>жийожийол</em></td>
+<td><em>жийожийол</em></td>
+<td><em>жибожибол</em></td>
+<td><em>жирожирол</em></td>
+</tr>
+<tr class="odd">
+<td>erg.sg</td>
+<td><em>живжившди</em></td>
+<td><em>жийжийдди</em></td>
+<td><em>жибжибдди</em></td>
+<td><em>жибжибдди</em></td>
+<td><em>жиржирдди</em></td>
+</tr>
+<tr class="even">
+<td>erg.pl</td>
+<td><em>живоживолуди</em></td>
+<td><em>жийожийолиди</em></td>
+<td><em>жийожийолиди</em></td>
+<td><em>жибожиболиди</em></td>
+<td><em>жирожиролиди</em></td>
+</tr>
+<tr class="odd">
+<td>gen.sg</td>
+<td><em>живживщув</em></td>
+<td><em>жийжийлIи</em></td>
+<td><em>жибжиблIи</em></td>
+<td><em>жибжиблIи</em></td>
+<td><em>жиржирлIи</em></td>
+</tr>
+<tr class="even">
+<td>gen.pl</td>
+<td><em>живоживолув</em></td>
+<td><em>жийожийолилIи</em></td>
+<td><em>жийожийолилIи</em></td>
+<td><em>жибожиболилIи</em></td>
+<td><em>жирожиролилIи</em></td>
+</tr>
+<tr class="odd">
+<td>in.ess.sg</td>
+<td><em>живжившла</em></td>
+<td><em>жийжийла</em></td>
+<td><em>жибжибла</em></td>
+<td><em>жибжибла</em></td>
+<td><em>жиржирла</em></td>
+</tr>
+<tr class="even">
+<td>in.ess.pl</td>
+<td><em>живоживолула</em></td>
+<td><em>жийожийолила</em></td>
+<td><em>жийожийолила</em></td>
+<td><em>жибожиболила</em></td>
+<td><em>жирожиролила</em></td>
+</tr>
+<tr class="odd">
+<td>in.lat.sg</td>
+<td><em>живжившло</em></td>
+<td><em>жийжийло</em></td>
+<td><em>жибжибло</em></td>
+<td><em>жибжибло</em></td>
+<td><em>жиржирло</em></td>
+</tr>
+<tr class="even">
+<td>in.lat.pl</td>
+<td><em>живоживолуло</em></td>
+<td><em>жийожийолило</em></td>
+<td><em>жийожийолило</em></td>
+<td><em>жибожиболило</em></td>
+<td><em>жирожиролило</em></td>
+</tr>
+<tr class="odd">
+<td>in.ell.sg</td>
+<td><em>живжившлакку</em></td>
+<td><em>жийжийлакку</em></td>
+<td><em>жибжиблакку</em></td>
+<td><em>жибжиблакку</em></td>
+<td><em>жиржирлакку</em></td>
+</tr>
+<tr class="even">
+<td>in.ell.pl</td>
+<td><em>живоживолулакку</em></td>
+<td><em>жийожийолилакку</em></td>
+<td><em>жийожийолилакку</em></td>
+<td><em>жибожиболилакку</em></td>
+<td><em>жирожиролилакку</em></td>
+</tr>
+<tr class="odd">
+<td>ad.ess.sg</td>
+<td><em>живжившхта</em></td>
+<td><em>жийжийха</em></td>
+<td><em>жибжибха</em></td>
+<td><em>жибжибха</em></td>
+<td><em>жиржирха</em></td>
+</tr>
+<tr class="even">
+<td>ad.ess.pl</td>
+<td><em>живоживолуха</em></td>
+<td><em>жийожийолиха</em></td>
+<td><em>жийожийолиха</em></td>
+<td><em>жибожиболиха</em></td>
+<td><em>жирожиролиха</em></td>
+</tr>
+<tr class="odd">
+<td>ad.lat.sg</td>
+<td><em>живжившхто</em></td>
+<td><em>жийжийхо</em></td>
+<td><em>жибжибхо</em></td>
+<td><em>жибжибхо</em></td>
+<td><em>жиржирхо</em></td>
+</tr>
+<tr class="even">
+<td>ad.lat.pl</td>
+<td><em>живоживолухо</em></td>
+<td><em>жийожийолихо</em></td>
+<td><em>жийожийолихо</em></td>
+<td><em>жибожиболихо</em></td>
+<td><em>жирожиролихо</em></td>
+</tr>
+<tr class="odd">
+<td>ad.ell.sg</td>
+<td><em>живжившхтакку</em></td>
+<td><em>жийжийхакку</em></td>
+<td><em>жибжибхакку</em></td>
+<td><em>жибжибхакку</em></td>
+<td><em>жиржирхакку</em></td>
+</tr>
+<tr class="even">
+<td>ad.ell.pl</td>
+<td><em>живоживолухакку</em></td>
+<td><em>жийожийолихакку</em></td>
+<td><em>жийожийолихакку</em></td>
+<td><em>жибожиболихакку</em></td>
+<td><em>жирожиролихакку</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-<section id="инфиксы" class="level3" data-number="2.2.5">
-<h3 data-number="2.2.5" class="anchored" data-anchor-id="инфиксы"><span class="header-section-number">2.2.5</span> Инфиксы</h3>
+<section id="регулярные-выражения" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="регулярные-выражения"><span class="header-section-number">2.2.5</span> Регулярные выражения</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -798,6 +1057,9 @@ Sumbatova, N. R., и R. O. Mutalov. 2003. <em>A grammar of <span>I</span>tsari <
 </div>
 <div id="ref-swanson21" class="csl-entry" role="listitem">
 Swanson, D., и N. Howell. 2021. <span>«Lexd: A finitestate lexicon compiler for non-suffixational morphologies»</span>. В <em>Multilingual Facilitation</em>, 133–46.
+</div>
+<div id="ref-salimov2010" class="csl-entry" role="listitem">
+Салимов, Х. С. 2010. <em>Гагатлинский диалект андийского языка</em>. Махачкала: Институт языка, литературы и искусства имени Гамзата Цадасы ДНЦ РАН.
 </div>
 </div>
 </section>
