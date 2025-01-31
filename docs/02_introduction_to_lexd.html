@@ -248,7 +248,7 @@ div.csl-indent {
 <ul>
 <li>скачиваем интсрукции для установки <code>lexd</code> и <code>hfst</code> и дальнейшей работы с ними, записанные в простом текстовом файле, которые можно прочитать, если открыть <a href="https://shorturl.at/0bBXE">ссылку</a> из команды. Команда <code>make</code> запускает установку. Для того, чтобы это работало в Google Colab нужно перед командой нужно поставить восклицательный знак: <code>!curl ...</code>. Знак доллара означает, что дальше следует команда командной строки, не надо его никуда копировать.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile -o Makefile; make</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -270,7 +270,7 @@ div.csl-indent {
 <ul>
 <li>После того, как вы установили нужные программы и создали файл, можно посмотреть формы и разборы, которые генерируются трансдьюссером. Это можно сделать следующей командой (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make forms</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">sing&lt;v&gt;&lt;pres&gt;:sing</span></span>
@@ -283,13 +283,13 @@ div.csl-indent {
 <ul>
 <li>В ходе курса мы будем разбирать разные лингвистические задачи. У каждой задачи есть номер и автоматический тест, который его проверяет. Чтобы запустить автоматическую проверку следует ввести команду, где первое число – номер раздела, а второе число – номер задачи. Например, для того, чтобы проверить, работает ли проверка задания попробуйте запустить следующую команду:</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_02_01</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Чтобы окончательно посмотреть все варианты, попробуйте изменить последнюю строчку файла <code>task.lexd</code> на <code>&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:S</code> и снова перезапустить команду:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_02_01</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
