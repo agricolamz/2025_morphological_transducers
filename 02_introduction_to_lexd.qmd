@@ -380,6 +380,69 @@ LEXICON PersonNumber
 
 ### Теги
 
+На содержимое разделов `LEXICON` можно вешать теги. Это может быть полезно, например, для моделирования словоизменительных классов.
+
+```{{lexd}}
+PATTERNS
+NounStem[hard] Inflection[hard]
+NounStem[soft] Inflection[soft]
+
+LEXICON NounStem
+мама:мам[hard]
+папа:пап[hard]
+няня:нян[soft]
+Таня:Тан[soft]
+
+LEXICON Inflection
+<nom><sg>:а[hard]
+<nom><sg>:я[soft]
+<gen><sg>:ы[hard]
+<gen><sg>:и[soft]
+```
+
+То же самое можно записать при помощи одного тега, используя операцию отмены тега:
+
+```{{lexd}}
+PATTERNS
+NounStem[hard] Inflection[hard]
+NounStem[-hard] Inflection[-hard]
+
+LEXICON NounStem
+мама:мам[hard]
+папа:пап[hard]
+няня:нян
+буря:бур
+
+LEXICON Inflection
+<nom><sg>:а[hard]
+<nom><sg>:я
+<gen><sg>:ы[hard]
+<gen><sg>:и
+```
+
+Однако в русском языке можно найти аффиксы, которые присоединяются к обоим типам основ, в таком случае, придется усложнить наше описание:
+
+```{{lexd}}
+PATTERNS
+NounStem[hard] Inflection[hard]
+NounStem[soft] Inflection[soft]
+NounStem Inflection[-hard,-soft]
+
+LEXICON NounStem
+мама:мам[hard]
+папа:пап[hard]
+няня:нян[soft]
+Таня:Тан[soft]
+
+LEXICON Inflection
+<nom><sg>:а[hard]
+<nom><sg>:я[soft]
+<gen><sg>:ы[hard]
+<gen><sg>:и[soft]
+<pos>:ин
+```
+
+
 ::: {.callout-note}
 
 ###### Задание 02_03
