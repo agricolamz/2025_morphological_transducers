@@ -380,7 +380,7 @@ LEXICON PersonNumber
 
 ### Теги
 
-На содержимое разделов `LEXICON` можно вешать теги. Это может быть полезно, например, для моделирования словоизменительных классов.
+На содержимое разделов `LEXICON` можно вешать теги. Это может быть полезно, например, для моделирования словоизменительных классов. Рассмотрим пример из русского языка (славянские, индоевропейские):
 
 ```{{lexd}}
 PATTERNS
@@ -550,6 +550,54 @@ bbb
 fff 
 ```
 :::
+
+`^` --- очень полезный оператор, который позволяет смоделировать наш русский пример одной строчкой:
+
+::: {.panel-tabset}
+
+###### с оператором
+
+```{{lexd}}
+PATTERNS
+(NounStem Inflection)[^[hard,soft]]
+
+LEXICON NounStem
+мама:мам[hard]
+папа:пап[hard]
+няня:нян[soft]
+Таня:Тан[soft]
+
+LEXICON Inflection
+<nom><sg>:а[hard]
+<nom><sg>:я[soft]
+<gen><sg>:ы[hard]
+<gen><sg>:и[soft]
+<pos>:ин
+```
+
+###### старый вариант
+
+```{{lexd}}
+PATTERNS
+NounStem[hard] Inflection[hard]
+NounStem[soft] Inflection[soft]
+NounStem Inflection[-hard,-soft]
+
+LEXICON NounStem
+мама:мам[hard]
+папа:пап[hard]
+няня:нян[soft]
+Таня:Тан[soft]
+
+LEXICON Inflection
+<nom><sg>:а[hard]
+<nom><sg>:я[soft]
+<gen><sg>:ы[hard]
+<gen><sg>:и[soft]
+<pos>:ин
+```
+:::
+
 
 ::: {.callout-note}
 

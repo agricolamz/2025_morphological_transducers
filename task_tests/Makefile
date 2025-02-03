@@ -9,11 +9,18 @@ requirements:
 task.generator.hfst: task.lexd
 	@lexd task.lexd | hfst-txt2fst -o lexd.hfst
 	@if test -f "task.twol"; then\
-  	hfst-twolc task.twol -o twol.hfst;\
-  	hfst-compose-intersect lexd.hfst twol.hfst -o $@;\
+  	@hfst-twolc task.twol -o twol.hfst;\
+  	@hfst-compose-intersect lexd.hfst twol.hfst -o $@;\
   else\
   	mv lexd.hfst $@;\
 	fi
+
+task.analyzer.hfst: task.generator.hfst
+	@hfst-invert $^ -o $@
+
+analysis: task.analyzer.hfst
+	@echo "$(FORM)" | hfst-lookup $^
+	@rm -f *.hfst
 
 for_test_%.txt:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
