@@ -155,7 +155,7 @@ LEXICON PersonNumber
 
 ::: {.panel-tabset}
 
-###### Сокращенный вариант
+###### сокращенный вариант
 
 ```{{lexd}}
 PATTERNS
@@ -168,7 +168,7 @@ LEXICON Negation
 ...
 ```
 
-###### Развернутый вариант
+###### развернутый вариант
 
 ```{{lexd}}
 PATTERNS
@@ -188,7 +188,7 @@ LEXICON Negation
 
 ::: {.panel-tabset}
 
-###### Сокращенный вариант
+###### сокращенный вариант
 
 ```{{lexd}}
 PATTERNS
@@ -204,7 +204,7 @@ LEXICON PresentInflection
 ...
 ```
 
-###### Развернутый вариант
+###### развернутый вариант
 
 ```{{lexd}}
 PATTERNS
@@ -227,7 +227,7 @@ LEXICON PresentInflection
 
 ::: {.panel-tabset}
 
-###### Сокращенный вариант
+###### сокращенный вариант
 
 ```{{lexd}}
 PATTERNS
@@ -243,7 +243,7 @@ LEXICON CLITICS
 ...
 ```
 
-###### Развернутый вариант
+###### развернутый вариант
 
 ```{{lexd}}
 PATTERNS
@@ -269,7 +269,7 @@ LEXICON CLITICS
 
 ::: {.panel-tabset}
 
-###### Сокращенный вариант
+###### сокращенный вариант
 
 ```{{lexd}}
 PATTERNS
@@ -284,7 +284,7 @@ LEXICON NounNumber
 <pl>:s
 ```
 
-###### Развернутый вариант 1
+###### развернутый вариант 1
 
 ```{{lexd}}
 PATTERNS
@@ -299,7 +299,7 @@ LEXICON NounNumber
 <pl>:s
 ```
 
-###### Развернутый вариант 2
+###### развернутый вариант 2
 
 ```{{lexd}}
 PATTERNS
@@ -327,7 +327,7 @@ LEXICON NounNumber
 
 ::: {.panel-tabset}
 
-###### Сокращенный вариант
+###### сокращенный вариант
 
 ```{{lexd}}
 PATTERNS
@@ -349,7 +349,7 @@ LEXICON PersonNumber
 ...
 ```
 
-###### Развернутый вариант
+###### развернутый вариант
 
 ```{{lexd}}
 PATTERNS
@@ -463,7 +463,7 @@ AAA[x]
 BBB
 ```
 
-###### Результат
+###### результат
 
 ```
 aaaAAA
@@ -491,7 +491,7 @@ AAA[x]
 BBB
 ```
 
-###### Результат
+###### результат
 
 ```
 bbbBBB
@@ -514,7 +514,7 @@ bbb[y]
 ccc
 ```
 
-###### Результат
+###### результат
 
 ```
 aaa
@@ -541,7 +541,7 @@ eee[x,z]
 fff[y,z]
 ```
 
-###### Результат
+###### результат
 
 ```
 aaa
@@ -575,6 +575,78 @@ fff
 :::
 
 ### Моделирование разрывных морфем: инфиксы, редупликация, семитские корни
+
+В разеделе `PATTERNS` можно перечислять разные стороны единиц (или входное и выходное значение), записанных в `LEXICON`. Это позволяет 
+
+- опускать либо глоссы, либо морфемы (полезно для моделирования редупликации);
+- иметь разный порядок глосс и морфем (но зачем?).
+
+Вот пример моделирования дистрибутивных числительных (т. е. числительных со значением 'по Х') в зиловском андийском (андийские, нахско-дагестанские):
+
+::: {.panel-tabset}
+
+###### `lexd`
+
+```{{lexd}}
+PATTERNS
+Numerals NumeralMarker
+NumeralReduplication :Numerals Numerals NumeralDistributiveMarker
+
+LEXICON Numerals
+чIе               # числительное 2
+лъоб              # числительное 3
+ойлIи             # числительное 6
+
+LEXICON NumeralMarker
+<num>:гу
+
+LEXICON NumeralDistributiveMarker
+<distr>:
+
+LEXICON NumeralReduplication
+<rdp>:
+```
+
+###### результат
+
+```
+чIе<num>:чIегу
+лъоб<num>:лъобгу
+ойлIи<num>:ойлIигу
+<rdp>чIе<num><distr>:чIечIегу
+<rdp>лъоб<num><distr>:лъоблъобгу
+<rdp>ойлIи<num><distr>:ойлIиойлIигу
+```
+:::
+
+Кроме того для моделирования разрывных морфем, вводится номер в круглых скобках, а элементы морфемы перечисляются через пробел. Вот пример, из иврита:
+
+::: {.panel-tabset}
+
+###### `lexd`
+
+```{{lexd}}
+PATTERNS
+C(1) V(1) C(2) :V(2) C(3) V(2):
+
+LEXICON C(3)
+sh m r          # to keep, to guard, to observe
+y sh b          # to sit, to dwell, to remain, to inhabit
+
+LEXICON V(2)
+:a <v><p3><sg>:a
+:o <v><pprs>:e
+```
+
+###### результат
+
+```
+shmr<v><p3><sg>:shamar
+shmr<v><pprs>:shomer
+yshb<v><p3><sg>:yashab
+yshb<v><pprs>:yosheb
+```
+:::
 
 ::: {.callout-note}
 
