@@ -678,8 +678,8 @@ PATTERNS
 C(1) V(1) C(2) :V(2) C(3) V(2):
 
 LEXICON C(3)
-sh m r          # to keep, to guard, to observe
-y sh b          # to sit, to dwell, to remain, to inhabit
+sh m r          # соблюдать, защищать
+y sh v          # садиться
 
 LEXICON V(2)
 :a <v><p3><sg>:a
