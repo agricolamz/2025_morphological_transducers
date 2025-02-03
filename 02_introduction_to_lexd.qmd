@@ -155,7 +155,7 @@ LEXICON PersonNumber
 
 ::: {.panel-tabset}
 
-###### сокращенный вариант
+###### с оператором
 
 ```{{lexd}}
 PATTERNS
@@ -168,7 +168,7 @@ LEXICON Negation
 ...
 ```
 
-###### развернутый вариант
+###### без оператора
 
 ```{{lexd}}
 PATTERNS
@@ -188,7 +188,7 @@ LEXICON Negation
 
 ::: {.panel-tabset}
 
-###### сокращенный вариант
+###### с оператором
 
 ```{{lexd}}
 PATTERNS
@@ -204,7 +204,7 @@ LEXICON PresentInflection
 ...
 ```
 
-###### развернутый вариант
+###### без оператора
 
 ```{{lexd}}
 PATTERNS
@@ -227,7 +227,7 @@ LEXICON PresentInflection
 
 ::: {.panel-tabset}
 
-###### сокращенный вариант
+###### с оператором
 
 ```{{lexd}}
 PATTERNS
@@ -243,7 +243,7 @@ LEXICON CLITICS
 ...
 ```
 
-###### развернутый вариант
+###### без оператора
 
 ```{{lexd}}
 PATTERNS
