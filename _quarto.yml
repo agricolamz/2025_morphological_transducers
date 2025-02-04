@@ -28,3 +28,4 @@ format:
   html:
     theme: cosmo
     lang: ru
+    page-layout: full

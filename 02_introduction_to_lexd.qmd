@@ -116,30 +116,30 @@ LEXICON PersonNumber
 
 | форма    | козел                    | медведь                |
 |----------|--------------------------|------------------------|
-| abs      | _q’atsa_                 | _sːika_                |
-| erg      | _q’atsal_                | _sːikal_               |
-| gen      | _q’atsala_               | _sːikala_              |
-| com      | _q’atsatsːilli_          | _sːikatsːilli_         |
-| sup.lat  | _q’atsaj_ (< _q’atsaji_) | _sːikaj_ (< _sːikaji)_ |
-| sup.ess  | _q’atsajib_              | _sːikajib_             |
-| sup.dir  | _q’atsajibal_            | _sːikajibal_           |
-| sup.el   | _q’atsajir_              | _sːikajir_             |
-| sub.lat  | _q’atsaʁu_               | _sːikaʁu_              |
-| sub.ess  | _q’atsaʁub_              | _sːikaʁub_             |
-| sub.dir  | _q’atsaʁubal_            | _sːikaʁubal_           |
-| sub.el   | _q’atsaʁur_              | _sːikaʁur_             |
-| ant.lat  | _q’atsasa_               | _sːikasa_              |
-| ant.ess  | _q’atsasab_              | _sːikasab_             |
-| ant.dir  | _q’atsasabal_            | _sːikasabal_           |
-| ant.el   | _q’atsasar_              | _sːikasar_             |
-| post.lat | _q’atsaha_               | _sːikaha_              |
-| post.ess | _q’atsahab_              | _sːikahab_             |
-| post.dir | _q’atsahabal_            | _sːikahabal_           |
-| post.el  | _q’atsahar_              | _sːikahar_             |
-| in.lat   | _q’atsatsːi_             | _sːikatsːi_            |
-| in.ess   | _q’atsatsːib_            | _sːikatsːib_           |
-| in.dir   | _q’atsatsːibal_          | _sːikatsːibal_         |
-| in.el    | _q’atsatsːir_            | _sːikatsːir_           |
+| abs      | _кьаца_                  | _ссика_                |
+| erg      | _кьацал_                 | _ссикал_               |
+| gen      | _кьацала_                | _ссикала_              |
+| com      | _кьацаццилли_            | _ссикаццилли_          |
+| sup.lat  | _кьацай_ (< _кьацайи_)   | _ссикай_ (< _ссикайи)_ |
+| sup.ess  | _кьацайиб_               | _ссикайиб_             |
+| sup.dir  | _кьацайибал_             | _ссикайибал_           |
+| sup.el   | _кьацайир_               | _ссикайир_             |
+| sub.lat  | _кьацагъу_               | _ссикагъу_             |
+| sub.ess  | _кьацагъуб_              | _ссикагъуб_            |
+| sib.dir  | _кьацагъубал_            | _ссикагъубал_          |
+| sub.el   | _кьацагъур_              | _ссикагъур_            |
+| ant.lat  | _кьацаcа_                | _ссикаcа_              |
+| ant.ess  | _кьацаcаб_               | _ссикаcаб_             |
+| ant.dir  | _кьацаcабал_             | _ссикаcабал_           |
+| ant.el   | _кьацаcар_               | _ссикаcар_             |
+| post.lat | _кьацагьа_               | _ссикагьа_             |
+| post.ess | _кьацагьаб_              | _ссикагьаб_            |
+| post.dir | _кьацагьабал_            | _ссикагьабал_          |
+| post.el  | _кьацагьар_              | _ссикагьар_            |
+| in.lat   | _кьацацци_               | _ссикацци_             |
+| in.ess   | _кьацацциб_              | _ссикацциб_            |
+| in.dir   | _кьацаццибал_            | _ссикаццибал_          |
+| in.el    | _кьацаццир_              | _ссикаццир_            |
 
 :::
 
@@ -539,6 +539,7 @@ ccc[z]
 ddd[x,y]
 eee[x,z]
 fff[y,z]
+ggg
 ```
 
 ###### результат
@@ -551,7 +552,40 @@ fff
 ```
 :::
 
-`^` --- очень полезный оператор, который позволяет смоделировать наш русский пример одной строчкой:
+`^` --- очень полезный оператор, который позволяет смоделировать согласование по признакам:
+
+::: {.panel-tabset}
+
+###### `lexd`
+
+```{{lexd}}
+PATTERNS
+(A B)[^[x,y]]
+
+LEXICON A
+aaa[x]
+bbb[y]
+ccc
+
+LEXICON B
+AAA[x]
+BBB[y]
+CCC
+```
+
+###### результат
+
+```
+aaaAAA
+aaaCCC
+cccAAA
+cccBBB
+bbbCCC
+bbbBBB
+```
+:::
+
+Это позволяет смоделировать наш русский пример одной строчкой:
 
 ::: {.panel-tabset}
 
@@ -638,7 +672,7 @@ LEXICON Inflection
 ```{{lexd}}
 PATTERNS
 Numerals NumeralMarker
-NumeralReduplication :Numerals Numerals NumeralDistributiveMarker
+NumeralReduplication :Numerals Numerals NumeralMarker NumeralDistributiveMarker
 
 LEXICON Numerals
 чIе               # числительное 2

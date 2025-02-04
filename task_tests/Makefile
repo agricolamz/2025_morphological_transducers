@@ -22,6 +22,10 @@ analysis: task.analyzer.hfst
 	@echo "$(FORM)" | hfst-lookup $^
 	@rm -f *.hfst
 
+generaton: task.generator.hfst
+	@echo "$(FORM)" | hfst-lookup $^
+	@rm -f *.hfst
+
 for_test_%.txt:
 	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
