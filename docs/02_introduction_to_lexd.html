@@ -241,12 +241,12 @@ div.csl-indent {
 <h2 data-number="2.1" class="anchored" data-anchor-id="техническое-введение"><span class="header-section-number">2.1</span> Техническое введение</h2>
 <p>В данном разделе мы обсуждаем синтаксис программы <a href="https://github.com/apertium/lexd/blob/main/Usage.md"><code>lexd</code></a> <span class="citation" data-cites="swanson21">(<a href="references.html#ref-swanson21" role="doc-biblioref">Swanson и Howell 2021</a>)</span>. Данная программа работает в связке</p>
 <ul>
-<li>с бесплатном програмном обеспечении с открытым исходным кодом Helsinki Finite-State Tookit <code>hfst</code> <span class="citation" data-cites="linden11">(<a href="references.html#ref-linden11" role="doc-biblioref">Lindén и др. 2011</a>)</span>;</li>
+<li>с бесплатным програмным обеспечением с открытым исходным кодом Helsinki Finite-State Tookit <code>hfst</code> <span class="citation" data-cites="linden11">(<a href="references.html#ref-linden11" role="doc-biblioref">Lindén и др. 2011</a>)</span>;</li>
 <li>аналогичным инструментом от Apertium <code>lttoolbox</code> <span class="citation" data-cites="ortiz05">(<a href="references.html#ref-ortiz05" role="doc-biblioref">Ortiz Rojas, Forcada, и Ramı́rez Sánchez 2005</a>)</span>.</li>
 </ul>
-<p>Это консольная программа, работающая на юниксоподобных системах. Чтобы избежать сложностей на начальных этапах курса, мы решили вначале познакомиться с синтаксисом <code>lexd</code> и попробовать описывать разные языковые явления, не затрудняя всех установкой и запуском данных программ у себя на компьютере. В связи с этим мы предлагаем выучить следующие четыре команды, которые будут работать на операционных системах Linux, основанных на Debian/Ubuntu, и в Google Colab:</p>
+<p>Это консольная программа, работающая на юниксоподобных системах. Чтобы избежать сложностей на начальных этапах курса, мы решили вначале познакомиться с синтаксисом <code>lexd</code> и попробовать описывать разные языковые явления, не затрудняя всех установкой и запуском у себя на компьютере. В связи с этим мы предлагаем выучить следующие четыре команды, которые будут работать на операционных системах Linux, основанных на Debian/Ubuntu, и в Google Colab:</p>
 <ul>
-<li>скачиваем интсрукции для установки <code>lexd</code> и <code>hfst</code> и дальнейшей работы с ними, записанные в простом текстовом файле, которые можно прочитать, если открыть <a href="https://shorturl.at/0bBXE">ссылку</a> из команды. Команда <code>make</code> запускает установку. Для того, чтобы это работало в Google Colab нужно перед командой нужно поставить восклицательный знак: <code>!curl ...</code>. Знак доллара означает, что дальше следует команда командной строки, не надо его никуда копировать.</li>
+<li>скачиваем инструкции для установки <code>lexd</code> и <code>hfst</code> и дальнейшей работы с ними, записанные в простом текстовом файле, которые можно прочитать, если открыть <a href="https://shorturl.at/0bBXE">ссылку</a> из команды. Команда <code>make</code> запускает установку. Для того, чтобы это работало в Google Colab нужно перед командой нужно поставить восклицательный знак: <code>!curl ...</code>. Знак доллара означает, что дальше следует команда командной строки, не надо его никуда копировать.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile -o Makefile; make</span></span>
@@ -268,7 +268,7 @@ div.csl-indent {
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:s</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>После того, как вы установили нужные программы и создали файл, можно посмотреть формы и разборы, которые генерируются трансдьюссером. Это можно сделать следующей командой (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
+<li>После того, как вы установили нужные программы и создали файл, можно посмотреть формы и разборы, которые генерируются трансдьюсером. Это можно сделать следующей командой (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make forms</span></span>
@@ -281,7 +281,7 @@ div.csl-indent {
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">dance&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;:dances</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>В ходе курса мы будем разбирать разные лингвистические задачи. У каждой задачи есть номер и автоматический тест, который его проверяет. Чтобы запустить автоматическую проверку следует ввести команду, где первое число – номер раздела, а второе число – номер задачи. Например, для того, чтобы проверить, работает ли проверка задания попробуйте запустить следующую команду:</li>
+<li>В ходе курса мы будем разбирать разные лингвистические задачи. У каждой задачи есть номер и автоматический тест, который его проверяет. Чтобы запустить автоматическую проверку, следует ввести команду, где первое число – номер раздела, а второе число – номер задачи. Например, для того, чтобы проверить, работает ли проверка задания, попробуйте запустить следующую команду:</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_02_01</span></span>
@@ -316,7 +316,7 @@ div.csl-indent {
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="2">Группа лексикона которая состоит из слова <code>LEXICON</code> и имя, под которым данная группа появляется в разделе <code>PATTERNS</code></span>
+<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="2">Группа лексикона, которая состоит из слова <code>LEXICON</code> и имени, под которым данная группа появляется в разделе <code>PATTERNS</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
@@ -362,7 +362,7 @@ div.csl-indent {
 <span data-code-cell="annotated-cell-7" data-code-lines="5" data-code-annotation="1">Именованный раздел <code>PATTERN</code>, который используется потом в разделе <code>PATTERNS</code>.</span>
 </dd>
 </dl>
-<p>Таким образом, в каждом файле <code>lexd</code> должен быть раздел <code>PATTERNS</code>, содержащий в себе переменные, которые могут быть заданы либо в разделе <code>PATTERN</code>, либо в разделе <code>LEXICON</code>, либо их анонимные варианты (см. раздел <a href="#sec-anonymous" class="quarto-xref"><span>Раздел 2.2.2</span></a>). Также разные разделы можно переименовывать при помощи группы <code>ALIAS</code> (см. мануал). Комментарии можно оформлять при помощи хэша <code>#</code>.</p>
+<p>Таким образом, в каждом файле <code>lexd</code> должен быть раздел <code>PATTERNS</code>, содержащий в себе переменные, которые могут быть заданы либо в разделе <code>PATTERN</code>, либо в разделе <code>LEXICON</code>, либо их анонимные варианты (см. раздел <a href="#sec-anonymous" class="quarto-xref"><span>Раздел 2.2.2</span></a>). Также разные разделы можно переименовывать при помощи группы <code>ALIAS</code> (см. мануал). Комментарии можно оформлять при помощи хештега <code>#</code>.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1370,7 +1370,7 @@ Swanson, D., и N. Howell. 2021. <span>«Lexd: A finitestate lexicon compiler fo
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Мы какое-то время думали, зачем это может быть нужно и придумали только странные сценарии типа <em>пра-пра-пра-пра-бабушка</em>. Но вообще это параждает циклы, от которых одни проблемы.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Мы какое-то время думали, зачем это может быть нужно и придумали только странные сценарии типа <em>пра-пра-пра-пра-бабушка</em>. Но вообще это порождает циклы, от которых одни проблемы.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
