@@ -22,7 +22,7 @@ analysis: task.analyzer.hfst
 	@echo "$(FORM)" | hfst-lookup $^
 	@rm -f *.hfst
 
-generaton: task.generator.hfst
+generation: task.generator.hfst
 	@echo "$(FORM)" | hfst-lookup $^
 	@rm -f *.hfst
 
