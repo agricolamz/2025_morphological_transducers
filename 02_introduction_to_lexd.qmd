@@ -56,7 +56,8 @@ Using HFST basic transducer format and performing slow lookups
 
 
 ```{{shell}}
-$ make generaton FORM="walk<v><pres><3><sg>"
+$ make generation FORM="walk<v><pres><3><sg>"
+
 hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
 Using HFST basic transducer format and performing slow lookups
 > walk<v><pres><3><sg>	walks	0,000000
@@ -573,7 +574,7 @@ fff
 ```
 :::
 
-`^` --- очень полезный оператор, который позволяет смоделировать согласование по признакам:
+`^` --- очень полезный оператор, который позволяет смоделировать согласование по признакам `(A B)[^[x,y]] = (A[x,-y] B[x,-y]) | (A[-x,y] B[-x, y])`:
 
 ::: {.panel-tabset}
 
@@ -807,7 +808,7 @@ xp
 ```
 :::
 
-Это позволяет добавлять разбор неизвестных единиц в `lexd`. Важно отметить, что добавление некоторых типов регулярных выражение делает циклический трансдьюсер, поэтому результат такого трансдьюссера можно посмотреть только при помощи команд `make analysis FORM="..."` или `make generaton FORM="..."`. 
+Это позволяет добавлять разбор неизвестных единиц в `lexd`. Важно отметить, что добавление некоторых типов регулярных выражение делает циклический трансдьюсер, поэтому результат такого трансдьюссера можно посмотреть только при помощи команд `make analysis FORM="..."` или `make generation FORM="..."`. 
 
 ::: {.panel-tabset}
 
@@ -833,7 +834,9 @@ LEXICON Affix
 
 ###### результат
 
-```
+```{{shell}}
+$ make analysis FORM="комом"
+
 комом	ком<ins><sg>
 комом	комом<acc><sg>
 комом	комом<nom><sg>
