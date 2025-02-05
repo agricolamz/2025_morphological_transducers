@@ -1,0 +1,12 @@
+зы<card>:зы
+зы<card><distr>:зырыз
+щы<card>:щы
+щы<card><distr>:щырыщ
+плIы<card>:плIы
+плIы<card><distr>:плIырыплI
+пшIы<card>:пшIы
+пшIы<card><distr>:пшIырыпшI
+тфы<card>:тфы
+тфы<card><distr>:тфырытф
+хы<card>:хы
+хы<card><distr>:хырых
