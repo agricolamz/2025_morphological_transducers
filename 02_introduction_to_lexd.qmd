@@ -574,7 +574,9 @@ fff
 ```
 :::
 
-`^` --- очень полезный оператор, который позволяет смоделировать согласование по признакам `(A B)[^[x,y]] = (A[x,-y] B[x,-y]) | (A[-x,y] B[-x, y])`:
+`^` --- очень полезный оператор, который позволяет смоделировать согласование по признакам 
+
+`(A B)[^[x,y]] = (A[x,-y] B[x,-y]) | (A[-x,y] B[-x, y])`:
 
 ::: {.panel-tabset}
 
@@ -837,8 +839,10 @@ LEXICON Affix
 ```{{shell}}
 $ make analysis FORM="комом"
 
-комом	ком<ins><sg>
-комом	комом<acc><sg>
-комом	комом<nom><sg>
+hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
+Using HFST basic transducer format and performing slow lookups
+> комом	ком<ins><sg>	0,000000
+комом	комом<acc><sg>	0,000000
+комом	комом<nom><sg>	0,000000
 ```
 :::

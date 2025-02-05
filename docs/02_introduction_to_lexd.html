@@ -291,11 +291,12 @@ div.csl-indent {
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; sings sing&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;    0,000000</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make generaton FORM="walk&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">Using HFST basic transducer format and performing slow lookups</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; walk&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;  walks   0,000000</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make generation FORM="walk&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">Using HFST basic transducer format and performing slow lookups</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; walk&lt;v&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;  walks   0,000000</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>В ходе курса мы будем разбирать разные лингвистические задачи. У каждой задачи есть номер и автоматический тест, который его проверяет. Чтобы запустить автоматическую проверку, следует ввести команду, где первое число – номер раздела, а второе число – номер задачи. Например, для того, чтобы проверить, работает ли проверка задания, попробуйте запустить следующую команду:</li>
 </ul>
@@ -922,7 +923,8 @@ fff </code></pre>
 </div>
 </div>
 </div>
-<p><code>^</code> — очень полезный оператор, который позволяет смоделировать согласование по признакам:</p>
+<p><code>^</code> — очень полезный оператор, который позволяет смоделировать согласование по признакам</p>
+<p><code>(A B)[^[x,y]] = (A[x,-y] B[x,-y]) | (A[-x,y] B[-x, y])</code>:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true"><code>lexd</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">результат</a></li></ul>
 <div class="tab-content">
@@ -1281,7 +1283,7 @@ xp</code></pre>
 </div>
 </div>
 </div>
-<p>Это позволяет добавлять разбор неизвестных единиц в <code>lexd</code>. Важно отметить, что добавление некоторых типов регулярных выражение делает циклический трансдьюсер, поэтому результат такого трансдьюссера можно посмотреть только при помощи команд <code>make analysis FORM="..."</code> или <code>make generaton FORM="..."</code>.</p>
+<p>Это позволяет добавлять разбор неизвестных единиц в <code>lexd</code>. Важно отметить, что добавление некоторых типов регулярных выражение делает циклический трансдьюсер, поэтому результат такого трансдьюссера можно посмотреть только при помощи команд <code>make analysis FORM="..."</code> или <code>make generation FORM="..."</code>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true"><code>lexd</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false">результат</a></li></ul>
 <div class="tab-content">
@@ -1305,9 +1307,15 @@ xp</code></pre>
 <span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
-<pre><code>комом   ком&lt;ins&gt;&lt;sg&gt;
-комом   комом&lt;acc&gt;&lt;sg&gt;
-комом   комом&lt;nom&gt;&lt;sg&gt;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make analysis FORM="комом"</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="in">hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="in">Using HFST basic transducer format and performing slow lookups</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; комом ком&lt;ins&gt;&lt;sg&gt;    0,000000</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="in">комом   комом&lt;acc&gt;&lt;sg&gt;  0,000000</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="in">комом   комом&lt;nom&gt;&lt;sg&gt;  0,000000</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
