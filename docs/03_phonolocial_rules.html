@@ -144,7 +144,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_introduction_to_lexd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Введение в <code>lexd</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Введение в <code>lexd</code>: морфология</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -164,11 +164,19 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#фонологическое-введение" id="toc-фонологическое-введение" class="nav-link active" data-scroll-target="#фонологическое-введение"><span class="header-section-number">3.1</span> Фонологическое введение</a></li>
+  <li><a href="#двухуровневая-фонология" id="toc-двухуровневая-фонология" class="nav-link" data-scroll-target="#двухуровневая-фонология"><span class="header-section-number">3.2</span> Двухуровневая фонология</a></li>
+  <li><a href="#примеры-чередований" id="toc-примеры-чередований" class="nav-link" data-scroll-target="#примеры-чередований"><span class="header-section-number">3.3</span> Примеры чередований</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -177,7 +185,7 @@ div.csl-indent {
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -189,6 +197,45 @@ div.csl-indent {
 </header>
 
 
+<section id="фонологическое-введение" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="фонологическое-введение"><span class="header-section-number">3.1</span> Фонологическое введение</h2>
+<p>Преобладающая фонологическая теория в XX веке — генеративная фонология <span class="citation" data-cites="chomsky1968">(<a href="references.html#ref-chomsky1968" role="doc-biblioref">Chomsky и Halle 1968</a>)</span>. Согласно этой теории существует два представления: глубинное (underlying/phonological representation) и поверхностное (surface form, phonetic representation). Фонология в этой теории сводится к набору линейено упорядоченных правил, которые применяются циклически, преобразуя результат работы синтаксической деревации в фонетические цепочки.</p>
+<ol class="example" type="1">
+<li>глубинное представление &gt; фонологическое правило 1 &gt; фонологическое правило 2 &gt; … &gt; поверхностное представление.</li>
+</ol>
+<p>Из-за того, что правила в этой теории строго упорядочены возникают случаи, когда правила взаимодействуют друг с другом. Классификация таких случаев приводится в работе <span class="citation" data-cites="kiparsky1982">(<a href="references.html#ref-kiparsky1982" role="doc-biblioref">Kiparsky 1982 (1968)</a>)</span>:</p>
+<ul>
+<li>питающий порядок (feeding). Так называют порядок, при котором применение одного правила увеличивает количество контекстов применение другого правила, так что другое правило срабатывает. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>блокирующий порядок (bleeding). Так называют порядок, при котором применение одного правила уменьшает количество контекстов применения другого правила, так что другое правило не срабатывает. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>противопитающий порядок (counterfeeding). Так называют порядок, при котором применение одного правила увеличивает количество контекстов применение другого правила, однако другое правило не срабатывает.</li>
+<li>противоблокирующий порядок (counterbleeding). Так называют порядок, при котором применение одного правила уменьшает количество контекстов применения другого правила, однако другое правило все равно срабатывает.</li>
+</ul>
+<p>Вот комиксы, которые объясняют разницу между разными порядками.</p>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/03_01_Russita-feeding.png" class="img-fluid" width="1604"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/03_02_Russita-bleeding.png" class="img-fluid" width="1537"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/03_03_Russita-counterfeeding.png" class="img-fluid" width="1516"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/03_04_Russita-counterbleeding.png" class="img-fluid" width="1601"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="двухуровневая-фонология" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="двухуровневая-фонология"><span class="header-section-number">3.2</span> Двухуровневая фонология</h2>
+<p>Двухуровневая фонология (two level phonology) была разработана в диссертации <span class="citation" data-cites="koskenniemi1983">(<a href="references.html#ref-koskenniemi1983" role="doc-biblioref">Koskenniemi 1983</a>)</span>. Стоит сказать, что еще в 1972 вышла диссертация <span class="citation" data-cites="johnson1972">(<a href="references.html#ref-johnson1972" role="doc-biblioref">Johnson 2019</a>)</span>, в которой автор указывал на некоторые недостатки последовательности фонологических правил, которые были приняты в генеративной фонологии, а также доказывал, что любую последовательность правил можно моделировать при помощи трансдьюсера.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -250,13 +297,227 @@ div.csl-indent {
 </table>
 </div>
 </div>
+</section>
+<section id="примеры-чередований" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="примеры-чередований"><span class="header-section-number">3.3</span> Примеры чередований</h2>
+<ul>
+<li>ассимиляции</li>
+<li>диссимиляции</li>
+<li>гармония</li>
+<li>ослабление</li>
+<li>усиление</li>
+<li>фузия</li>
+<li>расщепление</li>
+<li>элизия</li>
+<li>эпентеза</li>
+<li>чеширизация</li>
+<li>метатеза</li>
+<li>редупликация</li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-chomsky1968" class="csl-entry" role="listitem">
+Chomsky, N., и M. Halle. 1968. <em>The sound pattern of <span>E</span>nglish</em>. New York, Evanstone, London: Haper &amp; Row.
+</div>
+<div id="ref-johnson1972" class="csl-entry" role="listitem">
+Johnson, C. D. 2019. <em>Formal aspects of phonological description</em>. The Hague, Paris: Mouton.
+</div>
+<div id="ref-kiparsky1982" class="csl-entry" role="listitem">
+Kiparsky, P. 1982 (1968). <span>«Linguistic universals and linguistic change»</span>. В <em>Explanation in Phonology</em>, под редакцией P. Kiparsky. Dordrecht, Cinnaminson: Foris Publications.
+</div>
+<div id="ref-koskenniemi1983" class="csl-entry" role="listitem">
+Koskenniemi, K. 1983. <span>«Two-level morphology: A general computational model for word-form recognition and production»</span>. Phdthesis, University of Helsenki, Department of General Linguistics.
+</div>
 <div id="ref-itkin07" class="csl-entry" role="listitem">
 Иткин, И. Б. 2007. <em>Русская морфонология</em>. Москва: Гнозис.
 </div>
 </div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Вот пример питающего порядка из бразильского португальского (индоевропейские).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>правило</th>
+<th>форма</th>
+<th>транскрипция</th>
+<th>глосса</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>палатализация</td>
+<td>bato</td>
+<td>[bá<em>t</em>u]</td>
+<td>бить-1sg</td>
+</tr>
+<tr class="even">
+<td>палатализация</td>
+<td>bate</td>
+<td>[bá<em>tʃ</em>i]</td>
+<td>бить-3sg</td>
+</tr>
+<tr class="odd">
+<td>палатализация</td>
+<td>ardo</td>
+<td>[áɾ<em>d</em>u]</td>
+<td>жечь-1sg</td>
+</tr>
+<tr class="even">
+<td>палатализация</td>
+<td>arde</td>
+<td>[áɾ<em>dʒ</em>i]</td>
+<td>жечь-3sg</td>
+</tr>
+<tr class="odd">
+<td>эпентеза i</td>
+<td>pacto</td>
+<td>[pák<em>i</em>tu]</td>
+<td>соглашение</td>
+</tr>
+<tr class="even">
+<td>эпентеза i</td>
+<td>captar</td>
+<td>[kap<em>i</em>táɾ]</td>
+<td>взять в плен</td>
+</tr>
+<tr class="odd">
+<td>эпентеза i</td>
+<td>psicologia</td>
+<td>[p<em>i</em>sikoloʒíɐ]</td>
+<td>психология</td>
+</tr>
+</tbody>
+</table>
+<p>А вот взаимодействие правил:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 24%">
+<col style="width: 19%">
+<col style="width: 23%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">/kaptáɾ/ <br> взять в плен</th>
+<th style="text-align: center;">/áɾdi/ <br> жечь-3sg</th>
+<th style="text-align: center;">/advɛ́χsu/ <br> враждебный</th>
+<th style="text-align: center;">/futbɔ́w/ <br> футбол</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>эпентеза I</td>
+<td style="text-align: center;">kapitáɾ</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">adivɛ́χsu</td>
+<td style="text-align: center;">futibɔ́w</td>
+</tr>
+<tr class="even">
+<td>палатализация</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">áɾdʒi</td>
+<td style="text-align: center;">adʒivɛ́χsu</td>
+<td style="text-align: center;">futʃibɔ́w</td>
+</tr>
+</tbody>
+</table>
+<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn2"><p>Вот пример питающего порядка из литовского (индоевропейские).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>правило</th>
+<th>транскрипция</th>
+<th>перевод</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>эпентеза i</td>
+<td>[at-koːpʲtʲi]</td>
+<td>прийти</td>
+</tr>
+<tr class="even">
+<td>эпентеза i</td>
+<td>[atʲ<em>i</em>-tʲeisʲtʲi]</td>
+<td>присудить</td>
+</tr>
+<tr class="odd">
+<td>эпентеза i</td>
+<td>[ap-kalʲbʲetʲi]</td>
+<td>оговорить</td>
+</tr>
+<tr class="even">
+<td>эпентеза i</td>
+<td>[apʲ<em>i</em>-putʲi]</td>
+<td>подгнить</td>
+</tr>
+<tr class="odd">
+<td>озвончение</td>
+<td>[at-praʃʲiːtʲi]</td>
+<td>спросить</td>
+</tr>
+<tr class="even">
+<td>озвончение</td>
+<td>[a<em>d</em>-gautʲi]</td>
+<td>вернуть</td>
+</tr>
+<tr class="odd">
+<td>озвончение</td>
+<td>[ap-ʃaukjtji]</td>
+<td>объявить</td>
+</tr>
+<tr class="even">
+<td>озвончение</td>
+<td>[a<em>b</em>-gautji]</td>
+<td>обмануть</td>
+</tr>
+</tbody>
+</table>
+<p>А вот взаимодействие правил:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 21%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">/ap-putʲi/ <br> подгнить</th>
+<th style="text-align: center;">/at-gautʲi/ <br> вернуть</th>
+<th style="text-align: center;">/at-duotʲi/ <br> отдать</th>
+<th style="text-align: center;">/ap-bʲekʲtʲi/ <br> обежать</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>эпентеза i</td>
+<td style="text-align: center;">apʲi-putʲi</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">atʲi-duotʲi</td>
+<td style="text-align: center;">apʲi-bʲekʲtʲi</td>
+</tr>
+<tr class="even">
+<td>озвончение</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">ad-gautʲi</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+</tbody>
+</table>
+<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -676,10 +937,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./02_introduction_to_lexd.html" class="pagination-link" aria-label="Введение в `lexd`">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Введение в <code>lexd</code></span></span>
+      <a href="./02_introduction_to_lexd.html" class="pagination-link" aria-label="Введение в `lexd`: морфология">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Введение в <code>lexd</code>: морфология</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
