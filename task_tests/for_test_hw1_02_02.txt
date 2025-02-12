@@ -1,7 +1,3 @@
-ptx<pst><p2><m><sg>:ptəxlux
-ptx<pst><p2><f><sg>:ptəxlax
-ptx<pst><p2><pl>:ptəxloxun
-ptx<pst><p1><sg>:ptəxli
 ptx<pst><p1><pl>:ptəxlan
 dmx<prs><p3><m><sg>:daməx
 dmx<prs><p3><f><sg>:damxa
