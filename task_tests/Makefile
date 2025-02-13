@@ -33,14 +33,6 @@ forms: task.generator.hfst
 	@hfst-fst2strings $^
 	@rm -f *.hfst
 
-cycle:
-	@$(eval N_EXPECTED=`echo "4"`)
-	@if [ "$(N_EXPECTED)" = "5" ]; then\
-		echo "yes";\
-	else\
-		echo "no";\
-	fi
-
 test_%: for_test_%.txt task.generator.hfst
 	@hfst-fst2strings task.generator.hfst > generated_forms.txt
 	@$(eval N_over_wrong=`grep -xvf $< generated_forms.txt | wc -l`)
