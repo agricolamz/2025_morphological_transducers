@@ -8,11 +8,11 @@ requirements:
 
 task.generator.hfst: task.lexd
 	@lexd task.lexd | hfst-txt2fst -o lexd.hfst
-	@if test -f "task.twol"; then\
-  	@hfst-twolc task.twol -o twol.hfst;\
-  	@hfst-compose-intersect lexd.hfst twol.hfst -o $@;\
-  else\
-  	mv lexd.hfst $@;\
+	@if [ ! -f task.twol ]; then\
+		mv lexd.hfst $@;\
+	else\
+		hfst-twolc task.twol -o twol.hfst;\
+		hfst-compose-intersect lexd.hfst twol.hfst -o $@;\
 	fi
 
 task.analyzer.hfst: task.generator.hfst
