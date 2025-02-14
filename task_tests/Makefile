@@ -11,7 +11,7 @@ task.generator.hfst: task.lexd
 	@if [ ! -f task.twol ]; then\
 		mv lexd.hfst $@;\
 	else\
-		hfst-twolc task.twol -o twol.hfst;\
+		hfst-twolc -q task.twol -o twol.hfst;\
 		hfst-compose-intersect lexd.hfst twol.hfst -o $@;\
 	fi
 

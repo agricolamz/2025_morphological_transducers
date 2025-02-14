@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -171,8 +205,8 @@ div.csl-indent {
   <ul>
   <li><a href="#фонологическое-введение" id="toc-фонологическое-введение" class="nav-link active" data-scroll-target="#фонологическое-введение"><span class="header-section-number">3.1</span> Фонологическое введение</a></li>
   <li><a href="#двухуровневая-фонологияморфология" id="toc-двухуровневая-фонологияморфология" class="nav-link" data-scroll-target="#двухуровневая-фонологияморфология"><span class="header-section-number">3.2</span> Двухуровневая фонология/морфология</a></li>
-  <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link" data-scroll-target="#техническое-введение"><span class="header-section-number">3.3</span> Техническое введение</a></li>
-  <li><a href="#программа-twol" id="toc-программа-twol" class="nav-link" data-scroll-target="#программа-twol"><span class="header-section-number">3.4</span> Программа <code>twol</code></a></li>
+  <li><a href="#программа-twol" id="toc-программа-twol" class="nav-link" data-scroll-target="#программа-twol"><span class="header-section-number">3.3</span> Программа <code>twol</code></a></li>
+  <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link" data-scroll-target="#техническое-введение"><span class="header-section-number">3.4</span> Техническое введение</a></li>
   <li><a href="#примеры-чередований" id="toc-примеры-чередований" class="nav-link" data-scroll-target="#примеры-чередований"><span class="header-section-number">3.5</span> Примеры чередований</a></li>
   </ul>
 </nav>
@@ -245,18 +279,93 @@ div.csl-indent {
 </ul>
 <p>Использование ограничений, вместо правил, чуть позже возникла в фонологии в виде Теории оптимальности (OT, <span class="citation" data-cites="prince1994">(<a href="references.html#ref-prince1994" role="doc-biblioref">Prince и Smolensky 1994</a>)</span>), однако в рамках OT предпалагаются, что ограничения носят универсальный характер и есть во всех языках, в то время, как ограничения двухуровневой фонологии/морфологии — имеют частный внутриязыковой характер.</p>
 </section>
-<section id="техническое-введение" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="техническое-введение"><span class="header-section-number">3.3</span> Техническое введение</h2>
+<section id="программа-twol" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="программа-twol"><span class="header-section-number">3.3</span> Программа <code>twol</code></h2>
+<p>В данном разделе мы будем обсуждать синтаксис <code>twol</code>. Данный раздел основан на <span class="citation" data-cites="beesley2003">(<a href="references.html#ref-beesley2003" role="doc-biblioref">Beesley и Karttunen 2003</a>)</span>.</p>
 </section>
-<section id="программа-twol" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="программа-twol"><span class="header-section-number">3.4</span> Программа <code>twol</code></h2>
+<section id="техническое-введение" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="техническое-введение"><span class="header-section-number">3.4</span> Техническое введение</h2>
+<p>Мы будем использовать программу <code>hfst-twolc</code>. Чтобы избежать сложностей на начальных этапах курса, мы решили вначале познакомиться с синтаксисом <code>twol</code> и попробовать описывать разные языковые явления, не затрудняя всех установкой и запуском у себя на компьютере.</p>
+<ul>
+<li>Для начала работы следует, как и раньше, скачать <code>Makefile</code>:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile -o Makefile; make</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>дальше, как и раньше, следует создадать в коллабе или у себя на компьютере (если у вас Linux), файл с названием <code>task.lexd</code>. В Google Colab для этого достаточно вставить первой строкой кодового блока <code>%%writefile task.lexd</code>. Вот пример такого файла:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">Noun (Suffix[-adj] | (Suffix[adj] Inflection))?</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Noun</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">ночь</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">печь</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Suffix</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;dim&gt;:ка</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;adj&gt;:н[adj]</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Inflection</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ой</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>нововведением является возможность создания файла с названием <code>task.twol</code>, в котором будет содержаться код для обработки (мор)фонологии. Не забудьте вставить <code>%%writefile task.twol</code> в Google Colab. Вот пример такого файла:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">  а е й к н о п ч ь ь:0;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">"чк чн пишется без ь"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>После того, как вы установили нужные программы и создали файлы, как и раньше, можно посмотреть формы и разборы, которые генерируются трансдьюсером (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make forms</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">ночь&lt;dim&gt;:ночка</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">ночь&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ночной</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">ночь</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">печь&lt;dim&gt;:печка</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">печь&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:печной</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="in">печь</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Кроме того можно посмотреть анализ/генерацию конкретных форм (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make analysis FORM="печка"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">Using HFST basic transducer format and performing slow lookups</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; печка печь&lt;dim&gt;   0,000000</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make generation FORM="ночь&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">Using HFST basic transducer format and performing slow lookups</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; ночь&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt; ночной  0,000000</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Как и раньше, получившийся трансдьюсер можно протестировать:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_03_01</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Задание 03_01
+Задание 03_03
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -331,6 +440,9 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-beesley2003" class="csl-entry" role="listitem">
+Beesley, K. R., и L. Karttunen. 2003. <span>«Two-level rule compiler»</span>.
+</div>
 <div id="ref-chomsky1968" class="csl-entry" role="listitem">
 Chomsky, N., и M. Halle. 1968. <em>The sound pattern of <span>E</span>nglish</em>. New York, Evanstone, London: Haper &amp; Row.
 </div>
