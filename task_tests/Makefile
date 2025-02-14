@@ -3,7 +3,7 @@
 .PHONY: requirements forms
 
 requirements:
-	curl https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
+	@curl -s https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
 	sudo apt-get install hfst lexd
 
 task.generator.hfst: task.lexd
@@ -27,7 +27,7 @@ generation: task.generator.hfst
 	@rm -f *.hfst
 
 for_test_%.txt:
-	curl https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
+	@curl -s https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
 
 forms: task.generator.hfst
 	@hfst-fst2strings $^
@@ -52,3 +52,4 @@ test_%: for_test_%.txt task.generator.hfst
 		cat test_results.txt;\
 	fi
 	@rm -f *.hfst *.txt
+
