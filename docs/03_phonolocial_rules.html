@@ -208,6 +208,8 @@ div.csl-indent {
   <li><a href="#программа-twol" id="toc-программа-twol" class="nav-link" data-scroll-target="#программа-twol"><span class="header-section-number">3.3</span> Программа <code>twol</code></a>
   <ul class="collapse">
   <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link" data-scroll-target="#техническое-введение"><span class="header-section-number">3.3.1</span> Техническое введение</a></li>
+  <li><a href="#структура-twol-файла" id="toc-структура-twol-файла" class="nav-link" data-scroll-target="#структура-twol-файла"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</a></li>
+  <li><a href="#гиперфонемы" id="toc-гиперфонемы" class="nav-link" data-scroll-target="#гиперфонемы"><span class="header-section-number">3.3.3</span> Гиперфонемы</a></li>
   </ul></li>
   <li><a href="#примеры-чередований" id="toc-примеры-чередований" class="nav-link" data-scroll-target="#примеры-чередований"><span class="header-section-number">3.4</span> Примеры чередований</a></li>
   </ul>
@@ -360,6 +362,49 @@ div.csl-indent {
 <div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_03_01</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="структура-twol-файла" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="структура-twol-файла"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</h3>
+<p>Каждый <code>twol</code> файл состоит из нескольких блоков, которые удобно обсуждать на приведенном выше примере:</p>
+<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a><span class="in">  а е й к н о п ч ь ь:0;</span></span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
+<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-7" class="code-annotation-target"><a href="#annotated-cell-8-7" aria-hidden="true" tabindex="-1"></a><span class="in">"чк чн пишется без ь"</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-9" class="code-annotation-target"><a href="#annotated-cell-8-9" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
+<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="1">Раздел, которые перечисляет все используемые символы.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2">Декларацией конца раздела является точка с запятой, поэтому иногда удобно писать элементы в несколько строчек, особенно если есть некотрые логические блоки. Из примера видно сокращение: одним символом можно записывать идентичные пары входного и выходного символов (т. е. <code>й:й</code> можно записывать как <code>й</code>).</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="5" data-code-annotation="3">Раздел с правилами.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="7" data-code-annotation="4">Название правила (паразительно, но это обязательный элемент).</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="5">Само правило. Оно обычно имеет следующие элементы: какая-то пара вхохдного/выходного символа (<code>ь:0</code>), дальше оператор (<code>&lt;=&gt;</code>), дальше контекст (<code>_ к</code>), все это заканчивается точкой с запятой.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="9" data-code-annotation="6">Несколько контекстов для одного правила можно записывать вместе.</span>
+</dd>
+</dl>
+</section>
+<section id="гиперфонемы" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="гиперфонемы"><span class="header-section-number">3.3.3</span> Гиперфонемы</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
