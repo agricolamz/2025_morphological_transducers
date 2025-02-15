@@ -175,7 +175,7 @@ div.csl-indent {
   <li><a href="#от-автоматов-к-морфологическим-трансдьюсерам" id="toc-от-автоматов-к-морфологическим-трансдьюсерам" class="nav-link" data-scroll-target="#от-автоматов-к-морфологическим-трансдьюсерам"><span class="header-section-number">1.4</span> От автоматов к морфологическим трансдьюсерам</a>
   <ul class="collapse">
   <li><a href="#конечные-автоматы" id="toc-конечные-автоматы" class="nav-link" data-scroll-target="#конечные-автоматы"><span class="header-section-number">1.4.1</span> Конечные автоматы</a></li>
-  <li><a href="#трансдьюсеры" id="toc-трансдьюсеры" class="nav-link" data-scroll-target="#трансдьюсеры"><span class="header-section-number">1.4.2</span> Трансдьюсеры</a></li>
+  <li><a href="#sec-transducers" id="toc-sec-transducers" class="nav-link" data-scroll-target="#sec-transducers"><span class="header-section-number">1.4.2</span> Трансдьюсеры</a></li>
   </ul></li>
   <li><a href="#проблемы-моделирования-морфологии-языка" id="toc-проблемы-моделирования-морфологии-языка" class="nav-link" data-scroll-target="#проблемы-моделирования-морфологии-языка"><span class="header-section-number">1.5</span> Проблемы моделирования морфологии языка</a></li>
   </ul>
@@ -385,8 +385,8 @@ div.csl-indent {
 5::к1
 6::у1</code></pre>
 </section>
-<section id="трансдьюсеры" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="трансдьюсеры"><span class="header-section-number">1.4.2</span> Трансдьюсеры</h3>
+<section id="sec-transducers" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="sec-transducers"><span class="header-section-number">1.4.2</span> Трансдьюсеры</h3>
 <p>Всё, что мы рассмотрели до этого момента, позволяло лишь принимать/отвергать слова, поданные на вход. Если мы немного усложним автомат, добавив в него еще выходной алфавит, то мы получим трансдьюсер (в <a href="https://ru.wikipedia.org/wiki/Конечный_автомат_с_выходом">русской википедии</a> они названы конечными автоматами с выходом). Мы будем использовать обновленную нотацию: то, что представлено на вход, мы пишем слева от двоеточия, а то, что получается на выходе — справа.</p>
 <div class="cell">
 <div class="cell-output-display">

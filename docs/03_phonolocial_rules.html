@@ -209,7 +209,8 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link" data-scroll-target="#техническое-введение"><span class="header-section-number">3.3.1</span> Техническое введение</a></li>
   <li><a href="#структура-twol-файла" id="toc-структура-twol-файла" class="nav-link" data-scroll-target="#структура-twol-файла"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</a></li>
-  <li><a href="#гиперфонемы" id="toc-гиперфонемы" class="nav-link" data-scroll-target="#гиперфонемы"><span class="header-section-number">3.3.3</span> Гиперфонемы</a></li>
+  <li><a href="#раздел-алфавита" id="toc-раздел-алфавита" class="nav-link" data-scroll-target="#раздел-алфавита"><span class="header-section-number">3.3.3</span> Раздел алфавита</a></li>
+  <li><a href="#гиперфонемы" id="toc-гиперфонемы" class="nav-link" data-scroll-target="#гиперфонемы"><span class="header-section-number">3.3.4</span> Гиперфонемы</a></li>
   </ul></li>
   <li><a href="#примеры-чередований" id="toc-примеры-чередований" class="nav-link" data-scroll-target="#примеры-чередований"><span class="header-section-number">3.4</span> Примеры чередований</a></li>
   </ul>
@@ -279,8 +280,14 @@ div.csl-indent {
 <p>В рамках двухуровневой фонологии/морфологии:</p>
 <ul>
 <li>правила — посимвольные ограничения на поверхностное представление, которые применяются параллельно.</li>
-<li>правила могут оперировать единицами глубинного представления, поверхностного представления или одновременно обоих.</li>
+<li>правила могут оперировать единицами глубинного (другое название — лексическое) представления, поверхностного представления или одновременно обоих.</li>
 </ul>
+<p>Например, получить из глубинной формы <code>spy+s</code> поверхностную форму <code>spies</code> можно двумя правилами (нотацию мы подробнее обсудим позже):</p>
+<ul>
+<li><code>y:i &lt;=&gt; _ 0:e</code></li>
+<li><code>0:e &lt;=&gt; y: _ %+:</code></li>
+</ul>
+<p>Первое правило обращается одновременно к глубинному (<code>0:</code>) и поверхностному (<code>:e</code>) представлениям. Второе правило обращается только к глубинному представлению (<code>y:</code>) и поверхностному (<code>%+:</code>) представлениям.</p>
 <p>Использование ограничений, вместо правил, чуть позже возникла в фонологии в виде Теории оптимальности (OT, <span class="citation" data-cites="prince1994">(<a href="references.html#ref-prince1994" role="doc-biblioref">Prince и Smolensky 1994</a>)</span>), однако в рамках OT предпалагаются, что ограничения носят универсальный характер и есть во всех языках, в то время, как ограничения двухуровневой фонологии/морфологии — имеют частный внутриязыковой характер.</p>
 </section>
 <section id="программа-twol" class="level2" data-number="3.3">
@@ -323,9 +330,11 @@ div.csl-indent {
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">"чк чн пишется без ь"</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">! например, ночьной -&gt; ночной или печька -&gt; печка</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>После того, как вы установили нужные программы и создали файлы, как и раньше, можно посмотреть формы и разборы, которые генерируются трансдьюсером (не забудьте поставить восклицательный знак перед <code>make</code> в Google Colab):</li>
 </ul>
@@ -373,9 +382,11 @@ div.csl-indent {
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
 <span id="annotated-cell-8-6"><a href="#annotated-cell-8-6" aria-hidden="true" tabindex="-1"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-7" class="code-annotation-target"><a href="#annotated-cell-8-7" aria-hidden="true" tabindex="-1"></a><span class="in">"чк чн пишется без ь"</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-9" class="code-annotation-target"><a href="#annotated-cell-8-9" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
-<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8" aria-hidden="true" tabindex="-1"></a><span class="in">! например, ночьной -&gt; ночной или печька -&gt; печка</span></span>
+<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-10" class="code-annotation-target"><a href="#annotated-cell-8-10" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-8-11" class="code-annotation-target"><a href="#annotated-cell-8-11" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
+<span id="annotated-cell-8-12"><a href="#annotated-cell-8-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
@@ -395,16 +406,37 @@ div.csl-indent {
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="5">Само правило. Оно обычно имеет следующие элементы: какая-то пара вхохдного/выходного символа (<code>ь:0</code>), дальше оператор (<code>&lt;=&gt;</code>), дальше контекст (<code>_ к</code>), все это заканчивается точкой с запятой.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="5">В любом месте файла можно написать комментарий. Начало комментария обозначается восклицательным знаком.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="9" data-code-annotation="6">Несколько контекстов для одного правила можно записывать вместе.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="10" data-code-annotation="6">Само правило. Оно обычно имеет следующие элементы: какая-то пара вхохдного/выходного символа (<code>ь:0</code>), дальше оператор (<code>&lt;=&gt;</code>), дальше контекст (<code>_ к</code>), все это заканчивается точкой с запятой.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="11" data-code-annotation="7">Несколько контекстов для одного правила можно записывать вместе.</span>
 </dd>
 </dl>
 </section>
-<section id="гиперфонемы" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="гиперфонемы"><span class="header-section-number">3.3.3</span> Гиперфонемы</h3>
+<section id="раздел-алфавита" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="раздел-алфавита"><span class="header-section-number">3.3.3</span> Раздел алфавита</h3>
+<p>Хорошо бы, чтобы раздел алфавита содержал все пары символов (по-английски, symbol pairs или feasible pairs) глубинного и поверхностного представлений, которые представлены в вашем материале. Важно отметить, что <code>twol</code> достраивает пары символов из правил, так что программа будет работать и с неполным алфавитом <code>.twol</code>. Для нашего примера достаточно следующего файла:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">  ь;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="in">"чк чн пишется без ь"</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Так как под капотом происходит композиция трансдьюсеров (см. <a href="01_introduction_to_transducers.html#sec-transducers" class="quarto-xref"><span>Раздел 1.4.2</span></a>), то символы, которые не участвуют в правилах <code>twol</code> не будут затронуты. И, единственное, что <code>twol</code> не может восстановить, что у нас есть две сущности <code>ь:0</code> и <code>ь:ь</code>.</p>
+<p>Однако все это из разделов вредных советов. Если вы моделируете язык или даже его фрагмент лучше перечислить все символы (и их прописные варианты). Это позволит избежать проблем при анализе некачественных входных данных.</p>
+</section>
+<section id="гиперфонемы" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="гиперфонемы"><span class="header-section-number">3.3.4</span> Гиперфонемы</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
