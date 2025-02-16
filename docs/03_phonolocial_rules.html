@@ -212,7 +212,7 @@ div.csl-indent {
   <li><a href="#раздел-алфавита" id="toc-раздел-алфавита" class="nav-link" data-scroll-target="#раздел-алфавита"><span class="header-section-number">3.3.3</span> Раздел алфавита</a></li>
   <li><a href="#архифонемы" id="toc-архифонемы" class="nav-link" data-scroll-target="#архифонемы"><span class="header-section-number">3.3.4</span> Архифонемы</a></li>
   <li><a href="#обращение-к-разным-представлениям" id="toc-обращение-к-разным-представлениям" class="nav-link" data-scroll-target="#обращение-к-разным-представлениям"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</a></li>
-  <li><a href="#множества-и-определения" id="toc-множества-и-определения" class="nav-link" data-scroll-target="#множества-и-определения"><span class="header-section-number">3.3.6</span> Множества и определения</a></li>
+  <li><a href="#раздел-sets-и-definitions" id="toc-раздел-sets-и-definitions" class="nav-link" data-scroll-target="#раздел-sets-и-definitions"><span class="header-section-number">3.3.6</span> Раздел <code>Sets</code> и <code>Definitions</code></a></li>
   <li><a href="#переменные-внутри-правил" id="toc-переменные-внутри-правил" class="nav-link" data-scroll-target="#переменные-внутри-правил"><span class="header-section-number">3.3.7</span> Переменные внутри правил</a></li>
   <li><a href="#операторы" id="toc-операторы" class="nav-link" data-scroll-target="#операторы"><span class="header-section-number">3.3.8</span> Операторы</a></li>
   <li><a href="#операторы-внутри-правил" id="toc-операторы-внутри-правил" class="nav-link" data-scroll-target="#операторы-внутри-правил"><span class="header-section-number">3.3.9</span> Операторы внутри правил</a></li>
@@ -669,9 +669,9 @@ div.csl-indent {
 <li>placeholder со значением любой знак: <code>:</code> (еще можно <code>?</code>)</li>
 </ul>
 </section>
-<section id="множества-и-определения" class="level3" data-number="3.3.6">
-<h3 data-number="3.3.6" class="anchored" data-anchor-id="множества-и-определения"><span class="header-section-number">3.3.6</span> Множества и определения</h3>
-<p>Можно создать раздел <code>Sets</code>, в которой создать группы символов, к которым потом можно обращаться в правилах. Давайте попробуем смоделировать устранение зияния гласных в адыгейском языке <span class="citation" data-cites="arkadiev2009">(<a href="references.html#ref-arkadiev2009" role="doc-biblioref">Аркадьев и др. 2009</a>: 27–28)</span>:</p>
+<section id="раздел-sets-и-definitions" class="level3" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="раздел-sets-и-definitions"><span class="header-section-number">3.3.6</span> Раздел <code>Sets</code> и <code>Definitions</code></h3>
+<p>Раздел <code>Sets</code> — опциональный раздел <code>.twol</code> файла, в котором можно создать группы символов, к которым потом можно обращаться в правилах по имени. Рассмотрим пример моделирования устранение зияния гласных в адыгейском языке <span class="citation" data-cites="arkadiev2009">(<a href="references.html#ref-arkadiev2009" role="doc-biblioref">Аркадьев и др. 2009</a>: 27–28)</span>:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -750,6 +750,8 @@ div.csl-indent {
 </div>
 </div>
 <p>Обратим внимание, что <code>Vowels:0</code> в рамках нашей задачи можно было бы записать экономичнее <code>:0</code>. Однако, такое правило при моделирования большего фрагмента грамматики скорее всего может привести к непредвиденным эффектам. Тем более, что такая запись плохо читаема вне контекста.</p>
+<p>Определение множеств может содержать имена множеств, определенных ранее. Все перечисленные в множествах единицы, должны быть определены в разделе <code>Alphabet</code>.</p>
+<p>Следует отметить, что переменная <code>Vowels</code> в нашем <code>.twol</code> файле раскрылась всеми возможными способами: <code>а</code> – <code>а</code>, <code>а</code> – <code>ы</code>, <code>а</code> – <code>э</code>, <code>ы</code> – <code>ы</code>, <code>ы</code> – <code>э</code>, <code>э --- э</code>.</p>
 </section>
 <section id="переменные-внутри-правил" class="level3" data-number="3.3.7">
 <h3 data-number="3.3.7" class="anchored" data-anchor-id="переменные-внутри-правил"><span class="header-section-number">3.3.7</span> Переменные внутри правил</h3>
