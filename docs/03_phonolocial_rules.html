@@ -212,7 +212,7 @@ div.csl-indent {
   <li><a href="#раздел-алфавита" id="toc-раздел-алфавита" class="nav-link" data-scroll-target="#раздел-алфавита"><span class="header-section-number">3.3.3</span> Раздел алфавита</a></li>
   <li><a href="#архифонемы" id="toc-архифонемы" class="nav-link" data-scroll-target="#архифонемы"><span class="header-section-number">3.3.4</span> Архифонемы</a></li>
   <li><a href="#обращение-к-разным-представлениям" id="toc-обращение-к-разным-представлениям" class="nav-link" data-scroll-target="#обращение-к-разным-представлениям"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</a></li>
-  <li><a href="#раздел-sets-и-definitions" id="toc-раздел-sets-и-definitions" class="nav-link" data-scroll-target="#раздел-sets-и-definitions"><span class="header-section-number">3.3.6</span> Раздел <code>Sets</code> и <code>Definitions</code></a></li>
+  <li><a href="#разделы-sets-и-definitions" id="toc-разделы-sets-и-definitions" class="nav-link" data-scroll-target="#разделы-sets-и-definitions"><span class="header-section-number">3.3.6</span> Разделы <code>Sets</code> и <code>Definitions</code></a></li>
   <li><a href="#переменные-внутри-правил" id="toc-переменные-внутри-правил" class="nav-link" data-scroll-target="#переменные-внутри-правил"><span class="header-section-number">3.3.7</span> Переменные внутри правил</a></li>
   <li><a href="#операторы" id="toc-операторы" class="nav-link" data-scroll-target="#операторы"><span class="header-section-number">3.3.8</span> Операторы</a></li>
   <li><a href="#операторы-внутри-правил" id="toc-операторы-внутри-правил" class="nav-link" data-scroll-target="#операторы-внутри-правил"><span class="header-section-number">3.3.9</span> Операторы внутри правил</a></li>
@@ -439,7 +439,7 @@ div.csl-indent {
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Так как под капотом происходит композиция трансдьюсеров (см. <a href="01_introduction_to_transducers.html#sec-transducers" class="quarto-xref"><span>Раздел 1.4.2</span></a>), то символы, которые не участвуют в правилах <code>twol</code> не будут затронуты. И, единственное, что <code>twol</code> не может восстановить, что у нас есть две сущности <code>ь:0</code> и <code>ь:ь</code>.</p>
-<p>Однако все это из разделов вредных советов. Если вы моделируете язык или даже его фрагмент лучше перечислить все символы (и их прописные варианты). Это позволит избежать проблем при анализе некачественных входных данных.</p>
+<p>Однако все это из разряда вредных советов. Если вы моделируете язык или даже его фрагмент лучше перечислить все символы (и их прописные варианты). Это позволит избежать проблем при анализе некачественных входных данных.</p>
 </section>
 <section id="архифонемы" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="архифонемы"><span class="header-section-number">3.3.4</span> Архифонемы</h3>
@@ -669,8 +669,8 @@ div.csl-indent {
 <li>placeholder со значением любой знак: <code>:</code> (еще можно <code>?</code>)</li>
 </ul>
 </section>
-<section id="раздел-sets-и-definitions" class="level3" data-number="3.3.6">
-<h3 data-number="3.3.6" class="anchored" data-anchor-id="раздел-sets-и-definitions"><span class="header-section-number">3.3.6</span> Раздел <code>Sets</code> и <code>Definitions</code></h3>
+<section id="разделы-sets-и-definitions" class="level3" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="разделы-sets-и-definitions"><span class="header-section-number">3.3.6</span> Разделы <code>Sets</code> и <code>Definitions</code></h3>
 <p>Раздел <code>Sets</code> — опциональный раздел <code>.twol</code> файла, в котором можно создать группы символов, к которым потом можно обращаться в правилах по имени. Рассмотрим пример моделирования устранение зияния гласных в адыгейском языке <span class="citation" data-cites="arkadiev2009">(<a href="references.html#ref-arkadiev2009" role="doc-biblioref">Аркадьев и др. 2009</a>: 27–28)</span>:</p>
 <table class="caption-top table">
 <thead>
