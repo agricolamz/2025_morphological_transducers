@@ -211,6 +211,10 @@ div.csl-indent {
   <li><a href="#структура-twol-файла" id="toc-структура-twol-файла" class="nav-link" data-scroll-target="#структура-twol-файла"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</a></li>
   <li><a href="#раздел-алфавита" id="toc-раздел-алфавита" class="nav-link" data-scroll-target="#раздел-алфавита"><span class="header-section-number">3.3.3</span> Раздел алфавита</a></li>
   <li><a href="#архифонемы" id="toc-архифонемы" class="nav-link" data-scroll-target="#архифонемы"><span class="header-section-number">3.3.4</span> Архифонемы</a></li>
+  <li><a href="#обращение-к-разным-представлениям" id="toc-обращение-к-разным-представлениям" class="nav-link" data-scroll-target="#обращение-к-разным-представлениям"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</a></li>
+  <li><a href="#операторы" id="toc-операторы" class="nav-link" data-scroll-target="#операторы"><span class="header-section-number">3.3.6</span> Операторы</a></li>
+  <li><a href="#множества-и-определения" id="toc-множества-и-определения" class="nav-link" data-scroll-target="#множества-и-определения"><span class="header-section-number">3.3.7</span> Множества и определения</a></li>
+  <li><a href="#переменные-внутри-правил" id="toc-переменные-внутри-правил" class="nav-link" data-scroll-target="#переменные-внутри-правил"><span class="header-section-number">3.3.8</span> Переменные внутри правил</a></li>
   </ul></li>
   <li><a href="#примеры-чередований" id="toc-примеры-чередований" class="nav-link" data-scroll-target="#примеры-чередований"><span class="header-section-number">3.4</span> Примеры чередований</a></li>
   </ul>
@@ -530,7 +534,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Мы видим, что для переходов после мягких основ существует одинаковый контекст, так что можно использовать объединение с логическим или <code>|</code> (квадратные скобки добавлены для удобочитаемости, работает и без них):</p>
+<p>Мы видим, что для переходов после мягких основ существует одинаковый контекст, так что можно использовать объединение при помощи оператора <code>|</code> (квадратные скобки добавлены для удобочитаемости, работает и без них):</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">  а и м н п я Т</span></span>
@@ -558,7 +562,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>В <span class="citation" data-cites="itkin07">(<a href="references.html#ref-itkin07" role="doc-biblioref">Иткин 2007</a>: 118)</span> описывается чередование <em>н</em>~<em>н’</em> в русском языке. Попробуйте дополнить файл <code>.twol</code>, чтобы получился трансдьюсор, моделирующий следующие формы:</p>
+<p>В работе <span class="citation" data-cites="itkin07">(<a href="references.html#ref-itkin07" role="doc-biblioref">Иткин 2007</a>: 118)</span> описано чередование <em>н</em>~<em>н’</em> в русском языке. Попробуйте заполнить раздел <code>Rules</code> в файле <code>.twol</code>, чтобы получился трансдьюсор, моделирующий следующие формы:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -643,14 +647,24 @@ div.csl-indent {
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="обращение-к-разным-представлениям" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="обращение-к-разным-представлениям"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</h3>
+</section>
+<section id="операторы" class="level3" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="операторы"><span class="header-section-number">3.3.6</span> Операторы</h3>
+</section>
+<section id="множества-и-определения" class="level3" data-number="3.3.7">
+<h3 data-number="3.3.7" class="anchored" data-anchor-id="множества-и-определения"><span class="header-section-number">3.3.7</span> Множества и определения</h3>
+</section>
+<section id="переменные-внутри-правил" class="level3" data-number="3.3.8">
+<h3 data-number="3.3.8" class="anchored" data-anchor-id="переменные-внутри-правил"><span class="header-section-number">3.3.8</span> Переменные внутри правил</h3>
 </section>
 </section>
 <section id="примеры-чередований" class="level2" data-number="3.4">
