@@ -658,9 +658,97 @@ div.csl-indent {
 </section>
 <section id="обращение-к-разным-представлениям" class="level3" data-number="3.3.5">
 <h3 data-number="3.3.5" class="anchored" data-anchor-id="обращение-к-разным-представлениям"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</h3>
+<p>Единцы, которыми манипулирует <code>twol</code> — пары глубинного и поверхносного представления. Поэтому в правилах могут появлятся</p>
+<ul>
+<li>полностью определенные единицы, например, <code>а:ы</code> или <code>ь:0</code></li>
+<li>единицы, определенные только на одном из представлений
+<ul>
+<li>глубинном, например, <code>ы:</code></li>
+<li>поверхностном, например, <code>:я</code></li>
+</ul></li>
+<li>placeholder со значением любой знак: <code>:</code> (еще можно <code>?</code>)</li>
+</ul>
 </section>
 <section id="множества-и-определения" class="level3" data-number="3.3.6">
 <h3 data-number="3.3.6" class="anchored" data-anchor-id="множества-и-определения"><span class="header-section-number">3.3.6</span> Множества и определения</h3>
+<p>В разделе <code>Alphabet</code> можно определить группы, к которым потом можно обращаться в правилах. Давайте попробуем смоделировать устранение зияния гласных в адыгейском языке <span class="citation" data-cites="arkadiev2009">(<a href="references.html#ref-arkadiev2009" role="doc-biblioref">Аркадьев и др. 2009</a>: 27–28)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">abs</th>
+<th style="text-align: center;">‘это не X’ <br> neg</th>
+<th style="text-align: center;">‘это X?’ <br> q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>женщина</td>
+<td style="text-align: center;"><em>шъуз</em></td>
+<td style="text-align: center;"><em>шъузэп</em></td>
+<td style="text-align: center;"><em>шъуза</em></td>
+</tr>
+<tr class="even">
+<td>мужчина</td>
+<td style="text-align: center;"><em>лIы</em></td>
+<td style="text-align: center;"><em>лIэп</em></td>
+<td style="text-align: center;"><em>лIа</em></td>
+</tr>
+<tr class="odd">
+<td>дом</td>
+<td style="text-align: center;"><em>унэ</em></td>
+<td style="text-align: center;"><em>унэп</em></td>
+<td style="text-align: center;"><em>уна</em></td>
+</tr>
+</tbody>
+</table>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><code>lexd</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">результат</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root Infl</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Root</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="in">шъуз</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="in">лIы</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="in">унэ</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Infl</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;abs&gt;:</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;neg&gt;:эп</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;q&gt;:а</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="in">    I а з л н п у ш ъ ы э</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="in">    а:0 ы:0 э:0;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="in">Sets</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="in">    Vowels = а ы э;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="in">"устранение зияния глассных"</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="in">:0 &lt;=&gt; _ Vowels;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<pre><code>лIы&lt;q&gt;:лIа
+лIы&lt;neg&gt;:лIэп
+лIы&lt;abs&gt;:лIы
+унэ&lt;q&gt;:уна
+унэ&lt;neg&gt;:унэп
+унэ&lt;abs&gt;:унэ
+шъуз&lt;abs&gt;:шъуз
+шъуз&lt;q&gt;:шъуза
+шъуз&lt;neg&gt;:шъузэп</code></pre>
+</div>
+</div>
+</div>
 </section>
 <section id="переменные-внутри-правил" class="level3" data-number="3.3.7">
 <h3 data-number="3.3.7" class="anchored" data-anchor-id="переменные-внутри-правил"><span class="header-section-number">3.3.7</span> Переменные внутри правил</h3>
@@ -727,6 +815,9 @@ Koskenniemi, K. 1983. <span>«Two-level morphology: A general computational mode
 </div>
 <div id="ref-prince1994" class="csl-entry" role="listitem">
 Prince, A., и P. Smolensky. 1994. <span>«Optimality Theory: Constraint interaction in generative grammar»</span>. Rutgers University, Piscataway, NJ., Rutgers Center for Cognitive Science.
+</div>
+<div id="ref-arkadiev2009" class="csl-entry" role="listitem">
+Аркадьев, П. М., Ю. А. Ландер, А. Б. Летучий, Н. Р. Сумбатова, и Я. Г. Тестелец. 2009. <span>«Введение. Основные сведения об адыгейском языке»</span>. В <em>Аспекты полисинтетизма: очерки по грамматике адыгейского языка</em>, 17–120.
 </div>
 <div id="ref-itkin07" class="csl-entry" role="listitem">
 Иткин, И. Б. 2007. <em>Русская морфонология</em>. Москва: Гнозис.
