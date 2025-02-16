@@ -213,9 +213,8 @@ div.csl-indent {
   <li><a href="#архифонемы" id="toc-архифонемы" class="nav-link" data-scroll-target="#архифонемы"><span class="header-section-number">3.3.4</span> Архифонемы</a></li>
   <li><a href="#обращение-к-разным-представлениям" id="toc-обращение-к-разным-представлениям" class="nav-link" data-scroll-target="#обращение-к-разным-представлениям"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</a></li>
   <li><a href="#разделы-sets-и-definitions" id="toc-разделы-sets-и-definitions" class="nav-link" data-scroll-target="#разделы-sets-и-definitions"><span class="header-section-number">3.3.6</span> Разделы <code>Sets</code> и <code>Definitions</code></a></li>
-  <li><a href="#переменные-внутри-правил" id="toc-переменные-внутри-правил" class="nav-link" data-scroll-target="#переменные-внутри-правил"><span class="header-section-number">3.3.7</span> Переменные внутри правил</a></li>
-  <li><a href="#операторы" id="toc-операторы" class="nav-link" data-scroll-target="#операторы"><span class="header-section-number">3.3.8</span> Операторы</a></li>
-  <li><a href="#операторы-внутри-правил" id="toc-операторы-внутри-правил" class="nav-link" data-scroll-target="#операторы-внутри-правил"><span class="header-section-number">3.3.9</span> Операторы внутри правил</a></li>
+  <li><a href="#операторы" id="toc-операторы" class="nav-link" data-scroll-target="#операторы"><span class="header-section-number">3.3.7</span> Операторы</a></li>
+  <li><a href="#операторы-внутри-правил" id="toc-операторы-внутри-правил" class="nav-link" data-scroll-target="#операторы-внутри-правил"><span class="header-section-number">3.3.8</span> Операторы внутри правил</a></li>
   </ul></li>
   <li><a href="#примеры-чередований" id="toc-примеры-чередований" class="nav-link" data-scroll-target="#примеры-чередований"><span class="header-section-number">3.4</span> Примеры чередований</a></li>
   <li><a href="#глоссирование" id="toc-глоссирование" class="nav-link" data-scroll-target="#глоссирование"><span class="header-section-number">3.5</span> Глоссирование</a></li>
@@ -288,12 +287,12 @@ div.csl-indent {
 <li>правила — посимвольные ограничения на поверхностное представление, которые применяются параллельно.</li>
 <li>правила могут оперировать единицами глубинного (другое название — лексическое) представления, поверхностного представления или одновременно обоих.</li>
 </ul>
-<p>Например, получить из глубинной формы <code>spy+s</code> поверхностную форму <code>spies</code> можно двумя правилами (нотацию мы подробнее обсудим позже):</p>
+<p>Например, получить из глубинной формы <code>spy&gt;s</code> поверхностную форму <code>spies</code> можно двумя правилами (нотацию мы подробнее обсудим позже):</p>
 <ul>
 <li><code>y:i &lt;=&gt; _ 0:e</code></li>
-<li><code>0:e &lt;=&gt; y: _ %+:</code></li>
+<li><code>0:e &lt;=&gt; y: _ %&gt;:0</code></li>
 </ul>
-<p>Первое правило обращается одновременно к глубинному (<code>0:</code>) и поверхностному (<code>:e</code>) представлениям. Второе правило обращается только к глубинному представлению (<code>y:</code>) и поверхностному (<code>%+:</code>) представлениям.</p>
+<p>Первое правило обращается одновременно к глубинному (<code>0:</code>) и поверхностному (<code>:e</code>) представлениям. Второе правило обращается только к глубинному представлению (<code>y:</code>) и поверхностному (<code>%&gt;:0</code>) представлениям.</p>
 <p>Использование ограничений, вместо правил, чуть позже возникла в фонологии в виде Теории оптимальности (OT, <span class="citation" data-cites="prince1994">(<a href="references.html#ref-prince1994" role="doc-biblioref">Prince и Smolensky 1994</a>)</span>), однако в рамках OT предпалагаются, что ограничения носят универсальный характер и есть во всех языках, в то время, как ограничения двухуровневой фонологии/морфологии — имеют частный внутриязыковой характер.</p>
 </section>
 <section id="программа-twol" class="level2" data-number="3.3">
@@ -762,15 +761,98 @@ div.csl-indent {
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Кроме того, внутри правил можно создавать свои переменные. Рассмотрим это на примере палатализации в польском (индоевропейские, славянские):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>признак</th>
+<th>нога</th>
+<th>рука</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt;nom&gt;&lt;sg&gt;</td>
+<td><em>cecha</em></td>
+<td><em>noga</em></td>
+<td><em>ręka</em></td>
+</tr>
+<tr class="even">
+<td>&lt;acc&gt;&lt;sg&gt;</td>
+<td><em>cechę</em></td>
+<td><em>nogę</em></td>
+<td><em>rękę</em></td>
+</tr>
+<tr class="odd">
+<td>&lt;dat&gt;&lt;sg&gt;</td>
+<td><em>cesze</em></td>
+<td><em>nodze</em></td>
+<td><em>ręce</em></td>
+</tr>
+</tbody>
+</table>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><code>lexd</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">результат</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="sourceCode" id="cb21"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="in">Root Infl</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Root</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="in">cecha&lt;n&gt;:cech</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="in">noga&lt;n&gt;:nog</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="in">ręka&lt;n&gt;:ręk</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Infl</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;nom&gt;&lt;sg&gt;:a</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;acc&gt;&lt;sg&gt;:ę</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;dat&gt;&lt;sg&gt;:{dat.sg}e</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">    a c h e n o g r ę k</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="in">    k:c g:dz h:sz c:0</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="in">    %{dat.sg%}:0;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="in">"палатализация"</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="in">C:Cpal &lt;=&gt; _ %{dat.sg%}:0;</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="in">    where C in (k g h)</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="in">          Cpal in (c dz sz)</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="in">          matched ;</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="in">"починка диграфа ch -&gt; sz"</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="in">c:0 &lt;=&gt; _ h:sz;</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="in">"гиперфонема для дательного"</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="in">%{dat.sg%}:0 &lt;=&gt; _;</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<pre><code>cecha&lt;n&gt;&lt;dat&gt;&lt;sg&gt;:cesze
+cecha&lt;n&gt;&lt;nom&gt;&lt;sg&gt;:cecha
+cecha&lt;n&gt;&lt;acc&gt;&lt;sg&gt;:cechę
+noga&lt;n&gt;&lt;nom&gt;&lt;sg&gt;:noga
+noga&lt;n&gt;&lt;acc&gt;&lt;sg&gt;:nogę
+noga&lt;n&gt;&lt;dat&gt;&lt;sg&gt;:nodze
+ręka&lt;n&gt;&lt;nom&gt;&lt;sg&gt;:ręka
+ręka&lt;n&gt;&lt;acc&gt;&lt;sg&gt;:rękę
+ręka&lt;n&gt;&lt;dat&gt;&lt;sg&gt;:ręce</code></pre>
+</div>
+</div>
+</div>
+<p>В файле <code>.twol</code> в правиле <code>палатализация</code> были созданы две переменные <code>C</code> и <code>Cpal</code>, которые были определены ниже. Также в этом <code>.twol</code> файле есть пример соответствия одному входному символу многосимвольный выход (<code>g:dz</code>). К сожалению, нельзя определять многосимвольные входные символы кроме как через гиперфонемы.</p>
 </section>
-<section id="переменные-внутри-правил" class="level3" data-number="3.3.7">
-<h3 data-number="3.3.7" class="anchored" data-anchor-id="переменные-внутри-правил"><span class="header-section-number">3.3.7</span> Переменные внутри правил</h3>
+<section id="операторы" class="level3" data-number="3.3.7">
+<h3 data-number="3.3.7" class="anchored" data-anchor-id="операторы"><span class="header-section-number">3.3.7</span> Операторы</h3>
 </section>
-<section id="операторы" class="level3" data-number="3.3.8">
-<h3 data-number="3.3.8" class="anchored" data-anchor-id="операторы"><span class="header-section-number">3.3.8</span> Операторы</h3>
-</section>
-<section id="операторы-внутри-правил" class="level3" data-number="3.3.9">
-<h3 data-number="3.3.9" class="anchored" data-anchor-id="операторы-внутри-правил"><span class="header-section-number">3.3.9</span> Операторы внутри правил</h3>
+<section id="операторы-внутри-правил" class="level3" data-number="3.3.8">
+<h3 data-number="3.3.8" class="anchored" data-anchor-id="операторы-внутри-правил"><span class="header-section-number">3.3.8</span> Операторы внутри правил</h3>
 </section>
 </section>
 <section id="примеры-чередований" class="level2" data-number="3.4">
@@ -1020,7 +1102,7 @@ Prince, A., и P. Smolensky. 1994. <span>«Optimality Theory: Constraint interac
 </table>
 <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn3"><p>Если удалить из работающего файла одно из названий правила получится ошибка, в которой самым явным будет часть сообщения <code>Error: twol.hfst is not a valid transducer file</code>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Этот термин предложил Н. С. Трубецкой для единиц, находящихся в слабой фонологической позиции и характеризующихся неполным набором признаковых спецификаций (например, оглушение на конце слова в русском). Однако в практике пользователей <code>lexc</code> и <code>twol</code> архифонемы — это просто единицы удобные для моделирования. Иногда их используют и для случаев подразумевавшихся Трубецким, например, для моделирования гармонии, но иногда их используют для моделирования других морфонологических сложностей.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Этот термин предложил Н. С. Трубецкой для единиц, находящихся в слабой фонологической позиции и характеризующихся неполным набором признаковых спецификаций (например, оглушение на конце слова в русском). Однако в практике пользователей <code>lexd</code> и <code>twol</code> архифонемы — это просто единицы удобные для моделирования. Иногда их используют и для случаев подразумевавшихся Трубецким, например, для моделирования гармонии, но иногда их используют для моделирования других морфонологических сложностей.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
