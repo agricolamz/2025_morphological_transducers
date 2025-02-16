@@ -530,7 +530,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Мы видим, что для переходов после мягких основ существует одинаковый контекст, так что можно использовать объединение:</p>
+<p>Мы видим, что для переходов после мягких основ существует одинаковый контекст, так что можно использовать объединение с логическим или <code>|</code> (квадратные скобки добавлены для удобочитаемости, работает и без них):</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">  а и м н п я Т</span></span>
@@ -547,24 +547,25 @@ div.csl-indent {
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="in">[ %{А%}:я | %{Ы%}:и ] &lt;=&gt; %{j%}:0 _ ;</span></span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Также следует обратить внимание, на то, что мы не писали правил для пар <code>{А}:а</code> и <code>{Ы}:ы</code>. <code>twol</code> сам использовал указанные нами переходы во всех контекстах, не специализированным правилом перехода после мягких основ.</p>
+<p>Архифонемы позволяют моделировать морфонологические правила, так как мы всегда можем вставить единицу <code>{some_name}:0</code>, которая показывает на важную морфонологическую границу, рядом с которой что-то происходит.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Задание 03_03
+Задание 03_02
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>В <span class="citation" data-cites="itkin07">(<a href="references.html#ref-itkin07" role="doc-biblioref">Иткин 2007</a>: 118)</span> описывается чередование <em>н</em>~<em>н’</em> в русском языке. Попробуйте написать трансдьюсор, моделирующий следующие формы:</p>
+<p>В <span class="citation" data-cites="itkin07">(<a href="references.html#ref-itkin07" role="doc-biblioref">Иткин 2007</a>: 118)</span> описывается чередование <em>н</em>~<em>н’</em> в русском языке. Попробуйте дополнить файл <code>.twol</code>, чтобы получился трансдьюсор, моделирующий следующие формы:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>nom.sg</th>
-<th>dat.sg</th>
-<th>ins.pl</th>
-<th>gen.pl</th>
+<th><nom><sg></sg></nom></th>
+<th><dat><sg></sg></dat></th>
+<th><ins><pl></pl></ins></th>
+<th><gen><pl></pl></gen></th>
 </tr>
 </thead>
 <tbody>
@@ -606,6 +607,48 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><code>lexd</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><code>twol</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="in">(NounRoot NounInfl)[^[hard,soft]]</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON NounRoot</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="in">башня&lt;n&gt;:баш{Е}н[hard]</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="in">песня&lt;n&gt;:пес{Е}н[hard]</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="in">бойня&lt;n&gt;:бой{Е}н[hard]</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="in">деревня&lt;n&gt;:дерев{Е}н[soft]</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="in">кухня&lt;n&gt;:кух{О}н[soft]</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="in">Таня&lt;n&gt;:Тан[soft]</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON NounInfl</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;nom&gt;&lt;sg&gt;:я</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;dat&gt;&lt;sg&gt;:ей</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;dat&gt;&lt;pl&gt;:ями</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;gen&gt;&lt;pl&gt;:{GEN.PL}[hard]</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;gen&gt;&lt;pl&gt;:{GEN.PL}ь[soft]</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="in">    б ш н п с й д р в к х Т м ь</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="in">    а я е у и о</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="in">    %{Е%}:0 %{О%}:0 %{GEN.PL%}:0 </span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="in">    %{Е%}:е %{О%}:о</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="in">    й:0</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="in">;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
