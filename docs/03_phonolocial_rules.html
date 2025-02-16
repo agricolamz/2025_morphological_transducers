@@ -309,7 +309,7 @@ div.csl-indent {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl -s https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile -o Makefile; make</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>дальше, как и раньше, следует создадать в коллабе или у себя на компьютере (если у вас Linux), файл с названием <code>task.lexd</code>. В Google Colab для этого достаточно вставить первой строкой кодового блока <code>%%writefile task.lexd</code>. Вот пример такого файла:</li>
+<li>дальше, как и раньше, следует создать в колабе или у себя на компьютере (если у вас Linux), файл с названием <code>task.lexd</code>. В Google Colab для этого достаточно вставить первой строкой кодового блока <code>%%writefile task.lexd</code>. Вот пример такого файла:</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
@@ -416,7 +416,7 @@ div.csl-indent {
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="10" data-code-annotation="6">Само правило. Оно обычно имеет следующие элементы: какая-то пара вхохдного/выходного символа (<code>ь:0</code>), дальше оператор (<code>&lt;=&gt;</code>), дальше контекст (<code>_ к</code>), все это заканчивается точкой с запятой.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="10" data-code-annotation="6">Само правило. Оно обычно имеет следующие элементы: какая-то пара входного/выходного символа (<code>ь:0</code>), дальше оператор (<code>&lt;=&gt;</code>), дальше контекст (<code>_ к</code>), все это заканчивается точкой с запятой.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
 <dd>
@@ -438,12 +438,12 @@ div.csl-indent {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Так как под капотом происходит композиция трансдьюсеров (см. <a href="01_introduction_to_transducers.html#sec-transducers" class="quarto-xref"><span>Раздел 1.4.2</span></a>), то символы, которые не участвуют в правилах <code>twol</code> не будут затронуты. И, единственное, что <code>twol</code> не может восстановить, что у нас есть две сущности <code>ь:0</code> и <code>ь:ь</code>.</p>
-<p>Однако все это из разряда вредных советов. Если вы моделируете язык или даже его фрагмент лучше перечислить все символы (и их прописные варианты). Это позволит избежать проблем при анализе некачественных входных данных.</p>
+<p>Так как под капотом происходит композиция трансдьюсеров (см. <a href="01_introduction_to_transducers.html#sec-transducers" class="quarto-xref"><span>Раздел 1.4.2</span></a>), то символы, которые не участвуют в правилах <code>twol</code>, не будут затронуты. И, единственное, что <code>twol</code> не может восстановить, что у нас есть две сущности: <code>ь:0</code> и <code>ь:ь</code>.</p>
+<p>Однако все это из разряда вредных советов. Если вы моделируете язык или даже его фрагмент, лучше перечислить все символы (и их прописные варианты). Это позволит избежать проблем при анализе некачественных входных данных.</p>
 </section>
 <section id="архифонемы" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="архифонемы"><span class="header-section-number">3.3.4</span> Архифонемы</h3>
-<p>Иногда (мор)фонологические проблемы можно решать не постулирая некоторую конкретную сегментную глубинную форму, а используя, так называемые, архифонемы<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Эти единицы записываются в <code>lexd</code> в фигурных скобках, например <code>{А}</code>. Существует конвенция, что если архифонема позже только удаляется, то ее пишут строчными буквами, например, <code>{s}</code>, а если архифонема представляет собой набор поверхностных форм, то ее пишут заглавными буквами, например, <code>{А}</code>. Важно отметить, что в файле <code>.twol</code> фигнурные скобки нужно экранировать при помощи знака процента <code>%</code>. Для примера давайте перемоделируем пример из прошлого раздела:</p>
+<p>Иногда (мор)фонологические проблемы можно решать, не постулируя некоторую конкретную сегментную глубинную форму, а используя, так называемые архифонемы<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Эти единицы записываются в <code>lexd</code> в фигурных скобках, например <code>{А}</code>. Существует конвенция, что если архифонема позже только удаляется, то ее пишут строчными буквами, например, <code>{s}</code>, а если архифонема представляет собой набор поверхностных форм, то ее пишут заглавными буквами, например, <code>{А}</code>. Важно отметить, что в файле <code>.twol</code> фигурные скобки нужно экранировать при помощи знака процента <code>%</code>. Для примера давайте перемоделируем пример из прошлого раздела:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><code>lexd</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">до применения <code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">после применения <code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">старый файл <code>lexd</code></a></li></ul>
 <div class="tab-content">
@@ -552,7 +552,7 @@ div.csl-indent {
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="in">[ %{А%}:я | %{Ы%}:и ] &lt;=&gt; %{j%}:0 _ ;</span></span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Также следует обратить внимание, на то, что мы не писали правил для пар <code>{А}:а</code> и <code>{Ы}:ы</code>. <code>twol</code> сам использовал указанные нами переходы во всех контекстах, не специализированным правилом перехода после мягких основ.</p>
+<p>Также следует обратить внимание, на то, что мы не писали правил для пар <code>{А}:а</code> и <code>{Ы}:ы</code>. <code>twol</code> сам использовал указанные нами переходы во всех контекстах, не специализированных правилом перехода после мягких основ.</p>
 <p>Архифонемы позволяют моделировать морфонологические правила, так как мы всегда можем вставить единицу <code>{some_name}:0</code>, которая показывает на важную морфонологическую границу, рядом с которой что-то происходит.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -564,7 +564,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>В работе <span class="citation" data-cites="itkin07">(<a href="references.html#ref-itkin07" role="doc-biblioref">Иткин 2007</a>: 118)</span> описано чередование <em>н</em>~<em>н’</em> в русском языке. Попробуйте заполнить раздел <code>Rules</code> в файле <code>.twol</code>, чтобы получился трансдьюсор, моделирующий следующие формы:</p>
+<p>В работе <span class="citation" data-cites="itkin07">(<a href="references.html#ref-itkin07" role="doc-biblioref">Иткин 2007</a>: 118)</span> описано чередование <em>н</em>~<em>н’</em> в русском языке. Попробуйте заполнить раздел <code>Rules</code> в файле <code>.twol</code>, чтобы получился трансдьюсер, моделирующий следующие формы:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -752,7 +752,16 @@ div.csl-indent {
 <p>Обратим внимание, что <code>Vowels:0</code> в рамках нашей задачи можно было бы записать экономичнее <code>:0</code>. Однако, такое правило при моделирования большего фрагмента грамматики скорее всего может привести к непредвиденным эффектам. Тем более, что такая запись плохо читаема вне контекста.</p>
 <p>Определение множеств может содержать имена множеств, определенных ранее. Все перечисленные в множествах единицы, должны быть определены в разделе <code>Alphabet</code>.</p>
 <p>Следует отметить, что переменная <code>Vowels</code> в нашем <code>.twol</code> файле раскрылась всеми возможными способами: <code>а</code> – <code>а</code>, <code>а</code> – <code>ы</code>, <code>а</code> – <code>э</code>, <code>ы</code> – <code>ы</code>, <code>ы</code> – <code>э</code>, <code>э</code> – <code>э</code>.</p>
-<p>Раздел <code>Definitions</code> — опциональный раздел <code>.twol</code> файла, в котором можно давать некоторым левым или правым контекстам имена, к которым потом можно обращаться в правилах.</p>
+<p>Раздел <code>Definitions</code> — опциональный раздел <code>.twol</code> файла, в котором можно давать некоторым левым или правым контекстам имена, к которым потом можно обращаться в правилах. Это осмысленно, если один и тот же контекст встречается в разных правилах, пример из <span class="citation" data-cites="beesley2003">(<a href="references.html#ref-beesley2003" role="doc-biblioref">Beesley и Karttunen 2003</a>: 29)</span></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">Definitions</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="in">  XContext = [ p | t | k | g:k ] ;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="in">  YContext = [ m | n | n g ] ;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="переменные-внутри-правил" class="level3" data-number="3.3.7">
 <h3 data-number="3.3.7" class="anchored" data-anchor-id="переменные-внутри-правил"><span class="header-section-number">3.3.7</span> Переменные внутри правил</h3>
@@ -783,17 +792,17 @@ div.csl-indent {
 </section>
 <section id="глоссирование" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="глоссирование"><span class="header-section-number">3.5</span> Глоссирование</h2>
-<p>Все это время анализ, который мы получали содержал исключительно грамматические теги без морфемных границ. Основной разработчик парадигмы правилового морфологического анализа — Apertium — скорее заинтересован в создании переводчиков, поэтому морфемные границы отходят на второй план. Однако ожидание большинства лингвистов все же заключаются в том, что морфемные границы в анализе должны быть, так как для них нет другой мотивации вкладываться в работу над морфологическим анализатором, кроме как если у них есть множество неотглоссированных текстов, которые они не хотят глоссировать вручную.</p>
-<p>Задача однако в таком случае получается выглядит так:</p>
+<p>Все это время анализ, который мы получали, содержал исключительно грамматические теги без морфемных границ. Основной разработчик парадигмы правилового морфологического анализа — Apertium — скорее заинтересован в создании переводчиков, поэтому морфемные границы отходят на второй план. Однако ожидание большинства лингвистов все же заключается в том, что морфемные границы в анализе должны быть, так как для них нет другой мотивации вкладываться в работу над морфологическим анализатором, кроме как если у них есть множество неотглоссированных текстов, которые они не хотят глоссировать вручную.</p>
+<p>Получается так:</p>
 <ul>
 <li>На вход мы подаем текст на языке.</li>
-<li>На выходе мы получаем множество пар, где каждый элементы это
+<li>На выходе мы получаем множество пар, где каждый элемент это
 <ul>
 <li>анализ с поморфемной разбивкой;</li>
 <li>материал на языке с поморфемной разбивкой.</li>
 </ul></li>
 </ul>
-<p>Отметим, что морфологическая граница традиционно в таких случаях обозначается <code>&gt;</code>. Это не самый удобный для читаемости символ, но его ожидают разные другие полезные инструменты на основе трансдьюсеров. Если мы хотим разработать глоссирующий трансдьюсер, нам имеет смысл создавать несколько похожих трансдьюссеров:</p>
+<p>Отметим, что морфологическая граница традиционно в таких случаях обозначается <code>&gt;</code>. Это не самый удобный для читаемости символ, но его ожидают разные другие полезные инструменты на основе трансдьюсеров. Если мы хотим разработать инструмент для глоссироваания, нам имеет смысл создать два похожих трансдьюсера:</p>
 <ul>
 <li>walk&gt;s — walk&lt;v&gt;&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;</li>
 <li>walks — walk&lt;v&gt;&gt;&lt;pres&gt;&lt;3&gt;&lt;sg&gt;</li>
@@ -1011,7 +1020,7 @@ Prince, A., и P. Smolensky. 1994. <span>«Optimality Theory: Constraint interac
 </table>
 <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn3"><p>Если удалить из работающего файла одно из названий правила получится ошибка, в которой самым явным будет часть сообщения <code>Error: twol.hfst is not a valid transducer file</code>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Этот термин предложил Н. С. Трубецким для единиц, находящихся в слабой фонологической позиции и характеризующихся неполным набором признаковых спецификаций (например, оглушение на конце слова в русском). Однако в практике пользователей <code>lexc</code> и <code>twol</code> архифонемы — это просто единицы удобные для моделирования. Иногда их используют и для случаев подразумевавшихся Трубецким, например, для моделирования гармонии, но иногда их используют в качестве для моделирования других морфонологических сложностей.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Этот термин предложил Н. С. Трубецкой для единиц, находящихся в слабой фонологической позиции и характеризующихся неполным набором признаковых спецификаций (например, оглушение на конце слова в русском). Однако в практике пользователей <code>lexc</code> и <code>twol</code> архифонемы — это просто единицы удобные для моделирования. Иногда их используют и для случаев подразумевавшихся Трубецким, например, для моделирования гармонии, но иногда их используют для моделирования других морфонологических сложностей.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
