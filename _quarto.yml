@@ -12,7 +12,7 @@ book:
     - index.qmd
     - 01_introduction_to_transducers.qmd
     - 02_introduction_to_lexd.qmd
-    - 03_phonolocial_rules.qmd
+    - 03_phonological_rules.qmd
     - 04_language_tasks.qmd
     - 05_technical_class.qmd
     - 06_transducer_manipulation.qmd
