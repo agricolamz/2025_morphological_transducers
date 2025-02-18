@@ -208,16 +208,15 @@ div.csl-indent {
   <li><a href="#программа-twol" id="toc-программа-twol" class="nav-link" data-scroll-target="#программа-twol"><span class="header-section-number">3.3</span> Программа <code>twol</code></a>
   <ul class="collapse">
   <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link" data-scroll-target="#техническое-введение"><span class="header-section-number">3.3.1</span> Техническое введение</a></li>
-  <li><a href="#структура-twol-файла" id="toc-структура-twol-файла" class="nav-link" data-scroll-target="#структура-twol-файла"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</a></li>
+  <li><a href="#sec-twol-structure" id="toc-sec-twol-structure" class="nav-link" data-scroll-target="#sec-twol-structure"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</a></li>
   <li><a href="#раздел-алфавита" id="toc-раздел-алфавита" class="nav-link" data-scroll-target="#раздел-алфавита"><span class="header-section-number">3.3.3</span> Раздел алфавита</a></li>
-  <li><a href="#архифонемы" id="toc-архифонемы" class="nav-link" data-scroll-target="#архифонемы"><span class="header-section-number">3.3.4</span> Архифонемы</a></li>
+  <li><a href="#sec-archiphonemes" id="toc-sec-archiphonemes" class="nav-link" data-scroll-target="#sec-archiphonemes"><span class="header-section-number">3.3.4</span> Архифонемы</a></li>
   <li><a href="#обращение-к-разным-представлениям" id="toc-обращение-к-разным-представлениям" class="nav-link" data-scroll-target="#обращение-к-разным-представлениям"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</a></li>
   <li><a href="#разделы-sets-и-definitions" id="toc-разделы-sets-и-definitions" class="nav-link" data-scroll-target="#разделы-sets-и-definitions"><span class="header-section-number">3.3.6</span> Разделы <code>Sets</code> и <code>Definitions</code></a></li>
   <li><a href="#операторы-и-другое" id="toc-операторы-и-другое" class="nav-link" data-scroll-target="#операторы-и-другое"><span class="header-section-number">3.3.7</span> Операторы и другое</a></li>
   <li><a href="#операторы-правил" id="toc-операторы-правил" class="nav-link" data-scroll-target="#операторы-правил"><span class="header-section-number">3.3.8</span> Операторы правил</a></li>
   </ul></li>
-  <li><a href="#примеры-чередований" id="toc-примеры-чередований" class="nav-link" data-scroll-target="#примеры-чередований"><span class="header-section-number">3.4</span> Примеры чередований</a></li>
-  <li><a href="#глоссирование" id="toc-глоссирование" class="nav-link" data-scroll-target="#глоссирование"><span class="header-section-number">3.5</span> Глоссирование</a></li>
+  <li><a href="#глоссирование" id="toc-глоссирование" class="nav-link" data-scroll-target="#глоссирование"><span class="header-section-number">3.4</span> Глоссирование</a></li>
   </ul>
 </nav>
     </div>
@@ -377,8 +376,8 @@ div.csl-indent {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ make test_03_01</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="структура-twol-файла" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="структура-twol-файла"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</h3>
+<section id="sec-twol-structure" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="sec-twol-structure"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</h3>
 <p>Каждый <code>twol</code> файл состоит из нескольких блоков, которые удобно обсуждать на приведенном выше примере:</p>
 <div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
@@ -440,8 +439,8 @@ div.csl-indent {
 <p>Так как под капотом происходит композиция трансдьюсеров (см. <a href="01_introduction_to_transducers.html#sec-transducers" class="quarto-xref"><span>Раздел 1.4.2</span></a>), то символы, которые не участвуют в правилах <code>twol</code>, не будут затронуты. И, единственное, что <code>twol</code> не может восстановить, что у нас есть две сущности: <code>ь:0</code> и <code>ь:ь</code>.</p>
 <p>Однако все это из разряда вредных советов. Если вы моделируете язык или даже его фрагмент, лучше перечислить все символы (и их прописные варианты). Это позволит избежать проблем при анализе некачественных входных данных.</p>
 </section>
-<section id="архифонемы" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="архифонемы"><span class="header-section-number">3.3.4</span> Архифонемы</h3>
+<section id="sec-archiphonemes" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="sec-archiphonemes"><span class="header-section-number">3.3.4</span> Архифонемы</h3>
 <p>Иногда (мор)фонологические проблемы можно решать, не постулируя некоторую конкретную сегментную глубинную форму, а используя, так называемые архифонемы<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Эти единицы записываются в <code>lexd</code> в фигурных скобках, например <code>{А}</code>. Существует конвенция, что если архифонема позже только удаляется, то ее пишут строчными буквами, например, <code>{s}</code>, а если архифонема представляет собой набор поверхностных форм, то ее пишут заглавными буквами, например, <code>{А}</code>. Важно отметить, что в файле <code>.twol</code> фигурные скобки нужно экранировать при помощи знака процента <code>%</code>. Для примера давайте перемоделируем пример из прошлого раздела:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><code>lexd</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">до применения <code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">после применения <code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">старый файл <code>lexd</code></a></li></ul>
@@ -1224,25 +1223,8 @@ ma      # есть в Y</code></pre>
 <p>В большинстве случаев нужно использовать оператор <code>&lt;=&gt;</code>. Потребность в других операторах возникает только если есть конфликтующие правила.</p>
 </section>
 </section>
-<section id="примеры-чередований" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="примеры-чередований"><span class="header-section-number">3.4</span> Примеры чередований</h2>
-<ul>
-<li>ассимиляция</li>
-<li>диссимиляция</li>
-<li>гармония</li>
-<li>ослабление</li>
-<li>усиление</li>
-<li>фузия</li>
-<li>расщепление</li>
-<li>элизия</li>
-<li>эпентеза</li>
-<li>чеширизация</li>
-<li>метатеза</li>
-<li>редупликация</li>
-</ul>
-</section>
-<section id="глоссирование" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="глоссирование"><span class="header-section-number">3.5</span> Глоссирование</h2>
+<section id="глоссирование" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="глоссирование"><span class="header-section-number">3.4</span> Глоссирование</h2>
 <p>Все это время анализ, который мы получали, содержал исключительно грамматические теги без морфемных границ. Основной разработчик парадигмы правилового морфологического анализа — Apertium — скорее заинтересован в создании переводчиков, поэтому морфемные границы отходят на второй план. Однако ожидание большинства лингвистов все же заключается в том, что морфемные границы в анализе должны быть, так как для них нет другой мотивации вкладываться в работу над морфологическим анализатором, кроме как если у них есть множество неотглоссированных текстов, которые они не хотят глоссировать вручную.</p>
 <p>Получается так:</p>
 <ul>
