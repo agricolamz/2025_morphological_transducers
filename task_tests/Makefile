@@ -1,6 +1,6 @@
 .DEFAULT_GOAL: requirements
 
-.PHONY: requirements forms
+.PHONY: requirements forms clean
 
 requirements:
 	@curl -s https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
@@ -33,6 +33,9 @@ forms: task.generator.hfst
 	@hfst-fst2strings $^
 	@rm -f *.hfst
 
+clean: 
+	@rm -f *.hfst *.txt
+
 test_%: for_test_%.txt task.generator.hfst
 	@hfst-fst2strings task.generator.hfst > generated_forms.txt
 	@$(eval N_over_wrong=`grep -xvf $< generated_forms.txt | wc -l`)
@@ -52,4 +55,3 @@ test_%: for_test_%.txt task.generator.hfst
 		cat test_results.txt;\
 	fi
 	@rm -f *.hfst *.txt
-
