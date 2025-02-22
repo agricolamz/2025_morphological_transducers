@@ -1,1 +1,77 @@
-# Технические детали запуска `lexd` и `twol`
+# Технические детали: командная строка, инструменты `hfst`
+
+## Командная оболочка
+
+Когда вы открываете линуксовскую командную строку, чаще всего вы сталкиваетесь с интерпретатором `bash` –-- это командная оболочка, которая позволяет отдавать команды вашей операционной системе и компьютеру. В данных материалах мы используем обобщенное `shell`, включающее в себя разные командные оболочка. Так как обычно команды в командной строке исполняются сразу, знак доллара традиционно используют для обозначения строчки с командой:
+
+```{{shell}}
+$ echo "hi all"
+
+hi all
+```
+
+Разумеется, когда дело доходит до больших и сложных программ, то их записывают в скрипты, которым обычно дают расширение `.sh` и начинают с [шебанга](https://en.wikipedia.org/wiki/Shebang_(Unix)). Вот пример простой программы:
+
+```my_script.sh
+#!/bin/bash
+
+echo "Please enter your name: "
+read name
+echo "Nice to meet you $name"
+```
+
+Если записать эту программу в файл `my_script.sh`, то ее потом можно запустить следующей командой:
+
+```{{shell}}
+$ sh my_script.sh
+```
+
+## Программы для команадной строки
+
+Для командной строки написано очень много разных программ. Важно понимать, что их все (естественно, после установки, если это необходимо) можно запустить, набрав в консоли название программы. Начнем наше знакомство с программы `ls`, которая перечисляет (list) содержание папок:
+
+```{{shell}}
+$ ls
+
+01_00_stemmers.png                  01_09_first_transducer.png
+01_01_light_switch.jpg              01_10_morphology.png
+01_02_light_switch_automaton.png    01_11_transducer_composition.png
+01_03_turnstile.jpg                 01_12_morphology2.png
+01_04_turnstile_automaton.png       03_01_Russita-feeding.png
+01_05_elephant.png                  03_02_Russita-bleeding.png
+01_06_elephant_short.png            03_03_Russita-counterfeeding.png
+01_07_multiple_words.png            03_04_Russita-counterbleeding.png
+01_08_multiple_words_optimized.png
+```
+
+У большинства программ есть некоторые аргументы (почему-то их принято называть флагами), которые перечисляют после минуса.
+
+```{{shell}}
+$ ls -l
+
+total 2636
+-rw-rw-r-- 1 agricolamz agricolamz 122183 Jan  6 18:52 01_00_stemmers.png
+-rw-rw-r-- 1 agricolamz agricolamz 121071 Feb 18  2022 01_01_light_switch.jpg
+-rw-rw-r-- 1 agricolamz agricolamz 156956 Jan  6 07:45 01_02_light_switch_automaton.png
+-rw-rw-r-- 1 agricolamz agricolamz  18075 Feb 18  2022 01_03_turnstile.jpg
+-rw-rw-r-- 1 agricolamz agricolamz 167801 Jan  6 07:47 01_04_turnstile_automaton.png
+-rw-rw-r-- 1 agricolamz agricolamz 200090 Jan  6 07:50 01_05_elephant.png
+-rw-rw-r-- 1 agricolamz agricolamz 106598 Jan  6 07:51 01_06_elephant_short.png
+-rw-rw-r-- 1 agricolamz agricolamz 226555 Jan  6 07:52 01_07_multiple_words.png
+-rw-rw-r-- 1 agricolamz agricolamz 139834 Jan  6 07:58 01_08_multiple_words_optimized.png
+-rw-rw-r-- 1 agricolamz agricolamz 132286 Jan  6 16:02 01_09_first_transducer.png
+-rw-rw-r-- 1 agricolamz agricolamz 117095 Jan  6 17:15 01_10_morphology.png
+-rw-rw-r-- 1 agricolamz agricolamz 253314 Jan  6 18:32 01_11_transducer_composition.png
+-rw-rw-r-- 1 agricolamz agricolamz 261112 Jan 12 18:20 01_12_morphology2.png
+-rwxr-xr-x 1 agricolamz agricolamz 159091 Jan 13  2017 03_01_Russita-feeding.png
+-rwxr-xr-x 1 agricolamz agricolamz 150034 Jan 13  2017 03_02_Russita-bleeding.png
+-rwxr-xr-x 1 agricolamz agricolamz 140454 Jan 13  2017 03_03_Russita-counterfeeding.png
+-rwxr-xr-x 1 agricolamz agricolamz 193216 Jan 13  2017 03_04_Russita-counterbleedin
+```
+
+
+## Компеляция трансдьюсеров
+
+Теперь попробуем шаг за шагом скомпилировать наш морфологический трансдьюсор, используя программы `lexd` и `hfst-twolc`.
+
+## Другие инструменты `hfst`

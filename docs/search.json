@@ -210,6 +210,56 @@
     ]
   },
   {
+    "objectID": "05_technical_class.html",
+    "href": "05_technical_class.html",
+    "title": "5  Технические детали: командная строка, инструменты hfst",
+    "section": "",
+    "text": "5.1 Командная оболочка\nКогда вы открываете линуксовскую командную строку, чаще всего вы сталкиваетесь с интерпретатором bash –– это командная оболочка, которая позволяет отдавать команды вашей операционной системе и компьютеру. В данных материалах мы используем обобщенное shell, включающее в себя разные командные оболочка. Так как обычно команды в командной строке исполняются сразу, знак доллара традиционно используют для обозначения строчки с командой:\nРазумеется, когда дело доходит до больших и сложных программ, то их записывают в скрипты, которым обычно дают расширение .sh и начинают с шебанга. Вот пример простой программы:\nЕсли записать эту программу в файл my_script.sh, то ее потом можно запустить следующей командой:",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Технические детали: командная строка, инструменты `hfst`</span>"
+    ]
+  },
+  {
+    "objectID": "05_technical_class.html#командная-оболочка",
+    "href": "05_technical_class.html#командная-оболочка",
+    "title": "5  Технические детали: командная строка, инструменты hfst",
+    "section": "",
+    "text": "```{shell}\n$ echo \"hi all\"\n\nhi all\n```\n\n#!/bin/bash\n\necho \"Please enter your name: \"\nread name\necho \"Nice to meet you $name\"\n\n```{shell}\n$ sh my_script.sh\n```",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Технические детали: командная строка, инструменты `hfst`</span>"
+    ]
+  },
+  {
+    "objectID": "05_technical_class.html#программы-для-команадной-строки",
+    "href": "05_technical_class.html#программы-для-команадной-строки",
+    "title": "5  Технические детали: командная строка, инструменты hfst",
+    "section": "5.2 Программы для команадной строки",
+    "text": "5.2 Программы для команадной строки\nДля командной строки написано очень много разных программ. Важно понимать, что их все (естественно, после установки, если это необходимо) можно запустить, набрав в консоли название программы. Начнем наше знакомство с программы ls, которая перечисляет (list) содержание папок:\n```{shell}\n$ ls\n\n01_00_stemmers.png                  01_09_first_transducer.png\n01_01_light_switch.jpg              01_10_morphology.png\n01_02_light_switch_automaton.png    01_11_transducer_composition.png\n01_03_turnstile.jpg                 01_12_morphology2.png\n01_04_turnstile_automaton.png       03_01_Russita-feeding.png\n01_05_elephant.png                  03_02_Russita-bleeding.png\n01_06_elephant_short.png            03_03_Russita-counterfeeding.png\n01_07_multiple_words.png            03_04_Russita-counterbleeding.png\n01_08_multiple_words_optimized.png\n```\nУ большинства программ есть некоторые аргументы (почему-то их принято называть флагами), которые перечисляют после минуса.\n```{shell}\n$ ls -l\n\ntotal 2636\n-rw-rw-r-- 1 agricolamz agricolamz 122183 Jan  6 18:52 01_00_stemmers.png\n-rw-rw-r-- 1 agricolamz agricolamz 121071 Feb 18  2022 01_01_light_switch.jpg\n-rw-rw-r-- 1 agricolamz agricolamz 156956 Jan  6 07:45 01_02_light_switch_automaton.png\n-rw-rw-r-- 1 agricolamz agricolamz  18075 Feb 18  2022 01_03_turnstile.jpg\n-rw-rw-r-- 1 agricolamz agricolamz 167801 Jan  6 07:47 01_04_turnstile_automaton.png\n-rw-rw-r-- 1 agricolamz agricolamz 200090 Jan  6 07:50 01_05_elephant.png\n-rw-rw-r-- 1 agricolamz agricolamz 106598 Jan  6 07:51 01_06_elephant_short.png\n-rw-rw-r-- 1 agricolamz agricolamz 226555 Jan  6 07:52 01_07_multiple_words.png\n-rw-rw-r-- 1 agricolamz agricolamz 139834 Jan  6 07:58 01_08_multiple_words_optimized.png\n-rw-rw-r-- 1 agricolamz agricolamz 132286 Jan  6 16:02 01_09_first_transducer.png\n-rw-rw-r-- 1 agricolamz agricolamz 117095 Jan  6 17:15 01_10_morphology.png\n-rw-rw-r-- 1 agricolamz agricolamz 253314 Jan  6 18:32 01_11_transducer_composition.png\n-rw-rw-r-- 1 agricolamz agricolamz 261112 Jan 12 18:20 01_12_morphology2.png\n-rwxr-xr-x 1 agricolamz agricolamz 159091 Jan 13  2017 03_01_Russita-feeding.png\n-rwxr-xr-x 1 agricolamz agricolamz 150034 Jan 13  2017 03_02_Russita-bleeding.png\n-rwxr-xr-x 1 agricolamz agricolamz 140454 Jan 13  2017 03_03_Russita-counterfeeding.png\n-rwxr-xr-x 1 agricolamz agricolamz 193216 Jan 13  2017 03_04_Russita-counterbleedin\n```",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Технические детали: командная строка, инструменты `hfst`</span>"
+    ]
+  },
+  {
+    "objectID": "05_technical_class.html#компеляция-трансдьюсеров",
+    "href": "05_technical_class.html#компеляция-трансдьюсеров",
+    "title": "5  Технические детали: командная строка, инструменты hfst",
+    "section": "5.3 Компеляция трансдьюсеров",
+    "text": "5.3 Компеляция трансдьюсеров\nТеперь попробуем шаг за шагом скомпилировать наш морфологический трансдьюсор, используя программы lexd и hfst-twolc.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Технические детали: командная строка, инструменты `hfst`</span>"
+    ]
+  },
+  {
+    "objectID": "05_technical_class.html#другие-инструменты-hfst",
+    "href": "05_technical_class.html#другие-инструменты-hfst",
+    "title": "5  Технические детали: командная строка, инструменты hfst",
+    "section": "5.4 Другие инструменты hfst",
+    "text": "5.4 Другие инструменты hfst",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Технические детали: командная строка, инструменты `hfst`</span>"
+    ]
+  },
+  {
     "objectID": "06_transducer_manipulation.html",
     "href": "06_transducer_manipulation.html",
     "title": "6  Операции с трансдьюсерами",

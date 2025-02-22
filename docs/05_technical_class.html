@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Технические детали запуска lexd и twol – Конечные автоматы в морфологическом анализе 2024/2025</title>
+<title>5&nbsp; Технические детали: командная строка, инструменты hfst – Конечные автоматы в морфологическом анализе 2024/2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_technical_class.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Технические детали запуска <code>lexd</code> и <code>twol</code></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_technical_class.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Технические детали: командная строка, инструменты <code>hfst</code></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -142,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_technical_class.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Технические детали запуска <code>lexd</code> и <code>twol</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Технические детали: командная строка, инструменты <code>hfst</code></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -162,20 +196,29 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#командная-оболочка" id="toc-командная-оболочка" class="nav-link active" data-scroll-target="#командная-оболочка"><span class="header-section-number">5.1</span> Командная оболочка</a></li>
+  <li><a href="#программы-для-команадной-строки" id="toc-программы-для-команадной-строки" class="nav-link" data-scroll-target="#программы-для-команадной-строки"><span class="header-section-number">5.2</span> Программы для команадной строки</a></li>
+  <li><a href="#компеляция-трансдьюсеров" id="toc-компеляция-трансдьюсеров" class="nav-link" data-scroll-target="#компеляция-трансдьюсеров"><span class="header-section-number">5.3</span> Компеляция трансдьюсеров</a></li>
+  <li><a href="#другие-инструменты-hfst" id="toc-другие-инструменты-hfst" class="nav-link" data-scroll-target="#другие-инструменты-hfst"><span class="header-section-number">5.4</span> Другие инструменты <code>hfst</code></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Технические детали запуска <code>lexd</code> и <code>twol</code></span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Технические детали: командная строка, инструменты <code>hfst</code></span></h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -187,8 +230,74 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="командная-оболочка" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="командная-оболочка"><span class="header-section-number">5.1</span> Командная оболочка</h2>
+<p>Когда вы открываете линуксовскую командную строку, чаще всего вы сталкиваетесь с интерпретатором <code>bash</code> –– это командная оболочка, которая позволяет отдавать команды вашей операционной системе и компьютеру. В данных материалах мы используем обобщенное <code>shell</code>, включающее в себя разные командные оболочка. Так как обычно команды в командной строке исполняются сразу, знак доллара традиционно используют для обозначения строчки с командой:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "hi all"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">hi all</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Разумеется, когда дело доходит до больших и сложных программ, то их записывают в скрипты, которым обычно дают расширение <code>.sh</code> и начинают с <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">шебанга</a>. Вот пример простой программы:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode my_script.sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Please enter your name: "</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">name</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Nice to meet you </span><span class="va">$name</span><span class="st">"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Если записать эту программу в файл <code>my_script.sh</code>, то ее потом можно запустить следующей командой:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ sh my_script.sh</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="программы-для-команадной-строки" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="программы-для-команадной-строки"><span class="header-section-number">5.2</span> Программы для команадной строки</h2>
+<p>Для командной строки написано очень много разных программ. Важно понимать, что их все (естественно, после установки, если это необходимо) можно запустить, набрав в консоли название программы. Начнем наше знакомство с программы <code>ls</code>, которая перечисляет (list) содержание папок:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">01_00_stemmers.png                  01_09_first_transducer.png</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">01_01_light_switch.jpg              01_10_morphology.png</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">01_02_light_switch_automaton.png    01_11_transducer_composition.png</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">01_03_turnstile.jpg                 01_12_morphology2.png</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">01_04_turnstile_automaton.png       03_01_Russita-feeding.png</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="in">01_05_elephant.png                  03_02_Russita-bleeding.png</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">01_06_elephant_short.png            03_03_Russita-counterfeeding.png</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">01_07_multiple_words.png            03_04_Russita-counterbleeding.png</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">01_08_multiple_words_optimized.png</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>У большинства программ есть некоторые аргументы (почему-то их принято называть флагами), которые перечисляют после минуса.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls -l</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">total 2636</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 122183 Jan  6 18:52 01_00_stemmers.png</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 121071 Feb 18  2022 01_01_light_switch.jpg</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 156956 Jan  6 07:45 01_02_light_switch_automaton.png</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz  18075 Feb 18  2022 01_03_turnstile.jpg</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 167801 Jan  6 07:47 01_04_turnstile_automaton.png</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 200090 Jan  6 07:50 01_05_elephant.png</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 106598 Jan  6 07:51 01_06_elephant_short.png</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 226555 Jan  6 07:52 01_07_multiple_words.png</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 139834 Jan  6 07:58 01_08_multiple_words_optimized.png</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 132286 Jan  6 16:02 01_09_first_transducer.png</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 117095 Jan  6 17:15 01_10_morphology.png</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 253314 Jan  6 18:32 01_11_transducer_composition.png</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="in">-rw-rw-r-- 1 agricolamz agricolamz 261112 Jan 12 18:20 01_12_morphology2.png</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="in">-rwxr-xr-x 1 agricolamz agricolamz 159091 Jan 13  2017 03_01_Russita-feeding.png</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="in">-rwxr-xr-x 1 agricolamz agricolamz 150034 Jan 13  2017 03_02_Russita-bleeding.png</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="in">-rwxr-xr-x 1 agricolamz agricolamz 140454 Jan 13  2017 03_03_Russita-counterfeeding.png</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="in">-rwxr-xr-x 1 agricolamz agricolamz 193216 Jan 13  2017 03_04_Russita-counterbleedin</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="компеляция-трансдьюсеров" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="компеляция-трансдьюсеров"><span class="header-section-number">5.3</span> Компеляция трансдьюсеров</h2>
+<p>Теперь попробуем шаг за шагом скомпилировать наш морфологический трансдьюсор, используя программы <code>lexd</code> и <code>hfst-twolc</code>.</p>
+</section>
+<section id="другие-инструменты-hfst" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="другие-инструменты-hfst"><span class="header-section-number">5.4</span> Другие инструменты <code>hfst</code></h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -608,7 +717,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
       <a href="./04_language_tasks.html" class="pagination-link" aria-label="Моделирование языковых явлений">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Моделирование языковых явлений</span></span>
