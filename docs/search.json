@@ -204,7 +204,7 @@
     "href": "04_language_tasks.html#амбификсы",
     "title": "4  Моделирование языковых явлений",
     "section": "",
-    "text": "Задание 04_01\n\n\n\nСмоделируйте при помощи lexd и twol поведение литовского возвратного суффикса -si, который занимает позицию перед корнем, если к нему присоединяется какой-либо префикс.\n\n\n\nперевод\nroot-inf-rfl\nneg-rfl-root-inf\n\n\n\n\nучиться\nmoky-ti-s\nne-si-moky-ti\n\n\nрадоваться\ndžiaug-ti-s\nne-si-džiaug-ti\n\n\nосматриваться\nžvalgy-ti-s\nne-si-žvalgy-ti\n\n\nгордиться\ndidžiuo-ti-s\nne-si-didžiuo-ti\n\n\nсмеяться\njuok-ti-s\nne-si-juok-ti",
+    "text": "Задание 04_01\n\n\n\nСмоделируйте при помощи lexd и twol поведение литовского возвратного суффикса -si, который занимает позицию перед корнем, если к корню присоединяется любой префикс.\n\n\n\nперевод\nroot-inf-rfl\nneg-rfl-root-inf\n\n\n\n\nучиться\nmoky-ti-s\nne-si-moky-ti\n\n\nрадоваться\ndžiaug-ti-s\nne-si-džiaug-ti\n\n\nосматриваться\nžvalgy-ti-s\nne-si-žvalgy-ti\n\n\nгордиться\ndidžiuo-ti-s\nne-si-didžiuo-ti\n\n\nсмеяться\njuok-ti-s\nne-si-juok-ti",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Моделирование языковых явлений</span>"
     ]
