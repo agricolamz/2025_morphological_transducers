@@ -31,7 +31,6 @@
 | SG     | NOM     | pikkely         | tüzér         | kétely         | pehely        | teher        | kehely        |
 | SG     | ACC     | pikkely-t       | tüzér-t       | kétely-t       | pelyh-et      | terh-et      | kelyh-et      |
 | SG     | DAT     | pikkely-nek     | tüzér-nek     | kétely-nek     | pehely-nek    | teher-nek    | kehely-nek    |
-| SG     | INS     | pikkel-lyel     | tüzér-rel     | kétel-lyel     | pehel-lyel    | teher-rel    | kehel-lyel    |
 | SG     | PRP     | pikkely-ért     | tüzér-ért     | kétely-ért     | pehely-ért    | teher-ért    | kehely-ért    |
 | SG     | TRANS   | pikkel-lyé      | tüzér-ré      | kétel-lyé      | pehel-lyé     | teher-ré     | kehel-lyé     |
 | SG     | TERM    | pikkely-ig      | tüzér-ig      | kétely-ig      | pehely-ig     | teher-ig     | kehely-ig     |
@@ -50,7 +49,6 @@
 | PL     | NOM     | pikkely-ek      | tüzér-ek      | kétely-ek      | pelyh-ek      | terh-ek      | kelyh-ek      |
 | PL     | ACC     | pikkely-ek-et   | tüzér-ek-et   | kétely-ek-et   | pelyh-ek-et   | terh-ek-et   | kelyh-ek-et   |
 | PL     | DAT     | pikkely-ek-nek  | tüzér-ek-nek  | kétely-ek-nek  | pelyh-ek-nek  | terh-ek-nek  | kelyh-ek-nek  |
-| PL     | INS     | pikkely-ek-kel  | tüzér-ek-kel  | kétely-ek-kel  | pelyh-ek-kel  | terh-ek-kel  | kelyh-ek-kel  |
 | PL     | PRP     | pikkely-ek-ért  | tüzér-ek-ért  | kétely-ek-ért  | pelyh-ek-ért  | terh-ek-ért  | kelyh-ek-ért  |
 | PL     | TRANS   | pikkely-ek-ké   | tüzér-ek-ké   | kétely-ek-ké   | pelyh-ek-ké   | terh-ek-ké   | kelyh-ek-ké   |
 | PL     | TERM    | pikkely-ek-ig   | tüzér-ek-ig   | kétely-ek-ig   | pelyh-ek-ig   | terh-ek-ig   | kelyh-ek-ig   |
