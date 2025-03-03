@@ -288,10 +288,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="in">-rwxr-xr-x 1 agricolamz agricolamz 140454 Jan 13  2017 03_03_Russita-counterfeeding.png</span></span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="in">-rwxr-xr-x 1 agricolamz agricolamz 193216 Jan 13  2017 03_04_Russita-counterbleedin</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>cd</code></li>
+<li><code>wc -l</code></li>
+<li><code>grep</code></li>
+<li><code>|</code></li>
+<li>`rm``</li>
+</ul>
 </section>
 <section id="компеляция-трансдьюсеров" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="компеляция-трансдьюсеров"><span class="header-section-number">5.3</span> Компеляция трансдьюсеров</h2>
-<p>Теперь попробуем шаг за шагом скомпилировать наш морфологический трансдьюсор, используя программы <code>lexd</code> и <code>hfst-twolc</code>.</p>
+<p>Теперь попробуем шаг за шагом скомпилировать наш морфологический трансдьюсор, используя программы <code>lexd</code> и <code>hfst-twolc</code>. Первым делом нужно установить необходимые программы:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl -s https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">$ sudo apt-get install hfst lexd</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Создадим файлы <code>example.lexd</code> и <code>example.twol</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{lexd}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">PATTERNS</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">Noun (Suffix[-adj] | (Suffix[adj] Inflection))?</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Noun</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">ночь</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">печь</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Suffix</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;dim&gt;:ка</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;adj&gt;:н[adj]</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="in">LEXICON Inflection</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ой</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">Alphabet</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">  а е й к н о п ч ь ь:0;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="in">Rules</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="in">"чк чн пишется без ь"</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="in">! например, ночьной -&gt; ночной или печька -&gt; печка</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="in">ь:0 &lt;=&gt; _ к;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="in">        _ н;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Скомпилируем <code>.lexd</code> файл:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ lexd example.lexd</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">0   1   н   н   0.000000    </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">0   2   п   п   0.000000    </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="in">1   3   о   о   0.000000    </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="in">2   3   е   е   0.000000    </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="in">3   4   ч   ч   0.000000    </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="in">4   5   ь   ь   0.000000    </span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="in">5   6   &lt;dim&gt;   к   0.000000    </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="in">5   7   &lt;adj&gt;   н   0.000000    </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="in">6   8   @0@ а   0.000000    </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="in">7   9   &lt;m&gt; о   0.000000    </span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="in">9   10  &lt;sg&gt;    й   0.000000    </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="in">10  8   &lt;nom&gt;   @0@ 0.000000    </span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="in">5   0.000000</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="in">8   0.000000 </span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Мы видим, что программа <code>lexd</code> преобразовала наш файл <code>example.lexd</code> в трансдьюсер в ATT формате (см. <a href="01_introduction_to_transducers.html#sec-automata" class="quarto-xref"><span>Раздел 1.4.1</span></a>). Так как основной формат все равно завязан на программу <code>hfst</code>, так что можно перенаправить ATT в команду <code>hfst-txt2fst</code>. Флаг <code>-o</code> отвечает за имя файла, куда записать результат, так что пользователь может задать любое свое имя отличное от <code>lexd.hfst</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ lexd example.lexd | hfst-txt2fst -o lexd.hfst</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>В результате был получен бинарный файл <code>.hfst</code>, который используется для дальнейшей работы. Например, можно использовать функцию <code>hfst-lookup</code> для того, чтобы обратиться к трансдьюсеру.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "ночь" | hfst-lookup lexd.hfst </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="другие-инструменты-hfst" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="другие-инструменты-hfst"><span class="header-section-number">5.4</span> Другие инструменты <code>hfst</code></h2>
