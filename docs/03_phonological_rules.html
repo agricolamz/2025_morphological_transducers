@@ -234,8 +234,9 @@ div.csl-indent {
   <li><a href="#операторы-и-другое" id="toc-операторы-и-другое" class="nav-link" data-scroll-target="#операторы-и-другое"><span class="header-section-number">3.3.7</span> Операторы и другое</a></li>
   <li><a href="#sec-rule-operators" id="toc-sec-rule-operators" class="nav-link" data-scroll-target="#sec-rule-operators"><span class="header-section-number">3.3.8</span> Операторы правил</a></li>
   </ul></li>
-  <li><a href="#глоссирование" id="toc-глоссирование" class="nav-link" data-scroll-target="#глоссирование"><span class="header-section-number">3.4</span> Глоссирование</a></li>
-  <li><a href="#мысли-в-сторону" id="toc-мысли-в-сторону" class="nav-link" data-scroll-target="#мысли-в-сторону"><span class="header-section-number">3.5</span> Мысли в сторону</a></li>
+  <li><a href="#sec-morphonology" id="toc-sec-morphonology" class="nav-link" data-scroll-target="#sec-morphonology"><span class="header-section-number">3.4</span> Морфонология</a></li>
+  <li><a href="#глоссирование" id="toc-глоссирование" class="nav-link" data-scroll-target="#глоссирование"><span class="header-section-number">3.5</span> Глоссирование</a></li>
+  <li><a href="#мысли-в-сторону" id="toc-мысли-в-сторону" class="nav-link" data-scroll-target="#мысли-в-сторону"><span class="header-section-number">3.6</span> Мысли в сторону</a></li>
   </ul>
 </nav>
     </div>
@@ -560,7 +561,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Следует обратить внимание, на то, что мы не писали правил для пар <code>{А}:а</code> и <code>{Ы}:ы</code>. <code>twol</code> сам использовал указанные нами переходы во всех контекстах, не специализированных правилом перехода после мягких основ. Это поведение напрямую зависит от оператора, используемого в правиле (см. раздел <a href="#sec-rule-operators" class="quarto-xref"><span>Раздел 3.3.8</span></a>).</p>
-<p>Архифонемы позволяют моделировать морфонологические правила, так как мы всегда можем вставить единицу <code>{some_name}:0</code>, которая показывает на важную морфонологическую границу, рядом с которой что-то происходит.</p>
+<p>Архифонемы позволяют моделировать морфонологические правила, так как мы всегда можем вставить единицу <code>{some_name}:0</code>, которая показывает на важную морфонологическую границу, рядом с которой что-то происходит (см. еще <a href="#sec-morphonology" class="quarto-xref"><span>Раздел 3.4</span></a>).</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1316,8 +1317,26 @@ ma      # есть в Y</code></pre>
 <p>В большинстве случаев нужно использовать оператор <code>&lt;=&gt;</code>. Потребность в других операторах возникает только если есть конфликтующие правила.</p>
 </section>
 </section>
-<section id="глоссирование" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="глоссирование"><span class="header-section-number">3.4</span> Глоссирование</h2>
+<section id="sec-morphonology" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-morphonology"><span class="header-section-number">3.4</span> Морфонология</h2>
+<p>Морфонология может иметь разный вид в языке, в связи с чем, я предлагаю разные трюки для описания их в <code>twol</code>.</p>
+<ul>
+<li>морфонология связана с аффиксом: <code>root-{morphonology}aff</code></li>
+<li>морфонология связана с определенными корнями:
+<ul>
+<li><code>root-{morphonology}aff</code></li>
+<li>или ввести косвенные основы в <code>.lexd</code></li>
+</ul></li>
+<li>морфонология вызывается взаимодействием определенных корней и аффиксов (<em>око</em> - <em>очи</em>, но <em>яблоко</em> - <em>яблоки</em>):
+<ul>
+<li><code>root{morphonology}-{morphonology}aff</code></li>
+<li>или ввести новые единицы в <code>.lexd</code></li>
+</ul></li>
+<li>уникальные лексемы/формы всегда можно словарно ввести в <code>.lexd</code></li>
+</ul>
+</section>
+<section id="глоссирование" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="глоссирование"><span class="header-section-number">3.5</span> Глоссирование</h2>
 <p>Все это время анализ, который мы получали, содержал исключительно грамматические теги без морфемных границ. Основной разработчик парадигмы правилового морфологического анализа — Apertium — скорее заинтересован в создании переводчиков, поэтому морфемные границы отходят на второй план. Однако ожидание большинства лингвистов все же заключается в том, что морфемные границы в анализе должны быть, так как для них нет другой мотивации вкладываться в работу над морфологическим анализатором, кроме как если у них есть множество неотглоссированных текстов, которые они не хотят глоссировать вручную.</p>
 <p>Получается так:</p>
 <ul>
@@ -1335,8 +1354,8 @@ ma      # есть в Y</code></pre>
 </ul>
 <p>Один от другого отличается одним правилом в <code>twol</code>.</p>
 </section>
-<section id="мысли-в-сторону" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="мысли-в-сторону"><span class="header-section-number">3.5</span> Мысли в сторону</h2>
+<section id="мысли-в-сторону" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="мысли-в-сторону"><span class="header-section-number">3.6</span> Мысли в сторону</h2>
 <p>Важно отметить, что <code>twol</code> отлично помогает моделировать переходы от глубинного представления в поверхностное, что помогает моделировать (мор)фонологию. Однако не стоит считать двухуровневую фонологию фонологической теорией. Она разрабатывалась прежде всего для практических нужд, а в таком случае все средства хороши. Правила двухуровневой фонологии часто слишком языкоцентричны, и поэтому сложно перейти от них к некоторым обобщениям. Кроме того, отказ от последовательности правил приводит к тому, что получившиеся правила двухуровневой фонологии часто неестественны, так как вынуждены включать в себя работу сразу всех (мор)фонологических процессов языка.</p>
 
 
