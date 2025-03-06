@@ -228,8 +228,8 @@ div.csl-indent {
   <li><a href="#техническое-введение" id="toc-техническое-введение" class="nav-link" data-scroll-target="#техническое-введение"><span class="header-section-number">3.3.1</span> Техническое введение</a></li>
   <li><a href="#sec-twol-structure" id="toc-sec-twol-structure" class="nav-link" data-scroll-target="#sec-twol-structure"><span class="header-section-number">3.3.2</span> Структура <code>twol</code> файла</a></li>
   <li><a href="#раздел-алфавита" id="toc-раздел-алфавита" class="nav-link" data-scroll-target="#раздел-алфавита"><span class="header-section-number">3.3.3</span> Раздел алфавита</a></li>
-  <li><a href="#sec-archiphonemes" id="toc-sec-archiphonemes" class="nav-link" data-scroll-target="#sec-archiphonemes"><span class="header-section-number">3.3.4</span> Архифонемы</a></li>
-  <li><a href="#sec-dif-representations" id="toc-sec-dif-representations" class="nav-link" data-scroll-target="#sec-dif-representations"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</a></li>
+  <li><a href="#sec-dif-representations" id="toc-sec-dif-representations" class="nav-link" data-scroll-target="#sec-dif-representations"><span class="header-section-number">3.3.4</span> Обращение к разным представлениям</a></li>
+  <li><a href="#sec-archiphonemes" id="toc-sec-archiphonemes" class="nav-link" data-scroll-target="#sec-archiphonemes"><span class="header-section-number">3.3.5</span> Архифонемы</a></li>
   <li><a href="#разделы-sets-и-definitions" id="toc-разделы-sets-и-definitions" class="nav-link" data-scroll-target="#разделы-sets-и-definitions"><span class="header-section-number">3.3.6</span> Разделы <code>Sets</code> и <code>Definitions</code></a></li>
   <li><a href="#операторы-и-другое" id="toc-операторы-и-другое" class="nav-link" data-scroll-target="#операторы-и-другое"><span class="header-section-number">3.3.7</span> Операторы и другое</a></li>
   <li><a href="#sec-rule-operators" id="toc-sec-rule-operators" class="nav-link" data-scroll-target="#sec-rule-operators"><span class="header-section-number">3.3.8</span> Операторы правил</a></li>
@@ -465,8 +465,21 @@ div.csl-indent {
 <p>Так как под капотом происходит композиция трансдьюсеров (см. <a href="01_introduction_to_transducers.html#sec-transducers" class="quarto-xref"><span>Раздел 1.4.2</span></a>), то символы, которые не участвуют в правилах <code>twol</code>, не будут затронуты. И, единственное, что <code>twol</code> не может восстановить, что у нас есть две сущности: <code>ь:0</code> и <code>ь:ь</code>.</p>
 <p>Однако все это из разряда вредных советов. Если вы моделируете язык или даже его фрагмент, лучше перечислить все символы (и их прописные варианты). Это позволит избежать проблем при анализе некачественных входных данных.</p>
 </section>
-<section id="sec-archiphonemes" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="sec-archiphonemes"><span class="header-section-number">3.3.4</span> Архифонемы</h3>
+<section id="sec-dif-representations" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="sec-dif-representations"><span class="header-section-number">3.3.4</span> Обращение к разным представлениям</h3>
+<p>Единцы, которыми манипулирует <code>twol</code> — пары глубинного и поверхносного представления. Поэтому в правилах могут появлятся</p>
+<ul>
+<li>полностью определенные единицы, например, <code>а:ы</code> или <code>ь:0</code></li>
+<li>единицы, определенные только на одном из представлений
+<ul>
+<li>глубинном, например, <code>ы:</code></li>
+<li>поверхностном, например, <code>:я</code></li>
+</ul></li>
+<li>placeholder со значением любой знак: <code>:</code> (еще можно <code>?</code>)</li>
+</ul>
+</section>
+<section id="sec-archiphonemes" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="sec-archiphonemes"><span class="header-section-number">3.3.5</span> Архифонемы</h3>
 <p>Иногда (мор)фонологические проблемы можно решать, не постулируя некоторую конкретную сегментную глубинную форму, а используя, так называемые архифонемы<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Эти единицы записываются в <code>lexd</code> в фигурных скобках, например <code>{А}</code>. Существует конвенция, что если архифонема позже только удаляется, то ее пишут строчными буквами, например, <code>{s}</code>, а если архифонема представляет собой набор поверхностных форм, то ее пишут заглавными буквами, например, <code>{А}</code>. Важно отметить, что в файле <code>.twol</code> фигурные скобки нужно экранировать при помощи знака процента <code>%</code>. Для примера давайте перемоделируем пример из прошлого раздела:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><code>lexd</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">до применения <code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">после применения <code>twol</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">старый файл <code>lexd</code></a></li></ul>
@@ -664,19 +677,6 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="sec-dif-representations" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="sec-dif-representations"><span class="header-section-number">3.3.5</span> Обращение к разным представлениям</h3>
-<p>Единцы, которыми манипулирует <code>twol</code> — пары глубинного и поверхносного представления. Поэтому в правилах могут появлятся</p>
-<ul>
-<li>полностью определенные единицы, например, <code>а:ы</code> или <code>ь:0</code></li>
-<li>единицы, определенные только на одном из представлений
-<ul>
-<li>глубинном, например, <code>ы:</code></li>
-<li>поверхностном, например, <code>:я</code></li>
-</ul></li>
-<li>placeholder со значением любой знак: <code>:</code> (еще можно <code>?</code>)</li>
-</ul>
-</section>
 <section id="разделы-sets-и-definitions" class="level3" data-number="3.3.6">
 <h3 data-number="3.3.6" class="anchored" data-anchor-id="разделы-sets-и-definitions"><span class="header-section-number">3.3.6</span> Разделы <code>Sets</code> и <code>Definitions</code></h3>
 <p>Раздел <code>Sets</code> — опциональный раздел <code>.twol</code> файла, в котором можно создать группы символов, к которым потом можно обращаться в правилах по имени. Рассмотрим пример моделирования устранение зияния гласных в адыгейском языке <span class="citation" data-cites="arkadiev2009">(<a href="references.html#ref-arkadiev2009" role="doc-biblioref">Аркадьев и др. 2009</a>: 27–28)</span>:</p>
@@ -757,10 +757,10 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Обратим внимание, что <code>Vowels:0</code> в рамках нашей задачи можно было бы записать экономичнее <code>:0</code> (см. ниже раздел <a href="#sec-dif-representations" class="quarto-xref"><span>Раздел 3.3.5</span></a>). Однако, такое правило при моделировании большего фрагмента грамматики скорее всего может привести к непредвиденным эффектам. Тем более, что такая запись плохо читаема вне контекста.</p>
+<p>Обратим внимание, что <code>Vowels:0</code> в рамках нашей задачи можно было бы записать экономичнее <code>:0</code> (см. ниже раздел <a href="#sec-dif-representations" class="quarto-xref"><span>Раздел 3.3.4</span></a>). Однако, такое правило при моделировании большего фрагмента грамматики скорее всего может привести к непредвиденным эффектам. Тем более, что такая запись плохо читаема вне контекста.</p>
 <p>Определение множеств может содержать имена множеств, определенных ранее. Все перечисленные в множествах единицы должны быть определены в разделе <code>Alphabet</code>.</p>
-<p>Следует отметить, что переменная <code>Vowels</code> в нашем <code>.twol</code> файле раскрылась всеми возможными способами: <code>а</code> – <code>а</code>, <code>а</code> – <code>ы</code>, <code>а</code> – <code>э</code>, <code>ы</code> – <code>ы</code>, <code>ы</code> – <code>э</code>, <code>э</code> – <code>э</code>.</p>
-<p>Раздел <code>Definitions</code> — опциональный раздел <code>.twol</code> файла, в котором можно давать некоторым левым или правым контекстам имена, к которым потом можно обращаться в правилах. Это осмысленно, если один и тот же контекст встречается в разных правилах, пример из <span class="citation" data-cites="beesley2003">(<a href="references.html#ref-beesley2003" role="doc-biblioref">Beesley и Karttunen 2003</a>: 29)</span></p>
+<p>Определяемые элементы в разделе Sets не могут иметь <code>:</code>. Раскрытие переменных происходит по обычным правилам: если после или до имени переменной не стоит двоеточия, значит он будет раскрываться подобными симвалами (т. е. <code>а</code> перейдет в <code>а:а</code> и т. д.). В нашем примере переменная <code>Vowels</code> в файле <code>.twol</code> раскрылась всеми возможными способами: <code>а</code> – <code>а</code>, <code>а</code> – <code>ы</code>, <code>а</code> – <code>э</code>, <code>ы</code> – <code>ы</code>, <code>ы</code> – <code>э</code>, <code>э</code> – <code>э</code>. Т. е. каждое употребление переменной</p>
+<p>Раздел <code>Definitions</code> — опциональный раздел <code>.twol</code> файла, в котором можно давать некоторым левым или правым фрагментам контекста имена, к которым потом можно обращаться в правилах. Это осмысленно, если один и тот же контекст встречается в разных правилах, пример из <span class="citation" data-cites="beesley2003">(<a href="references.html#ref-beesley2003" role="doc-biblioref">Beesley и Karttunen 2003</a>: 29)</span></p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{twol}</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">Definitions</span></span>
