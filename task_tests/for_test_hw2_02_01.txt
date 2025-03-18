@@ -4,9 +4,9 @@ titi<loc>:titik
 <com>titi<sim>:ɣаtetemа
 titi<dim>:titiqej
 titi<go.to><inf>:teteɣtək
-qora<ins>:qorata  
-qora<dat>:qoraɣtə 
-qora<loc>:qorak   
+qora<ins>:qorata
+qora<dat>:qoraɣtə
+qora<loc>:qorak
 <com>qora<sim>:ɣаqoramа
-qora<dim>:qoraqaj 
+qora<dim>:qoraqaj
 qora<go.to><inf>:qoraɣtək
