@@ -704,7 +704,7 @@ $ lexd example.lexd
 8	0.000000 
 ```
 
-Мы видим, что программа `lexd` преобразовала наш файл `example.lexd` в трансдьюсер в ATT формате (см. @sec-automata). Так как основной формат все равно завязан на программу `hfst`, можно перенаправить ATT в команду `hfst-txt2fst`. Флаг `-o` отвечает за имя файла, куда записать результат, так что пользователь может задать любое свое имя отличное от `lexd.hfst`.
+Мы видим, что программа `lexd` преобразовала наш файл `example.lexd` в трансдьюсер в ATT формате (см. @sec-automata). Так как основной формат все равно завязан на программу `hfst`, можно перенаправить ATT в команду `hfst-txt2fst`. Флаг `-o` отвечает за имя файла, куда записать результат, так что пользователь может задать любое свое имя, отличное от `lexd.hfst`.
 
 ```{{shell}}
 $ lexd example.lexd | hfst-txt2fst -o lexd.hfst
@@ -815,4 +815,4 @@ $ hfst-fst2strings result.hfst
 печь
 ```
 
-Все! Теперь мы сумели скомпелировать трансдьюсер не используя [`Makefile`](https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile), которым мы пользовались все это время.
+Все! Мы сумели скомпелировать трансдьюсер, не используя [`Makefile`](https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile), которым мы пользовались все это время.
