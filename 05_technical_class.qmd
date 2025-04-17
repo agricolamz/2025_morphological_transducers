@@ -742,7 +742,7 @@ hfst-fst2strings lexd.hfst
 Теперь можно скомпилировать `.twol` часть:
 
 ```{{shell}}
-$ hfst-twolc task.twol -o twol.hfst
+$ hfst-twolc example.twol -o twol.hfst
 
 Reading input from task.twol.
 Writing output to twol.hfst.
@@ -755,7 +755,7 @@ Storing rules.
 Все это достаточно скучные сообщения, поэтому можно использовать аргумент `-q` (quiet), чтобы их не было.
 
 ```{{shell}}
-$ hfst-twolc -q task.twol -o twol.hfst
+$ hfst-twolc -q example.twol -o twol.hfst
 ```
 
 Может быть вам захотелось бы посмотреть на `twol.hfst`, но ...
@@ -814,3 +814,5 @@ $ hfst-fst2strings result.hfst
 печь<adj><m><sg><nom>:печной
 печь
 ```
+
+Все! Теперь мы сумели скомпелировать трансдьюсер не используя [`Makefile`](https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile), которым мы пользовались все это время.
