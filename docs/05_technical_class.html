@@ -605,7 +605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="in">04_kabardian_verb.csv</span></span>
 <span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Рассмотрим теперь несколько комманд для работы с текстами. Любой текстовый файл можно прочитать при помощи команды <code>cat</code>:</p>
+<p>Рассмотрим теперь несколько команд для работы с текстами. Любой текстовый файл можно прочитать при помощи команды <code>cat</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ cat 04_kabardian_verb.csv</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -743,7 +743,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Файлов может быть несколько:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "hi there!\n and good bye!" &gt; new_file.txt</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "hi there\n and good bye" &gt; new_file.txt</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">$ wc 04_kabardian_verb.csv new_file.txt</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="in">  53  181 3796 04_kabardian_verb.csv</span></span>
@@ -769,23 +769,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="in">я иду,сокIуэ,сы,,,,о,кIуэ,,</span></span>
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="in">я иду сюда,сыкъокIуэ,сы,къэ,,,о,кIуэ,,</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="in">ты идешь,уокIуэ,у,,,,о,кIуэ,,</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="in">ты идешь сюда,укъокIуэ,у,къэ,,,о,кIуэ,,</span></span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="in">вы идете,фокIуэ,фы,,,,о,кIуэ,,</span></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="in">вы идете сюда,фыкъокIуэ,фы,къэ,,,о,кIуэ,,</span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="in">я для тебя иду,сыпхуокIуэ,сы,,п,хуэ,о,кIуэ,,</span></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="in">я против твоей воли иду,сыпфIокIуэ,сы,,п,фIэ,о,кIуэ,,</span></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="in">я с тобой иду,сыбдокIуэ,сы,,п,дэ,о,кIуэ,,</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="in">я с вами иду,сывдокIуэ,сы,,ф,дэ,о,кIуэ,,</span></span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="in">ты со мной идешь,уздокIуэ,у,,с,дэ,о,кIуэ,,</span></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="in">ты с нами идешь,уддокIуэ,у,,т,дэ,о,кIуэ,,</span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="in">я для вас иду,сыфхуокIуэ,сы,,ф,хуэ,о,кIуэ,,</span></span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="in">я против вашей воли иду,сыффIокIуэ,сы,,ф,фIэ,о,кIуэ,,</span></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="in">ты для меня идешь,усхуокIуэ,у,,с,хуэ,о,кIуэ,,</span></span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="in">ты против моей воли идешь,усфIокIуэ,у,,с,фIэ,о,кIуэ,,</span></span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="in">ты для нас идешь,утхуокIуэ,у,,т,хуэ,о,кIуэ,,</span></span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="in">ты против нашей воли идешь,утфIокIуэ,у,,т,фIэ,о,кIуэ,,</span></span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="in">вы идете,фокIуэ,фы,,,,о,кIуэ,,</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="in">вы идете сюда,фыкъокIуэ,фы,къэ,,,о,кIуэ,,</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="in">я для тебя иду,сыпхуокIуэ,сы,,п,хуэ,о,кIуэ,,</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="in">я против твоей воли иду,сыпфIокIуэ,сы,,п,фIэ,о,кIуэ,,</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="in">я с тобой иду,сыбдокIуэ,сы,,п,дэ,о,кIуэ,,</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="in">я с вами иду,сывдокIуэ,сы,,ф,дэ,о,кIуэ,,</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="in">я для вас иду,сыфхуокIуэ,сы,,ф,хуэ,о,кIуэ,,</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="in">я против вашей воли иду,сыффIокIуэ,сы,,ф,фIэ,о,кIуэ,,</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Последнее, что следует обсудить в данном разделе — оператор <code>|</code>. Этот оператор позволяет отправить результат работы одной функции в другую, например:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ cat 04_kabardian_verb.csv | wc -l</span></span>
