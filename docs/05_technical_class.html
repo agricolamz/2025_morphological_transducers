@@ -264,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">01_07_multiple_words.png            03_04_Russita-counterbleeding.png</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">01_08_multiple_words_optimized.png</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>У большинства программ есть некоторые однобуквенные аргументы (почему-то их принято называть флагами), которые перечисляют после минуса. Например флаг <code>-l</code> позволяет увидеть файлы в виде таблицы с некоторыми дополнительной информацией про каждый файл.</p>
+<p>У большинства программ есть некоторые однобуквенные аргументы (почему-то их принято называть флагами), которые перечисляют после минуса. Например флаг <code>-l</code> позволяет увидеть файлы в виде таблицы с некоторой дополнительной информацией про каждый файл.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls -l</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="in">-rwxr-xr-x 1 agricolamz agricolamz 140454 Jan 13  2017 03_03_Russita-counterfeeding.png</span></span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="in">-rwxr-xr-x 1 agricolamz agricolamz 193216 Jan 13  2017 03_04_Russita-counterbleedin</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Давайте использовать несколько флагов, добавив флаг <code>-r</code> для обратной сортировки:</p>
+<p>Давайте использовать несколько флагов. Добавим флаг <code>-r</code> для обратной сортировки:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls -l -r</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">ls: unrecognized option '--reversel'</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">Try 'ls --help' for more information.</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Сообщение об ошибке, сообщило нам самое важное: где почитать документацию. В большинстве программ это можно сделать вызвав аргумент <code>--help</code>. Иногда более вменяемый мануал дает команда <code>man</code>.</p>
+<p>Отчёт об ошибке сообщает нам самое важное: где почитать документацию. В большинстве программ это можно сделать, вызвав аргумент <code>--help</code>. Иногда более вменяемый мануал дает команда <code>man</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls --help</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -497,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="in">Full documentation &lt;https://www.gnu.org/software/coreutils/ls&gt;</span></span>
 <span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a><span class="in">or available locally via: info '(coreutils) ls invocation'  </span></span>
 <span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Некоторые аргументы функций принимают значения от пользователей обычно их разделяют пробелом. Например, аргумент <code>--sort</code> принимате один из следующих значений: <code>none</code>, <code>size</code>, <code>time</code>, <code>version</code>, <code>extension</code> или <code>width</code>:</p>
+<p>Некоторые аргументы функций принимают значения от пользователей, обычно их разделяют пробелом. Например, аргумент <code>--sort</code> принимает одно из следующих значений: <code>none</code>, <code>size</code>, <code>time</code>, <code>version</code>, <code>extension</code> или <code>width</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls --sort size</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -511,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="in">01_02_light_switch_automaton.png   01_03_turnstile.jpg</span></span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="in">03_02_Russita-bleeding.png            </span></span>
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Некоторые аргументы позволяют пользователи ввести что-то не из заранее заданного списка, например, это важно при указании путей, имен файлов, интернет-ссылок и т. п.</p>
+<p>Некоторые аргументы позволяют пользователям ввести что-то не из заранее заданного списка. Например, это важно при указании путей, имен файлов, интернет-ссылок и т. п.</p>
 <p>Следующая программа, с которой мы познакомимся — <code>pwd</code> (print working directory). Это программа позволяет увидеть текущую папку.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ pwd</span></span>
@@ -519,7 +519,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">/home/agricolamz/work/materials/2025_morphological_transducers/images</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Заодно мы увидели, что пути в юниксоподобных операционных системах пишут, используя слэш (“forward” slash).</p>
-<p>Для того, чтобы перейти в какую-нибудь другую папку используют команду <code>cd</code>.</p>
+<p>Для того чтобы перейти в какую-нибудь другую папку, используют команду <code>cd</code> (change directory).</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ pwd</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -560,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="in">/home/agricolamz/work/materials/2025_morphological_transducers/data</span></span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Для создания файла традиционно использують программу <code>touch</code>, хотя это, видимо, не ее прямое предназначение (см. детали в <code>touch --help</code>):</p>
+<p>Для создания файла традиционно используют программу <code>touch</code>, хотя это, видимо, не ее прямое предназначение (см. детали в <code>touch --help</code>):</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -571,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="in">04_kabardian_verb.csv  new_file.txt</span></span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Для того, чтобы удалить файл используется программа <code>rm</code>:</p>
+<p>Для того чтобы удалить файл, используется программа <code>rm</code>:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -582,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="in">04_kabardian_verb.csv</span></span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Для того, чтобы создать папку используют программу <code>mkdir</code>. Для того чтобы удалить — программа <code>rm</code> с аргументом <code>r</code> (recursive).</p>
+<p>Для того чтобы создать папку, используют программу <code>mkdir</code>. Для того чтобы удалить — программа <code>rm</code> с аргументом <code>r</code> (recursive).</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -721,7 +721,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a><span class="in">ты для нас идешь            утхуокIуэ     у         т   хуэ          о    кIуэ           </span></span>
 <span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a><span class="in">ты против нашей воли идешь  утфIокIуэ     у         т   фIэ          о    кIуэ                </span></span>
 <span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Достаточно популярная базовые программы для работы с текстовыми данными это <code>wc</code> и <code>grep</code>. Программа <code>wc</code> выводит подсчет относительно файла: строчек, слов и байт.</p>
+<p>Достаточно популярные базовые программы для работы с текстовыми данными это <code>wc</code> и <code>grep</code>. Программа <code>wc</code> выводит подсчет относительно файла: строчек, слов и байт.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ wc 04_kabardian_verb.csv</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -792,7 +792,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="in">53</span></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>В данном случае программа <code>wc</code> приняла результат работы <code>cat</code>. Это полезный инстурмент, если хочется запустить несколько программ, не делая промежуточных переменных. Вот еще один пример:</p>
+<p>В данном случае программа <code>wc</code> приняла результат работы <code>cat</code>. Это полезный инструмент, если хочется запустить несколько программ, не делая промежуточных переменных. Вот еще один пример:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ ls ../images | sort -r</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -821,7 +821,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="компиляция-трансдьюсеров" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="компиляция-трансдьюсеров"><span class="header-section-number">5.3</span> Компиляция трансдьюсеров</h2>
-<p>Теперь попробуем шаг за шагом скомпилировать наш морфологический трансдьюсор, используя программы <code>lexd</code> и <code>hfst</code>. Первым делом нужно установить необходимые программы <code>hfst</code> <code>lexd</code>:</p>
+<p>Теперь попробуем шаг за шагом скомпилировать наш морфологический трансдьюсер, используя программы <code>lexd</code> и <code>hfst</code>. Первым делом нужно установить необходимые программы <code>hfst</code>, <code>lexd</code>:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ curl -s https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="in">$ sudo apt-get install hfst lexd</span></span>
@@ -873,7 +873,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="in">5   0.000000</span></span>
 <span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="in">8   0.000000 </span></span>
 <span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Мы видим, что программа <code>lexd</code> преобразовала наш файл <code>example.lexd</code> в трансдьюсер в ATT формате (см. <a href="01_introduction_to_transducers.html#sec-automata" class="quarto-xref"><span>Раздел 1.4.1</span></a>). Так как основной формат все равно завязан на программу <code>hfst</code>, так что можно перенаправить ATT в команду <code>hfst-txt2fst</code>. Флаг <code>-o</code> отвечает за имя файла, куда записать результат, так что пользователь может задать любое свое имя отличное от <code>lexd.hfst</code>.</p>
+<p>Мы видим, что программа <code>lexd</code> преобразовала наш файл <code>example.lexd</code> в трансдьюсер в ATT формате (см. <a href="01_introduction_to_transducers.html#sec-automata" class="quarto-xref"><span>Раздел 1.4.1</span></a>). Так как основной формат все равно завязан на программу <code>hfst</code>, можно перенаправить ATT в команду <code>hfst-txt2fst</code>. Флаг <code>-o</code> отвечает за имя файла, куда записать результат, так что пользователь может задать любое свое имя, отличное от <code>lexd.hfst</code>.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ lexd example.lexd | hfst-txt2fst -o lexd.hfst</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -966,7 +966,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="in">печь&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:печной</span></span>
 <span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="in">печь</span></span>
 <span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Все! Теперь мы сумели скомпелировать трансдьюсер не используя <a href="https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile"><code>Makefile</code></a>, которым мы пользовались все это время.</p>
+<p>Все! Мы сумели скомпелировать трансдьюсер, не используя <a href="https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/Makefile"><code>Makefile</code></a>, которым мы пользовались все это время.</p>
 
 
 </section>
