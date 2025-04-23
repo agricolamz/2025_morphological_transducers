@@ -188,7 +188,14 @@ $ hfst-dump-alphabets result.hfst -1
 ь
 ```
 
-Также при помощи программы `grep` полезно проверить 
+Также при помощи программы `grep` полезно проверить какие-нибудь символы:
+
+```{r}
+$ hfst-dump-alphabets result.hfst -1 | grep ъ 
+$ hfst-dump-alphabets result.hfst -1 | grep к
+к
+```
+
 ### `hfst-substitute`
 
 Заменяет единицы в трансдьюссере:
@@ -204,6 +211,24 @@ $ hfst-substitute -i result.hfst -f "ч" -t "Ч" | hfst-fst2strings
 пеЧь
 ```
 
+Можно заменять конкретные соответствия (строчки в ATT записи).
+
+```{{shell}}
+$ hfst-substitute -i result.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
+
+ночъ<dim>:ночъка
+ночъ<adj><m><sg><nom>:ночъной
+ночь
+ночъ<dim>:ночъка
+ночъ<adj><m><sg><nom>:ночъной
+печъ<dim>:печъка
+печъ<adj><m><sg><nom>:печъной
+печь
+печъ<dim>:печъка
+печъ<adj><m><sg><nom>:печъной
+```
+
+Важно отметить, что в таком случае не работает расписывание `ъ` -> `ъ:ъ`
 
 ## Создание транслитераторов
 
