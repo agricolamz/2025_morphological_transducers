@@ -205,13 +205,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#hfst-fst2txt" id="toc-hfst-fst2txt" class="nav-link" data-scroll-target="#hfst-fst2txt"><span class="header-section-number">6.1.1</span> <code>hfst-fst2txt</code></a></li>
   <li><a href="#hfst-summarise" id="toc-hfst-summarise" class="nav-link" data-scroll-target="#hfst-summarise"><span class="header-section-number">6.1.2</span> <code>hfst-summarise</code></a></li>
+  <li><a href="#hfst-dump-alphabets" id="toc-hfst-dump-alphabets" class="nav-link" data-scroll-target="#hfst-dump-alphabets"><span class="header-section-number">6.1.3</span> hfst-dump-alphabets</a></li>
+  <li><a href="#hfst-substitute" id="toc-hfst-substitute" class="nav-link" data-scroll-target="#hfst-substitute"><span class="header-section-number">6.1.4</span> <code>hfst-substitute</code></a></li>
+  <li><a href="#hfst-lookup" id="toc-hfst-lookup" class="nav-link" data-scroll-target="#hfst-lookup"><span class="header-section-number">6.1.5</span> <code>hfst-lookup</code></a></li>
+  <li><a href="#hfst-invert" id="toc-hfst-invert" class="nav-link" data-scroll-target="#hfst-invert"><span class="header-section-number">6.1.6</span> <code>hfst-invert</code></a></li>
+  <li><a href="#hfst-fst2fst" id="toc-hfst-fst2fst" class="nav-link" data-scroll-target="#hfst-fst2fst"><span class="header-section-number">6.1.7</span> <code>hfst-fst2fst</code></a></li>
   </ul></li>
-  <li><a href="#hfst-dump-alphabets" id="toc-hfst-dump-alphabets" class="nav-link" data-scroll-target="#hfst-dump-alphabets"><span class="header-section-number">6.2</span> hfst-dump-alphabets</a>
-  <ul class="collapse">
-  <li><a href="#hfst-substitute" id="toc-hfst-substitute" class="nav-link" data-scroll-target="#hfst-substitute"><span class="header-section-number">6.2.1</span> <code>hfst-substitute</code></a></li>
-  </ul></li>
-  <li><a href="#создание-транслитераторов" id="toc-создание-транслитераторов" class="nav-link" data-scroll-target="#создание-транслитераторов"><span class="header-section-number">6.3</span> Создание транслитераторов</a></li>
-  <li><a href="#вычитание-трансдьюсеров" id="toc-вычитание-трансдьюсеров" class="nav-link" data-scroll-target="#вычитание-трансдьюсеров"><span class="header-section-number">6.4</span> Вычитание трансдьюсеров</a></li>
+  <li><a href="#создание-транслитераторов" id="toc-создание-транслитераторов" class="nav-link" data-scroll-target="#создание-транслитераторов"><span class="header-section-number">6.2</span> Создание транслитераторов</a></li>
+  <li><a href="#вычитание-трансдьюсеров" id="toc-вычитание-трансдьюсеров" class="nav-link" data-scroll-target="#вычитание-трансдьюсеров"><span class="header-section-number">6.3</span> Вычитание трансдьюсеров</a></li>
   </ul>
 </nav>
     </div>
@@ -268,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ lexd example.lexd | hfst-txt2fst -o lexd.hfst</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-twolc -q example.twol -o twol.hfst</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-compose-intersect lexd.hfst twol.hfst -o result.hfst</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-compose-intersect lexd.hfst twol.hfst -o generator.hfst</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="некоторые-команды-hfst" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="некоторые-команды-hfst"><span class="header-section-number">6.1</span> Некоторые команды <code>hfst</code></h2>
@@ -277,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="hfst-fst2txt"><span class="header-section-number">6.1.1</span> <code>hfst-fst2txt</code></h3>
 <p>Печатает трансдьюсер в ATT формате:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-fst2txt result.hfst</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-fst2txt generator.hfst</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">0   1   @0@ @0@ 0.000000</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">1   2   н   н   0.000000</span></span>
@@ -302,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="hfst-summarise"><span class="header-section-number">6.1.2</span> <code>hfst-summarise</code></h3>
 <p>Данная программа печатает саммари для трансдьюсера.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-summarise result.hfst </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-summarise generator.hfst </span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">name: "compose(text(&lt;stdin&gt;), intersect(twol.hfst))"</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">fst type: OpenFST</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">arc type: tropical</span></span>
@@ -339,18 +340,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Если вам не хочется смотреть на выдачу целиком, можно совмещать с <code>grep</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-summarise result.hfst  | grep cyclic</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-summarise generator.hfst  | grep cyclic</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">cyclic: no</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">cyclic at initial state: no     </span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="hfst-dump-alphabets" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="hfst-dump-alphabets"><span class="header-section-number">6.2</span> hfst-dump-alphabets</h2>
+<section id="hfst-dump-alphabets" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="hfst-dump-alphabets"><span class="header-section-number">6.1.3</span> hfst-dump-alphabets</h3>
 <p>Печатает алфавит:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-dump-alphabets result.hfst</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-dump-alphabets generator.hfst</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;adj&gt;</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;dim&gt;</span></span>
@@ -390,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   -1, --exclude-seen       Ignore alphabets seen in automaton
   -2, --exclude-metadata   Ignore alphabets from headers</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-dump-alphabets result.hfst -1</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-dump-alphabets generator.hfst -1</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;adj&gt;</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;dim&gt;</span></span>
@@ -412,15 +412,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Также при помощи программы <code>grep</code> полезно проверить какие-нибудь символы:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-dump-alphabets result.hfst -1 | grep ъ </span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-dump-alphabets result.hfst -1 | grep к</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-dump-alphabets generator.hfst -1 | grep ъ </span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-dump-alphabets generator.hfst -1 | grep к</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="in">к</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="hfst-substitute" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="hfst-substitute"><span class="header-section-number">6.2.1</span> <code>hfst-substitute</code></h3>
+</section>
+<section id="hfst-substitute" class="level3" data-number="6.1.4">
+<h3 data-number="6.1.4" class="anchored" data-anchor-id="hfst-substitute"><span class="header-section-number">6.1.4</span> <code>hfst-substitute</code></h3>
 <p>Заменяет единицы в трансдьюссере:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-substitute -i result.hfst -f "ч" -t "Ч" | hfst-fst2strings</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-substitute -i generator.hfst -f "ч" -t "Ч" | hfst-fst2strings</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="in">ноЧь&lt;dim&gt;:ноЧка</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">ноЧь&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ноЧной</span></span>
@@ -431,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Можно заменять конкретные соответствия (строчки в ATT записи).</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-substitute -i result.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-substitute -i generator.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">ночъ&lt;dim&gt;:ночъка</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="in">ночъ&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ночъной</span></span>
@@ -446,12 +447,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Важно отметить, что в таком случае не работает расписывание <code>ъ</code> -&gt; <code>ъ:ъ</code></p>
 </section>
+<section id="hfst-lookup" class="level3" data-number="6.1.5">
+<h3 data-number="6.1.5" class="anchored" data-anchor-id="hfst-lookup"><span class="header-section-number">6.1.5</span> <code>hfst-lookup</code></h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "ночь&lt;dim&gt;" | hfst-lookup generator.hfst</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="in">hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="in">Using HFST basic transducer format and performing slow lookups</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; ночь&lt;dim&gt; ночка   0,000000</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="создание-транслитераторов" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="создание-транслитераторов"><span class="header-section-number">6.3</span> Создание транслитераторов</h2>
+<section id="hfst-invert" class="level3" data-number="6.1.6">
+<h3 data-number="6.1.6" class="anchored" data-anchor-id="hfst-invert"><span class="header-section-number">6.1.6</span> <code>hfst-invert</code></h3>
+<p>Это очень полезная функция, так как она позволяет переворачивать трансдьюсер. В прошлом разделе мы видели генератор, а что если мы хотим наоборот не генератор, а анализатор?</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-invert generator.hfst -o analyzer.hfst</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "ночка" | hfst-lookup analyzer.hfst</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="in">hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="in">Using HFST basic transducer format and performing slow lookups</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; ночка ночь&lt;dim&gt;   0,000000</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Любой трансдьюсер обратим — и это очень классно: вы делаете один объект, а он и анализатор, и генератор.</p>
 </section>
-<section id="вычитание-трансдьюсеров" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="вычитание-трансдьюсеров"><span class="header-section-number">6.4</span> Вычитание трансдьюсеров</h2>
+<section id="hfst-fst2fst" class="level3" data-number="6.1.7">
+<h3 data-number="6.1.7" class="anchored" data-anchor-id="hfst-fst2fst"><span class="header-section-number">6.1.7</span> <code>hfst-fst2fst</code></h3>
+<p>Возможно, Вы заметили предупреждение, которое возвращает <code>hfst-lookup</code>. Оптимизированный формат полезен для других программ <code>hfst</code> и его можно сделать при помощи программы <code>hfst-fst2fst</code>, однако этим эта команда не ограничивается.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ hfst-fst2fst -O analyzer.hfst -o analyzer.hfstol</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "ночка" | hfst-lookup analyzer.hfstol </span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; ночка ночь&lt;dim&gt;   0,000000</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; %</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Программа <code>hfst-lookup</code> больше не выдает предупреждения. Еще более ожидаемый выход будет, если использовать программу <code>hfst-optimized-lookup</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "ночка" | hfst-optimized-lookup analyzer.hfstol</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="in">ночка   ночь&lt;dim&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="создание-транслитераторов" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="создание-транслитераторов"><span class="header-section-number">6.2</span> Создание транслитераторов</h2>
+</section>
+<section id="вычитание-трансдьюсеров" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="вычитание-трансдьюсеров"><span class="header-section-number">6.3</span> Вычитание трансдьюсеров</h2>
 
 
 </section>

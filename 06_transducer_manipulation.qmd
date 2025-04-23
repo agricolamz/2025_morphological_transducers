@@ -34,7 +34,7 @@ Rules
 ```{{shell}}
 $ lexd example.lexd | hfst-txt2fst -o lexd.hfst
 $ hfst-twolc -q example.twol -o twol.hfst
-$ hfst-compose-intersect lexd.hfst twol.hfst -o result.hfst
+$ hfst-compose-intersect lexd.hfst twol.hfst -o generator.hfst
 ```
 
 ## Некоторые команды `hfst`
@@ -46,7 +46,7 @@ $ hfst-compose-intersect lexd.hfst twol.hfst -o result.hfst
 Печатает трансдьюсер в ATT формате:
 
 ```{{shell}}
-$ hfst-fst2txt result.hfst
+$ hfst-fst2txt generator.hfst
 
 0	1	@0@	@0@	0.000000
 1	2	н	н	0.000000
@@ -72,7 +72,7 @@ $ hfst-fst2txt result.hfst
 Данная программа печатает саммари для трансдьюсера.
 
 ```{{shell}}
-$ hfst-summarise result.hfst 
+$ hfst-summarise generator.hfst 
 name: "compose(text(<stdin>), intersect(twol.hfst))"
 fst type: OpenFST
 arc type: tropical
@@ -111,18 +111,18 @@ Read 1 transducers in total.
 Если вам не хочется смотреть на выдачу целиком, можно совмещать с `grep`:
 
 ```{{shell}}
-$ hfst-summarise result.hfst  | grep cyclic
+$ hfst-summarise generator.hfst  | grep cyclic
 
 cyclic: no
 cyclic at initial state: no     
 ```
 
-## hfst-dump-alphabets
+### hfst-dump-alphabets
 
 Печатает алфавит:
 
 ```{{shell}}
-$ hfst-dump-alphabets result.hfst
+$ hfst-dump-alphabets generator.hfst
 
 <adj>
 <dim>
@@ -167,7 +167,7 @@ Alphabet dump options:
 ```
 
 ```{{shell}}
-$ hfst-dump-alphabets result.hfst -1
+$ hfst-dump-alphabets generator.hfst -1
 
 <adj>
 <dim>
@@ -191,8 +191,8 @@ $ hfst-dump-alphabets result.hfst -1
 Также при помощи программы `grep` полезно проверить какие-нибудь символы:
 
 ```{{shell}}
-$ hfst-dump-alphabets result.hfst -1 | grep ъ 
-$ hfst-dump-alphabets result.hfst -1 | grep к
+$ hfst-dump-alphabets generator.hfst -1 | grep ъ 
+$ hfst-dump-alphabets generator.hfst -1 | grep к
 к
 ```
 
@@ -201,7 +201,7 @@ $ hfst-dump-alphabets result.hfst -1 | grep к
 Заменяет единицы в трансдьюссере:
 
 ```{{shell}}
-$ hfst-substitute -i result.hfst -f "ч" -t "Ч" | hfst-fst2strings
+$ hfst-substitute -i generator.hfst -f "ч" -t "Ч" | hfst-fst2strings
 
 ноЧь<dim>:ноЧка
 ноЧь<adj><m><sg><nom>:ноЧной
@@ -214,7 +214,7 @@ $ hfst-substitute -i result.hfst -f "ч" -t "Ч" | hfst-fst2strings
 Можно заменять конкретные соответствия (строчки в ATT записи).
 
 ```{{shell}}
-$ hfst-substitute -i result.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
+$ hfst-substitute -i generator.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
 
 ночъ<dim>:ночъка
 ночъ<adj><m><sg><nom>:ночъной
@@ -229,6 +229,50 @@ $ hfst-substitute -i result.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
 ```
 
 Важно отметить, что в таком случае не работает расписывание `ъ` -> `ъ:ъ`
+
+### `hfst-lookup`
+
+```{{shell}}
+$ echo "ночь<dim>" | hfst-lookup generator.hfst
+
+hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
+Using HFST basic transducer format and performing slow lookups
+> ночь<dim>	ночка	0,000000
+```
+
+### `hfst-invert`
+
+Это очень полезная функция, так как она позволяет переворачивать трансдьюсер. В прошлом разделе мы видели генератор, а что если мы хотим наоборот не генератор, а анализатор?
+
+```{{shell}}
+$ hfst-invert generator.hfst -o analyzer.hfst
+$ echo "ночка" | hfst-lookup analyzer.hfst
+
+hfst-lookup: Warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
+Using HFST basic transducer format and performing slow lookups
+> ночка	ночь<dim>	0,000000
+```
+
+Любой трансдьюсер обратим --- и это очень классно: вы делаете один объект, а он и анализатор, и генератор.
+
+### `hfst-fst2fst`
+
+Возможно, Вы заметили предупреждение, которое возвращает `hfst-lookup`. Оптимизированный формат полезен для других программ `hfst` и его можно сделать при помощи программы `hfst-fst2fst`, однако этим эта команда не ограничивается.
+
+```{{shell}}
+$ hfst-fst2fst -O analyzer.hfst -o analyzer.hfstol
+$ echo "ночка" | hfst-lookup analyzer.hfstol 
+
+> ночка	ночь<dim>	0,000000
+> %
+```
+
+Программа `hfst-lookup` больше не выдает предупреждения. Еще более ожидаемый выход будет, если использовать программу `hfst-optimized-lookup`:
+
+```{{shell}}
+$ echo "ночка" | hfst-optimized-lookup analyzer.hfstol
+ночка	ночь<dim>
+```
 
 ## Создание транслитераторов
 
