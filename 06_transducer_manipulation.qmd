@@ -1,5 +1,210 @@
 # Операции с трансдьюсерами
 
+Посмотрим на следующий трансдьюсер.
+
+```{{lexd}}
+PATTERNS
+Noun (Suffix[-adj] | (Suffix[adj] Inflection))?
+
+LEXICON Noun
+ночь
+печь
+
+LEXICON Suffix
+<dim>:ка
+<adj>:н[adj]
+
+LEXICON Inflection
+<m><sg><nom>:ой
+```
+
+```{{twol}}
+Alphabet
+  а е й к н о п ч ь ь:0;
+
+Rules
+
+"чк чн пишется без ь"
+! например, ночьной -> ночной или печька -> печка
+
+ь:0 <=> _ к;
+        _ н;
+```
+
+```{{shell}}
+$ lexd example.lexd | hfst-txt2fst -o lexd.hfst
+$ hfst-twolc -q example.twol -o twol.hfst
+$ hfst-compose-intersect lexd.hfst twol.hfst -o result.hfst
+```
+
+## Некоторые команды `hfst`
+
+В большинстве команд ниже работают флаги `-i` --- входящий файл; `-o` --- исходящий файл. Если `-o` отсутствует, то результат печатается в консоль.
+
+### `hfst-fst2txt`
+
+Печатает трансдьюсер в ATT формате:
+
+```{{shell}}
+$ hfst-fst2txt result.hfst
+
+0	1	@0@	@0@	0.000000
+1	2	н	н	0.000000
+1	3	п	п	0.000000
+2	4	о	о	0.000000
+3	4	е	е	0.000000
+4	5	ч	ч	0.000000
+5	6	ь	@0@	0.000000
+5	7	ь	ь	0.000000
+6	8	<dim>	к	0.000000
+6	9	<adj>	н	0.000000
+7	10	@0@	@0@	0.000000
+8	11	@0@	а	0.000000
+9	12	<m>	о	0.000000
+10	0.000000
+11	10	@0@	@0@	0.000000
+12	13	<sg>	й	0.000000
+13	11	<nom>	@0@	0.000000
+```
+
+### `hfst-summarise`
+
+Данная программа печатает саммари для трансдьюсера.
+
+```{{shell}}
+$ hfst-summarise result.hfst 
+name: "compose(text(<stdin>), intersect(twol.hfst))"
+fst type: OpenFST
+arc type: tropical
+input symbol table: yes
+output symbol table: yes
+# of states: 14
+# of arcs: 16
+initial state: 0
+# of final states: 1
+# of input/output epsilons: 3
+# of input epsilons: 4
+# of output epsilons: 5
+# of ... accessible states: ???
+# of ... coaccessible states: ???
+# of ... connected states: ???
+# of ... strongly conn components: ???
+expanded: ???
+mutable: yes
+acceptor: no
+input deterministic: no
+output deterministic: no
+input label sorted: ???
+output label sorted: ???
+weighted: yes
+cyclic: no
+cyclic at initial state: no
+topologically sorted: ???
+accessible: ???
+coaccessible: ???
+string: ???
+minimised: ???
+
+Read 1 transducers in total.
+```
+
+Если вам не хочется смотреть на выдачу целиком, можно совмещать с `grep`:
+
+```{{shell}}
+$ hfst-summarise result.hfst  | grep cyclic
+
+cyclic: no
+cyclic at initial state: no     
+```
+
+## hfst-dump-alphabets
+
+Печатает алфавит:
+
+```{{shell}}
+$ hfst-dump-alphabets result.hfst
+
+<adj>
+<dim>
+<m>
+<nom>
+<sg>
+@_EPSILON_SYMBOL_@
+@_IDENTITY_SYMBOL_@
+@_UNKNOWN_SYMBOL_@
+а
+е
+й
+к
+н
+о
+п
+ч
+ь
+<adj>
+<dim>
+<m>
+<nom>
+<sg>
+@_EPSILON_SYMBOL_@
+а
+е
+й
+к
+н
+о
+п
+ч
+ь 
+```
+
+Мне не очень понятно, почему он печатает все два раза, однако этот фрагмент документации намекает мне, что это решаемая проблема:
+
+```
+Alphabet dump options:
+  -1, --exclude-seen       Ignore alphabets seen in automaton
+  -2, --exclude-metadata   Ignore alphabets from headers
+```
+
+```{{shell}}
+$ hfst-dump-alphabets result.hfst -1
+
+<adj>
+<dim>
+<m>
+<nom>
+<sg>
+@_EPSILON_SYMBOL_@
+@_IDENTITY_SYMBOL_@
+@_UNKNOWN_SYMBOL_@
+а
+е
+й
+к
+н
+о
+п
+ч
+ь
+```
+
+Также при помощи программы `grep` полезно проверить 
+### `hfst-substitute`
+
+Заменяет единицы в трансдьюссере:
+
+```{{shell}}
+$ hfst-substitute -i result.hfst -f "ч" -t "Ч" | hfst-fst2strings
+
+ноЧь<dim>:ноЧка
+ноЧь<adj><m><sg><nom>:ноЧной
+ноЧь
+пеЧь<dim>:пеЧка
+пеЧь<adj><m><sg><nom>:пеЧной
+пеЧь
+```
+
+
 ## Создание транслитераторов
 
 ## Вычитание трансдьюсеров

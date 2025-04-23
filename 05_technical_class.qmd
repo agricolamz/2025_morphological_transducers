@@ -721,7 +721,7 @@ Using HFST basic transducer format and performing slow lookups
 Можно использовать программу `hfst-fst2strings`, чтобы посмотреть на все формы: 
 
 ```{{shell}}
-hfst-fst2strings lexd.hfst
+$ hfst-fst2strings lexd.hfst
 
 ночь
 ночь<dim>:ночька
