@@ -190,7 +190,7 @@ $ hfst-dump-alphabets result.hfst -1
 
 Также при помощи программы `grep` полезно проверить какие-нибудь символы:
 
-```{r}
+```{{shell}}
 $ hfst-dump-alphabets result.hfst -1 | grep ъ 
 $ hfst-dump-alphabets result.hfst -1 | grep к
 к
