@@ -282,6 +282,120 @@ $ echo "какая-то ночка и печь\!" | hfst-proc2 -С analyzer.hfst
 !echo "какая-то ночка и печь\!" | hfst-proc2 -C examples/analyzer.hfstol
 ```
 
+### `hfst-pair-test`
+
+Эта программа проверяет `twol`:
+
+```{{shell}}
+$ echo "н о ч к а" | hfst-pair-test twol.hfst
+```
+```{python}
+!echo "н о ч к а" | hfst-pair-test examples/twol.hfst
+```
+
+```{{shell}}
+$ echo "н о ч ь к а" | hfst-pair-test twol.hfst
+```
+```{python}
+!echo "н о ч ь к а" | hfst-pair-test examples/twol.hfst
+```
+
+```{{shell}}
+$ echo "н о ч ь:0 к а" | hfst-pair-test twol.hfst
+```
+```{python}
+!echo "н о ч ь:0 к а" | hfst-pair-test examples/twol.hfst
+```
+
+Тесты могут быть отрицательными:
+
+```{{shell}}
+$ echo "н о ч ь к а" | hfst-pair-test -N twol.hfst
+```
+```{python}
+!echo "н о ч ь к а" | hfst-pair-test -N examples/twol.hfst
+```
+
+```{{shell}}
+$ echo "н о ч к а" | hfst-pair-test -N twol.hfst
+```
+```{python}
+!echo "н о ч к а" | hfst-pair-test -N examples/twol.hfst
+```
+
+Вообще стоит обратить внимание на мануал этой программы: она подробнее многих других программ `hfst`.
+
+## Некоторые операции с двумя трансдьюсерами
+
+Создадим себе второй очень похожий трансдьюсер:
+
+```{{shell}}
+hfst-substitute -f "о" -t "О" -i generator.hfst -o generator2.hfst
+```
+
+```{python}
+!hfst-substitute -f "о" -t "О" -i examples/generator.hfst -o examples/generator2.hfst
+```
+
+### `hfst-compare`
+
+Сравнивает трансдьюсеры
+
+```{{shell}}
+$ hfst-compare generator.hfst generator.hfst
+```
+```{python}
+!hfst-compare examples/generator.hfst examples/generator.hfst
+```
+
+```{{shell}}
+$ hfst-compare generator.hfst generator2.hfst
+```
+```{python}
+!hfst-compare examples/generator.hfst examples/generator2.hfst
+```
+
+```{{shell}}
+$ hfst-compare generator.hfst analyzer.hfst
+```
+```{python}
+!hfst-compare examples/generator.hfst examples/analyzer.hfst
+```
+
+### `hfst-concatenate`
+
+Конкатенация трансдьюсеров, т. е. последнее состояние одного трансдьюсер становиться начальным состоянием второго.
+
+```{{shell}}
+hfst-concatenate generator.hfst generator2.hfst | hfst-fst2strings | head 
+```
+```{python}
+!hfst-concatenate examples/generator.hfst examples/generator2.hfst | hfst-fst2strings | head 
+```
+
+### `hfst-conjunct`
+
+Конъюнкция транслитераторов (работает как пересечение).
+
+```{{shell}}
+hfst-conjunct generator.hfst generator2.hfst | hfst-fst2strings
+```
+```{python}
+!hfst-conjunct examples/generator.hfst examples/generator2.hfst | hfst-fst2strings
+```
+
+### `hfst-disjunct`
+
+Дизъюнкция транслитераторов (работает как xor).
+
+```{{shell}}
+hfst-disjunct generator.hfst generator2.hfst | hfst-fst2strings
+```
+```{python}
+!hfst-disjunct examples/generator.hfst examples/generator2.hfst | hfst-fst2strings
+```
+
+
 ## Создание транслитераторов
 
 ```{python}
