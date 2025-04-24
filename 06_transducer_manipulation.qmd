@@ -52,6 +52,19 @@ $ hfst-compose-intersect lexd.hfst twol.hfst -o generator.hfst
 
 В большинстве команд ниже работают флаги `-i` --- входящий файл; `-o` --- исходящий файл. Если `-o` отсутствует, то результат печатается в консоль.
 
+### `hfst-fst2strings`
+
+Печатает формы трансдьюсер:
+
+```{{shell}}
+$ hfst-fst2strings generator.hfst
+```
+
+```{python}
+!hfst-fst2strings examples/generator.hfst
+```
+
+
 ### `hfst-fst2txt`
 
 Печатает трансдьюсер в AT&T формате:
@@ -76,7 +89,6 @@ $ hfst-summarise generator.hfst
 !hfst-summarise examples/generator.hfst
 ```
 
-
 Если вам не хочется смотреть на выдачу целиком, можно совмещать с `grep`:
 
 ```{{shell}}
@@ -86,6 +98,26 @@ $ hfst-summarise generator.hfst | grep cyclic
 ```{python}
 !hfst-summarise examples/generator.hfst | grep cyclic
 ```
+
+### hfst-name
+
+Если хочется, чтобы у трансдьюсера было осмысленное имя, то можно при создании дать ему имя при помощи функции `hfst-name` или `hfst-edit-metadata`:
+
+```{{shell}}
+$ hfst-compose-intersect lexd.hfst twol.hfst | hfst-name -n 'the best fst ever' -o generator.hfst
+$ hfst-name -p generator.hfst
+```
+
+```{python}
+!hfst-compose-intersect examples/lexd.hfst examples/twol.hfst | hfst-name -n 'the best fst ever' -o examples/generator.hfst
+!hfst-name -p examples/generator.hfst
+```
+
+Программа `hfst-edit-metadata` позволяет настроить, например, следующие поля: 
+
+- `--add=author=...` 
+- `--add=licence=...`
+- `--add=name='...'`
 
 ### hfst-dump-alphabets
 
@@ -192,7 +224,7 @@ $ echo "ночка" | hfst-lookup analyzer.hfstol
 
 ```{python}
 !hfst-fst2fst -O examples/analyzer.hfst -o examples/analyzer.hfstol
-!echo "ночка" | hfst-lookup examples/analyzer.hfstol
+!echo "ночка" | hfst-lookup examples/analyzer.hfst
 ```
 
 Программа `hfst-lookup` больше не выдает предупреждения. Еще более ожидаемый выход будет, если использовать программу `hfst-optimized-lookup`:
@@ -375,7 +407,7 @@ hfst-concatenate generator.hfst generator2.hfst | hfst-fst2strings | head
 
 ### `hfst-conjunct`
 
-Конъюнкция транслитераторов (работает как пересечение).
+Конъюнкция трансдьюсеров (работает как пересечение).
 
 ```{{shell}}
 hfst-conjunct generator.hfst generator2.hfst | hfst-fst2strings
