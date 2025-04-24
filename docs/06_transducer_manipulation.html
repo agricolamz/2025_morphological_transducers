@@ -210,9 +210,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#hfst-lookup" id="toc-hfst-lookup" class="nav-link" data-scroll-target="#hfst-lookup"><span class="header-section-number">6.1.5</span> <code>hfst-lookup</code></a></li>
   <li><a href="#hfst-invert" id="toc-hfst-invert" class="nav-link" data-scroll-target="#hfst-invert"><span class="header-section-number">6.1.6</span> <code>hfst-invert</code></a></li>
   <li><a href="#hfst-fst2fst" id="toc-hfst-fst2fst" class="nav-link" data-scroll-target="#hfst-fst2fst"><span class="header-section-number">6.1.7</span> <code>hfst-fst2fst</code></a></li>
+  <li><a href="#hfst-proc" id="toc-hfst-proc" class="nav-link" data-scroll-target="#hfst-proc"><span class="header-section-number">6.1.8</span> <code>hfst-proc</code></a></li>
   </ul></li>
   <li><a href="#создание-транслитераторов" id="toc-создание-транслитераторов" class="nav-link" data-scroll-target="#создание-транслитераторов"><span class="header-section-number">6.2</span> Создание транслитераторов</a></li>
-  <li><a href="#вычитание-трансдьюсеров" id="toc-вычитание-трансдьюсеров" class="nav-link" data-scroll-target="#вычитание-трансдьюсеров"><span class="header-section-number">6.3</span> Вычитание трансдьюсеров</a></li>
   </ul>
 </nav>
     </div>
@@ -483,15 +483,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Программа <code>hfst-lookup</code> больше не выдает предупреждения. Еще более ожидаемый выход будет, если использовать программу <code>hfst-optimized-lookup</code>:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "ночка" | hfst-optimized-lookup analyzer.hfstol</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="in">ночка   ночь&lt;dim&gt;</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="in">ночка   ночь&lt;dim&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="hfst-proc" class="level3" data-number="6.1.8">
+<h3 data-number="6.1.8" class="anchored" data-anchor-id="hfst-proc"><span class="header-section-number">6.1.8</span> <code>hfst-proc</code></h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="in">$ echo "ночка и печь" | hfst-proc analyzer.hfstol </span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="in">^ночка/ночь&lt;dim&gt;$ ^и/*и$ ^печь/печь$</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="создание-транслитераторов" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="создание-транслитераторов"><span class="header-section-number">6.2</span> Создание транслитераторов</h2>
-</section>
-<section id="вычитание-трансдьюсеров" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="вычитание-трансдьюсеров"><span class="header-section-number">6.3</span> Вычитание трансдьюсеров</h2>
 
 
 </section>

@@ -271,9 +271,17 @@ $ echo "ночка" | hfst-lookup analyzer.hfstol
 
 ```{{shell}}
 $ echo "ночка" | hfst-optimized-lookup analyzer.hfstol
+
 ночка	ночь<dim>
 ```
 
-## Создание транслитераторов
+### `hfst-proc`
 
-## Вычитание трансдьюсеров
+```{{shell}}
+$ echo "ночка и печь" | hfst-proc analyzer.hfstol 
+
+^ночка/ночь<dim>$ ^и/*и$ ^печь/печь$
+```
+
+
+## Создание транслитераторов
