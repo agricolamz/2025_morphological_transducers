@@ -192,7 +192,7 @@ $ echo "ночка" | hfst-lookup analyzer.hfstol
 
 ```{python}
 !hfst-fst2fst -O examples/analyzer.hfst -o examples/analyzer.hfstol
-!echo "ночка" | hfst-lookup examples/analyzer.hfst
+!echo "ночка" | hfst-lookup examples/analyzer.hfstol
 ```
 
 Программа `hfst-lookup` больше не выдает предупреждения. Еще более ожидаемый выход будет, если использовать программу `hfst-optimized-lookup`:
@@ -386,13 +386,24 @@ hfst-conjunct generator.hfst generator2.hfst | hfst-fst2strings
 
 ### `hfst-disjunct`
 
-Дизъюнкция транслитераторов (работает как xor).
+Дизъюнкция трансдьюсеров (работает как xor).
 
 ```{{shell}}
 hfst-disjunct generator.hfst generator2.hfst | hfst-fst2strings
 ```
 ```{python}
 !hfst-disjunct examples/generator.hfst examples/generator2.hfst | hfst-fst2strings
+```
+
+### `hfst-subtract`
+
+Вычитание трансдьюсеров.
+
+```{{shell}}
+hfst-subtract generator.hfst generator2.hfst | hfst-fst2strings
+```
+```{python}
+!hfst-subtract examples/generator.hfst examples/generator2.hfst | hfst-fst2strings
 ```
 
 
