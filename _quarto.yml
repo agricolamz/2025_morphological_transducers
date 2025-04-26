@@ -32,3 +32,4 @@ format:
     theme: cosmo
     lang: ru
     page-layout: full
+    css: styles.css

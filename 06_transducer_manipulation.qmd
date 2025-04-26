@@ -222,11 +222,11 @@ $ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O xerox g
 - `cg` --- Constraint Grammar
 
 ```{{shell}}
-$ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O xerox generator.hfst
+$ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O cg generator.hfst
 ```
 
 ```{python}
-!echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O xerox examples/generator.hfst 
+!echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O cg examples/generator.hfst 
 ```
 
 - `apertium`
@@ -404,11 +404,11 @@ $ echo "н о ч к а" | hfst-pair-test -N twol.hfst
 Создадим себе второй очень похожий трансдьюсер:
 
 ```{{shell}}
-hfst-substitute -f "о" -t "О" -i generator.hfst -o generator2.hfst
+$ hfst-substitute -f "о" -t "О" -i generator.hfst | hfst-name -n 'transducer 2' -o generator2.hfst
 ```
 
 ```{python}
-!hfst-substitute -f "о" -t "О" -i examples/generator.hfst -o examples/generator2.hfst
+!hfst-substitute -f "о" -t "О" -i examples/generator.hfst | hfst-name -n 'transducer 2' -o examples/generator2.hfst
 ```
 
 ### `hfst-compare`
