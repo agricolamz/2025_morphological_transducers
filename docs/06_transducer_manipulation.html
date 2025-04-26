@@ -298,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-fst2strings generator.hfst</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="2b4a55e5" class="cell" data-execution_count="2">
+<div id="f8cc83e0" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>ночь&lt;N&gt;&lt;dim&gt;:ночка
 ночь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ночной
@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-fst2txt generator.hfst</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="34892dc2" class="cell" data-execution_count="3">
+<div id="06ac98ad" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>0   1   @0@ @0@ 0.000000
 1   2   н   н   0.000000
@@ -351,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-summarise generator.hfst</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="ac112098" class="cell" data-execution_count="4">
+<div id="532c047a" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>name: "compose(text(&lt;stdin&gt;), intersect(examples/twol.hfst))"
 fst type: OpenFST
@@ -392,7 +392,7 @@ Read 1 transducers in total.</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-summarise generator.hfst <span class="kw">|</span> <span class="fu">grep</span> cyclic</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="5a2ea721" class="cell" data-execution_count="5">
+<div id="70eb930e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>cyclic: no
 cyclic at initial state: no</code></pre>
@@ -406,7 +406,7 @@ cyclic at initial state: no</code></pre>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-compose-intersect lexd.hfst twol.hfst <span class="kw">|</span> <span class="ex">hfst-name</span> <span class="at">-n</span> <span class="st">'the best fst ever'</span> <span class="at">-o</span> generator.hfst</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-name <span class="at">-p</span> generator.hfst</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="5935e326" class="cell" data-execution_count="6">
+<div id="09a39adc" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>"the best fst ever"</code></pre>
 </div>
@@ -424,7 +424,7 @@ cyclic at initial state: no</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-dump-alphabets generator.hfst</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="2f57cf6b" class="cell" data-execution_count="7">
+<div id="0cf2d72a" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;N&gt;
 &lt;acc&gt;
@@ -471,7 +471,7 @@ cyclic at initial state: no</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-dump-alphabets <span class="at">-1</span> generator.hfst</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="c7fe1441" class="cell" data-execution_count="8">
+<div id="bed8cc8f" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;N&gt;
 &lt;acc&gt;
@@ -501,7 +501,7 @@ cyclic at initial state: no</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-dump-alphabets <span class="at">-1</span> generator.hfst <span class="kw">|</span> <span class="fu">grep</span> к</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="ef4345e3" class="cell" data-execution_count="10">
+<div id="e33010e9" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>к</code></pre>
 </div>
@@ -513,7 +513,7 @@ cyclic at initial state: no</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-substitute <span class="at">-i</span> generator.hfst <span class="at">-f</span> <span class="st">"ч"</span> <span class="at">-t</span> <span class="st">"Ч"</span> <span class="kw">|</span> <span class="ex">hfst-fst2strings</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="9be8f65b" class="cell" data-execution_count="11">
+<div id="e7b1c584" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>ноЧь&lt;N&gt;&lt;dim&gt;:ноЧка
 ноЧь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ноЧной
@@ -529,7 +529,7 @@ cyclic at initial state: no</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-substitute <span class="at">-i</span> generator.hfst <span class="at">-f</span> <span class="st">"ь:@0@"</span> <span class="at">-t</span> <span class="st">"ъ:ъ"</span> <span class="kw">|</span> <span class="ex">hfst-fst2strings</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="49879de7" class="cell" data-execution_count="12">
+<div id="b5d4e185" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>ночъ&lt;N&gt;&lt;dim&gt;:ночъка
 ночъ&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ночъной
@@ -552,7 +552,7 @@ cyclic at initial state: no</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночь&lt;N&gt;&lt;dim&gt;"</span> <span class="kw">|</span> <span class="ex">hfst-lookup</span> generator.hfst</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="ee6e721d" class="cell" data-execution_count="13">
+<div id="c9de3559" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">hfst-lookup: </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
@@ -571,7 +571,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb27"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;\nночь&lt;N&gt;&lt;dim&gt;"</span> <span class="kw">|</span> <span class="ex">hfst-lookup</span> generator.hfst</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="247fc773" class="cell" data-execution_count="14">
+<div id="d8506aef" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">hfst-lookup: </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
@@ -597,7 +597,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;\nночь&lt;N&gt;&lt;dim&gt;"</span> <span class="kw">|</span> <span class="ex">hfst-lookup</span> <span class="at">-O</span> xerox generator.hfst</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="6cd6aa62" class="cell" data-execution_count="15">
+<div id="8352d2ff" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">hfst-lookup: </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
@@ -622,7 +622,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb29"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;\nночь&lt;N&gt;&lt;dim&gt;"</span> <span class="kw">|</span> <span class="ex">hfst-lookup</span> <span class="at">-O</span> xerox generator.hfst</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fad381ea" class="cell" data-execution_count="16">
+<div id="d46543e5" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">hfst-lookup: </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
@@ -647,7 +647,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;\nночь&lt;N&gt;&lt;dim&gt;"</span> <span class="kw">|</span> <span class="ex">hfst-lookup</span> <span class="at">-O</span> apertium generator.hfst</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="b74d41f9" class="cell" data-execution_count="17">
+<div id="afaf7e97" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">hfst-lookup: </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
@@ -670,7 +670,7 @@ Using HFST basic transducer format and performing slow lookups
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-invert generator.hfst <span class="at">-o</span> analyzer.hfst</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночка"</span> <span class="kw">|</span> <span class="ex">hfst-lookup</span> analyzer.hfst</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="00ab6d51" class="cell" data-execution_count="18">
+<div id="3bcfa8a6" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">hfst-lookup: </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
@@ -694,7 +694,7 @@ Using HFST basic transducer format and performing slow lookups
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-fst2fst <span class="at">-O</span> analyzer.hfst <span class="at">-o</span> analyzer.hfstol</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночка"</span> <span class="kw">|</span> <span class="ex">hfst-lookup</span> analyzer.hfstol</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="3e356fb3" class="cell" data-execution_count="19">
+<div id="0c33cb22" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bold">hfst-lookup: </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
@@ -713,7 +713,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb33"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночка"</span> <span class="kw">|</span> <span class="ex">hfst-optimized-lookup</span> analyzer.hfstol</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="04435059" class="cell" data-execution_count="20">
+<div id="8a33eca2" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-stdout">
 <pre><code>ночка   ночь&lt;N&gt;&lt;dim&gt;
 </code></pre>
@@ -726,7 +726,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb35"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"какая-то Ночка и ПЕЧЬ\!"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="6dff54e9" class="cell" data-execution_count="21">
+<div id="4fea05ad" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-stdout">
 <pre><code>^какая/*какая$-^то/*то$ ^Ночка/Ночь&lt;N&gt;&lt;dim&gt;$ ^и/*и$ ^ПЕЧЬ/ПЕЧЬ&lt;N&gt;&lt;acc&gt;/ПЕЧЬ&lt;N&gt;&lt;nom&gt;$!</code></pre>
 </div>
@@ -738,7 +738,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb37"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"какая-то Ночка и ПЕЧЬ\!"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="725119f0" class="cell" data-execution_count="22">
+<div id="8cb580b4" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-stdout">
 <pre><code>"&lt;какая&gt;"
     "*какая"
@@ -759,7 +759,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb39"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"какая-то Ночка и ПЕЧЬ\!"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-x</span> analyzer.hfstol</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="20b2fa73" class="cell" data-execution_count="23">
+<div id="989f71ae" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-stdout">
 <pre><code>какая   +?
 
@@ -780,7 +780,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb41"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"какая-то Ночка и ПЕЧЬ\!"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-xw</span> analyzer.hfstol</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="16f23981" class="cell" data-execution_count="24">
+<div id="d87943c4" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-stdout">
 <pre><code>какая   +?
 
@@ -801,7 +801,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb43"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"какая-то Ночка и ПЕЧЬ\!"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-xN</span> 1 analyzer.hfstol</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="001656d6" class="cell" data-execution_count="25">
+<div id="4b18cb00" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-stdout">
 <pre><code>какая   +?
 
@@ -819,7 +819,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb45"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"какая-то ночка и печь\!"</span> <span class="kw">|</span> <span class="ex">hfst-proc2</span> analyzer.hfstol</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="eb613a60" class="cell" data-execution_count="26">
+<div id="1dc0840b" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-stdout">
 <pre><code>ночка
 печь
@@ -830,7 +830,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb47"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"какая-то ночка и печь\!"</span> <span class="kw">|</span> <span class="ex">hfst-proc2</span> <span class="at">-a</span> analyzer.hfstol</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="1c398c9c" class="cell" data-execution_count="27">
+<div id="c016beca" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-stdout">
 <pre><code>какая-то 
 ночка
@@ -844,7 +844,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb49"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"какая-то ночка и печь\!"</span> <span class="kw">|</span> <span class="ex">hfst-proc2</span> <span class="at">-С</span> analyzer.hfstol</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="7820425a" class="cell" data-execution_count="28">
+<div id="ed125cf8" class="cell" data-execution_count="28">
 <div class="cell-output cell-output-stdout">
 <pre><code>1   ночка   _   _   _   _   _   _   _   ночь&lt;N&gt;&lt;dim&gt;
 2   печь    _   _   _   _   _   _   _   печь&lt;N&gt;&lt;nom&gt;</code></pre>
@@ -857,7 +857,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb51"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"н о ч к а"</span> <span class="kw">|</span> <span class="ex">hfst-pair-test</span> twol.hfst</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="2daa0ce3" class="cell" data-execution_count="29">
+<div id="bf84049f" class="cell" data-execution_count="29">
 <div class="cell-output cell-output-stdout">
 <pre><code>Test passed.</code></pre>
 </div>
@@ -865,7 +865,7 @@ Using HFST basic transducer format and performing slow lookups
 <div class="sourceCode" id="cb53"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"н о ч ь к а"</span> <span class="kw">|</span> <span class="ex">hfst-pair-test</span> twol.hfst</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="587de95b" class="cell" data-execution_count="30">
+<div id="c304aeed" class="cell" data-execution_count="30">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rule "чк чн пишется без ь" fails:
 #:0 н о ч HERE ---&gt; ь к а #:0 
@@ -878,7 +878,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb55"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"н о ч ь:0 к а"</span> <span class="kw">|</span> <span class="ex">hfst-pair-test</span> twol.hfst</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fc79b02a" class="cell" data-execution_count="31">
+<div id="243844d2" class="cell" data-execution_count="31">
 <div class="cell-output cell-output-stdout">
 <pre><code>Test passed.</code></pre>
 </div>
@@ -887,7 +887,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb57"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"н о ч ь к а"</span> <span class="kw">|</span> <span class="ex">hfst-pair-test</span> <span class="at">-N</span> twol.hfst</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="db232b83" class="cell" data-execution_count="32">
+<div id="ca71aa5c" class="cell" data-execution_count="32">
 <div class="cell-output cell-output-stdout">
 <pre><code>Test passed.</code></pre>
 </div>
@@ -895,7 +895,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"н о ч к а"</span> <span class="kw">|</span> <span class="ex">hfst-pair-test</span> <span class="at">-N</span> twol.hfst</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cc74e0a2" class="cell" data-execution_count="33">
+<div id="83424620" class="cell" data-execution_count="33">
 <div class="cell-output cell-output-stdout">
 <pre><code>FAIL: н о ч к а PASSED
 
@@ -917,7 +917,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb62"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-compare generator.hfst generator.hfst</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="83775689" class="cell" data-execution_count="35">
+<div id="f6cbd653" class="cell" data-execution_count="35">
 <div class="cell-output cell-output-stdout">
 <pre><code>the best fst ever == the best fst ever</code></pre>
 </div>
@@ -925,7 +925,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb64"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-compare generator.hfst generator2.hfst</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="b9b48fc8" class="cell" data-execution_count="36">
+<div id="39f662d3" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-stdout">
 <pre><code>the best fst ever != substitute-о-with-О(the best fst ever)</code></pre>
 </div>
@@ -933,7 +933,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb66"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hfst-compare generator.hfst analyzer.hfst</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="dba075bb" class="cell" data-execution_count="37">
+<div id="aa5e35b0" class="cell" data-execution_count="37">
 <div class="cell-output cell-output-stdout">
 <pre><code>the best fst ever != invert(the best fst ever)</code></pre>
 </div>
@@ -945,7 +945,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb68"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hfst-concatenate</span> generator.hfst generator2.hfst <span class="kw">|</span> <span class="ex">hfst-fst2strings</span> <span class="kw">|</span> <span class="fu">head</span> </span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="de6b6e25" class="cell" data-execution_count="38">
+<div id="c811dff0" class="cell" data-execution_count="38">
 <div class="cell-output cell-output-stdout">
 <pre><code>ночь&lt;N&gt;&lt;dim&gt;нОчь&lt;N&gt;&lt;dim&gt;:ночканОчка
 ночь&lt;N&gt;&lt;dim&gt;нОчь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ночканОчнОй
@@ -966,7 +966,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb70"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hfst-conjunct</span> generator.hfst generator2.hfst <span class="kw">|</span> <span class="ex">hfst-fst2strings</span></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="993f2fa5" class="cell" data-execution_count="39">
+<div id="6e50b555" class="cell" data-execution_count="39">
 <div class="cell-output cell-output-stdout">
 <pre><code>печь&lt;N&gt;&lt;dim&gt;:печка
 печь&lt;N&gt;&lt;nom&gt;:печь
@@ -980,7 +980,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb72"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hfst-disjunct</span> generator.hfst generator2.hfst <span class="kw">|</span> <span class="ex">hfst-fst2strings</span></span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="0653412e" class="cell" data-execution_count="40">
+<div id="80f80bc7" class="cell" data-execution_count="40">
 <div class="cell-output cell-output-stdout">
 <pre><code>ночь&lt;N&gt;&lt;dim&gt;:ночка
 ночь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ночной
@@ -1007,7 +1007,7 @@ Test failed.</code></pre>
 <div class="sourceCode" id="cb74"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hfst-subtract</span> generator.hfst generator2.hfst <span class="kw">|</span> <span class="ex">hfst-fst2strings</span></span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="3d9677b7" class="cell" data-execution_count="41">
+<div id="e5cb61d3" class="cell" data-execution_count="41">
 <div class="cell-output cell-output-stdout">
 <pre><code>ночь&lt;N&gt;&lt;dim&gt;:ночка
 ночь&lt;N&gt;&lt;adj&gt;&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ночной
