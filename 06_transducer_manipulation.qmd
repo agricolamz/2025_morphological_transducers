@@ -197,6 +197,48 @@ $ echo "ночь<N><dim>" | hfst-lookup generator.hfst
 !echo "ночь<N><dim>" | hfst-lookup examples/generator.hfst 
 ```
 
+Кроме того, можно на вход подавать несколько форм, разделяя их переносом строки, или даже программой `cat` читать из файла:
+
+```{{shell}}
+$ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup generator.hfst
+```
+
+```{python}
+!echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup examples/generator.hfst 
+```
+
+Важно также отметить, что при помощи флага `-O` можно задать тип в котором печатать результат:
+
+- `xerox`
+
+```{{shell}}
+$ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O xerox generator.hfst
+```
+
+```{python}
+!echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O xerox examples/generator.hfst 
+```
+
+- `cg` --- Constraint Grammar
+
+```{{shell}}
+$ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O xerox generator.hfst
+```
+
+```{python}
+!echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O xerox examples/generator.hfst 
+```
+
+- `apertium`
+
+```{{shell}}
+$ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O apertium generator.hfst
+```
+
+```{python}
+!echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O apertium examples/generator.hfst 
+```
+
 ### `hfst-invert`
 
 Это очень полезная функция, так как она позволяет переворачивать трансдьюсер. В прошлом разделе мы видели генератор, а что если мы хотим наоборот не генератор, а анализатор?
