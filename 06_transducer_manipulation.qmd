@@ -185,7 +185,17 @@ $ hfst-substitute -i generator.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
 !hfst-substitute -i examples/generator.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
 ```
 
-Важно отметить, что в таком случае не работает расписывание `ъ` -> `ъ:ъ`
+Важно отметить, что в таком случае не работает расписывание `ъ` -> `ъ:ъ`.
+
+Если хочется чего-то удалить, то следует использовать запись `@0@` или `@_EPSILON_SYMBOL_@`:
+
+```{{shell}}
+$ hfst-substitute -i generator.hfst -f "ч" -t "@0@" | hfst-fst2strings
+```
+
+```{python}
+!hfst-substitute -i examples/generator.hfst -f "ч" -t "@0@" | hfst-fst2strings
+```
 
 ### `hfst-lookup`
 
