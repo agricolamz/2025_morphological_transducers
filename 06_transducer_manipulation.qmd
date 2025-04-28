@@ -99,7 +99,7 @@ $ hfst-summarise generator.hfst | grep cyclic
 !hfst-summarise examples/generator.hfst | grep cyclic
 ```
 
-### hfst-name
+### `hfst-name`
 
 Если хочется, чтобы у трансдьюсера было осмысленное имя, то можно при создании дать ему имя при помощи функции `hfst-name` или `hfst-edit-metadata`:
 
@@ -119,7 +119,7 @@ $ hfst-name -p generator.hfst
 - `--add=licence=...`
 - `--add=name='...'`
 
-### hfst-dump-alphabets
+### `hfst-dump-alphabets`
 
 Печатает алфавит:
 
@@ -168,21 +168,21 @@ $ hfst-dump-alphabets -1 generator.hfst | grep к
 Заменяет единицы в трансдьюсере:
 
 ```{{shell}}
-$ hfst-substitute -i generator.hfst -f "ч" -t "Ч" | hfst-fst2strings
+$ hfst-substitute -f "ч" -t "Ч" -i generator.hfst | hfst-fst2strings
 ```
 
 ```{python}
-!hfst-substitute -i examples/generator.hfst -f "ч" -t "Ч" | hfst-fst2strings
+!hfst-substitute -f "ч" -t "Ч" -i examples/generator.hfst | hfst-fst2strings
 ```
 
 Можно заменять конкретные соответствия (строчки в AT&T записи).
 
 ```{{shell}}
-$ hfst-substitute -i generator.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
+$ hfst-substitute -f "ь:@0@" -t "ъ:ъ" -i generator.hfst | hfst-fst2strings
 ```
 
 ```{python}
-!hfst-substitute -i examples/generator.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
+!hfst-substitute -f "ь:@0@" -t "ъ:ъ" -i examples/generator.hfst | hfst-fst2strings
 ```
 
 Важно отметить, что в таком случае не работает расписывание `ъ` -> `ъ:ъ`.
@@ -190,12 +190,36 @@ $ hfst-substitute -i generator.hfst -f "ь:@0@" -t "ъ:ъ" | hfst-fst2strings
 Если хочется чего-то удалить, то следует использовать запись `@0@` или `@_EPSILON_SYMBOL_@`:
 
 ```{{shell}}
-$ hfst-substitute -i generator.hfst -f "ч" -t "@0@" | hfst-fst2strings
+$ hfst-substitute -f "ч" -t "@0@" -i generator.hfst | hfst-fst2strings
 ```
 
 ```{python}
-!hfst-substitute -i examples/generator.hfst -f "ч" -t "@0@" | hfst-fst2strings
+!hfst-substitute -f "ч" -t "@0@" -i examples/generator.hfst | hfst-fst2strings
 ```
+
+Замены можно делать по списку, для этого нужно иметь `.tsv` файл. Ниже содержимое файла `label_file.tsv`:
+
+```
+<N>	@_EPSILON_SYMBOL_@
+<acc>	@_EPSILON_SYMBOL_@
+<adj>	@_EPSILON_SYMBOL_@
+<dim>	@_EPSILON_SYMBOL_@
+<m>	@_EPSILON_SYMBOL_@
+<nom>	@_EPSILON_SYMBOL_@
+<sg>	@_EPSILON_SYMBOL_@
+```
+
+Мы можем удалить все теги и получить соответствие основы-формы:
+
+```{{shell}}
+$ hfst-substitute -F label_file.tsv -i generator.hfst | hfst-fst2strings
+```
+
+```{python}
+!hfst-substitute -F examples/label_file.tsv -i examples/generator.hfst | hfst-fst2strings
+```
+
+Опытным путем я выяснил, что это команда не будет работать с записью `@0@`.
 
 ### `hfst-lookup`
 
