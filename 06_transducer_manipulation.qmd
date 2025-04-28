@@ -54,7 +54,7 @@ $ hfst-compose-intersect lexd.hfst twol.hfst -o generator.hfst
 
 ### `hfst-fst2strings`
 
-Печатает формы трансдьюсер:
+Печатает формы:
 
 ```{{shell}}
 $ hfst-fst2strings generator.hfst
@@ -165,7 +165,7 @@ $ hfst-dump-alphabets -1 generator.hfst | grep к
 
 ### `hfst-substitute`
 
-Заменяет единицы в трансдьюссере:
+Заменяет единицы в трансдьюсере:
 
 ```{{shell}}
 $ hfst-substitute -i generator.hfst -f "ч" -t "Ч" | hfst-fst2strings
@@ -207,7 +207,7 @@ $ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup generator.
 !echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup examples/generator.hfst 
 ```
 
-Важно также отметить, что при помощи флага `-O` можно задать тип в котором печатать результат:
+Важно также отметить, что при помощи флага `-O` можно задать тип, в котором нужно печатать результат:
 
 - `xerox`
 
@@ -241,7 +241,7 @@ $ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup -O apertiu
 
 ### `hfst-invert`
 
-Это очень полезная функция, так как она позволяет переворачивать трансдьюсер. В прошлом разделе мы видели генератор, а что если мы хотим наоборот не генератор, а анализатор?
+Это очень полезная функция, так как она позволяет переворачивать трансдьюсер. В прошлом разделе мы видели генератор, а что если мы хотим наоборот - не генератор, а анализатор?
 
 ```{{shell}}
 $ hfst-invert generator.hfst -o analyzer.hfst
@@ -257,7 +257,7 @@ $ echo "ночка" | hfst-lookup analyzer.hfst
 
 ### `hfst-fst2fst`
 
-Возможно, Вы заметили предупреждение, которое возвращает `hfst-lookup`. Оптимизированный формат полезен для других программ `hfst` и его можно сделать при помощи программы `hfst-fst2fst`, однако этим эта команда не ограничивается.
+Возможно, Вы заметили предупреждение, которое возвращает `hfst-lookup`. Оптимизированный формат можно сделать при помощи программы `hfst-fst2fst`, он полезен и для других программ `hfst`.
 
 ```{{shell}}
 $ hfst-fst2fst -O analyzer.hfst -o analyzer.hfstol
@@ -269,7 +269,7 @@ $ echo "ночка" | hfst-lookup analyzer.hfstol
 !echo "ночка" | hfst-lookup examples/analyzer.hfst
 ```
 
-Программа `hfst-lookup` больше не выдает предупреждения. Еще более ожидаемый выход будет, если использовать программу `hfst-optimized-lookup`:
+Программа `hfst-lookup` больше не выдает предупреждения. Еще более ожидаемый вывод будет, если использовать программу `hfst-optimized-lookup`:
 
 ```{{shell}}
 $ echo "ночка" | hfst-optimized-lookup analyzer.hfstol
@@ -329,7 +329,7 @@ $ echo "какая-то Ночка и ПЕЧЬ\!" | hfst-proc -xN 1 analyzer.hfs
 !echo "какая-то Ночка и ПЕЧЬ\!" | hfst-proc -xN 1 examples/analyzer.hfstol
 ```
 
-Кроме того, существует программа `hfst-proc2`, которая кажется возвращает только то, что анализатор может проанализировать:
+Кроме того, существует программа `hfst-proc2`, которая, кажется, возвращает только то, что анализатор может проанализировать:
 
 ```{{shell}}
 $ echo "какая-то ночка и печь\!" | hfst-proc2 analyzer.hfstol
@@ -438,7 +438,7 @@ $ hfst-compare generator.hfst analyzer.hfst
 
 ### `hfst-concatenate`
 
-Конкатенация трансдьюсеров, т. е. последнее состояние одного трансдьюсер становиться начальным состоянием второго.
+Конкатенация трансдьюсеров - последнее состояние одного трансдьюсера становится начальным состоянием второго.
 
 ```{{shell}}
 hfst-concatenate generator.hfst generator2.hfst | hfst-fst2strings | head 
