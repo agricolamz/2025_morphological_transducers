@@ -101,7 +101,7 @@ $ hfst-summarise generator.hfst | grep cyclic
 
 ### `hfst-name`
 
-Если хочется, чтобы у трансдьюсера было осмысленное имя, то можно при создании дать ему имя при помощи функции `hfst-name` или `hfst-edit-metadata`:
+Если хочется, чтобы у трансдьюсера было осмысленное имя, то можно при создании дать ему имя при помощи функции `hfst-name` или `hfst-edit-metadata`. Посмотреть имя трансдьюсера можно при помощи аргумента `-p` (и некоторых других):
 
 ```{{shell}}
 $ hfst-compose-intersect lexd.hfst twol.hfst | hfst-name -n 'the best fst ever' -o generator.hfst
@@ -165,7 +165,7 @@ $ hfst-dump-alphabets -1 generator.hfst | grep к
 
 ### `hfst-substitute`
 
-Заменяет единицы в трансдьюсере:
+Заменяет единицы в трансдьюсере (`-f` from; `-t` to):
 
 ```{{shell}}
 $ hfst-substitute -f "ч" -t "Ч" -i generator.hfst | hfst-fst2strings
@@ -231,7 +231,7 @@ $ echo "ночь<N><dim>" | hfst-lookup generator.hfst
 !echo "ночь<N><dim>" | hfst-lookup examples/generator.hfst 
 ```
 
-Кроме того, можно на вход подавать несколько форм, разделяя их переносом строки, или даже программой `cat` читать из файла:
+Кроме того, можно на вход подавать несколько форм, разделяя их переносом строки (`\n`), или программой `cat` читать из файла:
 
 ```{{shell}}
 $ echo "ночь<N><adj><m><sg><nom>\nночь<N><dim>" | hfst-lookup generator.hfst
@@ -513,7 +513,6 @@ hfst-subtract generator.hfst generator2.hfst | hfst-fst2strings
 ```{python}
 !hfst-subtract examples/generator.hfst examples/generator2.hfst | hfst-fst2strings
 ```
-
 
 ## Создание транслитераторов
 
