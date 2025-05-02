@@ -64,6 +64,7 @@ $ hfst-fst2strings generator.hfst
 !hfst-fst2strings examples/generator.hfst
 ```
 
+Также существует программа `hfst-expand`, которая делает то же самое.
 
 ### `hfst-fst2txt`
 
@@ -433,6 +434,18 @@ $ echo "н о ч к а" | hfst-pair-test -N twol.hfst
 
 Вообще стоит обратить внимание на мануал этой программы: она подробнее многих других программ `hfst`.
 
+### `hfst-kill-paths`
+
+Убирает все пути, содержащие некоторый символ:
+
+```{{shell}}
+$ hfst-kill-paths -S о generator.hfst
+```
+
+```{python}
+!hfst-kill-paths -S о examples/generator.hfst
+```
+
 ## Некоторые операции с двумя трансдьюсерами
 
 Создадим себе второй очень похожий трансдьюсер:
@@ -481,7 +494,7 @@ hfst-concatenate generator.hfst generator2.hfst | hfst-fst2strings | head
 !hfst-concatenate examples/generator.hfst examples/generator2.hfst | hfst-fst2strings | head 
 ```
 
-### `hfst-conjunct`
+### `hfst-conjunct` или `hfst-intersect`
 
 Конъюнкция трансдьюсеров (работает как пересечение).
 
@@ -503,7 +516,7 @@ hfst-disjunct generator.hfst generator2.hfst | hfst-fst2strings
 !hfst-disjunct examples/generator.hfst examples/generator2.hfst | hfst-fst2strings
 ```
 
-### `hfst-subtract`
+### `hfst-subtract` или `hfst-minus`
 
 Вычитание трансдьюсеров.
 
