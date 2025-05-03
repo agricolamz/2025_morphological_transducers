@@ -496,7 +496,7 @@ hfst-concatenate generator.hfst generator2.hfst | hfst-fst2strings | head
 
 ### `hfst-conjunct` или `hfst-intersect`
 
-Конъюнкция трансдьюсеров (работает как пересечение).
+Пересечение трансдьюсеров: выделяет общее для двух трансдьюсеров.
 
 ```{{shell}}
 hfst-conjunct generator.hfst generator2.hfst | hfst-fst2strings
@@ -505,9 +505,9 @@ hfst-conjunct generator.hfst generator2.hfst | hfst-fst2strings
 !hfst-conjunct examples/generator.hfst examples/generator2.hfst | hfst-fst2strings
 ```
 
-### `hfst-disjunct`
+### `hfst-disjunct` или `hfst-union`
 
-Дизъюнкция трансдьюсеров (работает как xor).
+Объединение трансдьюсеров.
 
 ```{{shell}}
 hfst-disjunct generator.hfst generator2.hfst | hfst-fst2strings
@@ -669,8 +669,6 @@ $ hfst-compose ru_en.hfst correspondences.hfst | hfst-fst2strings
 !lexd examples/ru_en.lexd | hfst-txt2fst | hfst-repeat -f 1 -o examples/ru_en.hfst
 !hfst-compose examples/analyzer.hfst examples/ru_en.hfst | hfst-fst2strings
 ```
-
-## hfst-guessify
 
 ```{python}
 !rm -f examples/*.hfst examples/*.hfstol
