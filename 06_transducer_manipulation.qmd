@@ -439,11 +439,11 @@ $ echo "н о ч к а" | hfst-pair-test -N twol.hfst
 Убирает все пути, содержащие некоторый символ:
 
 ```{{shell}}
-$ hfst-kill-paths -S о generator.hfst
+$ hfst-kill-paths -S о generator.hfst | hfst-fst2strings
 ```
 
 ```{python}
-!hfst-kill-paths -S о examples/generator.hfst
+!hfst-kill-paths -S о examples/generator.hfst | hfst-fst2strings
 ```
 
 ## Некоторые операции с двумя трансдьюсерами
