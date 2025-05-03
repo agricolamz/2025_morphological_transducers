@@ -632,13 +632,56 @@ hfst-compose generator.hfst correspondences.hfst | hfst-fst2strings
 
 ```
 ...
-че:tʃe
+че:tɕe
 пе:pʲe
 е:je
 ...
 ```
 
-- добавлять еще один `twol` трансдьюсер, который исправляет какие-то вещи.
+- добавлять еще один `twol` трансдьюсер, который исправляет какие-то вещи
+
+```{{lexd}}
+PATTERNS
+segments
+
+LEXICON segments
+а:a
+е:{E}
+й:j
+к:k
+н:n
+о:o
+п:p
+ч:tɕ
+ь:
+```
+
+```{{twol}}
+Alphabet
+  %{E%}:je
+  %{E%}:e
+  %{E%}:ʲe
+;
+
+Rules
+"E в начале слова"
+%{E%}:je <=> .#. _ ;
+
+"E после мягких"
+%{E%}:e <=> ɕ _ ;
+```
+
+```{{shell}}
+$ hfst-twolc -q correspondences_twol.twol -o correspondences_twol.hfst
+$ lexd correspondences2.lexd | hfst-txt2fst | hfst-repeat -f 1 | hfst-compose-intersect correspondences_twol.hfst -o correspondences.hfst
+$ echo "ечене" | hfst-lookup correspondences.hfst
+```
+
+```{python}
+!hfst-twolc -q examples/correspondences_twol.twol -o examples/correspondences_twol.hfst
+!lexd examples/correspondences2.lexd | hfst-txt2fst | hfst-repeat -f 1 | hfst-compose-intersect correspondences_twol.hfst -o examples/correspondences.hfst
+!echo "ечене" | hfst-lookup examples/correspondences.hfst
+```
 
 ## Перевод основы
 
