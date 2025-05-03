@@ -529,7 +529,149 @@ hfst-subtract generator.hfst generator2.hfst | hfst-fst2strings
 
 ## Создание транслитераторов
 
+Для того, чтобы создать транслитерацию, давайте запишем наши соответствия в такой файл:
+
+```{{lexd}}
+PATTERNS
+segments
+
+LEXICON segments
+а:a
+е:e
+й:j
+к:k
+н:n
+о:o
+п:p
+ч:tʃ
+ь:
+<N>
+<acc>
+<adj>
+<dim>
+<m>
+<nom>
+<sg>
+```
+
+```{{shell}}
+$ lexd correspondences.lexd | hfst-txt2fst -o correspondences.hfst
+$ hfst-fst2strings correspondences.hfst
+```
+
+```{python}
+!lexd examples/correspondences.lexd | hfst-txt2fst -o examples/correspondences.hfst
+!hfst-fst2strings examples/correspondences.hfst
+```
+
+Получившийся трансдьюсер делает достаточно скучную вещь: если ему дать один символ он его переведет, а вот большее количество --- нет:
+
+```{{shell}}
+echo "ч" | hfst-lookup correspondences.hfst
+```
+
+```{python}
+!echo "ч" | hfst-lookup examples/correspondences.hfst
+```
+
+```{{shell}}
+echo "че" | hfst-lookup correspondences.hfst
+```
+
+```{python}
+!echo "че" | hfst-lookup examples/correspondences.hfst
+```
+
+Чтобы наш трансдьюсер делал преобразования во всей строке, нужно его зациклить при помощи программы `hfst-repeat`:
+
+```{{shell}}
+$ lexd correspondences.lexd | hfst-txt2fst | hfst-repeat -f 1 -o correspondences.hfst
+```
+
+```{python}
+!lexd examples/correspondences.lexd | hfst-txt2fst | hfst-repeat -f 1 -o examples/correspondences.hfst
+```
+
+```{{shell}}
+echo "ч" | hfst-lookup correspondences.hfst
+```
+
+```{python}
+!echo "ч" | hfst-lookup examples/correspondences.hfst
+```
+
+```{{shell}}
+echo "че" | hfst-lookup correspondences.hfst
+```
+
+```{python}
+!echo "че" | hfst-lookup examples/correspondences.hfst
+```
+
+Чтобы соединить транслитератор с уже готовыми трансдьюсерами, достаточно сделать композицию:
+
+```{{shell}}
+hfst-compose analyzer.hfst correspondences.hfst | hfst-fst2strings
+```
+
+```{python}
+!hfst-compose examples/analyzer.hfst examples/correspondences.hfst | hfst-fst2strings
+```
+
+```{{shell}}
+hfst-compose generator.hfst correspondences.hfst | hfst-fst2strings
+```
+
+```{python}
+!hfst-compose examples/generator.hfst examples/correspondences.hfst | hfst-fst2strings
+```
+
+А что если в ходе транслитерация графема чувствительна к контексту? Например, русское <е> может транскрибироваться как [e] (*мел*) и как [je] (*еда*). Я полагаю, у решения этой проблемы есть две стратегии:
+
+- добавлять все соответствия в файл соответствий, например,
+
+```
+...
+че:tʃe
+пе:pʲe
+е:je
+...
+```
+
+- добавлять еще один `twol` трансдьюсер, который исправляет какие-то вещи.
+
+## Перевод основы
+
+Лингвисты в отличие от NLP-специалистов и компьютерных лингвистов предпочитают, чтобы основы в примерах, которые они приводят, были переведены. Этого можно достичь точно таким же набором инструментов, какой мы использовали при создании транслитератора. Создадим файл с соответствиями:
+
+```{{lexd}}
+PATTERNS
+translations
+
+LEXICON translations
+печь:stove
+ночь:night
+<N>
+<acc>
+<adj>
+<dim>
+<m>
+<nom>
+<sg>
+```
+
+```{{shell}}
+$ lexd ru_en.lexd | hfst-txt2fst | hfst-repeat -f 1 -o ru_en.hfst
+$ hfst-compose ru_en.hfst correspondences.hfst | hfst-fst2strings
+```
+
+```{python}
+!lexd examples/ru_en.lexd | hfst-txt2fst | hfst-repeat -f 1 -o examples/ru_en.hfst
+!hfst-compose examples/analyzer.hfst examples/ru_en.hfst | hfst-fst2strings
+```
+
+## hfst-guessify
+
 ```{python}
 !rm -f examples/*.hfst examples/*.hfstol
 ```
-
