@@ -679,7 +679,7 @@ $ echo "ечене" | hfst-lookup correspondences.hfst
 
 ```{python}
 !hfst-twolc -q examples/correspondences_twol.twol -o examples/correspondences_twol.hfst
-!lexd examples/correspondences2.lexd | hfst-txt2fst | hfst-repeat -f 1 | hfst-compose-intersect correspondences_twol.hfst -o examples/correspondences.hfst
+!lexd examples/correspondences2.lexd | hfst-txt2fst | hfst-repeat -f 1 | hfst-compose-intersect examples/correspondences_twol.hfst -o examples/correspondences.hfst
 !echo "ечене" | hfst-lookup examples/correspondences.hfst
 ```
 
