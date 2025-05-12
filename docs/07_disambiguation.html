@@ -267,7 +267,15 @@ div.csl-indent {
 <section id="разрешение-морфологической-неоднозначности" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="разрешение-морфологической-неоднозначности"><span class="header-section-number">7.1</span> Разрешение морфологической неоднозначности</h2>
 <p>…</p>
-<p>Парадигма Constraint grammar (CG) <span class="citation" data-cites="karlsson1995">(<a href="references.html#ref-karlsson1995" role="doc-biblioref">Karlsson и др. 1995</a>)</span>…</p>
+<p>Парадигма Constraint grammar (CG) <span class="citation" data-cites="karlsson1995 bick15">(<a href="references.html#ref-karlsson1995" role="doc-biblioref">Karlsson и др. 1995</a>; <a href="references.html#ref-bick15" role="doc-biblioref">Bick и Didriksen 2015</a>)</span> — это правиловая процедурная система обработки текста, позволяющая решать достаточно большой набор разнообразных задач, такие как</p>
+<ul>
+<li>разрешение неоднозначности;</li>
+<li>приписывание тэгов, например, синтаксических ролей;</li>
+<li>разрешение анафоры;</li>
+<li>построение деревьев зависимостей;</li>
+<li>и многие другие.</li>
+</ul>
+<p>Отмечу неожиданное преимущество правиловых фреймворков: их достаточно легко превращать в текст, объясняющий процедуру. Для правил CG была сделана такая попытка в работе <span class="citation" data-cites="swanson25">(<a href="references.html#ref-swanson25" role="doc-biblioref">Swanson 2025</a>)</span>.</p>
 </section>
 <section id="visl-cg3" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="visl-cg3"><span class="header-section-number">7.2</span> <code>VISL CG3</code></h2>
@@ -280,18 +288,11 @@ div.csl-indent {
 <blockquote class="blockquote">
 <p>This manual should be regarded as a guideline. Some of the features or functionality described is either not implemented yet, or does not work exactly as advertised. A good place to see what is and is not implemented is to run the regression test suite as the test names are indicative of features. The individual tests are also good starting points to find examples on how a specific feature works.</p>
 </blockquote>
-<p>Важно также сказать, что CG позволяет не только разрешать неоднозначность, но и</p>
-<ul>
-<li>приписывать тэги, например, синтаксические роли;</li>
-<li>разрешать анафору;</li>
-<li>строить деревья зависимостей;</li>
-<li>и, наверное, многое другое.</li>
-</ul>
 </section>
 <section id="первый-пример" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="первый-пример"><span class="header-section-number">7.3</span> Первый пример</h2>
 <p>Рассмотрим такой трансдьюсер, записанный в <code>example.lexd</code>:</p>
-<div id="385660db" class="cell" data-execution_count="1">
+<div id="3dea9ce1" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>PATTERNS
 Pronouns
@@ -327,7 +328,7 @@ LEXICON VerbInflection
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="97e64368" class="cell" data-execution_count="3">
+<div id="a940eb87" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>^я/я&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;$ ^играл/играть&lt;v&gt;&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;$</code></pre>
 </div>
@@ -336,7 +337,7 @@ LEXICON VerbInflection
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="b122becd" class="cell" data-execution_count="4">
+<div id="91501a71" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>"&lt;я&gt;"
     "я" prn 1 sg nom
@@ -347,7 +348,7 @@ LEXICON VerbInflection
 </div>
 </div>
 <p>Мы видим, что форма <em>играл</em> имеет три возможных разбора. Кроме того мы видим, что два из разборов точно неправильные, что очевидно, если посмотреть на предыдущее слово. Для того чтобы это сделать создадим следующий файл <code>cg_rules_1.rlx</code>:</p>
-<div id="bb9ee487" class="cell" data-execution_count="5">
+<div id="31bec469" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>LIST Person = 1 2 3;
 SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
@@ -357,7 +358,7 @@ SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cg-comp cg_rules_1.rlx cg_rules_1.rlx.bin </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="e63bc9a9" class="cell" data-execution_count="6">
+<div id="b7f7ae11" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Sections: 0, Rules: 1, Sets: 7, Tags: 25
 1 rules cannot be skipped by index.</code></pre>
@@ -367,7 +368,7 @@ SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg-proc</span> cg_rules_1.rlx.bin</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="a7088cc9" class="cell" data-execution_count="7">
+<div id="90e86372" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 ^я/я&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;$ ^играл/играть&lt;v&gt;&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;$</code></pre>
@@ -377,7 +378,7 @@ SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg-proc</span> cg_rules_1.rlx.bin <span class="kw">|</span> <span class="ex">cg-conv</span> <span class="at">-C</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="b836adee" class="cell" data-execution_count="8">
+<div id="bd3f6586" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;я&gt;"
@@ -392,8 +393,14 @@ SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-bick15" class="csl-entry" role="listitem">
+Bick, Eckhard, и Tino Didriksen. 2015. <span>«CG-3 — beyond classical constraint grammar»</span>. В <em>Proceedings of the 20th Nordic Conference of Computational Linguistics (NODALIDA 2015)</em>, 31–39.
+</div>
 <div id="ref-karlsson1995" class="csl-entry" role="listitem">
 Karlsson, Fred, Atro Voutilainen, Juha Heikkilae, и Arto Anttila. 1995. <em>Constraint Grammar: a language-independent system for parsing unrestricted text</em>. Т. 4. Walter de Gruyter.
+</div>
+<div id="ref-swanson25" class="csl-entry" role="listitem">
+Swanson, Daniel Glen. 2025. <span>«Towards Natural Language Explanations of Constraint Grammar Rules»</span>. В <em>Proceedings of the 9th Workshop on Constraint Grammar and Finite State NLP</em>, 28–31.
 </div>
 </div>
 </section>
