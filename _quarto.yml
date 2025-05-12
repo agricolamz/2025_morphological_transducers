@@ -17,6 +17,7 @@ book:
     - 05_technical_class.qmd
     - 06_transducer_manipulation.qmd
     - 07_disambiguation.qmd
+    - 08_hygiene.qmd
     - references.qmd
 
 callout-appearance: simple
