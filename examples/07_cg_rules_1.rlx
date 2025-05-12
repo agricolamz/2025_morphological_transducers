@@ -1,0 +1,2 @@
+LIST Person = 1 2 3;
+SELECT (v) + $$Person IF ( -1C (prn) + $$Person );

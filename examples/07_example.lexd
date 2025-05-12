@@ -1,0 +1,24 @@
+PATTERNS
+Pronouns
+VerbRoot VerbInflection 
+
+LEXICON Pronouns
+я<prn><1><sg><nom>:я
+ты<prn><1><sg><nom>:ты
+он<prn><3><sg><m><nom>:он
+она<prn><3><sg><f><nom>:она
+оно<prn><3><sg><n><nom>:оно
+
+LEXICON VerbRoot
+играть<v>:игра
+
+LEXICON VerbInflection
+<pst><1><sg><m>:л
+<pst><2><sg><m>:л
+<pst><3><sg><m>:л
+<pst><1><sg><f>:ла
+<pst><2><sg><f>:ла
+<pst><3><sg><f>:ла
+<pst><1><sg><n>:ло
+<pst><2><sg><n>:ло
+<pst><3><sg><n>:ло

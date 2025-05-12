@@ -16,6 +16,7 @@ book:
     - 04_language_tasks.qmd
     - 05_technical_class.qmd
     - 06_transducer_manipulation.qmd
+    - 07_disambiguation.qmd
     - references.qmd
 
 callout-appearance: simple
