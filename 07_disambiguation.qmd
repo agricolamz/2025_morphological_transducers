@@ -38,7 +38,7 @@ $ sudo apt-get install cg3
 Мы его можем скомпилировать в оптимизированный:
 
 ```{{shell}}
-lexd example.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o analyzer.hfstol
+$ lexd example.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o analyzer.hfstol
 ```
 
 ```{python}
@@ -48,7 +48,7 @@ lexd example.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o analyzer.hfs
 Подадим предложение на вход процессору:
 
 ```{{shell}}
-echo "я играл" | hfst-proc analyzer.hfstol
+$ echo "я играл" | hfst-proc analyzer.hfstol
 ```
 
 ```{python}
