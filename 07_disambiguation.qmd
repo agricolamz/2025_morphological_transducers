@@ -1,4 +1,4 @@
-# Разрешение морфологической неоднозначности: программа `cg3`
+# Введение в `cg3`: разрешение морфологической неоднозначности
 
 ## Разрешение морфологической неоднозначности
 
@@ -6,14 +6,14 @@
 
 ## `VISL CG3`
 
-В наших лекциях для разрешения морфологической неоднозначности мы будем использовать `VISL CG3`. `VISL CG3` --- это программа для работы в парадигме Constraint grammar. `VISL` (Visual Interactive Syntax Learning) --- подпроект датской компании GrammarSoft ApS, а `CG3` обозначает новую, третью, версию реализации парадигмы. Чтобы установить достаточно дать следующие команды.
+В наших лекциях для разрешения морфологической неоднозначности мы будем использовать `VISL CG3`. `VISL CG3` --- это программа для работы в парадигме Constraint grammar. `VISL` (Visual Interactive Syntax Learning) --- подпроект датской компании GrammarSoft ApS, а `CG3` обозначает новую, третью, версию реализации парадигмы. Чтобы установить достаточно следующих команд.
 
 ```{{shell}}
 $ curl -s https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
 $ sudo apt-get install cg3
 ```
 
-Первая команда добавляет в операционную систему новый источник программ, он такой же как и для команд `lexd` и `twol-c`. Вторая команда --- стандартный способ установить программу. Вот [ссылка](https://edu.visl.dk/cg3/chunked/index.html) на документацию программы, но начинается он со следующего предостережения:
+Первая команда добавляет в операционную систему новый источник программ, он такой же как и для команд `lexd` и `twol`. Вторая команда --- стандартный способ установить программу. У программы есть большая  [документация](https://edu.visl.dk/cg3/chunked/index.html), но начинается она со следующего предостережения:
 
 >  This manual should be regarded as a guideline. Some of the features or functionality described is either not implemented yet, or does not work exactly as advertised. A good place to see what is and is not implemented is to run the regression test suite as the test names are indicative of features. The individual tests are also good starting points to find examples on how a specific feature works. 
 
@@ -45,7 +45,7 @@ echo "я играл" | hfst-proc analyzer.hfstol
 !echo "я играл" | hfst-proc examples/analyzer.hfstol
 ```
 
-Удобнее читать в другом формате, так что давайте добавим флаг `-C`:
+Удобнее читать в другом формате, так что добавим флаг `-C`:
 
 ```{{shell}}
 $ echo "я играл" | hfst-proc -C analyzer.hfstol
@@ -55,7 +55,7 @@ $ echo "я играл" | hfst-proc -C analyzer.hfstol
 !echo "я играл" | hfst-proc -C examples/analyzer.hfstol
 ```
 
-Мы видим, что форма *играл* имеет три возможных разбора. Кроме того мы видим, что все эти разборы можно минимизировать, если посмотреть на предыдущее слово. Для того чтобы это сделать создадим следующий файл:
+Мы видим, что форма *играл* имеет три возможных разбора. Кроме того мы видим, что два из разборов точно неправильные, что очевидно, если посмотреть на предыдущее слово. Для того чтобы это сделать создадим следующий файл `cg_rules_1.rlx`:
 
 ```{python}
 !cat examples/07_cg_rules_1.rlx
