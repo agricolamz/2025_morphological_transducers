@@ -342,51 +342,51 @@
   {
     "objectID": "07_disambiguation.html",
     "href": "07_disambiguation.html",
-    "title": "7  Введение в cg3: разрешение морфологической неоднозначности",
+    "title": "7  Введение в CG3: разрешение морфологической неоднозначности",
     "section": "",
     "text": "7.1 Разрешение морфологической неоднозначности\n…\nПарадигма Constraint grammar (CG) (Karlsson и др. 1995; Bick и Didriksen 2015) — это правиловая процедурная система обработки текста, позволяющая решать достаточно большой набор разнообразных задач, такие как\nОтмечу неожиданное преимущество правиловых фреймворков: их достаточно легко превращать в текст, объясняющий процедуру. Для правил CG была сделана такая попытка в работе (Swanson 2025).",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `cg3`: разрешение морфологической неоднозначности</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `CG3`: разрешение морфологической неоднозначности</span>"
     ]
   },
   {
     "objectID": "07_disambiguation.html#разрешение-морфологической-неоднозначности",
     "href": "07_disambiguation.html#разрешение-морфологической-неоднозначности",
-    "title": "7  Введение в cg3: разрешение морфологической неоднозначности",
+    "title": "7  Введение в CG3: разрешение морфологической неоднозначности",
     "section": "",
     "text": "разрешение неоднозначности;\nприписывание тэгов, например, синтаксических ролей;\nразрешение анафоры;\nпостроение деревьев зависимостей;\nи многие другие.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `cg3`: разрешение морфологической неоднозначности</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `CG3`: разрешение морфологической неоднозначности</span>"
     ]
   },
   {
     "objectID": "07_disambiguation.html#visl-cg3",
     "href": "07_disambiguation.html#visl-cg3",
-    "title": "7  Введение в cg3: разрешение морфологической неоднозначности",
+    "title": "7  Введение в CG3: разрешение морфологической неоднозначности",
     "section": "7.2 VISL CG3",
     "text": "7.2 VISL CG3\nВ наших лекциях для разрешения морфологической неоднозначности мы будем использовать VISL CG3. VISL CG3 — это программа для работы в CG. VISL (Visual Interactive Syntax Learning) — подпроект датской компании GrammarSoft ApS, а CG3 обозначает новую, третью, версию реализации парадигмы. Чтобы установить достаточно следующих команд.\n```{shell}\n$ curl -s https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash\n$ sudo apt-get install cg3\n```\nПервая команда добавляет в операционную систему новый источник программ, он такой же как и для команд lexd и twol. Вторая команда — стандартный способ установить программу. У программы есть большая документация, но начинается она со следующего предостережения:\n\nThis manual should be regarded as a guideline. Some of the features or functionality described is either not implemented yet, or does not work exactly as advertised. A good place to see what is and is not implemented is to run the regression test suite as the test names are indicative of features. The individual tests are also good starting points to find examples on how a specific feature works.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `cg3`: разрешение морфологической неоднозначности</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `CG3`: разрешение морфологической неоднозначности</span>"
     ]
   },
   {
     "objectID": "07_disambiguation.html#первый-пример",
     "href": "07_disambiguation.html#первый-пример",
-    "title": "7  Введение в cg3: разрешение морфологической неоднозначности",
+    "title": "7  Введение в CG3: разрешение морфологической неоднозначности",
     "section": "7.3 Первый пример",
-    "text": "7.3 Первый пример\nРассмотрим такой трансдьюсер, записанный в example.lexd:\n\n\nPATTERNS\nPronouns\nVerbRoot VerbInflection \n\nLEXICON Pronouns\nя&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;:я\nты&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;:ты\nон&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;&lt;nom&gt;:он\nона&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;f&gt;&lt;nom&gt;:она\nоно&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;n&gt;&lt;nom&gt;:оно\n\nLEXICON VerbRoot\nиграть&lt;v&gt;:игра\n\nLEXICON VerbInflection\n&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;:л\n&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;m&gt;:л\n&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;:л\n&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;f&gt;:ла\n&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;f&gt;:ла\n&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;f&gt;:ла\n&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;n&gt;:ло\n&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;n&gt;:ло\n&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;n&gt;:ло\n\n\nМы его можем скомпилировать в оптимизированный:\n```{shell}\n$ lexd example.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o analyzer.hfstol\n```\nПодадим предложение на вход процессору:\n```{shell}\n$ echo \"я играл\" | hfst-proc analyzer.hfstol\n```\n\n\n^я/я&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;$ ^играл/играть&lt;v&gt;&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;$\n\n\nУдобнее читать в другом формате, так что добавим флаг -C:\n```{shell}\n$ echo \"я играл\" | hfst-proc -C analyzer.hfstol\n```\n\n\n\"&lt;я&gt;\"\n    \"я\" prn 1 sg nom\n\"&lt;играл&gt;\"\n    \"играть\"    v pst 1 sg m\n    \"играть\"    v pst 2 sg m\n    \"играть\"    v pst 3 sg m\n\n\nМы видим, что форма играл имеет три возможных разбора. Кроме того мы видим, что два из разборов точно неправильные, что очевидно, если посмотреть на предыдущее слово. Для того чтобы это сделать создадим следующий файл cg_rules_1.rlx:\n\n\nLIST Person = 1 2 3;\nSELECT (v) + $$Person IF ( -1C (prn) + $$Person );\n\n\nПрименим написанный файл к нашему трансдьюсеру:\n```{shell}\n$ echo \"я играл\" | hfst-proc -C analyzer.hfstol | vislcg3 -g cg_rules_1.rlx\n```\n\n\nError: Error opening examples/cg_rules_1.rlx for reading!\n\n\nУра, мы разрешили морфологическую неоднозначность. В следующих разделах мы углубимся в возможности cg3.",
+    "text": "7.3 Первый пример\nРассмотрим такой трансдьюсер, записанный в example.lexd:\n\n\nPATTERNS\nPronouns\nVerbRoot VerbInflection \n\nLEXICON Pronouns\nя&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;:я\nты&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;:ты\nон&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;&lt;nom&gt;:он\nона&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;f&gt;&lt;nom&gt;:она\nоно&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;n&gt;&lt;nom&gt;:оно\n\nLEXICON VerbRoot\nиграть&lt;v&gt;:игра\n\nLEXICON VerbInflection\n&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;:л\n&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;m&gt;:л\n&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;:л\n&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;f&gt;:ла\n&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;f&gt;:ла\n&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;f&gt;:ла\n&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;n&gt;:ло\n&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;n&gt;:ло\n&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;n&gt;:ло\n\n\nМы его можем скомпилировать в оптимизированный:\n```{shell}\n$ lexd example.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o analyzer.hfstol\n```\nПодадим предложение на вход процессору:\n```{shell}\n$ echo \"я играл\" | hfst-proc analyzer.hfstol\n```\n\n\n^я/я&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;$ ^играл/играть&lt;v&gt;&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;$\n\n\nУдобнее читать в другом формате, так что добавим флаг -C:\n```{shell}\n$ echo \"я играл\" | hfst-proc -C analyzer.hfstol\n```\n\n\n\"&lt;я&gt;\"\n    \"я\" prn 1 sg nom\n\"&lt;играл&gt;\"\n    \"играть\"    v pst 1 sg m\n    \"играть\"    v pst 2 sg m\n    \"играть\"    v pst 3 sg m\n\n\nМы видим, что форма играл имеет три возможных разбора. Кроме того мы видим, что два из разборов точно неправильные, что очевидно, если посмотреть на предыдущее слово. Для того чтобы это сделать создадим следующий файл cg_rules_1.rlx:\n\n\nLIST Person = 1 2 3;\nSELECT (v) + $$Person IF ( -1C (prn) + $$Person );\n\n\nПрименим написанный файл к нашему трансдьюсеру:\n```{shell}\n$ echo \"я играл\" | hfst-proc -C analyzer.hfstol | vislcg3 -g cg_rules_1.rlx\n```\n\n\nWarning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.\n\"&lt;я&gt;\"\n    \"я\" prn 1 sg nom\n\"&lt;играл&gt;\"\n    \"играть\" v pst 1 sg m\n\n\n\nТаким образом мы избавились от нескольких ненужных разборов. В следующих разделах мы углубимся в возможности cg3.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `cg3`: разрешение морфологической неоднозначности</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `CG3`: разрешение морфологической неоднозначности</span>"
     ]
   },
   {
     "objectID": "07_disambiguation.html#vislcg3",
     "href": "07_disambiguation.html#vislcg3",
-    "title": "7  Введение в cg3: разрешение морфологической неоднозначности",
+    "title": "7  Введение в CG3: разрешение морфологической неоднозначности",
     "section": "7.4 vislcg3",
-    "text": "7.4 vislcg3\nvislcg3 — это основная программа, которую мы будем запускать. Она по умолчанию угадывает формат, в котором ей поступают данные на вход и отдает в таком же формате.\n\n\nzsh:1: no matches found: examples/*.bin\n\n\n\n\n\n\nBick, Eckhard, и Tino Didriksen. 2015. «CG-3 — beyond classical constraint grammar». В Proceedings of the 20th Nordic Conference of Computational Linguistics (NODALIDA 2015), 31–39.\n\n\nKarlsson, Fred, Atro Voutilainen, Juha Heikkilae, и Arto Anttila. 1995. Constraint Grammar: a language-independent system for parsing unrestricted text. Т. 4. Walter de Gruyter.\n\n\nSwanson, Daniel Glen. 2025. «Towards Natural Language Explanations of Constraint Grammar Rules». В Proceedings of the 9th Workshop on Constraint Grammar and Finite State NLP, 28–31.",
+    "text": "7.4 vislcg3\nvislcg3 — это основная программа, которую мы будем запускать. Она по умолчанию угадывает формат, в котором ей поступают данные на вход и отдает в таком же формате.\n\n\n\n\nBick, Eckhard, и Tino Didriksen. 2015. «CG-3 — beyond classical constraint grammar». В Proceedings of the 20th Nordic Conference of Computational Linguistics (NODALIDA 2015), 31–39.\n\n\nKarlsson, Fred, Atro Voutilainen, Juha Heikkilae, и Arto Anttila. 1995. Constraint Grammar: a language-independent system for parsing unrestricted text. Т. 4. Walter de Gruyter.\n\n\nSwanson, Daniel Glen. 2025. «Towards Natural Language Explanations of Constraint Grammar Rules». В Proceedings of the 9th Workshop on Constraint Grammar and Finite State NLP, 28–31.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `cg3`: разрешение морфологической неоднозначности</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `CG3`: разрешение морфологической неоднозначности</span>"
     ]
   },
   {
