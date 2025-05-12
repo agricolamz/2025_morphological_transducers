@@ -71,24 +71,14 @@ $ echo "я играл" | hfst-proc -C analyzer.hfstol
 !cat examples/07_cg_rules_1.rlx
 ```
 
-Скомпилируем бинарный файл:
+Применим написанный файл к нашему трансдьюсеру:
 
 ```{{shell}}
-$ cg-comp cg_rules_1.rlx cg_rules_1.rlx.bin 
+$ echo "я играл" | hfst-proc -C analyzer.hfstol | vislcg3 -g cg_rules_1.rlx
 ```
 
 ```{python}
-!cg-comp examples/07_cg_rules_1.rlx examples/cg_rules_1.rlx.bin 
-```
-
-Применим получившийся бинарный файл к нашему трансдьюсеру:
-
-```{{shell}}
-$ echo "я играл" | hfst-proc -C analyzer.hfstol | vislcg3 -g cg_rules_1.rlx.bin
-```
-
-```{python}
-!echo "я играл" | hfst-proc -C examples/analyzer.hfstol | vislcg3 -g examples/cg_rules_1.rlx.bin
+!echo "я играл" | hfst-proc -C examples/analyzer.hfstol | vislcg3 -g examples/cg_rules_1.rlx
 ```
 
 Ура, мы разрешили морфологическую неоднозначность. В следующих разделах мы углубимся в возможности `cg3`.
