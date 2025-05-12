@@ -256,8 +256,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="первый-пример" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="первый-пример"><span class="header-section-number">7.3</span> Первый пример</h2>
-<p>Рассмотрим такой трансдьюссер:</p>
-<div id="74b09f4f" class="cell" data-execution_count="1">
+<p>Рассмотрим такой трансдьюсер, записанный в <code>example.lexd</code>:</p>
+<div id="1362ff5c" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>PATTERNS
 Pronouns
@@ -293,7 +293,7 @@ LEXICON VerbInflection
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="e973019d" class="cell" data-execution_count="3">
+<div id="3e35df79" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>^я/я&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;$ ^играл/играть&lt;v&gt;&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;$</code></pre>
 </div>
@@ -302,7 +302,7 @@ LEXICON VerbInflection
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="9ba4e222" class="cell" data-execution_count="4">
+<div id="b841f619" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>"&lt;я&gt;"
     "я" prn 1 sg nom
@@ -313,7 +313,7 @@ LEXICON VerbInflection
 </div>
 </div>
 <p>Мы видим, что форма <em>играл</em> имеет три возможных разбора. Кроме того мы видим, что два из разборов точно неправильные, что очевидно, если посмотреть на предыдущее слово. Для того чтобы это сделать создадим следующий файл <code>cg_rules_1.rlx</code>:</p>
-<div id="31cf4743" class="cell" data-execution_count="5">
+<div id="2f3ff4a7" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>LIST Person = 1 2 3;
 SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
@@ -323,7 +323,7 @@ SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cg-comp cg_rules_1.rlx cg_rules_1.rlx.bin </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="b6b9ad38" class="cell" data-execution_count="6">
+<div id="24860d76" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Sections: 0, Rules: 1, Sets: 7, Tags: 25
 1 rules cannot be skipped by index.</code></pre>
@@ -333,7 +333,7 @@ SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg-proc</span> cg_rules_1.rlx.bin</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fec4d6e5" class="cell" data-execution_count="7">
+<div id="45f5b03d" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 ^я/я&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;$ ^играл/играть&lt;v&gt;&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;$</code></pre>
@@ -343,7 +343,7 @@ SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg-proc</span> cg_rules_1.rlx.bin <span class="kw">|</span> <span class="ex">cg-conv</span> <span class="at">-C</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="aa934c0d" class="cell" data-execution_count="8">
+<div id="5b53b0a8" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;я&gt;"

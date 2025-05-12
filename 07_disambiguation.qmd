@@ -19,7 +19,7 @@ $ sudo apt-get install cg3
 
 ## Первый пример
 
-Рассмотрим такой трансдьюссер:
+Рассмотрим такой трансдьюсер, записанный в `example.lexd`:
 
 ```{python}
 !cat examples/07_example.lexd
