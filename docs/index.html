@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -184,6 +219,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#введение" id="toc-введение" class="nav-link active" data-scroll-target="#введение">Введение</a>
   <ul class="collapse">
+  <li><a href="#список-использованных-программ" id="toc-список-использованных-программ" class="nav-link" data-scroll-target="#список-использованных-программ">Список использованных программ</a></li>
   <li><a href="#домашние-задания" id="toc-домашние-задания" class="nav-link" data-scroll-target="#домашние-задания">Домашние задания</a></li>
   </ul></li>
   </ul>
@@ -222,6 +258,50 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Введение</h1>
 <p>Данные материалы являются конспектом курса Т. Б. Казаковой и Г. А. Мороза ‘Конечные автоматы в морфологическом анализе’ 2024–2025. Данный курс предоставляет углубленное изучение применения конечных автоматов в морфологическом анализе. Конечные автоматы используются для моделирования морфологии языков, особенно малоресурсных. Курс охватывает основные этапы создания морфологического анализатора в системе <code>lexd</code> и <code>twol</code>, проверку его на корпусах, взвешивание трансдьюсера для дизамбигуации. В качестве иллюстративного материала будут использоваться лингвистические задачи и реальные примеры из практики преподавателей. В нашем курсе мы стараемся предложить стратегии компьютерного правилого моделирвания морфологических и морфонологически проблем, стараясь охватить явления интересные с точки зрения теоретической лингвистики.</p>
 <p>В курсе будет 6 домашних заданий и экзамен. Все домашние задания имеют одинаковый вес. Экзамен весит 0.4. За курс предусмотрен автомат, если студента устраивает накопленная оценка.</p>
+<section id="список-использованных-программ" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="список-использованных-программ">Список использованных программ</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">lexd</span> <span class="at">-V</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="82d2c69b" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>lexd 1.3.5</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hfst-twolc</span> <span class="at">-V</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="452ae23c" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+hfst-twolc 0 (hfst 3.16.2)
+Copyright (C) 2010 University of Helsinki,
+License GPLv3: GNU GPL version 3 
+&lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and 
+redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cg3</span> <span class="at">-V</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7ce57a9f" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>VISL CG-3 Disambiguator version 1.5.2.13898
+Copyright (C) 2007-2025 GrammarSoft ApS. Licensed under GPLv3+</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">-v</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="10682d29" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>git version 2.43.0</code></pre>
+</div>
+</div>
+</section>
 <section id="домашние-задания" class="level2">
 <h2 class="anchored" data-anchor-id="домашние-задания">Домашние задания</h2>
 <ul>
