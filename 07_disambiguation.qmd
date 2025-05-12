@@ -84,24 +84,18 @@ $ cg-comp cg_rules_1.rlx cg_rules_1.rlx.bin
 Применим получившийся бинарный файл к нашему трансдьюсеру:
 
 ```{{shell}}
-$ echo "я играл" | hfst-proc analyzer.hfstol | cg-proc cg_rules_1.rlx.bin
+$ echo "я играл" | hfst-proc -C analyzer.hfstol | vislcg3 -g cg_rules_1.rlx.bin
 ```
 
 ```{python}
-!echo "я играл" | hfst-proc examples/analyzer.hfstol | cg-proc examples/cg_rules_1.rlx.bin
-```
-
-В таком виде не очень удобно читать, так что добавим еще форматирование:
-
-```{{shell}}
-$ echo "я играл" | hfst-proc analyzer.hfstol | cg-proc cg_rules_1.rlx.bin | cg-conv -C
-```
-
-```{python}
-!echo "я играл" | hfst-proc examples/analyzer.hfstol | cg-proc examples/cg_rules_1.rlx.bin | cg-conv -C
+!echo "я играл" | hfst-proc -C examples/analyzer.hfstol | vislcg3 -g examples/cg_rules_1.rlx.bin
 ```
 
 Ура, мы разрешили морфологическую неоднозначность. В следующих разделах мы углубимся в возможности `cg3`.
+
+## `vislcg3`
+
+`vislcg3` --- это основная программа, которую мы будем запускать. Она по умолчанию угадывает формат, в котором ей поступают данные на вход и отдает в таком же формате.
 
 ```{python}
 !rm -f examples/*.hfstol examples/*.bin
