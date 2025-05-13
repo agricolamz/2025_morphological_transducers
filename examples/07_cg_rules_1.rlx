@@ -1,2 +1,1 @@
-LIST Person = 1 2 3;
-SELECT (v) + $$Person IF ( -1C (prn) + $$Person );
+REMOVE (nom) IF (-1C (pr));

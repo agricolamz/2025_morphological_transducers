@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Введение в CG3: разрешение морфологической неоднозначности – Конечные автоматы в морфологическом анализе 2024/2025</title>
+<title>7&nbsp; Введение в cg3: разрешение морфологической неоднозначности – Конечные автоматы в морфологическом анализе 2024/2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -138,7 +138,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_disambiguation.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Введение в <code>CG3</code>: разрешение морфологической неоднозначности</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_disambiguation.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Введение в <code>cg3</code>: разрешение морфологической неоднозначности</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -211,7 +211,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_disambiguation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Введение в <code>CG3</code>: разрешение морфологической неоднозначности</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Введение в <code>cg3</code>: разрешение морфологической неоднозначности</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -237,12 +237,11 @@ div.csl-indent {
    
   <ul>
   <li><a href="#разрешение-морфологической-неоднозначности" id="toc-разрешение-морфологической-неоднозначности" class="nav-link active" data-scroll-target="#разрешение-морфологической-неоднозначности"><span class="header-section-number">7.1</span> Разрешение морфологической неоднозначности</a></li>
-  <li><a href="#visl-cg3" id="toc-visl-cg3" class="nav-link" data-scroll-target="#visl-cg3"><span class="header-section-number">7.2</span> <code>VISL CG3</code></a></li>
-  <li><a href="#первый-пример" id="toc-первый-пример" class="nav-link" data-scroll-target="#первый-пример"><span class="header-section-number">7.3</span> Первый пример</a></li>
-  <li><a href="#vislcg3" id="toc-vislcg3" class="nav-link" data-scroll-target="#vislcg3"><span class="header-section-number">7.4</span> <code>vislcg3</code></a>
+  <li><a href="#cg3" id="toc-cg3" class="nav-link" data-scroll-target="#cg3"><span class="header-section-number">7.2</span> <code>cg3</code></a>
   <ul class="collapse">
-  <li><a href="#о-программе" id="toc-о-программе" class="nav-link" data-scroll-target="#о-программе"><span class="header-section-number">7.4.1</span> О программе</a></li>
-  <li><a href="#структура-.rlx-файла" id="toc-структура-.rlx-файла" class="nav-link" data-scroll-target="#структура-.rlx-файла"><span class="header-section-number">7.4.2</span> Структура <code>.rlx</code> файла</a></li>
+  <li><a href="#первый-пример" id="toc-первый-пример" class="nav-link" data-scroll-target="#первый-пример"><span class="header-section-number">7.2.1</span> Первый пример</a></li>
+  <li><a href="#о-программе" id="toc-о-программе" class="nav-link" data-scroll-target="#о-программе"><span class="header-section-number">7.2.2</span> О программе</a></li>
+  <li><a href="#структура-.rlx-файла" id="toc-структура-.rlx-файла" class="nav-link" data-scroll-target="#структура-.rlx-файла"><span class="header-section-number">7.2.3</span> Структура <code>.rlx</code> файла</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -252,7 +251,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Введение в <code>CG3</code>: разрешение морфологической неоднозначности</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Введение в <code>cg3</code>: разрешение морфологической неоднозначности</span></h1>
 </div>
 
 
@@ -282,9 +281,9 @@ div.csl-indent {
 </ul>
 <p>Отмечу неожиданное преимущество правиловых фреймворков: их достаточно легко превращать в текст, объясняющий процедуру. Для правил CG была сделана такая попытка в работе <span class="citation" data-cites="swanson25">(<a href="references.html#ref-swanson25" role="doc-biblioref">Swanson 2025</a>)</span>.</p>
 </section>
-<section id="visl-cg3" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="visl-cg3"><span class="header-section-number">7.2</span> <code>VISL CG3</code></h2>
-<p>В наших лекциях для разрешения морфологической неоднозначности мы будем использовать <code>VISL CG3</code>. <code>VISL CG3</code> — это программа для работы в CG. <code>VISL</code> (Visual Interactive Syntax Learning) — подпроект датской компании GrammarSoft ApS, а <code>CG3</code> обозначает новую, третью, версию реализации парадигмы. Чтобы установить достаточно следующих команд.</p>
+<section id="cg3" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="cg3"><span class="header-section-number">7.2</span> <code>cg3</code></h2>
+<p>В наших лекциях для разрешения морфологической неоднозначности мы будем использовать <code>cg3</code> (полное название <code>vislcg3</code>). <code>VISL</code> (Visual Interactive Syntax Learning) — подпроект датской компании GrammarSoft ApS, а <code>CG3</code> обозначает новую, третью, версию реализации парадигмы. Чтобы установить достаточно следующих команд.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-s</span> https://apertium.projectjj.com/apt/install-nightly.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt-get install cg3</span>
@@ -293,36 +292,26 @@ div.csl-indent {
 <blockquote class="blockquote">
 <p>This manual should be regarded as a guideline. Some of the features or functionality described is either not implemented yet, or does not work exactly as advertised. A good place to see what is and is not implemented is to run the regression test suite as the test names are indicative of features. The individual tests are also good starting points to find examples on how a specific feature works.</p>
 </blockquote>
-</section>
-<section id="первый-пример" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="первый-пример"><span class="header-section-number">7.3</span> Первый пример</h2>
+<section id="первый-пример" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="первый-пример"><span class="header-section-number">7.2.1</span> Первый пример</h3>
 <p>Рассмотрим такой трансдьюсер, записанный в <code>example.lexd</code>:</p>
-<div id="3840a6c9" class="cell" data-execution_count="1">
+<div id="ab99a636" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>PATTERNS
-Pronouns
-VerbRoot VerbInflection 
+Preposition
+Noun
+Verb
 
-LEXICON Pronouns
-я&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;:я
-ты&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;:ты
-он&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;&lt;nom&gt;:он
-она&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;f&gt;&lt;nom&gt;:она
-оно&lt;prn&gt;&lt;3&gt;&lt;sg&gt;&lt;n&gt;&lt;nom&gt;:оно
+LEXICON Preposition
+в&lt;pr&gt;:в
 
-LEXICON VerbRoot
-играть&lt;v&gt;:игра
+LEXICON Noun
+город&lt;n&gt;&lt;nom&gt;&lt;sg&gt;:город
+город&lt;n&gt;&lt;acc&gt;&lt;sg&gt;:город
+поезд&lt;n&gt;&lt;nom&gt;&lt;sg&gt;:поезд
 
-LEXICON VerbInflection
-&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;:л
-&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;m&gt;:л
-&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;:л
-&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;f&gt;:ла
-&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;f&gt;:ла
-&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;f&gt;:ла
-&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;n&gt;:ло
-&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;n&gt;:ло
-&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;n&gt;:ло</code></pre>
+LEXICON Verb
+ехать&lt;v&gt;&lt;npst&gt;&lt;p3&gt;&lt;sg&gt;:едет</code></pre>
 </div>
 </div>
 <p>Мы его можем скомпилировать в оптимизированный:</p>
@@ -331,70 +320,74 @@ LEXICON VerbInflection
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Подадим предложение на вход процессору:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cc3f1bf8" class="cell" data-execution_count="3">
+<div id="cd2014a6" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>^я/я&lt;prn&gt;&lt;1&gt;&lt;sg&gt;&lt;nom&gt;$ ^играл/играть&lt;v&gt;&lt;pst&gt;&lt;1&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;2&gt;&lt;sg&gt;&lt;m&gt;/играть&lt;v&gt;&lt;pst&gt;&lt;3&gt;&lt;sg&gt;&lt;m&gt;$</code></pre>
+<pre><code>^Поезд/Поезд&lt;n&gt;&lt;nom&gt;&lt;sg&gt;$ ^едет/ехать&lt;v&gt;&lt;npst&gt;&lt;p3&gt;&lt;sg&gt;$ ^в/в&lt;pr&gt;$ ^город/город&lt;n&gt;&lt;acc&gt;&lt;sg&gt;/город&lt;n&gt;&lt;nom&gt;&lt;sg&gt;$.</code></pre>
 </div>
 </div>
 <p>Апертиумовский формат неудобно читать, так что добавим флаг <code>-C</code>, чтобы <code>hfst-proc</code> преобразовал получившееся в CG формат:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="76b4a96f" class="cell" data-execution_count="4">
+<div id="a463983b" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
-<pre><code>"&lt;я&gt;"
-    "я" prn 1 sg nom
-"&lt;играл&gt;"
-    "играть"    v pst 1 sg m
-    "играть"    v pst 2 sg m
-    "играть"    v pst 3 sg m</code></pre>
+<pre><code>"&lt;Поезд&gt;"
+    "поезд" n nom sg
+"&lt;едет&gt;"
+    "ехать" v npst p3 sg
+"&lt;в&gt;"
+    "в" pr
+"&lt;город&gt;"
+    "город" n acc sg
+    "город" n nom sg</code></pre>
 </div>
 </div>
-<p>Мы видим, что форма <em>играл</em> имеет три возможных разбора. Кроме того мы видим, что два из разборов точно неправильные, что очевидно, если посмотреть на предыдущее слово. Для того чтобы это сделать создадим следующий файл <code>cg_rules_1.rlx</code>:</p>
-<div id="55a6450b" class="cell" data-execution_count="5">
+<p>Мы видим, что форма <em>город</em> имеет два возможных разбора. Кроме того мы видим, что один из разборов точно неправильный. Для того чтобы убрать ненужный разбор, создадим следующий файл <code>cg_rules_1.rlx</code>:</p>
+<div id="0a5c5f82" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
-<pre><code>LIST Person = 1 2 3;
-SELECT (v) + $$Person IF ( -1C (prn) + $$Person );</code></pre>
+<pre><code>REMOVE (nom) IF (-1C (pr));</code></pre>
 </div>
 </div>
-<p>Применим написанный файл к нашему трансдьюсеру:</p>
+<p>Применим написанное правило к нашему трансдьюсеру:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"я играл"</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">vislcg3</span> <span class="at">-g</span> cg_rules_1.rlx</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> cg_rules_1.rlx</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="a0a9f658" class="cell" data-execution_count="6">
+<div id="e6e8a812" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
-"&lt;я&gt;"
-    "я" prn 1 sg nom
-"&lt;играл&gt;"
-    "играть" v pst 1 sg m
+"&lt;Поезд&gt;"
+    "поезд" n nom sg
+"&lt;едет&gt;"
+    "ехать" v npst p3 sg
+"&lt;в&gt;"
+    "в" pr
+"&lt;город&gt;"
+    "город" n acc sg
 </code></pre>
 </div>
 </div>
-<p>Таким образом мы избавились от нескольких ненужных разборов. В следующих разделах мы углубимся в возможности <code>cg3</code>.</p>
+<p>Таким образом мы избавились от ненужного разбора. В следующих разделах мы углубимся в возможности <code>cg3</code>.</p>
 </section>
-<section id="vislcg3" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="vislcg3"><span class="header-section-number">7.4</span> <code>vislcg3</code></h2>
-<section id="о-программе" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="о-программе"><span class="header-section-number">7.4.1</span> О программе</h3>
-<p><code>vislcg3</code> — это основная программа, которую мы будем использовать. Она по умолчанию угадывает формат, в котором ей поступают данные на вход и отдает в таком же формате. Однако есть и программы более узкого назначения:</p>
+<section id="о-программе" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="о-программе"><span class="header-section-number">7.2.2</span> О программе</h3>
+<p><code>cg3</code> — это основная программа, которую мы будем использовать. Она по умолчанию угадывает формат, в котором ей поступают данные на вход и отдает в таком же формате. Однако есть и программы более узкого назначения:</p>
 <ul>
 <li><code>cg-conv</code> — программа для преобразования входных/выходных типов данных (например, между апертиумовским и CG);</li>
 <li><code>cg-comp</code> компилирует файл CG правил в бинарный файл;</li>
 <li><code>cg-proc</code> обрабатывает входные данные при помощи файла CG правил или его бинарного варианта;</li>
 <li>и некоторые другие.</li>
 </ul>
-<p>В программе <code>vislcg3</code> достаточно много аргументов (см. <code>vislcg3 -h</code>), нам важно три:</p>
+<p>В программе <code>cg3</code> достаточно много аргументов (см. <code>cg3 -h</code>), нам важно три:</p>
 <ul>
 <li><code>-g</code> — указывает файл с CG правилами;</li>
-<li><code>-I</code> — файл для чтения инпута вместо стандартного stdin;</li>
+<li><code>-I</code> — файл для чтения вместо стандартного stdin;</li>
 <li><code>-O</code> — файл для записи результата работы вместо стандартного stdout.</li>
 </ul>
 </section>
-<section id="структура-.rlx-файла" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="структура-.rlx-файла"><span class="header-section-number">7.4.2</span> Структура <code>.rlx</code> файла</h3>
+<section id="структура-.rlx-файла" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="структура-.rlx-файла"><span class="header-section-number">7.2.3</span> Структура <code>.rlx</code> файла</h3>
 <p>Файлы с CG правилами принято записывать в файлы с расширениями <code>.rlx</code> или <code>.cg3</code>.</p>
 
 
