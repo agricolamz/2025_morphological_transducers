@@ -29,20 +29,20 @@ $ sudo apt-get install cg3
 
 ### Первый пример
 
-Рассмотрим такой трансдьюсер, записанный в `example.lexd`:
+Рассмотрим такой трансдьюсер, записанный в `example_1.lexd`:
 
 ```{python}
-!cat examples/07_example.lexd
+!cat examples/07_example_1.lexd
 ```
 
 Мы его можем скомпилировать в оптимизированный:
 
 ```{{shell}}
-$ lexd example.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o analyzer.hfstol
+$ lexd example_1.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o analyzer.hfstol
 ```
 
 ```{python}
-!lexd examples/07_example.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o examples/analyzer.hfstol
+!lexd examples/07_example_1.lexd | hfst-txt2fst | hfst-invert | hfst-fst2fst -O -o examples/analyzer.hfstol
 ```
 
 Подадим предложение на вход процессору:
@@ -65,20 +65,20 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol
 !echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol
 ```
 
-Мы видим, что форма *город* имеет два возможных разбора. Кроме того мы видим, что один из разборов точно неправильный. Для того чтобы убрать ненужный разбор, создадим следующий файл `cg_rules_1.rlx`:
+Мы видим, что форма *город* имеет два возможных разбора. Кроме того мы видим, что один из разборов точно неправильный. Для того чтобы убрать ненужный разбор, создадим следующий файл `example_1.rlx`:
 
 ```{python}
-!cat examples/07_cg_rules_1.rlx
+!cat examples/07_example_1.rlx
 ```
 
 Применим написанное правило к нашему трансдьюсеру:
 
 ```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g cg_rules_1.rlx
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_1.rlx
 ```
 
 ```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_cg_rules_1.rlx
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_1.rlx
 ```
 
 Таким образом мы избавились от ненужного разбора. В следующих разделах мы углубимся в возможности `cg3`.
