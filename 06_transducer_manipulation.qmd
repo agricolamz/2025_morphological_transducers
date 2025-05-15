@@ -678,7 +678,7 @@ $ echo "ечене" | hfst-lookup correspondences.hfst
 ```
 
 ```{python}
-!hfst-twolc -q examples/correspondences_twol.twol -o examples/correspondences_twol.hfst
+!hfst-twolc -q examples/06_correspondences_twol.twol -o examples/correspondences_twol.hfst
 !lexd examples/06_correspondences2.lexd | hfst-txt2fst | hfst-repeat -f 1 | hfst-compose-intersect examples/correspondences_twol.hfst -o examples/correspondences.hfst
 !echo "ечене" | hfst-lookup examples/correspondences.hfst
 ```
@@ -705,7 +705,7 @@ LEXICON translations
 
 ```{{shell}}
 $ lexd ru_en.lexd | hfst-txt2fst | hfst-repeat -f 1 -o ru_en.hfst
-$ hfst-compose ru_en.hfst correspondences.hfst | hfst-fst2strings
+$ hfst-compose analyzer.hfst ru_en.hfst | hfst-fst2strings
 ```
 
 ```{python}
