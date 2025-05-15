@@ -236,7 +236,7 @@ div.csl-indent {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#разрешение-морфологической-неоднозначности" id="toc-разрешение-морфологической-неоднозначности" class="nav-link active" data-scroll-target="#разрешение-морфологической-неоднозначности"><span class="header-section-number">7.1</span> Разрешение морфологической неоднозначности</a></li>
+  <li><a href="#constraint-grammar" id="toc-constraint-grammar" class="nav-link active" data-scroll-target="#constraint-grammar"><span class="header-section-number">7.1</span> Constraint grammar</a></li>
   <li><a href="#cg3" id="toc-cg3" class="nav-link" data-scroll-target="#cg3"><span class="header-section-number">7.2</span> <code>cg3</code></a>
   <ul class="collapse">
   <li><a href="#первый-пример" id="toc-первый-пример" class="nav-link" data-scroll-target="#первый-пример"><span class="header-section-number">7.2.1</span> Первый пример</a></li>
@@ -268,9 +268,8 @@ div.csl-indent {
 </header>
 
 
-<section id="разрешение-морфологической-неоднозначности" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="разрешение-морфологической-неоднозначности"><span class="header-section-number">7.1</span> Разрешение морфологической неоднозначности</h2>
-<p>…</p>
+<section id="constraint-grammar" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="constraint-grammar"><span class="header-section-number">7.1</span> Constraint grammar</h2>
 <p>Парадигма Constraint grammar (CG) <span class="citation" data-cites="karlsson1995 bick15">(<a href="references.html#ref-karlsson1995" role="doc-biblioref">Karlsson и др. 1995</a>; <a href="references.html#ref-bick15" role="doc-biblioref">Bick и Didriksen 2015</a>)</span> — это правиловая процедурная система обработки текста, позволяющая решать достаточно большой набор разнообразных задач, такие как</p>
 <ul>
 <li>разрешение неоднозначности;</li>
@@ -279,7 +278,8 @@ div.csl-indent {
 <li>построение деревьев зависимостей;</li>
 <li>и многие другие.</li>
 </ul>
-<p>Отмечу неожиданное преимущество правиловых фреймворков: их достаточно легко превращать в текст, объясняющий процедуру. Для правил CG была сделана такая попытка в работе <span class="citation" data-cites="swanson25">(<a href="references.html#ref-swanson25" role="doc-biblioref">Swanson 2025</a>)</span>.</p>
+<p>CG разрабатывалась начиная с 1980-ых Фредом Кралссоном и другими в университете Хельсенки. С самого начала эта парадигма задумывалась как модуль, который работает с любым текстом на любом языке, так чтобы каждой входной единице сопоставляется некоторая выходная единица (включая пунктуацию и другие топографические особенности). Слово <em>constraint</em> в описании подчеркивает фильтрующую функцию, которую носит CG модуль: на вход мы подаем некоторый текст и морфологические разборы, а CG модуль удаляет, изменяет или модифицирует морфологические разборы.</p>
+<p>Отмечу неожиданное преимущество правиловых фреймворков: их достаточно легко превращать в текст, объясняющий процедуру. Попытку сделать такое для правил CG можно посмотреть в следующей работе <span class="citation" data-cites="swanson25">(<a href="references.html#ref-swanson25" role="doc-biblioref">Swanson 2025</a>)</span>.</p>
 </section>
 <section id="cg3" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="cg3"><span class="header-section-number">7.2</span> <code>cg3</code></h2>
@@ -295,7 +295,7 @@ div.csl-indent {
 <section id="первый-пример" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="первый-пример"><span class="header-section-number">7.2.1</span> Первый пример</h3>
 <p>Рассмотрим такой трансдьюсер, записанный в <code>example_1.lexd</code>:</p>
-<div id="4843be8a" class="cell" data-execution_count="1">
+<div id="1deab6d9" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>PATTERNS
 Preposition
@@ -322,7 +322,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="e258055a" class="cell" data-execution_count="3">
+<div id="0d37d4f2" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>^Поезд/Поезд&lt;n&gt;&lt;nom&gt;&lt;sg&gt;$ ^едет/ехать&lt;v&gt;&lt;npst&gt;&lt;p3&gt;&lt;sg&gt;$ ^в/в&lt;pr&gt;$ ^город/город&lt;n&gt;&lt;acc&gt;&lt;sg&gt;/город&lt;n&gt;&lt;nom&gt;&lt;sg&gt;$.</code></pre>
 </div>
@@ -331,7 +331,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="d490272d" class="cell" data-execution_count="4">
+<div id="b47a2079" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>"&lt;Поезд&gt;"
     "поезд" n nom sg
@@ -345,7 +345,7 @@ LEXICON Verb
 </div>
 </div>
 <p>Мы видим, что форма <em>город</em> имеет два возможных разбора. Кроме того мы видим, что один из разборов точно неправильный. Для того чтобы убрать ненужный разбор, создадим следующий файл <code>example_1.rlx</code>:</p>
-<div id="4a50f5bf" class="cell" data-execution_count="5">
+<div id="3042886d" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>REMOVE (nom) IF (-1C (pr));</code></pre>
 </div>
@@ -354,7 +354,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_1.rlx</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="3894d5d0" class="cell" data-execution_count="6">
+<div id="3d6f36e2" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"

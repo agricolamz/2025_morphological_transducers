@@ -14,7 +14,7 @@
     "href": "index.html#список-использованных-программ",
     "title": "Конечные автоматы в морфологическом анализе 2024/2025",
     "section": "Список использованных программ",
-    "text": "Список использованных программ\n```{shell}\nlexd -V\n```\n\n\nlexd 1.3.5\n\n\n```{shell}\nhfst-twolc -V\n```\n\n\n\nhfst-twolc 0 (hfst 3.16.2)\nCopyright (C) 2010 University of Helsinki,\nLicense GPLv3: GNU GPL version 3 \n&lt;http://gnu.org/licenses/gpl.html&gt;\nThis is free software: you are free to change and \nredistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n\n\n```{shell}\ncg3 -V\n```\n\n\nVISL CG-3 Disambiguator version 1.5.2.13898\nCopyright (C) 2007-2025 GrammarSoft ApS. Licensed under GPLv3+\n\n\n```{shell}\ngit -v\n```\n\n\ngit version 2.43.0",
+    "text": "Список использованных программ\n```{shell}\nlexd -V\n```\n\n\nlexd 1.3.5\n\n\n```{shell}\nhfst-twolc -V\n```\n\n\n\nhfst-twolc 0 (hfst 3.16.2)\nCopyright (C) 2010 University of Helsinki,\nLicense GPLv3: GNU GPL version 3 \n&lt;http://gnu.org/licenses/gpl.html&gt;\nThis is free software: you are free to change and \nredistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n\n\n```{shell}\ncg3 -V\n```\n\n\nVISL CG-3 Disambiguator version 1.5.3.13898\nCopyright (C) 2007-2025 GrammarSoft ApS. Licensed under GPLv3+\n\n\n```{shell}\ngit -v\n```\n\n\ngit version 2.43.0",
     "crumbs": [
       "Введение"
     ]
@@ -354,14 +354,14 @@
     "href": "07_disambiguation.html",
     "title": "7  Введение в cg3: разрешение морфологической неоднозначности",
     "section": "",
-    "text": "7.1 Разрешение морфологической неоднозначности\n…\nПарадигма Constraint grammar (CG) (Karlsson и др. 1995; Bick и Didriksen 2015) — это правиловая процедурная система обработки текста, позволяющая решать достаточно большой набор разнообразных задач, такие как\nОтмечу неожиданное преимущество правиловых фреймворков: их достаточно легко превращать в текст, объясняющий процедуру. Для правил CG была сделана такая попытка в работе (Swanson 2025).",
+    "text": "7.1 Constraint grammar\nПарадигма Constraint grammar (CG) (Karlsson и др. 1995; Bick и Didriksen 2015) — это правиловая процедурная система обработки текста, позволяющая решать достаточно большой набор разнообразных задач, такие как\nCG разрабатывалась начиная с 1980-ых Фредом Кралссоном и другими в университете Хельсенки. С самого начала эта парадигма задумывалась как модуль, который работает с любым текстом на любом языке, так чтобы каждой входной единице сопоставляется некоторая выходная единица (включая пунктуацию и другие топографические особенности). Слово constraint в описании подчеркивает фильтрующую функцию, которую носит CG модуль: на вход мы подаем некоторый текст и морфологические разборы, а CG модуль удаляет, изменяет или модифицирует морфологические разборы.\nОтмечу неожиданное преимущество правиловых фреймворков: их достаточно легко превращать в текст, объясняющий процедуру. Попытку сделать такое для правил CG можно посмотреть в следующей работе (Swanson 2025).",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Введение в `cg3`: разрешение морфологической неоднозначности</span>"
     ]
   },
   {
-    "objectID": "07_disambiguation.html#разрешение-морфологической-неоднозначности",
-    "href": "07_disambiguation.html#разрешение-морфологической-неоднозначности",
+    "objectID": "07_disambiguation.html#constraint-grammar",
+    "href": "07_disambiguation.html#constraint-grammar",
     "title": "7  Введение в cg3: разрешение морфологической неоднозначности",
     "section": "",
     "text": "разрешение неоднозначности;\nприписывание тэгов, например, синтаксических ролей;\nразрешение анафоры;\nпостроение деревьев зависимостей;\nи многие другие.",
