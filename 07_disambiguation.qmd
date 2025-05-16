@@ -106,11 +106,11 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3
 
 Команды позволяющие изменять теги в чтениях имеют следующую структуру:
 
-```
-КОМАНДА (тэги) (целевая группа) (опционально: некоторое условие)
-```
-
 - `ADD` --- добавляет тэг к набору тегов, **разрешая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
+
+```
+ADD <tags> [BEFORE|AFTER <tags>] <target> [contextual_tests] ;
+```
 
 ```{{shell}}
 $ cat example_ADD.rlx
@@ -130,6 +130,10 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3
 
 - `MAP` --- добавляет тэг к набору тегов, **запрещая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
 
+```
+MAP <tags> [BEFORE|AFTER <tags>] <target> [contextual_tests] ;
+```
+
 ```{{shell}}
 $ cat example_MAP.rlx
 ```
@@ -144,6 +148,28 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3
 
 ```{python}
 !echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_MAP.rlx
+```
+
+- `SUBSTITUTE` --- заменяет один набор тэгов на другой набор тэгов. Может быть сделана нулевая замена, для этого следует использовать знак `*`.
+
+```
+SUBSTITUTE <locate tags> <replacement tags> <target> [contextual_tests] ;
+```
+
+```{{shell}}
+$ cat example_SUBSTITUTE.rlx
+```
+
+```{python}
+!cat examples/07_example_SUBSTITUTE.rlx
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_SUBSTITUTE.rlx
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_SUBSTITUTE.rlx
 ```
 
 - `REPLACE` --- оставляет только выделенный тэг, а остальные теги убирает, **запрещая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
@@ -164,8 +190,11 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3
 !echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_REPLACE.rlx
 ```
 
+- `UNMAP` снимает блокирующее поведение команд `MAP` и `REPLACE`. По-умолчанию `UNMAP` работает только с единственными чтениями, но если хочется чтобы блокировка была снята с нескольких чтений одной формы, стоит добавить `UNSAFE`.
 
-Блокирующее поведение команд `MAP` и `REPLACE` можно снять при помощи команды `UNMAP`. По-умолчанию `UNMAP` работает только с единственными чтениями, но если хочется чтобы блокировка была снята с нескольких чтений одной формы, стоит добавить `UNSAFE`.
+```
+UNMAP <target> [contextual_tests] ;
+```
 
 ```{{shell}}
 $ cat example_UNMAP.rlx
@@ -198,25 +227,6 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3
 ```{python}
 !echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_UNSAFE.rlx
 ```
-
-- `SUBSTITUTE` --- ;
-
-```{{shell}}
-$ cat example_SUBSTITUTE.rlx
-```
-
-```{python}
-!cat examples/07_example_SUBSTITUTE.rlx
-```
-
-```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_SUBSTITUTE.rlx
-```
-
-```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_SUBSTITUTE.rlx
-```
-
 
 ```{python}
 !rm -f examples/*.hfstol

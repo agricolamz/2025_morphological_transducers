@@ -1,1 +1,2 @@
 SUBSTITUTE (sg) (SG) (v);
+SUBSTITUTE (nom) (*) ("поезд");
