@@ -295,7 +295,7 @@ div.csl-indent {
 <section id="первый-пример" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="первый-пример"><span class="header-section-number">7.2.1</span> Первый пример</h3>
 <p>Рассмотрим такой трансдьюсер, записанный в <code>example_1.lexd</code>:</p>
-<div id="af48d40f" class="cell" data-execution_count="1">
+<div id="b3e37156" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>PATTERNS
 Preposition
@@ -322,7 +322,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="ec8fa159" class="cell" data-execution_count="3">
+<div id="be4864a4" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>^Поезд/Поезд&lt;n&gt;&lt;nom&gt;&lt;sg&gt;$ ^едет/ехать&lt;v&gt;&lt;npst&gt;&lt;p3&gt;&lt;sg&gt;$ ^в/в&lt;pr&gt;$ ^город/город&lt;n&gt;&lt;acc&gt;&lt;sg&gt;/город&lt;n&gt;&lt;nom&gt;&lt;sg&gt;$.</code></pre>
 </div>
@@ -331,7 +331,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="36034548" class="cell" data-execution_count="4">
+<div id="52550242" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>"&lt;Поезд&gt;"
     "поезд" n nom sg
@@ -345,7 +345,7 @@ LEXICON Verb
 </div>
 </div>
 <p>Мы видим, что форма <em>город</em> имеет два возможных разбора. Кроме того мы видим, что один из разборов точно неправильный. Для того чтобы убрать ненужный разбор, создадим следующий файл <code>example_1.rlx</code>:</p>
-<div id="fc60c866" class="cell" data-execution_count="5">
+<div id="889e840a" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>REMOVE (nom) IF (-1C (pr));</code></pre>
 </div>
@@ -354,7 +354,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_1.rlx</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="2dbe1dd3" class="cell" data-execution_count="6">
+<div id="b299918f" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -399,28 +399,19 @@ LEXICON Verb
 <div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_ADD.rlx</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="aca32364" class="cell" data-execution_count="7">
+<div id="e87461e4" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>ADD (NEW_TAG) (v);
-ADD (ANOTHER_TAG) (v);</code></pre>
+ADD (ANOTHER_TAG) [AFTER (v)] (v);</code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_ADD.rlx</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="54b47976" class="cell" data-execution_count="8">
+<div id="fe72e410" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
-"&lt;Поезд&gt;"
-    "поезд" n nom sg
-"&lt;едет&gt;"
-    "ехать" v npst p3 sg NEW_TAG ANOTHER_TAG
-"&lt;в&gt;"
-    "в" pr
-"&lt;город&gt;"
-    "город" n acc sg
-    "город" n nom sg
-</code></pre>
+<pre><code>07_example_ADD.rlx: Error: Attempted to reference undefined set '[AFTER' on line 2 near `[AFTER (v)] (v);␊`!
+Error: Grammar could not be parsed - exiting!</code></pre>
 </div>
 </div>
 <ul>
@@ -430,28 +421,19 @@ ADD (ANOTHER_TAG) (v);</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_MAP.rlx</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="5d86579c" class="cell" data-execution_count="9">
+<div id="cf0ee4bb" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>MAP (NEW_TAG) (v);
-ADD (ANOTHER_TAG) (v);</code></pre>
+ADD (ANOTHER_TAG) [AFTER (v)] (v);</code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb19"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_MAP.rlx</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="722d24e8" class="cell" data-execution_count="10">
+<div id="b41c6f08" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
-<pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
-"&lt;Поезд&gt;"
-    "поезд" n nom sg
-"&lt;едет&gt;"
-    "ехать" v npst p3 sg NEW_TAG
-"&lt;в&gt;"
-    "в" pr
-"&lt;город&gt;"
-    "город" n acc sg
-    "город" n nom sg
-</code></pre>
+<pre><code>07_example_MAP.rlx: Error: Attempted to reference undefined set '[AFTER' on line 2 near `[AFTER (v)] (v);␊`!
+Error: Grammar could not be parsed - exiting!</code></pre>
 </div>
 </div>
 <ul>
@@ -461,7 +443,7 @@ ADD (ANOTHER_TAG) (v);</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_SUBSTITUTE.rlx</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="2327c535" class="cell" data-execution_count="11">
+<div id="1f66996d" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>SUBSTITUTE (sg) (SG) (v);
 SUBSTITUTE (nom) (*) ("поезд");</code></pre>
@@ -470,7 +452,7 @@ SUBSTITUTE (nom) (*) ("поезд");</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_SUBSTITUTE.rlx</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="0d9b5435" class="cell" data-execution_count="12">
+<div id="d9fb9a0e" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -491,7 +473,7 @@ SUBSTITUTE (nom) (*) ("поезд");</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_REPLACE.rlx</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="a0dbce90" class="cell" data-execution_count="13">
+<div id="a91d8885" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>REPLACE (NEW_TAG) (v);</code></pre>
 </div>
@@ -499,7 +481,7 @@ SUBSTITUTE (nom) (*) ("поезд");</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_REPLACE.rlx</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="c54dafee" class="cell" data-execution_count="14">
+<div id="b93019f7" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -521,36 +503,27 @@ SUBSTITUTE (nom) (*) ("поезд");</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_UNMAP.rlx</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="1670600f" class="cell" data-execution_count="15">
+<div id="9e87ef1c" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
 <pre><code>MAP (NEW_TAG) (v);
 UNMAP (NEW_TAG);
-ADD (ANOTHER_TAG) (v);
+ADD (ANOTHER_TAG) [AFTER (v)] (v);
 </code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb33"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_UNMAP.rlx</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="0ead2919" class="cell" data-execution_count="16">
+<div id="710691ac" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stdout">
-<pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
-"&lt;Поезд&gt;"
-    "поезд" n nom sg
-"&lt;едет&gt;"
-    "ехать" v npst p3 sg NEW_TAG ANOTHER_TAG
-"&lt;в&gt;"
-    "в" pr
-"&lt;город&gt;"
-    "город" n acc sg
-    "город" n nom sg
-</code></pre>
+<pre><code>07_example_UNMAP.rlx: Error: Attempted to reference undefined set '[AFTER' on line 3 near `[AFTER (v)] (v);␊␊`!
+Error: Grammar could not be parsed - exiting!</code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb35"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_UNSAFE.rlx</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="775d2279" class="cell" data-execution_count="17">
+<div id="391c5f60" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-stdout">
 <pre><code>MAP (NEW_TAG) ("город" n);
 UNMAP UNSAFE (NEW_TAG);
@@ -561,7 +534,7 @@ ADD (ANOTHER_TAG) ("город" n);
 <div class="sourceCode" id="cb37"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_UNSAFE.rlx</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="84df180b" class="cell" data-execution_count="18">
+<div id="7e6272f7" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"

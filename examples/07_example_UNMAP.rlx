@@ -1,4 +1,4 @@
 MAP (NEW_TAG) (v);
 UNMAP (NEW_TAG);
-ADD (ANOTHER_TAG) (v);
+ADD (ANOTHER_TAG) [AFTER (v)] (v);
 
