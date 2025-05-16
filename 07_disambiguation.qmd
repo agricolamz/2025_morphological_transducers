@@ -100,7 +100,123 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3
 
 ### Структура `.rlx` файла
 
-Файлы с CG правилами принято записывать в файлы с расширениями `.rlx` или `.cg3`.
+Файлы с CG правилами принято записывать в файлы с расширениями `.rlx` или `.cg3`. В принципе никакой необходимой структуры такие файлы не предполагают, однако для читаемости имеет смысл делить логические фрагменты на разделы (`SECTION`). Такие разделы могут иметь названия. Кроме того можно вводить специальные разделы `BEFORE-SECTIONS` и `AFTER-SECTIONS`, которые будут запускаться до и перед разделами `SECTION`. Также полезно знать для дебага, что ничего не читается после слова `END`.
+
+#### Изменение тегов
+
+Команды позволяющие изменять теги в чтениях имеют следующую структуру:
+
+```
+КОМАНДА (тэги) (целевая группа) (опционально: некоторое условие)
+```
+
+- `ADD` --- добавляет тэг к набору тегов, **разрешая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
+
+```{{shell}}
+$ cat example_ADD.rlx
+```
+
+```{python}
+!cat examples/07_example_ADD.rlx
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_ADD.rlx
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_ADD.rlx
+```
+
+- `MAP` --- добавляет тэг к набору тегов, **запрещая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
+
+```{{shell}}
+$ cat example_MAP.rlx
+```
+
+```{python}
+!cat examples/07_example_MAP.rlx
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_MAP.rlx
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_MAP.rlx
+```
+
+- `REPLACE` --- оставляет только выделенный тэг, а остальные теги убирает, **запрещая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
+
+```{{shell}}
+$ cat example_REPLACE.rlx
+```
+
+```{python}
+!cat examples/07_example_REPLACE.rlx
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_REPLACE.rlx
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_REPLACE.rlx
+```
+
+
+Блокирующее поведение команд `MAP` и `REPLACE` можно снять при помощи команды `UNMAP`. По-умолчанию `UNMAP` работает только с единственными чтениями, но если хочется чтобы блокировка была снята с нескольких чтений одной формы, стоит добавить `UNSAFE`.
+
+```{{shell}}
+$ cat example_UNMAP.rlx
+```
+
+```{python}
+!cat examples/07_example_UNMAP.rlx
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_UNMAP.rlx
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_UNMAP.rlx
+```
+
+```{{shell}}
+$ cat example_UNSAFE.rlx
+```
+
+```{python}
+!cat examples/07_example_UNSAFE.rlx
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_UNSAFE.rlx
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_UNSAFE.rlx
+```
+
+- `SUBSTITUTE` --- ;
+
+```{{shell}}
+$ cat example_SUBSTITUTE.rlx
+```
+
+```{python}
+!cat examples/07_example_SUBSTITUTE.rlx
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_SUBSTITUTE.rlx
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_SUBSTITUTE.rlx
+```
+
 
 ```{python}
 !rm -f examples/*.hfstol
