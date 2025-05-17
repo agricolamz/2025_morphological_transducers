@@ -128,14 +128,14 @@ SET Sem/Time = Month | Months | Year | Century | Season | Seasons | TimeOfDay ;
 
 <...>
 
-SECTION
+SECTION                   # <1>
 
 REMOVE Dat IF (NOT 0 Anim OR Cog OR Ant) (NOT 0 Pron) ;
 SELECT Gen IF (0C N) (-1C A OR Det) ;
 
 <...>
 
-SECTION some-other-forms ; # <1>
+SECTION some-other-forms ; # <2>
 
 REMOVE Imper IF (1C Fin) ;
 
@@ -143,7 +143,8 @@ REMOVE Imper IF (1C Fin) ;
 
 ```
 
-1. Обратите внимание: если секция поименована, то а) в названии не должно быть пробелов б) строка должна заканчиваться точкой с запятой.
+1. Если секция не поименована, то можно не ставить точки с запятой.
+2. Если секция поименована, то а) в названии не должно быть пробелов б) строка должна заканчиваться точкой с запятой.
 
 ### Раздел `DELIMITERS`
 
