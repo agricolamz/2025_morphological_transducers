@@ -27,6 +27,19 @@ $ sudo apt-get install cg3
 
 >  This manual should be regarded as a guideline. Some of the features or functionality described is either not implemented yet, or does not work exactly as advertised. A good place to see what is and is not implemented is to run the regression test suite as the test names are indicative of features. The individual tests are also good starting points to find examples on how a specific feature works. 
 
+`cg3` по умолчанию угадывает формат, в котором ей поступают данные на вход и отдает в таком же формате. Однако есть и программы более узкого назначения:
+
+- `cg-conv` --- программа для преобразования входных/выходных типов данных (например, между апертиумовским и CG);
+- `cg-comp` компилирует файл CG правил в бинарный файл;
+- `cg-proc` обрабатывает входные данные при помощи файла CG правил или его бинарного варианта;
+- и некоторые другие.
+
+В программе `cg3` достаточно много аргументов (см. `cg3 -h`), нам важно три:
+
+- `-g` --- указывает файл с CG правилами;
+- `-I` --- файл для чтения вместо стандартного stdin;
+- `-O` --- файл для записи результата работы вместо стандартного stdout.
+
 ### Первый пример
 
 Рассмотрим такой трансдьюсер, записанный в `example_1.lexd`:
@@ -65,46 +78,66 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol
 !echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol
 ```
 
-Мы видим, что форма *город* имеет два возможных разбора. Кроме того мы видим, что один из разборов точно неправильный. Для того чтобы убрать ненужный разбор, создадим следующий файл `example_1.rlx`:
+Мы видим, что форма *город* имеет два возможных разбора. Кроме того мы видим, что один из разборов точно неправильный. Для того чтобы убрать ненужный разбор, создадим следующий файл `example_1.cg3`:
 
 ```{python}
-!cat examples/07_example_1.rlx
+!cat examples/07_example_1.cg3
 ```
 
 Применим написанное правило к нашему трансдьюсеру:
 
 ```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_1.rlx
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_1.cg3
 ```
 
 ```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_1.rlx
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_1.cg3
 ```
 
 Таким образом мы избавились от ненужного разбора. В следующих разделах мы углубимся в возможности `cg3`.
 
-### О программе
+### Структура `.cg3` файла
 
-`cg3` --- это основная программа, которую мы будем использовать. Она по умолчанию угадывает формат, в котором ей поступают данные на вход и отдает в таком же формате. Однако есть и программы более узкого назначения:
+Файлы с CG правилами принято записывать в файлы с расширениями `.cg3` или `.rlx`. В принципе никакой необходимой структуры такие файлы не предполагают, однако для читаемости имеет смысл делить логические фрагменты на разделы `SECTION`. Такие разделы могут иметь названия. Кроме того можно вводить специальные разделы `BEFORE-SECTIONS` и `AFTER-SECTIONS`, которые будут запускаться до и перед разделами `SECTION`. Также для отлаживания кода полезно знать команду `END`, после которой правила из файла не читаются. Содержание файла обычно заключается в наборе команд для декларации переменных при помощи команд `LIST` и `SET` и манипуляции 
 
-- `cg-conv` --- программа для преобразования входных/выходных типов данных (например, между апертиумовским и CG);
-- `cg-comp` компилирует файл CG правил в бинарный файл;
-- `cg-proc` обрабатывает входные данные при помощи файла CG правил или его бинарного варианта;
-- и некоторые другие.
+- с тегами;
+- чтениями;
+- зависимостями;
+- отношениями;
+- единицами анализа (в формализме CG их называют *когортами*, *cohort*);
+- и др.
 
-В программе `cg3` достаточно много аргументов (см. `cg3 -h`), нам важно три:
+Комментарии отделяются при помощи знака `#`.
 
-- `-g` --- указывает файл с CG правилами;
-- `-I` --- файл для чтения вместо стандартного stdin;
-- `-O` --- файл для записи результата работы вместо стандартного stdout.
+Кроме того, есть некоторый [набор настроек](https://edu.visl.dk/cg3/chunked/grammar.html#grammar-options) для чтения грамматики, который добавляется при помощи команды `OPTIONS`.
 
-### Структура `.rlx` файла
+Вот фрагменты искусственного `.сg3` файла, который приводиться здесь для иллюстрации:
 
-Файлы с CG правилами принято записывать в файлы с расширениями `.rlx` или `.cg3`. В принципе никакой необходимой структуры такие файлы не предполагают, однако для читаемости имеет смысл делить логические фрагменты на разделы (`SECTION`). Такие разделы могут иметь названия. Кроме того можно вводить специальные разделы `BEFORE-SECTIONS` и `AFTER-SECTIONS`, которые будут запускаться до и перед разделами `SECTION`. Также полезно знать для дебага, что ничего не читается после слова `END`.
+```
+DELIMITERS = "<svb>" ;
+OPTIONS += addcohort-attach ;
 
-#### Изменение тегов
+<...>
 
-Команды позволяющие изменять теги в чтениях имеют следующую структуру:
+# мой важный комментарий
+
+LIST Det = art ;
+LIST PRON = prde prps prn ;
+SET Sem/Time = Month | Months | Year | Century | Season | Seasons | TimeOfDay ; 
+
+<...>
+
+SECTION 
+
+REMOVE Dat IF (NOT 0 Anim OR Cog OR Ant) (NOT 0 Pron);
+SELECT Gen IF (0C N) (-1C A OR Det);
+
+
+```
+
+### Изменение тегов
+
+Первая группа команд, которую мы рассмотрим, измененяет теги.
 
 - `ADD` --- добавляет тэг к набору тегов, **разрешая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
 
@@ -113,19 +146,19 @@ ADD <tags> [BEFORE|AFTER <tags>] <target> [contextual_tests] ;
 ```
 
 ```{{shell}}
-$ cat example_ADD.rlx
+$ cat example_ADD.cg3
 ```
 
 ```{python}
-!cat examples/07_example_ADD.rlx
+!cat examples/07_example_ADD.cg3
 ```
 
 ```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_ADD.rlx
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_ADD.cg3
 ```
 
 ```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_ADD.rlx
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_ADD.cg3
 ```
 
 - `MAP` --- добавляет тэг к набору тегов, **запрещая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
@@ -135,19 +168,19 @@ MAP <tags> [BEFORE|AFTER <tags>] <target> [contextual_tests] ;
 ```
 
 ```{{shell}}
-$ cat example_MAP.rlx
+$ cat example_MAP.cg3
 ```
 
 ```{python}
-!cat examples/07_example_MAP.rlx
+!cat examples/07_example_MAP.cg3
 ```
 
 ```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_MAP.rlx
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_MAP.cg3
 ```
 
 ```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_MAP.rlx
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_MAP.cg3
 ```
 
 - `SUBSTITUTE` --- заменяет один набор тэгов на другой набор тэгов. Может быть сделана нулевая замена, для этого следует использовать знак `*`.
@@ -157,37 +190,37 @@ SUBSTITUTE <locate tags> <replacement tags> <target> [contextual_tests] ;
 ```
 
 ```{{shell}}
-$ cat example_SUBSTITUTE.rlx
+$ cat example_SUBSTITUTE.cg3
 ```
 
 ```{python}
-!cat examples/07_example_SUBSTITUTE.rlx
+!cat examples/07_example_SUBSTITUTE.cg3
 ```
 
 ```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_SUBSTITUTE.rlx
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_SUBSTITUTE.cg3
 ```
 
 ```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_SUBSTITUTE.rlx
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_SUBSTITUTE.cg3
 ```
 
 - `REPLACE` --- оставляет только выделенный тэг, а остальные теги убирает, **запрещая** в дальнейшем одной из операций `MAP`, `ADD` или `REPLACE` работать с анализируемым чтением;
 
 ```{{shell}}
-$ cat example_REPLACE.rlx
+$ cat example_REPLACE.cg3
 ```
 
 ```{python}
-!cat examples/07_example_REPLACE.rlx
+!cat examples/07_example_REPLACE.cg3
 ```
 
 ```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_REPLACE.rlx
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_REPLACE.cg3
 ```
 
 ```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_REPLACE.rlx
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_REPLACE.cg3
 ```
 
 - `UNMAP` снимает блокирующее поведение команд `MAP` и `REPLACE`. По-умолчанию `UNMAP` работает только с единственными чтениями, но если хочется чтобы блокировка была снята с нескольких чтений одной формы, стоит добавить `UNSAFE`.
@@ -197,35 +230,35 @@ UNMAP <target> [contextual_tests] ;
 ```
 
 ```{{shell}}
-$ cat example_UNMAP.rlx
+$ cat example_UNMAP.cg3
 ```
 
 ```{python}
-!cat examples/07_example_UNMAP.rlx
+!cat examples/07_example_UNMAP.cg3
 ```
 
 ```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_UNMAP.rlx
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_UNMAP.cg3
 ```
 
 ```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_UNMAP.rlx
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_UNMAP.cg3
 ```
 
 ```{{shell}}
-$ cat example_UNSAFE.rlx
+$ cat example_UNSAFE.cg3
 ```
 
 ```{python}
-!cat examples/07_example_UNSAFE.rlx
+!cat examples/07_example_UNSAFE.cg3
 ```
 
 ```{{shell}}
-$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_UNSAFE.rlx
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_UNSAFE.cg3
 ```
 
 ```{python}
-!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_UNSAFE.rlx
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_UNSAFE.cg3
 ```
 
 ```{python}
