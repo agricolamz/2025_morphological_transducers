@@ -1,2 +1,2 @@
-SUBSTITUTE (sg) (SG) (v);
-SUBSTITUTE (nom) (*) ("поезд");
+SUBSTITUTE (sg) (SG) (v) ;
+SUBSTITUTE (nom) (*) ("поезд") ;
