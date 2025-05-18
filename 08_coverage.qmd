@@ -116,7 +116,26 @@ $$F_1 = 2\times\frac{точность \times полнота}{точность + 
 
 К сожалению, нам не известно какого-то единого инструмента, который бы подсчитывал 
 
+::: {.panel-tabset}
 
+### Python
+
+### R
+
+```{{r}}
+library(tidyverse)
+
+gold_standard <- read_csv("examples/08_gold_standard.csv")
+
+system("cat examples/08_corpus.txt | hfst-proc examples/analyzer.hfstol", intern = TRUE) |> 
+  str_split(" ") |> 
+  unlist() |> 
+  enframe() |> 
+  mutate(token = str_extract(value, "(?<=\\^).*?(?=/)")) |> 
+  left_join(gold_standard)
+```
+
+:::
 
 ```{python}
 !rm -f examples/*.hfstol

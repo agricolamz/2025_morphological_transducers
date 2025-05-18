@@ -253,7 +253,6 @@ window.Quarto = {
   <ul>
   <li><a href="#покрытие" id="toc-покрытие" class="nav-link active" data-scroll-target="#покрытие"><span class="header-section-number">8.1</span> Покрытие</a></li>
   <li><a href="#точность-и-полнота" id="toc-точность-и-полнота" class="nav-link" data-scroll-target="#точность-и-полнота"><span class="header-section-number">8.2</span> Точность и полнота</a></li>
-  <li><a href="#сложности-при-подсчете-метрик" id="toc-сложности-при-подсчете-метрик" class="nav-link" data-scroll-target="#сложности-при-подсчете-метрик"><span class="header-section-number">8.3</span> Сложности при подсчете метрик</a></li>
   </ul>
 </nav>
     </div>
@@ -283,7 +282,7 @@ window.Quarto = {
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat corpus.txt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="a4b6d769" class="cell" data-execution_count="1">
+<div id="5a5ee8aa" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>я пью ты пьёшь мы пьём вы пьёте
 спрягал глагол уныло класс
@@ -295,7 +294,7 @@ window.Quarto = {
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example.lexd</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="9fe270de" class="cell" data-execution_count="2">
+<div id="ed567f9d" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>PATTERNS
 Prepositions [&lt;PR&gt;&lt;nom&gt;:]
@@ -335,7 +334,7 @@ LEXICON Rest
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat corpus.txt <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="d752abfe" class="cell" data-execution_count="4">
+<div id="240f65da" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>"&lt;я&gt;"
     "я" PR nom
@@ -388,7 +387,7 @@ LEXICON Rest
 <div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat corpus.txt <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-w</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="279e0881" class="cell" data-execution_count="5">
+<div id="87f553fb" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>17</code></pre>
 </div>
@@ -397,7 +396,7 @@ LEXICON Rest
 <div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat corpus.txt <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-c</span> <span class="st">"*"</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="12106dec" class="cell" data-execution_count="6">
+<div id="c5b235da" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>6</code></pre>
 </div>
@@ -441,15 +440,69 @@ LEXICON Rest
 </div>
 </div>
 <p><span class="math display">\[F_1 = 2\times\frac{точность \times полнота}{точность + полнота} = \frac{2\times TP}{2\times TP+FP+FN}\]</span></p>
-<p>В применении к морфологическому анализу, данные метрики должны учитывать качество разбора, а это значит, что нам нужно завести золотой стандарт.</p>
-</section>
-<section id="сложности-при-подсчете-метрик" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="сложности-при-подсчете-метрик"><span class="header-section-number">8.3</span> Сложности при подсчете метрик</h2>
+<p>В применении к морфологическому анализу, данные метрики должны учитывать качество разбора, а это значит, что нам нужно завести золотой стандарт, с которым мы будем сравнивать.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 50%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">+</th>
+<th style="text-align: center;">-</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">🤖💭+</td>
+<td style="text-align: center;">совпадает с золотым стандартом (TP)</td>
+<td style="text-align: center;">не разобрано анализатором (FP)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">🤖💭-</td>
+<td style="text-align: center;">не совпадает с золотым стандартом (FN)</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>сегментатор</li>
-<li>разный порядок тегов</li>
-<li>неточные совпадения: основа; основа + часть речи</li>
+<li>Точность (precision) — количество разборов анализатора, совпадающих с разбором золотого стандарта (TP), деленное на количество разобранных форм (TP + FN).</li>
+<li>Полнота (recall) — количество разборов анализатора, совпадающих с разбором золотого стандарта (TP), деленное на сумму разборов анализатора, совпадающих с разбором золотого стандарта (TP) и случаев, когда анализатор не смог разобрать форму (FP).</li>
 </ul>
+<p>Как разбор анализатора может совпадать с разбором золотого стандарта? Можно считать только случаи полного совпадения. Однако разумным кажется смотреть и на другие совпадения:</p>
+<ul>
+<li>совпадение основы</li>
+<li>совпадение частеречного тега</li>
+<li>совпадение набора не частеречных тегов</li>
+<li>совпадение основы и частеречного тега</li>
+<li>совпадение частеречного тега и набора не частеречных тегов</li>
+</ul>
+<p>Кроме того, можно еще проверять работу морфологического сегментатора (<em>руками</em> &lt;-&gt; <em>рук-ами</em>).</p>
+<p>К сожалению, нам не известно какого-то единого инструмента, который бы подсчитывал</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>gold_standard <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"examples/08_gold_standard.csv"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">system</span>(<span class="st">"cat examples/08_corpus.txt | hfst-proc examples/analyzer.hfstol"</span>, <span class="at">intern =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">" "</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">enframe</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">token =</span> <span class="fu">str_extract</span>(value, <span class="st">"(?&lt;=</span><span class="sc">\\</span><span class="st">^).*?(?=/)"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gold_standard)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 
 
 </section>
