@@ -283,7 +283,7 @@ window.Quarto = {
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat corpus.txt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="70850ac2" class="cell" data-execution_count="1">
+<div id="a4b6d769" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>я пью ты пьёшь мы пьём вы пьёте
 спрягал глагол уныло класс
@@ -295,7 +295,7 @@ window.Quarto = {
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example.lexd</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="4e1f6dc3" class="cell" data-execution_count="2">
+<div id="9fe270de" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>PATTERNS
 Prepositions [&lt;PR&gt;&lt;nom&gt;:]
@@ -335,7 +335,7 @@ LEXICON Rest
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat corpus.txt <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="e0bd2cbe" class="cell" data-execution_count="4">
+<div id="d752abfe" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>"&lt;я&gt;"
     "я" PR nom
@@ -388,7 +388,7 @@ LEXICON Rest
 <div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat corpus.txt <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-w</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="7f87a8ba" class="cell" data-execution_count="5">
+<div id="279e0881" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>17</code></pre>
 </div>
@@ -397,7 +397,7 @@ LEXICON Rest
 <div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat corpus.txt <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-c</span> <span class="st">"*"</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="017f380b" class="cell" data-execution_count="6">
+<div id="12106dec" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>6</code></pre>
 </div>
@@ -406,8 +406,41 @@ LEXICON Rest
 </section>
 <section id="точность-и-полнота" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="точность-и-полнота"><span class="header-section-number">8.2</span> Точность и полнота</h2>
-<p>Точность (precision) и полнота (recall) — метрики, используемые при оценке большей части алгоритмов машинного обучения. Иногда их используют сами по себе, а иногда в виде производных метрик, например F-меры.</p>
-<p>&lt;формулы&gt;</p>
+<p>Точность (precision) и полнота (recall) — метрики, используемые при оценке большей части алгоритмов машинного обучения. Иногда их используют сами по себе, а иногда в виде производных метрик, например F-меры. Напомним, как выглядит матрица ошибок на основе которой считаются меры:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 49%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">🐕</th>
+<th style="text-align: center;">🐈</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">🤖💭🐕</td>
+<td style="text-align: center;">истинно-положительные (TP)</td>
+<td style="text-align: center;">ложно-положительные (FP)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">🤖💭🐈</td>
+<td style="text-align: center;">ложно-отрицательные объекты (FN)</td>
+<td style="text-align: center;">истинно-отрицательные (TN)</td>
+</tr>
+</tbody>
+</table>
+<div class="columns">
+<div class="column">
+<p><span class="math display">\[точность = \frac{TP}{TP+FP}\]</span></p>
+</div><div class="column">
+<p><span class="math display">\[полнота = \frac{TP}{TP+FN}\]</span></p>
+</div>
+</div>
+<p><span class="math display">\[F_1 = 2\times\frac{точность \times полнота}{точность + полнота} = \frac{2\times TP}{2\times TP+FP+FN}\]</span></p>
 <p>В применении к морфологическому анализу, данные метрики должны учитывать качество разбора, а это значит, что нам нужно завести золотой стандарт.</p>
 </section>
 <section id="сложности-при-подсчете-метрик" class="level2" data-number="8.3">
