@@ -16,11 +16,11 @@ LEXICON NounStem
 россия:росси[f]
 
 LEXICON NounInflection
-<nom>:[m]
-<acc>:[m]
-<nom>:я[f]
-<acc>:ю[f]
-<gen>:и[f]
+<nom><sg>:[m]
+<acc><sg>:[m]
+<nom><sg>:я[f]
+<acc><sg>:ю[f]
+<gen><sg>:и[f]
 
 LEXICON Rest
 уныло<ADV>:уныло

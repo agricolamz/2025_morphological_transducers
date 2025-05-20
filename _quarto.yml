@@ -36,3 +36,4 @@ format:
     lang: ru
     page-layout: full
     css: styles.css
+    df-print: paged

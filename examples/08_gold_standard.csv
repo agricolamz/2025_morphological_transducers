@@ -1,18 +1,18 @@
 token,stem,pos,tags
-я,я,PR,nom
+я,я,PRON,nom
 пью,пить,V,"npst, 1p, sg"
-ты,ты,PR,nom
+ты,ты,PRON,nom
 пьёшь,пить,V,"npst, 2p, sg"
-мы,мы,PR,nom
+мы,мы,PRON,nom
 пьём,пить,V,"npst, 1p, pl"
-вы,вы,PR,nom
+вы,вы,PRON,nom
 пьёте,пить,V,"npst, 2p, pl"
 спрягал,спрягать,V,"pst, m, sg"
 глагол,глагол,N,acc
 уныло,уныло,ADV,
-класс,класс,N,nom
+класс,класс,N,"nom, sg"
 а,а,CONJ,
 получился,получиться,V,"pst, m, sg"
 о,о,PREP,
-россии,россия,N,loc
-рассказ,рассказ,N,nom
+россии,россия,N,"loc, sg"
+рассказ,рассказ,N,"sg, nom"
