@@ -247,11 +247,10 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#первый-пример" id="toc-первый-пример" class="nav-link" data-scroll-target="#первый-пример"><span class="header-section-number">7.2.1</span> Первый пример</a></li>
   <li><a href="#структура-.cg3-файла" id="toc-структура-.cg3-файла" class="nav-link" data-scroll-target="#структура-.cg3-файла"><span class="header-section-number">7.2.2</span> Структура <code>.cg3</code> файла</a></li>
-  <li><a href="#раздел-delimiters" id="toc-раздел-delimiters" class="nav-link" data-scroll-target="#раздел-delimiters"><span class="header-section-number">7.2.3</span> Раздел <code>DELIMITERS</code></a></li>
+  <li><a href="#списки-и-операции-над-ними" id="toc-списки-и-операции-над-ними" class="nav-link" data-scroll-target="#списки-и-операции-над-ними"><span class="header-section-number">7.2.3</span> Списки и операции над ними</a></li>
   <li><a href="#операции-с-тегами" id="toc-операции-с-тегами" class="nav-link" data-scroll-target="#операции-с-тегами"><span class="header-section-number">7.2.4</span> Операции с тегами</a></li>
   <li><a href="#операции-с-чтениями" id="toc-операции-с-чтениями" class="nav-link" data-scroll-target="#операции-с-чтениями"><span class="header-section-number">7.2.5</span> Операции с чтениями</a></li>
-  <li><a href="#операции-со-списками-list-и-set" id="toc-операции-со-списками-list-и-set" class="nav-link" data-scroll-target="#операции-со-списками-list-и-set"><span class="header-section-number">7.2.6</span> Операции со списками: <code>LIST</code> и <code>SET</code></a></li>
-  <li><a href="#позиция" id="toc-позиция" class="nav-link" data-scroll-target="#позиция"><span class="header-section-number">7.2.7</span> Позиция</a></li>
+  <li><a href="#позиция" id="toc-позиция" class="nav-link" data-scroll-target="#позиция"><span class="header-section-number">7.2.6</span> Позиция</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -290,6 +289,7 @@ div.csl-indent {
 <li>и многие другие.</li>
 </ul>
 <p>CG разрабатывалась начиная с 1980-ых Фредом Кралссоном и другими в университете Хельсенки. С самого начала эта парадигма задумывалась как модуль, который работает с любым текстом на любом языке, так чтобы каждой входной единице сопоставляется некоторая выходная единица (включая пунктуацию и другие топографические особенности). Слово <em>constraint</em> в описании подчеркивает фильтрующую функцию, которую носит CG модуль: на вход мы подаем некоторый текст и морфологические разборы, а CG модуль удаляет, изменяет или модифицирует морфологические разборы.</p>
+<p>Важно отметить, что CG правила легко соединяются вместе с морфологическими трансдьюсерами, но они так же работают и в других фреймворках: пока я готовился к этой лекции, я нашел <code>.cg3</code> файл в репозитории, в котором использовался <code>uniparser</code> Тимофея Архангельского.</p>
 <p>Отмечу неожиданное преимущество правиловых фреймворков: их достаточно легко превращать в текст, объясняющий процедуру. Попытку сделать такое для правил CG можно посмотреть в следующей работе <span class="citation" data-cites="swanson25">(<a href="references.html#ref-swanson25" role="doc-biblioref">Swanson 2025</a>)</span>.</p>
 </section>
 <section id="cg3" class="level2" data-number="7.2">
@@ -319,7 +319,7 @@ div.csl-indent {
 <section id="первый-пример" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="первый-пример"><span class="header-section-number">7.2.1</span> Первый пример</h3>
 <p>Рассмотрим такой трансдьюсер, записанный в <code>example_1.lexd</code>:</p>
-<div id="b0ff0182" class="cell" data-execution_count="1">
+<div id="a55ada3e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>PATTERNS
 Preposition
@@ -346,7 +346,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> analyzer.hfstol</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="7989cde6" class="cell" data-execution_count="3">
+<div id="f2039a1c" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>^Поезд/Поезд&lt;n&gt;&lt;nom&gt;&lt;sg&gt;$ ^едет/ехать&lt;v&gt;&lt;npst&gt;&lt;p3&gt;&lt;sg&gt;$ ^в/в&lt;pr&gt;$ ^город/город&lt;n&gt;&lt;acc&gt;&lt;sg&gt;/город&lt;n&gt;&lt;nom&gt;&lt;sg&gt;$.</code></pre>
 </div>
@@ -355,7 +355,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="688668ed" class="cell" data-execution_count="4">
+<div id="d6a4b3a5" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>"&lt;Поезд&gt;"
     "поезд" n nom sg
@@ -369,7 +369,7 @@ LEXICON Verb
 </div>
 </div>
 <p>Мы видим, что форма <em>город</em> имеет два возможных разбора. Кроме того мы видим, что один из разборов точно неправильный. Для того чтобы убрать ненужный разбор, создадим следующий файл <code>example_1.cg3</code>:</p>
-<div id="09c9df9d" class="cell" data-execution_count="5">
+<div id="2a9adb38" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>REMOVE (nom) IF (-1C (pr)) ;</code></pre>
 </div>
@@ -378,7 +378,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_1.cg3</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="c8a6e036" class="cell" data-execution_count="6">
+<div id="36112eb2" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -409,7 +409,7 @@ LEXICON Verb
 <p>Кроме того, есть некоторый <a href="https://edu.visl.dk/cg3/chunked/grammar.html#grammar-options">набор настроек</a> для чтения грамматики, который добавляется при помощи команды <code>OPTIONS</code>.</p>
 <p>Вот фрагменты искусственного <code>.сg3</code> файла, который приводиться здесь для иллюстрации:</p>
 <div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode markdown code-annotation-code code-with-copy code-annotated"><code class="sourceCode markdown"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{cg3}</span></span>
-<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>DELIMITERS <span class="op">=</span> <span class="st">"&lt;svb&gt;"</span> <span class="op">;</span></span>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>DELIMITERS <span class="op">=</span> <span class="st">"&lt;.&gt;"</span> <span class="st">"&lt;!&gt;"</span> <span class="st">"&lt;?&gt;"</span> <span class="st">"&lt;...&gt;"</span><span class="op">;</span></span>
 <span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>OPTIONS <span class="op">+=</span> addcohort<span class="op">-</span>attach <span class="op">;</span></span>
 <span id="annotated-cell-6-4"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-6-5"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;...&gt;</span></span>
@@ -446,8 +446,12 @@ LEXICON Verb
 </dd>
 </dl>
 </section>
-<section id="раздел-delimiters" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="раздел-delimiters"><span class="header-section-number">7.2.3</span> Раздел <code>DELIMITERS</code></h3>
+<section id="списки-и-операции-над-ними" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="списки-и-операции-над-ними"><span class="header-section-number">7.2.3</span> Списки и операции над ними</h3>
+<p>Списки это поименованные переменные, содержащие некоторые объекты. Из примера выше понятно, что объекты в списке разделяются пробелом, а конец списка обозначается точкой с запятой.</p>
+<p>Один из первых списков, который даже имеет отдельное название — раздел <code>DELIMITERS</code>. В данном разделе перечисляются единицы, которые останавливают парсинг. Списки <code>DELIMITERS</code> в файлах <code>.cg3</code> на GitHub не отличаются креативностью и обычно содержат вполне ожидаемые <code>"&lt;.&gt;"</code>, <code>"&lt;!&gt;"</code>, <code>"&lt;?&gt;"</code>, <code>"&lt;...&gt;"</code>. Меня удивило, отсутствие в этом списке знака многоточия <code>…</code> (U+2026). Важно отметить, что при отсутствии раздела <code>DELIMITERS</code> в файле с правилами программа <code>cg3</code> выдает предупреждение.</p>
+<p>Кроме того, суще</p>
+<p><code>LIST</code> и <code>SET</code></p>
 </section>
 <section id="операции-с-тегами" class="level3" data-number="7.2.4">
 <h3 data-number="7.2.4" class="anchored" data-anchor-id="операции-с-тегами"><span class="header-section-number">7.2.4</span> Операции с тегами</h3>
@@ -459,7 +463,7 @@ LEXICON Verb
 <div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_ADD.cg3</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="426ce8a5" class="cell" data-execution_count="7">
+<div id="e7c061a4" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>ADD (NEW_TAG) (v) ;
 ADD (ANOTHER_TAG) AFTER (npst) (v) ;</code></pre>
@@ -468,7 +472,7 @@ ADD (ANOTHER_TAG) AFTER (npst) (v) ;</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_ADD.cg3</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="ecc8025e" class="cell" data-execution_count="8">
+<div id="a4e36e51" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -490,7 +494,7 @@ ADD (ANOTHER_TAG) AFTER (npst) (v) ;</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_MAP.cg3</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="ea656a89" class="cell" data-execution_count="9">
+<div id="5430c769" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>MAP (NEW_TAG) (v) ;
 ADD (ANOTHER_TAG) AFTER (npst) (v) ;</code></pre>
@@ -499,7 +503,7 @@ ADD (ANOTHER_TAG) AFTER (npst) (v) ;</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_MAP.cg3</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="9f434ef4" class="cell" data-execution_count="10">
+<div id="eb47730a" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -521,7 +525,7 @@ ADD (ANOTHER_TAG) AFTER (npst) (v) ;</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_SUBSTITUTE.cg3</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="b2ba4aa8" class="cell" data-execution_count="11">
+<div id="44580d5f" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>SUBSTITUTE (sg) (SG) (v) ;
 SUBSTITUTE (nom) (*) ("поезд") ;</code></pre>
@@ -530,7 +534,7 @@ SUBSTITUTE (nom) (*) ("поезд") ;</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_SUBSTITUTE.cg3</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="1fb1116b" class="cell" data-execution_count="12">
+<div id="f6cf3faf" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -551,7 +555,7 @@ SUBSTITUTE (nom) (*) ("поезд") ;</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_REPLACE.cg3</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="03c09ea8" class="cell" data-execution_count="13">
+<div id="8b6013d5" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>REPLACE (NEW_TAG) (v) ;</code></pre>
 </div>
@@ -559,7 +563,7 @@ SUBSTITUTE (nom) (*) ("поезд") ;</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_REPLACE.cg3</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="281a8d6f" class="cell" data-execution_count="14">
+<div id="098ddfcf" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -581,7 +585,7 @@ SUBSTITUTE (nom) (*) ("поезд") ;</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_UNMAP.cg3</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="6e2a803a" class="cell" data-execution_count="15">
+<div id="2d157d3a" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
 <pre><code>MAP (NEW_TAG) (v) ;
 UNMAP (NEW_TAG) ;
@@ -591,7 +595,7 @@ ADD (ANOTHER_TAG) AFTER (npst) (v) ;</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_UNMAP.cg3</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="927b1636" class="cell" data-execution_count="16">
+<div id="c71e173f" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -609,7 +613,7 @@ ADD (ANOTHER_TAG) AFTER (npst) (v) ;</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example_UNSAFE.cg3</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="71a98957" class="cell" data-execution_count="17">
+<div id="dc00dc50" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-stdout">
 <pre><code>MAP (NEW_TAG) ("город" n) ;
 UNMAP UNSAFE (NEW_TAG) ;
@@ -619,7 +623,7 @@ ADD (ANOTHER_TAG) ("город" n) ;</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Поезд едет в город."</span> <span class="kw">|</span> <span class="ex">hfst-proc</span> <span class="at">-C</span> analyzer.hfstol <span class="kw">|</span> <span class="ex">cg3</span> <span class="at">-g</span> example_UNSAFE.cg3</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="bcb30812" class="cell" data-execution_count="18">
+<div id="eeb4ad9f" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: No soft or hard delimiters defined in grammar. Hard limit of 500 cohorts may break windows in unintended places.
 "&lt;Поезд&gt;"
@@ -662,11 +666,8 @@ ADD (ANOTHER_TAG) ("город" n) ;</code></pre>
 </ul>
 <pre><code>RESTORE &lt;restore_target&gt; &lt;target&gt; [contextual_tests] ;</code></pre>
 </section>
-<section id="операции-со-списками-list-и-set" class="level3" data-number="7.2.6">
-<h3 data-number="7.2.6" class="anchored" data-anchor-id="операции-со-списками-list-и-set"><span class="header-section-number">7.2.6</span> Операции со списками: <code>LIST</code> и <code>SET</code></h3>
-</section>
-<section id="позиция" class="level3" data-number="7.2.7">
-<h3 data-number="7.2.7" class="anchored" data-anchor-id="позиция"><span class="header-section-number">7.2.7</span> Позиция</h3>
+<section id="позиция" class="level3" data-number="7.2.6">
+<h3 data-number="7.2.6" class="anchored" data-anchor-id="позиция"><span class="header-section-number">7.2.6</span> Позиция</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
