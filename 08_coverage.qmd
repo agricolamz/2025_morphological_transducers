@@ -184,17 +184,17 @@ result_df
 result_df |> 
   summarise(stem_TP = sum(check_stem),
             stem_FP = sum(unrecogonised),
-            stem_FN = if_else(check_stem == 0 & unrecogonised != 0, 1, 0) |> sum(),
+            stem_FN = if_else(check_stem == 0 & unrecogonised == 0, 1, 0) |> sum(),
             stem_precision = stem_TP/(stem_TP+stem_FP),
             stem_recall = stem_TP/(stem_TP+stem_FN),
             pos_TP = sum(check_pos),
             pos_FP = sum(unrecogonised),
-            pos_FN = if_else(check_pos == 0 & unrecogonised != 0, 1, 0) |> sum(),
+            pos_FN = if_else(check_pos == 0 & unrecogonised == 0, 1, 0) |> sum(),
             pos_precision = pos_TP/(pos_TP+pos_FP),
             pos_recall = pos_TP/(pos_TP+pos_FN),
             all_TP = sum(check_all),
             all_FP = sum(unrecogonised),
-            all_FN = if_else(check_all == 0 & unrecogonised != 0, 1, 0) |> sum(),
+            all_FN = if_else(check_all == 0 & unrecogonised == 0, 1, 0) |> sum(),
             all_precision = all_TP/(all_TP+all_FP),
             all_recall = all_TP/(all_TP+all_FN)) |> 
   pivot_longer(names_to = "type", values_to = "value", everything()) |> 
