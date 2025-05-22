@@ -227,6 +227,74 @@ SET new_set = a ∩ b ;
 c d
 ```
 
+### Операции с чтениями
+
+- `SELECT` удаляет все чтения из когорты, кроме той, что подходит к контексту
+
+```
+SELECT <target> [contextual_tests] ;
+```
+
+```{{shell}}
+$ cat example_SELECT.cg3
+```
+
+```{python}
+!cat examples/07_example_SELECT.cg3
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_SELECT.cg3
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_SELECT.cg3
+```
+
+- `REMOVE` удаляет чтение из когорты.
+
+```
+REMOVE <target> [contextual_tests] ;
+```
+
+```{{shell}}
+$ cat example_REMOVE.cg3
+```
+
+```{python}
+!cat examples/07_example_REMOVE.cg3
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_REMOVE.cg3
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_REMOVE.cg3
+```
+
+- `RESTORE` восстанавливает.
+
+```
+RESTORE <restore_target> <target> [contextual_tests] ;
+```
+
+```{{shell}}
+$ cat example_RESTORE.cg3
+```
+
+```{python}
+!cat examples/07_example_RESTORE.cg3
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_RESTORE.cg3
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_RESTORE.cg3
+```
+
 ### Операции с тегами
 
 Первая группа команд, которую мы рассмотрим, измененяет теги.
@@ -353,45 +421,82 @@ $ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3
 !echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_UNSAFE.cg3
 ```
 
-- `APPEND`
+- `APPEND` добавляет новое прочтение к некоторой единице. Следите, чтобы среди добавляемого была начальная форма.
 
 ```
 APPEND <tags> <target> [contextual_tests] ;
 ```
 
-- `COPY`
+```{{shell}}
+$ cat example_APPEND.cg3
+```
+
+```{python}
+!cat examples/07_example_APPEND.cg3
+```
+
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_APPEND.cg3
+```
+
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_APPEND.cg3
+```
+
+- `COPY` копирует прочтение и добавляет к нему тег или набор тегов. 
 
 ```
 COPY <extra tags> [EXCEPT <except tags>] [BEFORE|AFTER <tags>] <target> [contextual_tests] ;
 ```
 
-### Операции с чтениями
-
-- `SELECT`
-
-```
-SELECT <target> [contextual_tests] ;
+```{{shell}}
+$ cat example_COPY.cg3
 ```
 
-- `REMOVE`
-
-```
-REMOVE <target> [contextual_tests] ;
+```{python}
+!cat examples/07_example_COPY.cg3
 ```
 
-- `IFF`
-
-```
-IFF <target> [contextual_tests] ;
+```{{shell}}
+$ echo "Поезд едет в город." | hfst-proc -C analyzer.hfstol | cg3 -g example_COPY.cg3
 ```
 
-- `RESTORE`
-
-```
-RESTORE <restore_target> <target> [contextual_tests] ;
+```{python}
+!echo "Поезд едет в город." | hfst-proc -C examples/analyzer.hfstol | cg3 -g examples/07_example_COPY.cg3
 ```
 
-### Позиция
+### Контекстные тесты
+
+Большинство примеров операций выше имели в своих шаблонах раздел `[contextual_tests]`, который делает инструменты значительно функциональнее. Во-первых, можно задать контекст справа или слева:
+
+```{{cg3}}
+... (1 N)      # <1>
+... (-2* V)    # <2>
+```
+
+1. Есть ли хотя бы одно чтение с тегом `N` в следующей когорте?
+2. Есть ли хотя бы одно чтение с тегом `V` две или более когорты назад?
+
+После номера можно добавить `C`, тогда тест будет исполнятся только в случае если все чтения в когорте соответствуют условию.
+
+```{{cg3}}
+... (1С N)      # <1>
+... (-2С* V)    # <2>
+```
+
+1. Все ли чтения имеют тег `N` в следующей когорте?
+2. Все ли чтения имеют тег `V` две или более когорты назад?
+
+Результат теста можно перевернуть, добавив `NOT`:
+
+```{{cg3}}
+... (NOT 1 N)      # <1>
+... (NOT -2* V)    # <2>
+```
+
+1. В следующей когорте не должно быть чтения с тегом `N`.
+2. Две и более когорты назад не должно быть чтения с тегом `V`?
+
 
 ```{python}
 !rm -f examples/*.hfstol
