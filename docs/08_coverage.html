@@ -446,9 +446,9 @@ LEXICON Rest
 <p>В применении к морфологическому анализу, данные метрики должны учитывать качество разбора, а это значит, что нам нужно завести золотой стандарт, с которым мы будем сравнивать.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 45%">
-<col style="width: 36%">
+<col style="width: 15%">
+<col style="width: 42%">
+<col style="width: 42%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -461,18 +461,18 @@ LEXICON Rest
 <tr class="odd">
 <td style="text-align: center;">🤖💭+</td>
 <td style="text-align: center;">совпадает с золотым стандартом (TP)</td>
-<td style="text-align: center;">не разобрано анализатором (FP)</td>
+<td style="text-align: center;">не совпадает с золотым стандартом (FP)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">🤖💭-</td>
-<td style="text-align: center;">не совпадает с золотым стандартом (FN)</td>
+<td style="text-align: center;">не разобрано анализатором (FN)</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Точность (precision) — количество разборов анализатора, совпадающих с разбором золотого стандарта (TP), деленное на сумму количества разборов анализатором, совпадающих с золотым стандартом, и количества не разобранных форм (TP + FP).</li>
-<li>Полнота (recall) — количество разборов анализатора, совпадающих с разбором золотого стандарта (TP), деленное на количество всех разборов анализатора (TP + FN).</li>
+<li>Точность (precision) — количество разборов анализатора, совпадающих с разбором золотого стандарта (TP), деленное на количество всех разборов анализатора (TP + FP).</li>
+<li>Полнота (recall) — количество разборов анализатора, совпадающих с разбором золотого стандарта (TP), деленное на сумму количества разборов анализатором, совпадающих с золотым стандартом, и количества не разобранных форм (TP + FN).</li>
 </ul>
 <p>Как разбор анализатора может совпадать с разбором золотого стандарта? Можно считать только случаи полного совпадения. Однако разумным кажется смотреть и на другие совпадения:</p>
 <ul>
@@ -557,18 +557,18 @@ LEXICON Rest
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>result_df <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">stem_TP =</span> <span class="fu">sum</span>(check_stem),</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_FP =</span> <span class="fu">sum</span>(unrecogonised),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_FN =</span> <span class="fu">if_else</span>(check_stem <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> unrecogonised <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>(),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_FN =</span> <span class="fu">sum</span>(unrecogonised),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_FP =</span> <span class="fu">if_else</span>(check_stem <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> unrecogonised <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>(),</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_precision =</span> stem_TP<span class="sc">/</span>(stem_TP<span class="sc">+</span>stem_FP),</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_recall =</span> stem_TP<span class="sc">/</span>(stem_TP<span class="sc">+</span>stem_FN),</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">pos_TP =</span> <span class="fu">sum</span>(check_pos),</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">pos_FP =</span> <span class="fu">sum</span>(unrecogonised),</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">pos_FN =</span> <span class="fu">if_else</span>(check_pos <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> unrecogonised <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>(),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">pos_FN =</span> <span class="fu">sum</span>(unrecogonised),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">pos_FP =</span> <span class="fu">if_else</span>(check_pos <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> unrecogonised <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>(),</span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">pos_precision =</span> pos_TP<span class="sc">/</span>(pos_TP<span class="sc">+</span>pos_FP),</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">pos_recall =</span> pos_TP<span class="sc">/</span>(pos_TP<span class="sc">+</span>pos_FN),</span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">all_TP =</span> <span class="fu">sum</span>(check_all),</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">all_FP =</span> <span class="fu">sum</span>(unrecogonised),</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">all_FN =</span> <span class="fu">if_else</span>(check_all <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> unrecogonised <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>(),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">all_FN =</span> <span class="fu">sum</span>(unrecogonised),</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">all_FP =</span> <span class="fu">if_else</span>(check_all <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> unrecogonised <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="fu">sum</span>(),</span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">all_precision =</span> all_TP<span class="sc">/</span>(all_TP<span class="sc">+</span>all_FP),</span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">all_recall =</span> all_TP<span class="sc">/</span>(all_TP<span class="sc">+</span>all_FN)) <span class="sc">|&gt;</span> </span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"type"</span>, <span class="at">values_to =</span> <span class="st">"value"</span>, <span class="fu">everything</span>()) <span class="sc">|&gt;</span> </span>
@@ -579,7 +579,7 @@ LEXICON Rest
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["precision"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["recall"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F1"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"stem","2":"0.7000000","3":"1.0000000","4":"0.8235294"},{"1":"pos","2":"0.6250000","3":"0.7142857","4":"0.6666667"},{"1":"all","2":"0.4545455","3":"0.3571429","4":"0.4000000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["precision"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["recall"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F1"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"stem","2":"1.0000000","3":"0.7000000","4":"0.8235294"},{"1":"pos","2":"0.7142857","3":"0.6250000","4":"0.6666667"},{"1":"all","2":"0.3571429","3":"0.4545455","4":"0.4000000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
