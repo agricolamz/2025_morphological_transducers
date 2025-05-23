@@ -555,11 +555,12 @@ LEXICON Rest
 <span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(measure, n) <span class="sc">|&gt;</span> </span>
 <span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> measure, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span> </span>
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">overall_precision =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FP),</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">overall_recall =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FN))</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">overall_recall =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FN),</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>            <span class="at">overall_F_1 =</span> <span class="dv">2</span><span class="sc">*</span>(overall_precision<span class="sc">*</span>overall_recall)<span class="sc">/</span>(overall_precision<span class="sc">+</span>overall_recall))</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["overall_precision"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["overall_recall"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.45","2":"0.5294118"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["overall_precision"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["overall_recall"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["overall_F_1"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.45","2":"0.5294118","3":"0.4864865"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -576,11 +577,12 @@ LEXICON Rest
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(measure, n) <span class="sc">|&gt;</span> </span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> measure, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span> </span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">stem_precision =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FP),</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_recall =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FN))</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_recall =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FN),</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_F_1 =</span> <span class="dv">2</span><span class="sc">*</span>(stem_precision<span class="sc">*</span>stem_recall)<span class="sc">/</span>(stem_precision<span class="sc">+</span>stem_recall))</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["stem_precision"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["stem_recall"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.6470588","2":"0.6470588"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["stem_precision"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["stem_recall"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["stem_F_1"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.6470588","2":"0.6470588","3":"0.6470588"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -597,11 +599,12 @@ LEXICON Rest
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(measure, n) <span class="sc">|&gt;</span> </span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> measure, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span> </span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">stem_pos_precision =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FP),</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_pos_recall =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FN))</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_pos_recall =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FN),</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">stem_pos_F_1 =</span> <span class="dv">2</span><span class="sc">*</span>(stem_pos_precision<span class="sc">*</span>stem_pos_recall)<span class="sc">/</span>(stem_pos_precision<span class="sc">+</span>stem_pos_recall))</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["stem_pos_precision"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["stem_pos_recall"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.6470588","2":"0.6470588"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["stem_pos_precision"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["stem_pos_recall"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["stem_pos_F_1"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.6470588","2":"0.6470588","3":"0.6470588"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -618,11 +621,12 @@ LEXICON Rest
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(measure, n) <span class="sc">|&gt;</span> </span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> measure, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span> </span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">tags_precision =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FP),</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">tags_recall =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FN))</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">tags_recall =</span> TP<span class="sc">/</span>(TP<span class="sc">+</span>FN),</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">tags_F_1 =</span> <span class="dv">2</span><span class="sc">*</span>(tags_precision<span class="sc">*</span>tags_recall)<span class="sc">/</span>(tags_precision<span class="sc">+</span>tags_recall))</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["tags_precision"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["tags_recall"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.45","2":"0.5294118"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["tags_precision"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["tags_recall"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["tags_F_1"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.45","2":"0.5294118","3":"0.4864865"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>

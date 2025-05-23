@@ -189,7 +189,8 @@ analysis |>
   select(measure, n) |> 
   pivot_wider(names_from = measure, values_from = n) |> 
   summarise(overall_precision = TP/(TP+FP),
-            overall_recall = TP/(TP+FN))
+            overall_recall = TP/(TP+FN),
+            overall_F_1 = 2*(overall_precision*overall_recall)/(overall_precision+overall_recall))
   
 analysis |> 
   select(token_id, token, stem, analyzer) |> 
@@ -204,7 +205,8 @@ analysis |>
   select(measure, n) |> 
   pivot_wider(names_from = measure, values_from = n) |> 
   summarise(stem_precision = TP/(TP+FP),
-            stem_recall = TP/(TP+FN))
+            stem_recall = TP/(TP+FN),
+            stem_F_1 = 2*(stem_precision*stem_recall)/(stem_precision+stem_recall))
 
 analysis |> 
   select(token_id, token, stem, pos, analyzer) |> 
@@ -219,7 +221,8 @@ analysis |>
   select(measure, n) |> 
   pivot_wider(names_from = measure, values_from = n) |> 
   summarise(stem_pos_precision = TP/(TP+FP),
-            stem_pos_recall = TP/(TP+FN))
+            stem_pos_recall = TP/(TP+FN),
+            stem_pos_F_1 = 2*(stem_pos_precision*stem_pos_recall)/(stem_pos_precision+stem_pos_recall))
 
 analysis |> 
   select(token_id, tags, analyzer) |> 
@@ -234,7 +237,8 @@ analysis |>
   select(measure, n) |> 
   pivot_wider(names_from = measure, values_from = n) |> 
   summarise(tags_precision = TP/(TP+FP),
-            tags_recall = TP/(TP+FN))
+            tags_recall = TP/(TP+FN),
+            tags_F_1 = 2*(tags_precision*tags_recall)/(tags_precision+tags_recall))
 ```
 
 ### Python
