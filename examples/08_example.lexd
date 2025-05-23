@@ -1,5 +1,5 @@
 PATTERNS
-Prepositions [<PR><nom>:]
+Prepositions [<PRON><nom>:]
 (NounStem [<N>:] NounInflection)[^[m,f]]
 Rest
 
