@@ -255,7 +255,7 @@ window.Quarto = {
   <ul>
   <li><a href="#покрытие" id="toc-покрытие" class="nav-link active" data-scroll-target="#покрытие"><span class="header-section-number">8.1</span> Покрытие</a></li>
   <li><a href="#точность-и-полнота" id="toc-точность-и-полнота" class="nav-link" data-scroll-target="#точность-и-полнота"><span class="header-section-number">8.2</span> Точность и полнота</a></li>
-  <li><a href="#развитие-анализатора" id="toc-развитие-анализатора" class="nav-link" data-scroll-target="#развитие-анализатора"><span class="header-section-number">8.3</span> Развитие анализатора</a></li>
+  <li><a href="#sec-tests" id="toc-sec-tests" class="nav-link" data-scroll-target="#sec-tests"><span class="header-section-number">8.3</span> Развитие анализатора</a></li>
   </ul>
 </nav>
     </div>
@@ -639,8 +639,8 @@ LEXICON Rest
 </div>
 <p>Как и в случае, описанном выше, можено различать precision<sub>1</sub>, recall<sub>1</sub> и F<sub>1</sub>-меру<sub>1</sub> и их аналоги с суфиксом <sub>2</sub>, если удалять эффект частотности.</p>
 </section>
-<section id="развитие-анализатора" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="развитие-анализатора"><span class="header-section-number">8.3</span> Развитие анализатора</h2>
+<section id="sec-tests" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="sec-tests"><span class="header-section-number">8.3</span> Развитие анализатора</h2>
 <p>Создание морфологического парсера, согласно моим ожиданиям, это многоступенчатая процедура, которая включает в себя работу с грамматиками, словарем и проверкой некоторых мер качества на корпусе. Разработка без того или иного ресурса возможна, но значительно усложняет работу. Этот факт немного подрывает наш тезис о том, что трансдьюсеры хороши в тех случаях, когда недостаточно данных для обучения нейросетей. В любом случае, получившийся результат по духу будет значительно ближе к лингвистическому описанию, поэтому мы называем его иногда <em>машиночитаемым лингвистическим описанием</em>. Как и в других видах разработки, имеет смысл покрывать некоторые фрагменты кода тестами. Для этого даже придумали свою меру — <a href="https://en.wikipedia.org/wiki/Code_coverage">code coverage</a>, которая показывает долю кода, покрытого тестами. Конечно, такие инструменты не будут работать с теми программами, которые мы обсуждали, однако все равно, имеет смысл создавать таблицу с формами и ожидаемыми разборами, чтобы можно было проверить, например, не поломали ли мы что-то, изменяя <code>twol</code> правила. Такого рода проверку легко организовать в виде файла со списком форм в формате, который выдает программа <code>hfst-fst2strings</code>, и дальше при помощи <code>grep</code> смотреть, есть ли записанные разборы в выдаче <code>hfst-fst2strings</code>.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-xvf</span> file_with_tests.txt generated_forms.txt</span>

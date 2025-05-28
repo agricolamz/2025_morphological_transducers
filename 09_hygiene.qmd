@@ -8,16 +8,6 @@
 - **История изменения**. Все современные системы для работы с кодом, поддерживают в том или ином виде историю изменений. Иногда это делают даже облачные системы, которые раз в некоторое время синхронизируются с вашей файловой системой. Это очень полезно, так как позволяет вернутся на несколько шагов назад, если с вашим процессом разработки пошло что-то не так.
 - **Запуск сервиса**. Если хочется сделать сервис, чтобы люди в мире могли пользоваться результатами вашего труда, имеет смысл сделать так, чтобы вашу работу можно было скачать и установить на отдельном сервере (контейнере и т. п.).
 
-## Введение в `git`
-
-```{r}
-#| out-width: 40%
-#| fig-cap: "источник: https://xkcd.com/1597/"
-#| fig-align: center
-
-knitr::include_graphics("images/09_01_xkcd.png")
-```
-
 ## Cимволы подстановки (wildcards)
 
 Как и во многих языках программирования командная строка поддерживает символы подстановки. Хоть я приведу все примеры с программой `ls`, легко представить себе и более осмысленные задачи. Для примера, представим, что у нас есть папка с большим количеством файлов:
@@ -27,7 +17,7 @@ $ ls multiple_files
 ```
 
 ```{r}
-system("ls examples/multiple_files", intern = TRUE) |> 
+system("ls examples/09_multiple_files", intern = TRUE) |> 
   cat(sep = "\n")
 ```
 
@@ -38,7 +28,7 @@ $ ls multiple_files/*2*
 ```
 
 ```{r}
-system("ls examples/multiple_files/*2*", intern = TRUE) |> 
+system("ls examples/09_multiple_files/*2*", intern = TRUE) |> 
   cat(sep = "\n")
 ```
 
@@ -49,7 +39,7 @@ $ ls multiple_files/*.csv
 ```
 
 ```{r}
-system("ls examples/multiple_files/*.csv", intern = TRUE) |> 
+system("ls examples/09_multiple_files/*.csv", intern = TRUE) |> 
   cat(sep = "\n")
 ```
 
@@ -66,7 +56,7 @@ $ ls multiple_files/????.*
 ```
 
 ```{r}
-system("ls examples/multiple_files/????.*", intern = TRUE) |> 
+system("ls examples/09_multiple_files/????.*", intern = TRUE) |> 
   cat(sep = "\n")
 ```
 
@@ -77,7 +67,7 @@ $ ls multiple_files/a_1.???
 ```
 
 ```{r}
-system("ls examples/multiple_files/a_1.???", intern = TRUE) |> 
+system("ls examples/09_multiple_files/a_1.???", intern = TRUE) |> 
   cat(sep = "\n")
 ```
 
@@ -88,11 +78,21 @@ $ ls multiple_files/[aouie]*
 ```
 
 ```{r}
-system("ls examples/multiple_files/[aouie]*", intern = TRUE) |> 
+system("ls examples/09_multiple_files/[aouie]*", intern = TRUE) |> 
   cat(sep = "\n")
 ```
 
-## `.gitignore`
+## Введение в `git`
+
+```{r}
+#| out-width: 40%
+#| fig-cap: "источник: https://xkcd.com/1597/"
+#| fig-align: center
+
+knitr::include_graphics("images/09_01_xkcd.png")
+```
+
+### `.gitignore`
 
 Символы подстановки очень полезны при создании файла `.gitignore`. `.gitignore` --- это специальный скрытый файл[^hidden], в котором вы можете перечислить файлы, которые программа `git` должна игнорировать (см. [документацию](https://git-scm.com/docs/gitignore)). 
 
@@ -107,6 +107,115 @@ system("ls examples/multiple_files/[aouie]*", intern = TRUE) |>
 
 Позже может так случится, что вы будете хранить в той же папке литературу и/или данные, которые нельзя выкладывать, их тоже можно будет добавить в файл `.gitignore`. Кроме того у GitHub есть ограничения на размер файла (вроде 100мб?..), если он увидит большие файлы, то он не даст их добавить, так что если они есть в вашем проекте, их тоже следует добавить в `.gitignore`.
 
-## `git hooks`
+### `git hooks`
 
-## Команда `make` {#sec-makefile}
+Кажется удобным, чтобы проверки, которые мы обсудили в @sec-tests, можно было проводить каждый раз перед тем как делать коммит. Для этого были придуманы `git hooks` (подробнее можно почитать [здесь](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)). Если Вы написали скрипт для проверки, то его можно записать в файл `.git/hooks/pre-commit`, тогда каждый раз он будет запускаться. Можно даже сделать так, чтобы коммит не отправлялся, если тест не проходит.
+
+## Программа `make` {#sec-makefile}
+
+В ходе курса мы видели, что для того, чтобы скомпилировать морфологический анализатор и генератор достаточно достаточно маленьких текстовых файлов и целая вереница команд в командной строке. Понятно, что достаточно бессмысленно пробовать держать в памяти нужный порядок команд. Для этого придумали (в 1976 году) программу, которая называется `make`, которая последовательно запускает череду инструкций, которые записаны в виде терминальных команд в файле `Makefile` (см. огромную [документацию](https://www.gnu.org/software/make/manual/make.html)). В результате, в идеальном сценарии, пользователь скачивает папку, набирает в терминале `make` и получает рабочий анализатор. 
+
+`Makefile` представляет собой собрание рецептов следующей структуры:
+
+
+```{{Makefile}}
+target: dependency1 dependency2 ...
+[Tab ↹]<script>
+```
+
+Обратите внимание, что перед скриптом стоит один таб (ваш текстовый редактор может заменить его на пробелы).
+
+Рассмотрим следующий игрушечный трансдьюсер:
+
+```{{shell}}
+$ cat example.lexd
+```
+
+```{r}
+readLines("examples/09_example.lexd") |> 
+  cat(sep = "\n")
+```
+
+```{{shell}}
+$ cat example.twol
+```
+
+```{r}
+readLines("examples/09_example.twol") |> 
+  cat(sep = "\n")
+```
+
+```{{shell}}
+$ cat ru_en.lexd
+```
+
+```{r}
+readLines("examples/09_ru_en.lexd") |> 
+  cat(sep = "\n")
+```
+
+Создадим следующий файл `Makefile`:
+
+```{{shell}}
+$ cat Makefile
+```
+
+```{r}
+readLines("examples/09_Makefile") |> 
+  cat(sep = "\n")
+```
+
+Запустим наш `Makefile`:
+
+```{{shell}}
+$ make
+```
+
+```{r}
+system("make -f 09_Makefile_modified -C examples", intern = TRUE) |> 
+  stringr::str_subset("make: ", negate = TRUE) |> 
+  stringr::str_remove("09_") |> 
+  cat(sep = "\n")
+```
+
+Применим получившийся трансдьюсер:
+
+```{{shell}}
+$ echo "ночка" | hfst-lookup analyzer_english_stem.hfst
+```
+
+```{r}
+system('echo "ночка" | hfst-lookup examples/analyzer_english_stem.hfst', intern = TRUE) |> 
+  cat(sep = "\n")
+```
+
+```{r}
+system("make clean -f 09_Makefile_modified -C examples")
+```
+
+Теперь мы научились хранить инструкции по компиляции в `Makefile`.
+
+В рецептах можно использовать переменные:
+
+- `$@` (целевой объект),
+- `$^` (список зависимостей),
+- `$<` (первая из зависимостей).
+
+Тогда наш `Makefile` можно переписать следующим образом:
+
+```{{shell}}
+$ cat Makefile
+```
+
+```{r}
+readLines("examples/09_Makefile_upgrade") |> 
+  cat(sep = "\n")
+```
+
+Ради интереса можно посмотреть на `Makefile`, который мы использовали в начале занятий:
+
+```{r}
+readLines("examples/09_Makefile_from_begining") |> 
+  cat(sep = "\n")
+```
+

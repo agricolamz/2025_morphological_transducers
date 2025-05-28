@@ -224,11 +224,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#введение-в-git" id="toc-введение-в-git" class="nav-link active" data-scroll-target="#введение-в-git"><span class="header-section-number">9.1</span> Введение в <code>git</code></a></li>
-  <li><a href="#cимволы-подстановки-wildcards" id="toc-cимволы-подстановки-wildcards" class="nav-link" data-scroll-target="#cимволы-подстановки-wildcards"><span class="header-section-number">9.2</span> Cимволы подстановки (wildcards)</a></li>
-  <li><a href="#gitignore" id="toc-gitignore" class="nav-link" data-scroll-target="#gitignore"><span class="header-section-number">9.3</span> <code>.gitignore</code></a></li>
-  <li><a href="#git-hooks" id="toc-git-hooks" class="nav-link" data-scroll-target="#git-hooks"><span class="header-section-number">9.4</span> <code>git hooks</code></a></li>
-  <li><a href="#sec-makefile" id="toc-sec-makefile" class="nav-link" data-scroll-target="#sec-makefile"><span class="header-section-number">9.5</span> Команда <code>make</code></a></li>
+  <li><a href="#cимволы-подстановки-wildcards" id="toc-cимволы-подстановки-wildcards" class="nav-link active" data-scroll-target="#cимволы-подстановки-wildcards"><span class="header-section-number">9.1</span> Cимволы подстановки (wildcards)</a></li>
+  <li><a href="#введение-в-git" id="toc-введение-в-git" class="nav-link" data-scroll-target="#введение-в-git"><span class="header-section-number">9.2</span> Введение в <code>git</code></a>
+  <ul class="collapse">
+  <li><a href="#gitignore" id="toc-gitignore" class="nav-link" data-scroll-target="#gitignore"><span class="header-section-number">9.2.1</span> <code>.gitignore</code></a></li>
+  <li><a href="#git-hooks" id="toc-git-hooks" class="nav-link" data-scroll-target="#git-hooks"><span class="header-section-number">9.2.2</span> <code>git hooks</code></a></li>
+  </ul></li>
+  <li><a href="#sec-makefile" id="toc-sec-makefile" class="nav-link" data-scroll-target="#sec-makefile"><span class="header-section-number">9.3</span> Программа <code>make</code></a></li>
   </ul>
 </nav>
     </div>
@@ -262,21 +264,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>История изменения</strong>. Все современные системы для работы с кодом, поддерживают в том или ином виде историю изменений. Иногда это делают даже облачные системы, которые раз в некоторое время синхронизируются с вашей файловой системой. Это очень полезно, так как позволяет вернутся на несколько шагов назад, если с вашим процессом разработки пошло что-то не так.</li>
 <li><strong>Запуск сервиса</strong>. Если хочется сделать сервис, чтобы люди в мире могли пользоваться результатами вашего труда, имеет смысл сделать так, чтобы вашу работу можно было скачать и установить на отдельном сервере (контейнере и т. п.).</li>
 </ul>
-<section id="введение-в-git" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="введение-в-git"><span class="header-section-number">9.1</span> Введение в <code>git</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/09_01_xkcd.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption>источник: https://xkcd.com/1597/</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="cимволы-подстановки-wildcards" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="cимволы-подстановки-wildcards"><span class="header-section-number">9.2</span> Cимволы подстановки (wildcards)</h2>
+<section id="cимволы-подстановки-wildcards" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="cимволы-подстановки-wildcards"><span class="header-section-number">9.1</span> Cимволы подстановки (wildcards)</h2>
 <p>Как и во многих языках программирования командная строка поддерживает символы подстановки. Хоть я приведу все примеры с программой <code>ls</code>, легко представить себе и более осмысленные задачи. Для примера, представим, что у нас есть папка с большим количеством файлов:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls multiple_files</span>
@@ -318,19 +307,19 @@ z_2.txt</code></pre>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>examples/multiple_files/b_2_2.csv
-examples/multiple_files/d_2.txt
-examples/multiple_files/f_2.txt
-examples/multiple_files/hh_2.txt
-examples/multiple_files/j_2.txt
-examples/multiple_files/ll_2.txt
-examples/multiple_files/n_2.csv
-examples/multiple_files/pp_2.csv
-examples/multiple_files/r_2.txt
-examples/multiple_files/t_2.txt
-examples/multiple_files/v_2.txt
-examples/multiple_files/x_2.csv
-examples/multiple_files/z_2.txt</code></pre>
+<pre><code>examples/09_multiple_files/b_2_2.csv
+examples/09_multiple_files/d_2.txt
+examples/09_multiple_files/f_2.txt
+examples/09_multiple_files/hh_2.txt
+examples/09_multiple_files/j_2.txt
+examples/09_multiple_files/ll_2.txt
+examples/09_multiple_files/n_2.csv
+examples/09_multiple_files/pp_2.csv
+examples/09_multiple_files/r_2.txt
+examples/09_multiple_files/t_2.txt
+examples/09_multiple_files/v_2.txt
+examples/09_multiple_files/x_2.csv
+examples/09_multiple_files/z_2.txt</code></pre>
 </div>
 </div>
 <p>Это же используют для поиска файлов с каким-либо определенным расширением:</p>
@@ -339,12 +328,12 @@ examples/multiple_files/z_2.txt</code></pre>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>examples/multiple_files/a_1.csv
-examples/multiple_files/b_2_2.csv
-examples/multiple_files/n_2.csv
-examples/multiple_files/oo_1.csv
-examples/multiple_files/pp_2.csv
-examples/multiple_files/x_2.csv</code></pre>
+<pre><code>examples/09_multiple_files/a_1.csv
+examples/09_multiple_files/b_2_2.csv
+examples/09_multiple_files/n_2.csv
+examples/09_multiple_files/oo_1.csv
+examples/09_multiple_files/pp_2.csv
+examples/09_multiple_files/x_2.csv</code></pre>
 </div>
 </div>
 <p>Кроме того звездочку можно использовать и без каких либо окружающих символов, тогда будут перечислены все файлы. Например, следующий команда удаляет все файлы в папке <code>multiple_files</code>.</p>
@@ -357,11 +346,11 @@ examples/multiple_files/x_2.csv</code></pre>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>examples/multiple_files/ee_1.txt
-examples/multiple_files/hh_2.txt
-examples/multiple_files/ll_2.txt
-examples/multiple_files/oo_1.csv
-examples/multiple_files/pp_2.csv</code></pre>
+<pre><code>examples/09_multiple_files/ee_1.txt
+examples/09_multiple_files/hh_2.txt
+examples/09_multiple_files/ll_2.txt
+examples/09_multiple_files/oo_1.csv
+examples/09_multiple_files/pp_2.csv</code></pre>
 </div>
 </div>
 <p>Искать можно и по расширению:</p>
@@ -370,8 +359,8 @@ examples/multiple_files/pp_2.csv</code></pre>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>examples/multiple_files/a_1.csv
-examples/multiple_files/a_1.txt</code></pre>
+<pre><code>examples/09_multiple_files/a_1.csv
+examples/09_multiple_files/a_1.txt</code></pre>
 </div>
 </div>
 <p>Кроме того можно задавать группы при помощи квадратных скобок:</p>
@@ -380,28 +369,251 @@ examples/multiple_files/a_1.txt</code></pre>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>examples/multiple_files/a_1.csv
-examples/multiple_files/a_1.txt
-examples/multiple_files/ee_1.txt
-examples/multiple_files/i_1.txt
-examples/multiple_files/oo_1.csv
-examples/multiple_files/u_1.txt</code></pre>
+<pre><code>examples/09_multiple_files/a_1.csv
+examples/09_multiple_files/a_1.txt
+examples/09_multiple_files/ee_1.txt
+examples/09_multiple_files/i_1.txt
+examples/09_multiple_files/oo_1.csv
+examples/09_multiple_files/u_1.txt</code></pre>
 </div>
 </div>
 </section>
-<section id="gitignore" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="gitignore"><span class="header-section-number">9.3</span> <code>.gitignore</code></h2>
+<section id="введение-в-git" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="введение-в-git"><span class="header-section-number">9.2</span> Введение в <code>git</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/09_01_xkcd.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>источник: https://xkcd.com/1597/</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="gitignore" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="gitignore"><span class="header-section-number">9.2.1</span> <code>.gitignore</code></h3>
 <p>Символы подстановки очень полезны при создании файла <code>.gitignore</code>. <code>.gitignore</code> — это специальный скрытый файл<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, в котором вы можете перечислить файлы, которые программа <code>git</code> должна игнорировать (см. <a href="https://git-scm.com/docs/gitignore">документацию</a>).</p>
-<p>При создании морфологического анализатора достаточно обмениваться файлами <code>.lexd</code>, <code>.twol</code>, <code>.cg3</code> и инструкциями по компиляции анализатора, которые обычно записывают в <code>Makefile</code> (см. раздел <a href="#sec-makefile" class="quarto-xref"><span>Раздел 9.5</span></a>). Получающиеся файлы вроде <code>.hfst</code> или <code>.hfstol</code> хотелось бы случайно не закоммитить на GitHub. В связи с этим в вашем репозитории имеет смысл перечислить файлы, которые следует игнорировать версии контроля. Вот как будет выглядеть такой файл <code>.gitignore</code>:</p>
+<p>При создании морфологического анализатора достаточно обмениваться файлами <code>.lexd</code>, <code>.twol</code>, <code>.cg3</code> и инструкциями по компиляции анализатора, которые обычно записывают в <code>Makefile</code> (см. раздел <a href="#sec-makefile" class="quarto-xref"><span>Раздел 9.3</span></a>). Получающиеся файлы вроде <code>.hfst</code> или <code>.hfstol</code> хотелось бы случайно не закоммитить на GitHub. В связи с этим в вашем репозитории имеет смысл перечислить файлы, которые следует игнорировать версии контроля. Вот как будет выглядеть такой файл <code>.gitignore</code>:</p>
 <pre><code>*.hfst
 *.hfstol</code></pre>
 <p>Позже может так случится, что вы будете хранить в той же папке литературу и/или данные, которые нельзя выкладывать, их тоже можно будет добавить в файл <code>.gitignore</code>. Кроме того у GitHub есть ограничения на размер файла (вроде 100мб?..), если он увидит большие файлы, то он не даст их добавить, так что если они есть в вашем проекте, их тоже следует добавить в <code>.gitignore</code>.</p>
 </section>
-<section id="git-hooks" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="git-hooks"><span class="header-section-number">9.4</span> <code>git hooks</code></h2>
+<section id="git-hooks" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="git-hooks"><span class="header-section-number">9.2.2</span> <code>git hooks</code></h3>
+<p>Кажется удобным, чтобы проверки, которые мы обсудили в <a href="08_coverage.html#sec-tests" class="quarto-xref"><span>Раздел 8.3</span></a>, можно было проводить каждый раз перед тем как делать коммит. Для этого были придуманы <code>git hooks</code> (подробнее можно почитать <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">здесь</a>). Если Вы написали скрипт для проверки, то его можно записать в файл <code>.git/hooks/pre-commit</code>, тогда каждый раз он будет запускаться. Можно даже сделать так, чтобы коммит не отправлялся, если тест не проходит.</p>
 </section>
-<section id="sec-makefile" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="sec-makefile"><span class="header-section-number">9.5</span> Команда <code>make</code></h2>
+</section>
+<section id="sec-makefile" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="sec-makefile"><span class="header-section-number">9.3</span> Программа <code>make</code></h2>
+<p>В ходе курса мы видели, что для того, чтобы скомпилировать морфологический анализатор и генератор достаточно достаточно маленьких текстовых файлов и целая вереница команд в командной строке. Понятно, что достаточно бессмысленно пробовать держать в памяти нужный порядок команд. Для этого придумали (в 1976 году) программу, которая называется <code>make</code>, которая последовательно запускает череду инструкций, которые записаны в виде терминальных команд в файле <code>Makefile</code> (см. огромную <a href="https://www.gnu.org/software/make/manual/make.html">документацию</a>). В результате, в идеальном сценарии, пользователь скачивает папку, набирает в терминале <code>make</code> и получает рабочий анализатор.</p>
+<p><code>Makefile</code> представляет собой собрание рецептов следующей структуры:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{Makefile}</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="in">target: dependency1 dependency2 ...</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="in">[Tab ↹]&lt;script&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Обратите внимание, что перед скриптом стоит один таб (ваш текстовый редактор может заменить его на пробелы).</p>
+<p>Рассмотрим следующий игрушечный трансдьюсер:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example.lexd</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>PATTERNS
+Noun [&lt;N&gt;:] Suffix[-adj] | (Suffix[adj] AdjInflection)
+Noun [&lt;N&gt;:] NounInflection
+
+LEXICON Noun
+ночь
+печь
+
+LEXICON Suffix
+&lt;dim&gt;:ка
+&lt;adj&gt;:н[adj]
+
+LEXICON AdjInflection
+&lt;m&gt;&lt;sg&gt;&lt;nom&gt;:ой
+
+LEXICON NounInflection
+&lt;nom&gt;:
+&lt;acc&gt;:</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat example.twol</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Alphabet
+  а е й к н о п ч ь ь:0;
+
+Rules
+
+"чк чн пишется без ь"
+! например, ночьной -&gt; ночной или печька -&gt; печка
+
+ь:0 &lt;=&gt; _ к;
+        _ н;</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat ru_en.lexd</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>PATTERNS
+translations
+
+LEXICON translations
+печь:stove
+ночь:night
+&lt;N&gt;
+&lt;acc&gt;
+&lt;adj&gt;
+&lt;dim&gt;
+&lt;m&gt;
+&lt;nom&gt;
+&lt;sg&gt;</code></pre>
+</div>
+</div>
+<p>Создадим следующий файл <code>Makefile</code>:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat Makefile</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>analyzer_english_stem.hfst: analyzer.hfst ru_en.lexd
+    lexd ru_en.lexd | hfst-txt2fst | hfst-repeat -f 1 -o ru_en.hfst
+    hfst-compose analyzer.hfst ru_en.hfst -o analyzer_english_stem.hfst
+    rm ru_en.hfst
+
+analyzer.hfst: generator.hfst
+    hfst-invert generator.hfst -o analyzer.hfst
+
+generator.hfst: example.lexd
+    hfst-twolc -q example.twol -o twol.hfst
+    lexd example.lexd | hfst-txt2fst | hfst-compose-intersect twol.hfst -o generator.hfst
+    rm twol.hfst
+
+clean: 
+    rm -f *.hfst</code></pre>
+</div>
+</div>
+<p>Запустим наш <code>Makefile</code>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>hfst-twolc -q example.twol -o twol.hfst
+lexd example.lexd | hfst-txt2fst | hfst-compose-intersect twol.hfst -o generator.hfst
+rm twol.hfst
+hfst-invert generator.hfst -o analyzer.hfst
+lexd ru_en.lexd | hfst-txt2fst | hfst-repeat -f 1 -o ru_en.hfst
+hfst-compose analyzer.hfst ru_en.hfst -o analyzer_english_stem.hfst
+rm ru_en.hfst</code></pre>
+</div>
+</div>
+<p>Применим получившийся трансдьюсер:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"ночка"</span> <span class="kw">|</span> <span class="ex">hfst-lookup</span> analyzer_english_stem.hfst</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>ночка   night&lt;N&gt;&lt;dim&gt;   0,000000</code></pre>
+</div>
+</div>
+<p>Теперь мы научились хранить инструкции по компиляции в <code>Makefile</code>.</p>
+<p>В рецептах можно использовать переменные:</p>
+<ul>
+<li><code>$@</code> (целевой объект),</li>
+<li><code>$^</code> (список зависимостей),</li>
+<li><code>$&lt;</code> (первая из зависимостей).</li>
+</ul>
+<p>Тогда наш <code>Makefile</code> можно переписать следующим образом:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat Makefile</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>analyzer_english_stem.hfst: analyzer.hfst ru_en.lexd
+    lexd ru_en.lexd | hfst-txt2fst | hfst-repeat -f 1 -o ru_en.hfst
+    hfst-compose $&lt; ru_en.hfst -o $@
+    rm ru_en.hfst
+
+analyzer.hfst: generator.hfst
+    hfst-invert $&lt; -o $@
+
+generator.hfst: example.lexd example.twol
+    hfst-twolc -q example.twol -o twol.hfst
+    lexd $&lt; | hfst-txt2fst | hfst-compose-intersect twol.hfst -o $@
+    rm twol.hfst
+
+clean: 
+    rm -f *.hfst</code></pre>
+</div>
+</div>
+<p>Ради интереса можно посмотреть на <code>Makefile</code>, который мы использовали в начале занятий:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>.DEFAULT_GOAL: requirements
+
+.PHONY: requirements forms clean
+
+requirements:
+    @curl -s https://apertium.projectjj.com/apt/install-nightly.sh | sudo bash
+    sudo apt-get install hfst lexd
+
+task.generator.hfst: task.lexd
+    @lexd task.lexd | hfst-txt2fst -o lexd.hfst
+    @if [ ! -f task.twol ]; then\
+        mv lexd.hfst $@;\
+    else\
+        hfst-twolc -q task.twol -o twol.hfst;\
+        hfst-compose-intersect lexd.hfst twol.hfst -o $@;\
+    fi
+
+task.analyzer.hfst: task.generator.hfst
+    @hfst-invert $^ -o $@
+
+analysis: task.analyzer.hfst
+    @echo "$(FORM)" | hfst-lookup $^
+    @rm -f *.hfst
+
+generation: task.generator.hfst
+    @echo "$(FORM)" | hfst-lookup $^
+    @rm -f *.hfst
+
+for_test_%.txt:
+    @curl -s https://raw.githubusercontent.com/agricolamz/2025_morphological_transducers/refs/heads/main/task_tests/$@ -o $@
+
+forms: task.generator.hfst
+    @hfst-fst2strings $^
+    @rm -f *.hfst
+
+clean: 
+    @rm -f *.hfst *.txt
+
+test_%: for_test_%.txt task.generator.hfst
+    @hfst-fst2strings task.generator.hfst &gt; generated_forms.txt
+    @$(eval N_over_wrong=`grep -xvf $&lt; generated_forms.txt | wc -l`)
+    @if [ "$(N_over_wrong)" != "0" ]; then\
+        echo "Overgeneration or wrong generation:\n" &gt; test_results.txt;\
+        grep -xvf $&lt; generated_forms.txt &gt;&gt; test_results.txt;\
+    fi
+    @$(eval N_not_generated=`grep -xvf generated_forms.txt $&lt;  | wc -l`)
+    @if [ "$(N_not_generated)" != "0" ]; then\
+        echo "\nNot generated:\n" &gt;&gt; test_results.txt;\
+        grep -xvf generated_forms.txt $&lt; &gt;&gt; test_results.txt;\
+    fi
+    @if [ ! -f test_results.txt ]; then\
+        echo "\e[32mAll tests for the task have passed.\e[0m";\
+    else\
+        echo "\e[31mIt looks like your lexd/twol files failed one of the tests.\n\e[0m";\
+        cat test_results.txt;\
+    fi
+    @rm -f *.hfst *.txt</code></pre>
+</div>
+</div>
 
 
 </section>
