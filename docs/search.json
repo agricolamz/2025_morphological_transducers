@@ -430,6 +430,16 @@
     ]
   },
   {
+    "objectID": "09_hygiene.html",
+    "href": "09_hygiene.html",
+    "title": "9  Как распространять работу?",
+    "section": "",
+    "text": "9.1 Введение в git\nСуществует достаточно много причин, по которой необходимо уметь распространять свою работу:\nисточник: https://xkcd.com/1597/",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Как распространять работу?</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Список литературы",
@@ -437,6 +447,56 @@
     "text": "Arefyev, N. V., T. Y. Gratsianova, and K. P. Popov. 2018.\n“Morphological Segmentation with Sequence to Sequence Neural\nNetwork.” In KКомпьютерная Лингвистика и Интеллектуальные\nТехнологии, 85–95.\n\n\nBeesley, K. R., and L. Karttunen. 2003a. Finite State Morphology:\nXerox Tools and Techniques. Stanford: Center for Study of Language\nInformation.\n\n\n———. 2003b. “Two-Level Rule Compiler.”\n\n\nBick, Eckhard. 2013. “Using Constraint Grammar for\nChunking.” In Proceedings of the 19th Nordic Conference of\nComputational Linguistics (NODALIDA 2013), 13–26.\n\n\nBick, Eckhard, and Tino Didriksen. 2015. “CG-3 — Beyond Classical\nConstraint Grammar.” In Proceedings of the 20th Nordic\nConference of Computational Linguistics (NODALIDA 2015), 31–39.\n\n\nBolshakova, E. I., and A. S. Sapin. 2019a. “Bi-LSTM Model for\nMorpheme Segmentation of Russian Words.” In Artificial\nIntelligence and Natural Language: 8th Conference, AINL 2019, Tartu,\nEstonia, November 20–22, 2019, Proceedings 8, 151–60. Springer.\n\n\n———. 2019b. “Comparing Models of Morpheme Analysis for Russian\nWords Based on Machine Learning.” In Компьютерная Лингвистика\nи Интеллектуальные Технологии, 104–13.\n\n\n———. 2020. “An Experimental Study of Neural Morpheme Segmentation\nModels for Russian Word Forms.” In CMCL, 79–89.\n\n\nChomsky, N., and M. Halle. 1968. The Sound Pattern of\nEnglish. New York, Evanstone, London: Haper & Row.\n\n\nGaripov, T., D. Morozov, and A. Glazkova. 2023. “Generalization\nAbility of CNN-Based Morpheme Segmentation.” In 2023\nIvannikov Ispras Open Conference (ISPRAS), 58–62. IEEE.\n\n\nGrönroos, S.-A., S. Virpioja, P. Smit, and M. Kurimo. 2014.\n“Morfessor FlatCat: An\nHMM-Based Method for Unsupervised and Semi-Supervised\nLearning of Morphology.” In Proceedings of COLING 2014, the\n25th International Conference on Computational Linguistics: Technical\nPapers, 1177–85.\n\n\nJohnson, C. D. 1972. Formal Aspects of Phonological\nDescription. The Hague, Paris: Mouton.\n\n\nKarlsson, F. 2013. Finnish: An Essential Grammar. Routledge.\n\n\nKarlsson, Fred, Atro Voutilainen, Juha Heikkilae, and Arto Anttila.\n1995. Constraint Grammar: A Language-Independent System for Parsing\nUnrestricted Text. Vol. 4. Walter de Gruyter.\n\n\nKenesei, István, Robert M Vago, and Anna Fenyvesi. 1998. Hungarian\n(Descriptive Grammars). London; New York: Routledge.\n\n\nKiparsky, P. 1982 (1968). “Linguistic Universals and Linguistic\nChange.” In Explanation in Phonology, edited by P.\nKiparsky. Dordrecht, Cinnaminson: Foris Publications.\n\n\nKoskenniemi, K. 1983. “Two-Level Morphology: A General\nComputational Model for Word-Form Recognition and Production.”\nPhD thesis, University of Helsenki, Department of General Linguistics.\n\n\nLindén, K., E. Axelson, S. Hardwick, T. A. Pirinen, and M. Silfverberg.\n2011. “Hfst—Framework for Compiling and Applying\nMorphologies.” In Systems and Frameworks for Computational\nMorphology: Second International Workshop, SFCM 2011, Zurich,\nSwitzerland, August 26, 2011. Proceedings 2, 67–85. Springer.\n\n\nMealy, G. H. 1955. “A Method for Synthesizing Sequential\nCircuits.” The Bell System Technical Journal 34 (5):\n1045–79.\n\n\nMoore, E. F. 1956. “Gedanken-Experiments on Sequential\nMachines.” Automata Studies 34: 129–53.\n\n\nOrtiz Rojas, S., M. L. Forcada, and G. Ramı́rez Sánchez. 2005.\n“Construcción y Minimización Eficiente\nde Transductores de Letras a Partir de Diccionarios Con\nParadigmas.” Procesamiento Del Lenguaje Natural 35:\n51–57.\n\n\nPrince, A., and P. Smolensky. 1994. “Optimality Theory: Constraint\nInteraction in Generative Grammar.” Rutgers University,\nPiscataway, NJ., Rutgers Center for Cognitive Science.\n\n\nSingh, J., and V. Gupta. 2017. “A Systematic Review of Text\nStemming Techniques.” Artificial Intelligence Review 48:\n157–217.\n\n\nSorokin, Alexey, and Anastasia Kravtsova. 2018. “Deep\nConvolutional Networks for Supervised Morpheme Segmentation of Russian\nLanguage.” In Artificial Intelligence and Natural Language:\n7th International Conference, AINL 2018, St. Petersburg, Russia, October\n17–19, 2018, Proceedings 7, 3–10. Springer.\n\n\nStraka, Milan. 2018. “UDPipe 2.0 Prototype at CoNLL\n2018 UD Shared Task.” In Proceedings of the\nCoNLL 2018 Shared Task: Multilingual Parsing from Raw Text to Universal\nDependencies, 197–207.\n\n\nSumbatova, N. R., and R. O. Mutalov. 2003. A Grammar of\nItsari Dargwa. Muenchen: Lincom Europa.\n\n\nSwanson, Daniel Glen. 2025. “Towards Natural Language Explanations\nof Constraint Grammar Rules.” In Proceedings of the 9th\nWorkshop on Constraint Grammar and Finite State NLP, 28–31.\n\n\nSwanson, D., and N. Howell. 2021. “Lexd: A Finitestate Lexicon\nCompiler for Non-Suffixational Morphologies.” In Multilingual\nFacilitation, 133–46.\n\n\nWintner, S. 2008. “Strengths and Weaknesses of Finite-State\nTechnology: A Case Study in Morphological Grammar Development.”\nNatural Language Engineering 14 (4): 457–69.\n\n\nАркадьев, П. М., Ю. А. Ландер, А. Б. Летучий, Н. Р. Сумбатова, and Я. Г.\nТестелец. 2009. “Введение. Основные Сведения Об Адыгейском\nЯзыке.” In Аспекты Полисинтетизма: Очерки По Грамматике\nАдыгейского Языка, 17–120.\n\n\nАрхангельский, Т. А. 2012. “Принципы Построения Морфологического\nПарсера Для Разноструктурных Языков.” PhD thesis, Московский\nгосударственный университет им. М. В. Ломоносова.\n\n\nИткин, И. Б. 2007. Русская Морфонология. Москва: Гнозис.\n\n\nКумахов, М. А., М. Л. Апажев, З. Х. Бижева, Б. Ч. Бижоев, Дж. Н. Коков,\nХ. Т. Таов, and Р. Х. Темирова. 2006. “Кабардино-Черкесский Язык в\nДвух Томах.”\n\n\nРогава, Г. В., and З. И. Керашева. 1966. Грамматика Адыгейского\nЯзыка. Майкоп, Краснодар: Краснодарское книж. издательство.",
     "crumbs": [
       "Список литературы"
+    ]
+  },
+  {
+    "objectID": "09_hygiene.html#cимволы-подстановки-wildcards",
+    "href": "09_hygiene.html#cимволы-подстановки-wildcards",
+    "title": "9  Как распространять работу?",
+    "section": "9.2 Cимволы подстановки (wildcards)",
+    "text": "9.2 Cимволы подстановки (wildcards)\nКак и во многих языках программирования командная строка поддерживает символы подстановки. Хоть я приведу все примеры с программой ls, легко представить себе и более осмысленные задачи. Для примера, представим, что у нас есть папка с большим количеством файлов:\n```{shell}\n$ ls multiple_files\n```\n\n\na_1.csv\na_1.txt\nb_2_2.csv\nc_1.txt\nd_2.txt\nee_1.txt\nf_2.txt\ng_1.txt\nhh_2.txt\ni_1.txt\nj_2.txt\nk_1.txt\nll_2.txt\nm_1.txt\nn_2.csv\noo_1.csv\npp_2.csv\nq_1.txt\nr_2.txt\ns_1.txt\nt_2.txt\nu_1.txt\nv_2.txt\nw_1.txt\nx_2.csv\ny_1.txt\nz_2.txt\n\n\nМы можем вывести все файлы содержащие двойку, добавив * – любое количество символов:\n```{shell}\n$ ls multiple_files/*2*\n```\n\n\nexamples/multiple_files/b_2_2.csv\nexamples/multiple_files/d_2.txt\nexamples/multiple_files/f_2.txt\nexamples/multiple_files/hh_2.txt\nexamples/multiple_files/j_2.txt\nexamples/multiple_files/ll_2.txt\nexamples/multiple_files/n_2.csv\nexamples/multiple_files/pp_2.csv\nexamples/multiple_files/r_2.txt\nexamples/multiple_files/t_2.txt\nexamples/multiple_files/v_2.txt\nexamples/multiple_files/x_2.csv\nexamples/multiple_files/z_2.txt\n\n\nЭто же используют для поиска файлов с каким-либо определенным расширением:\n```{shell}\n$ ls multiple_files/*.csv\n```\n\n\nexamples/multiple_files/a_1.csv\nexamples/multiple_files/b_2_2.csv\nexamples/multiple_files/n_2.csv\nexamples/multiple_files/oo_1.csv\nexamples/multiple_files/pp_2.csv\nexamples/multiple_files/x_2.csv\n\n\nКроме того звездочку можно использовать и без каких либо окружающих символов, тогда будут перечислены все файлы. Например, следующий команда удаляет все файлы в папке multiple_files.\n```{shell}\n$ rm multiple_files/*\n```\nЕсли известно точное количество символов, то можно использовать символ ?, который обозначает один символ. Выведем только файлы с четырьмя символами до расширения:\n```{shell}\n$ ls multiple_files/????.*\n```\n\n\nexamples/multiple_files/ee_1.txt\nexamples/multiple_files/hh_2.txt\nexamples/multiple_files/ll_2.txt\nexamples/multiple_files/oo_1.csv\nexamples/multiple_files/pp_2.csv\n\n\nИскать можно и по расширению:\n```{shell}\n$ ls multiple_files/a_1.???\n```\n\n\nexamples/multiple_files/a_1.csv\nexamples/multiple_files/a_1.txt\n\n\nКроме того можно задавать группы при помощи квадратных скобок:\n```{shell}\n$ ls multiple_files/[aouie]*\n```\n\n\nexamples/multiple_files/a_1.csv\nexamples/multiple_files/a_1.txt\nexamples/multiple_files/ee_1.txt\nexamples/multiple_files/i_1.txt\nexamples/multiple_files/oo_1.csv\nexamples/multiple_files/u_1.txt",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Как распространять работу?</span>"
+    ]
+  },
+  {
+    "objectID": "09_hygiene.html#git-hooks",
+    "href": "09_hygiene.html#git-hooks",
+    "title": "9  Как распространять работу?",
+    "section": "9.4 git hooks",
+    "text": "9.4 git hooks",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Как распространять работу?</span>"
+    ]
+  },
+  {
+    "objectID": "09_hygiene.html#sec-makefile",
+    "href": "09_hygiene.html#sec-makefile",
+    "title": "9  Как распространять работу?",
+    "section": "9.5 Команда make",
+    "text": "9.5 Команда make",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Как распространять работу?</span>"
+    ]
+  },
+  {
+    "objectID": "09_hygiene.html#footnotes",
+    "href": "09_hygiene.html#footnotes",
+    "title": "9  Как распространять работу?",
+    "section": "",
+    "text": "Скрытые файлы или папки начинаются с точки и не высвечиваются по команде ls (но высвечиваются по команде ls -a). Скрытые файлы часто хранят конфигурационные файлы или какие данные, которые используют программы. Эта категория файлов создано, чтобы пользователь случайно не переписал или удалил какой-то из файлов.↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Как распространять работу?</span>"
+    ]
+  },
+  {
+    "objectID": "09_hygiene.html#gitignore",
+    "href": "09_hygiene.html#gitignore",
+    "title": "9  Как распространять работу?",
+    "section": "9.3 .gitignore",
+    "text": "9.3 .gitignore\nСимволы подстановки очень полезны при создании файла .gitignore. .gitignore — это специальный скрытый файл1, в котором вы можете перечислить файлы, которые программа git должна игнорировать (см. документацию).\nПри создании морфологического анализатора достаточно обмениваться файлами .lexd, .twol, .cg3 и инструкциями по компиляции анализатора, которые обычно записывают в Makefile (см. раздел Раздел 9.5). Получающиеся файлы вроде .hfst или .hfstol хотелось бы случайно не закоммитить на GitHub. В связи с этим в вашем репозитории имеет смысл перечислить файлы, которые следует игнорировать версии контроля. Вот как будет выглядеть такой файл .gitignore:\n*.hfst\n*.hfstol\nПозже может так случится, что вы будете хранить в той же папке литературу и/или данные, которые нельзя выкладывать, их тоже можно будет добавить в файл .gitignore. Кроме того у GitHub есть ограничения на размер файла (вроде 100мб?..), если он увидит большие файлы, то он не даст их добавить, так что если они есть в вашем проекте, их тоже следует добавить в .gitignore.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Как распространять работу?</span>"
     ]
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Как распростронять работу? – Конечные автоматы в морфологическом анализе 2024/2025</title>
+<title>9&nbsp; Как распространять работу? – Конечные автоматы в морфологическом анализе 2024/2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,6 +104,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Поиск"
   }
 }</script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -83,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_hygiene.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Как распростронять работу?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_hygiene.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Как распространять работу?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -168,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_hygiene.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Как распростронять работу?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Как распространять работу?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,20 +219,30 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#введение-в-git" id="toc-введение-в-git" class="nav-link active" data-scroll-target="#введение-в-git"><span class="header-section-number">9.1</span> Введение в <code>git</code></a></li>
+  <li><a href="#cимволы-подстановки-wildcards" id="toc-cимволы-подстановки-wildcards" class="nav-link" data-scroll-target="#cимволы-подстановки-wildcards"><span class="header-section-number">9.2</span> Cимволы подстановки (wildcards)</a></li>
+  <li><a href="#gitignore" id="toc-gitignore" class="nav-link" data-scroll-target="#gitignore"><span class="header-section-number">9.3</span> <code>.gitignore</code></a></li>
+  <li><a href="#git-hooks" id="toc-git-hooks" class="nav-link" data-scroll-target="#git-hooks"><span class="header-section-number">9.4</span> <code>git hooks</code></a></li>
+  <li><a href="#sec-makefile" id="toc-sec-makefile" class="nav-link" data-scroll-target="#sec-makefile"><span class="header-section-number">9.5</span> Команда <code>make</code></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Как распростронять работу?</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Как распространять работу?</span></h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -207,8 +254,163 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Существует достаточно много причин, по которой необходимо уметь распространять свою работу:</p>
+<ul>
+<li><strong>Резервное копирование</strong>. Хранить свою работу в одном месте достаточно недальновидно: компьютеры ломаются, ноутбуки крадут, да и люди (а теперь и набирающие популярность LLM-агенты) могут сделать ошибку, которая приведет к потере данных.</li>
+<li><strong>Возможность совместной работы</strong>. Разместив проект в некотором общедоступном месте, вы значительно облегчите совместную разработку.</li>
+<li><strong>Возможность получить обратную связь и помощь</strong>. Разместив проект в некотором общедоступном месте, вы значительно облегчите другим процесс оценки вашей работы. Не говоря уже о том, что общедоступный проект может привлечь внимание некоторого стороннего разработчика, который захочет как-то улучшить проект.</li>
+<li><strong>История изменения</strong>. Все современные системы для работы с кодом, поддерживают в том или ином виде историю изменений. Иногда это делают даже облачные системы, которые раз в некоторое время синхронизируются с вашей файловой системой. Это очень полезно, так как позволяет вернутся на несколько шагов назад, если с вашим процессом разработки пошло что-то не так.</li>
+<li><strong>Запуск сервиса</strong>. Если хочется сделать сервис, чтобы люди в мире могли пользоваться результатами вашего труда, имеет смысл сделать так, чтобы вашу работу можно было скачать и установить на отдельном сервере (контейнере и т. п.).</li>
+</ul>
+<section id="введение-в-git" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="введение-в-git"><span class="header-section-number">9.1</span> Введение в <code>git</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/09_01_xkcd.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>источник: https://xkcd.com/1597/</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cимволы-подстановки-wildcards" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="cимволы-подстановки-wildcards"><span class="header-section-number">9.2</span> Cимволы подстановки (wildcards)</h2>
+<p>Как и во многих языках программирования командная строка поддерживает символы подстановки. Хоть я приведу все примеры с программой <code>ls</code>, легко представить себе и более осмысленные задачи. Для примера, представим, что у нас есть папка с большим количеством файлов:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls multiple_files</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>a_1.csv
+a_1.txt
+b_2_2.csv
+c_1.txt
+d_2.txt
+ee_1.txt
+f_2.txt
+g_1.txt
+hh_2.txt
+i_1.txt
+j_2.txt
+k_1.txt
+ll_2.txt
+m_1.txt
+n_2.csv
+oo_1.csv
+pp_2.csv
+q_1.txt
+r_2.txt
+s_1.txt
+t_2.txt
+u_1.txt
+v_2.txt
+w_1.txt
+x_2.csv
+y_1.txt
+z_2.txt</code></pre>
+</div>
+</div>
+<p>Мы можем вывести все файлы содержащие двойку, добавив <code>*</code> – любое количество символов:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls multiple_files/<span class="pp">*</span>2<span class="pp">*</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>examples/multiple_files/b_2_2.csv
+examples/multiple_files/d_2.txt
+examples/multiple_files/f_2.txt
+examples/multiple_files/hh_2.txt
+examples/multiple_files/j_2.txt
+examples/multiple_files/ll_2.txt
+examples/multiple_files/n_2.csv
+examples/multiple_files/pp_2.csv
+examples/multiple_files/r_2.txt
+examples/multiple_files/t_2.txt
+examples/multiple_files/v_2.txt
+examples/multiple_files/x_2.csv
+examples/multiple_files/z_2.txt</code></pre>
+</div>
+</div>
+<p>Это же используют для поиска файлов с каким-либо определенным расширением:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls multiple_files/<span class="pp">*</span>.csv</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>examples/multiple_files/a_1.csv
+examples/multiple_files/b_2_2.csv
+examples/multiple_files/n_2.csv
+examples/multiple_files/oo_1.csv
+examples/multiple_files/pp_2.csv
+examples/multiple_files/x_2.csv</code></pre>
+</div>
+</div>
+<p>Кроме того звездочку можно использовать и без каких либо окружающих символов, тогда будут перечислены все файлы. Например, следующий команда удаляет все файлы в папке <code>multiple_files</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm multiple_files/<span class="pp">*</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Если известно точное количество символов, то можно использовать символ <code>?</code>, который обозначает один символ. Выведем только файлы с четырьмя символами до расширения:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls multiple_files/<span class="pp">????</span>.<span class="pp">*</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>examples/multiple_files/ee_1.txt
+examples/multiple_files/hh_2.txt
+examples/multiple_files/ll_2.txt
+examples/multiple_files/oo_1.csv
+examples/multiple_files/pp_2.csv</code></pre>
+</div>
+</div>
+<p>Искать можно и по расширению:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls multiple_files/a_1.<span class="pp">???</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>examples/multiple_files/a_1.csv
+examples/multiple_files/a_1.txt</code></pre>
+</div>
+</div>
+<p>Кроме того можно задавать группы при помощи квадратных скобок:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls multiple_files/<span class="pp">[</span><span class="ss">aouie</span><span class="pp">]*</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>examples/multiple_files/a_1.csv
+examples/multiple_files/a_1.txt
+examples/multiple_files/ee_1.txt
+examples/multiple_files/i_1.txt
+examples/multiple_files/oo_1.csv
+examples/multiple_files/u_1.txt</code></pre>
+</div>
+</div>
+</section>
+<section id="gitignore" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="gitignore"><span class="header-section-number">9.3</span> <code>.gitignore</code></h2>
+<p>Символы подстановки очень полезны при создании файла <code>.gitignore</code>. <code>.gitignore</code> — это специальный скрытый файл<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, в котором вы можете перечислить файлы, которые программа <code>git</code> должна игнорировать (см. <a href="https://git-scm.com/docs/gitignore">документацию</a>).</p>
+<p>При создании морфологического анализатора достаточно обмениваться файлами <code>.lexd</code>, <code>.twol</code>, <code>.cg3</code> и инструкциями по компиляции анализатора, которые обычно записывают в <code>Makefile</code> (см. раздел <a href="#sec-makefile" class="quarto-xref"><span>Раздел 9.5</span></a>). Получающиеся файлы вроде <code>.hfst</code> или <code>.hfstol</code> хотелось бы случайно не закоммитить на GitHub. В связи с этим в вашем репозитории имеет смысл перечислить файлы, которые следует игнорировать версии контроля. Вот как будет выглядеть такой файл <code>.gitignore</code>:</p>
+<pre><code>*.hfst
+*.hfstol</code></pre>
+<p>Позже может так случится, что вы будете хранить в той же папке литературу и/или данные, которые нельзя выкладывать, их тоже можно будет добавить в файл <code>.gitignore</code>. Кроме того у GitHub есть ограничения на размер файла (вроде 100мб?..), если он увидит большие файлы, то он не даст их добавить, так что если они есть в вашем проекте, их тоже следует добавить в <code>.gitignore</code>.</p>
+</section>
+<section id="git-hooks" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="git-hooks"><span class="header-section-number">9.4</span> <code>git hooks</code></h2>
+</section>
+<section id="sec-makefile" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="sec-makefile"><span class="header-section-number">9.5</span> Команда <code>make</code></h2>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Скрытые файлы или папки начинаются с точки и не высвечиваются по команде <code>ls</code> (но высвечиваются по команде <code>ls -a</code>). Скрытые файлы часто хранят конфигурационные файлы или какие данные, которые используют программы. Эта категория файлов создано, чтобы пользователь случайно не переписал или удалил какой-то из файлов.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -610,7 +812,7 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
       <a href="./08_coverage.html" class="pagination-link" aria-label="Метрики качества">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Метрики качества</span></span>
