@@ -1,9 +1,9 @@
 PATTERNS
-Prepositions [<PRON><nom>:]
+Pronouns [<PRON><nom>:]
 (NounStem [<N>:] NounInflection)[^[m,f]]
 Rest
 
-LEXICON Prepositions
+LEXICON Pronouns
 я
 ты
 мы
