@@ -242,6 +242,104 @@ analysis |>
 ```
 
 ### Python
+```{python}
+import pandas as pd
+import re
+
+df_gold = pd.read_csv('08_gold_standard.csv')
+df_gold['tags'] = df_gold['tags'].apply(lambda x: set(x.replace(' ','').split(',')) if str(x) !='nan' else set())
+df_gold['tags'] = df_gold['tags'].apply(lambda x: '_'.join(sorted(x)))
+df_gold['full'] = df_gold['stem'] + '-' + df_gold['pos'] + '-' + df_gold['tags']
+df_gold
+
+with open('analysis.txt') as f:  # (! cat 08_corpus.txt | hfst-proc -C analyzer.hfstol > analysis.txt)
+    text = f.read()
+    text += '\n'
+
+analysis = {}
+words = re.findall('''"<(.*?)>"\n((\t.*?\n)+)''', text)
+for id, word in enumerate(words):
+    stem_s = set()
+    pos_s = set()
+    tags_s = set()
+    full_s = set()
+    if not word[1].startswith('\t"*'):
+        for razbor in word[1].strip('\n').split('\n'):
+            stem, pos_tags = razbor.replace('"', '').strip('\t').split('\t')
+            pos_tags_split = pos_tags.split(' ')
+            pos = pos_tags_split[0]
+            if len(pos_tags_split) > 1:
+                tags = '_'.join(sorted(set(pos_tags_split[1:])))
+            else:
+                tags = ''
+            full = stem + '-' + pos  + '-' + tags
+            stem_s.add(stem)
+            pos_s.add(pos)
+            tags_s.add(tags)
+            full_s.add(full)
+
+    analysis[id] = {'token': word[0],
+                    'stem': stem_s,
+                    'pos': pos_s,
+                    'tags': tags_s,
+                    'full': full_s}
+
+def get_metrics(an_part):  # an_part - то, для чего мы считаем метрики: 'stem' / 'pos' / 'tags' / 'full'
+    # можно получить метрики для каждого слова, а потом посчитать среднее
+    precision_s = []  # для подсчёта средних метрик
+    recall_s = []
+    f1_s = []
+    # а можно считать метрики в конце, используя суммарные tp (good_s), fp (bad_s) и fn (not_found_s)
+    good_s = 0
+    bad_s = 0
+    not_found_s = 0
+
+    for id, row in df_gold.iterrows():
+        gold = row[an_part]
+        pred = analysis[id][an_part]
+
+        good = 1 if gold in pred else 0  # наличие правильного предсказания
+        bad = len(pred - {gold})  # кол-во неправильных предсказаний
+        not_found = len({gold}) - good  # кол-во того, что не предсказали (хотя должны были)
+        good_s += good
+        bad_s += bad
+        not_found_s += not_found
+
+        if len(pred) != 0:
+            precision = good / len(pred)  # good/(good+bad)
+        else:
+            precision = 1
+
+        if len({gold}) != 0:
+            recall = good / len({gold})  # good/(good+not_found)
+        else:
+            recall = 1
+        if precision+recall != 0:
+            f1 = 2*(precision*recall)/(precision+recall)
+        else:
+            f1 = 0
+
+        precision_s.append(precision)
+        recall_s.append(recall)
+        f1_s.append(f1)
+
+    mean_precision = sum(precision_s)/len(precision_s)
+    mean_recall = sum(recall_s)/len(recall_s)
+    mean_f1 = sum(f1_s)/len(f1_s)
+    fin_precision = good_s/(good_s+bad_s)
+    fin_recall = good_s/(good_s+not_found_s)
+    fin_f1 = 2*(fin_precision*fin_recall)/(fin_precision+fin_recall)
+
+    return {'mean_precision': mean_precision,
+            'mean_recall': mean_recall,
+            'mean_f1': mean_f1,
+            'fin_precision': fin_precision,
+            'fin_recall': fin_recall,
+            'fin_f1': fin_f1}
+
+an_part = 'full'
+get_metrics(an_part)
+```
 :::
 
 Как и в случае, описанном выше, можено различать precision~1~, recall~1~ и F~1~-меру~1~ и их аналоги с суфиксом ~2~, если удалять эффект частотности.
