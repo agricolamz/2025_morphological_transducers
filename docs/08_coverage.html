@@ -506,6 +506,7 @@ LEXICON Rest
 <li>всего вместе.</li>
 </ul>
 <p>Если будете делать сами, не забудьте несколько вещей. Во-первых, имеет смысл выкинуть дубликаты и отсортировать теги. Во-вторых, следует помнить, что отсутствие нечастеречных тегов может быть верным, а не ошибкой, например, в случае предлогов. В таком случае не стоит вводить штраф за отсутствие тегов.</p>
+<p>Код на R и на <a href="https://github.com/agricolamz/2025_morphological_transducers/blob/main/examples/08_quality_metrics.ipynb">Python</a> используют немного разную логику.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
@@ -633,7 +634,105 @@ LEXICON Rest
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Возможно, удобнее посмотреть тетрадку: https://github.com/agricolamz/2025_morphological_transducers/blob/main/examples/08_quality_metrics.ipynb</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>df_gold <span class="op">=</span> pd.read_csv(<span class="st">'08_gold_standard.csv'</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>df_gold[<span class="st">'tags'</span>] <span class="op">=</span> df_gold[<span class="st">'tags'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">set</span>(x.replace(<span class="st">' '</span>,<span class="st">''</span>).split(<span class="st">','</span>)) <span class="cf">if</span> <span class="bu">str</span>(x) <span class="op">!=</span><span class="st">'nan'</span> <span class="cf">else</span> <span class="bu">set</span>())</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>df_gold[<span class="st">'tags'</span>] <span class="op">=</span> df_gold[<span class="st">'tags'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'_'</span>.join(<span class="bu">sorted</span>(x)))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>df_gold[<span class="st">'full'</span>] <span class="op">=</span> df_gold[<span class="st">'stem'</span>] <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> df_gold[<span class="st">'pos'</span>] <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> df_gold[<span class="st">'tags'</span>]</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>df_gold</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'analysis.txt'</span>) <span class="im">as</span> f:  <span class="co"># (! cat 08_corpus.txt | hfst-proc -C analyzer.hfstol &gt; analysis.txt)</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> f.read()</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    text <span class="op">+=</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>analysis <span class="op">=</span> {}</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> re.findall(<span class="st">'''"&lt;(.*?)&gt;"</span><span class="ch">\n</span><span class="st">((</span><span class="ch">\t</span><span class="st">.*?</span><span class="ch">\n</span><span class="st">)+)'''</span>, text)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">id</span>, word <span class="kw">in</span> <span class="bu">enumerate</span>(words):</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    stem_s <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    pos_s <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    tags_s <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    full_s <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> word[<span class="dv">1</span>].startswith(<span class="st">'</span><span class="ch">\t</span><span class="st">"*'</span>):</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> razbor <span class="kw">in</span> word[<span class="dv">1</span>].strip(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>).split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>):</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>            stem, pos_tags <span class="op">=</span> razbor.replace(<span class="st">'"'</span>, <span class="st">''</span>).strip(<span class="st">'</span><span class="ch">\t</span><span class="st">'</span>).split(<span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>            pos_tags_split <span class="op">=</span> pos_tags.split(<span class="st">' '</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>            pos <span class="op">=</span> pos_tags_split[<span class="dv">0</span>]</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">len</span>(pos_tags_split) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>                tags <span class="op">=</span> <span class="st">'_'</span>.join(<span class="bu">sorted</span>(<span class="bu">set</span>(pos_tags_split[<span class="dv">1</span>:])))</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>                tags <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>            full <span class="op">=</span> stem <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> pos  <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> tags</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>            stem_s.add(stem)</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>            pos_s.add(pos)</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>            tags_s.add(tags)</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>            full_s.add(full)</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    analysis[<span class="bu">id</span>] <span class="op">=</span> {<span class="st">'token'</span>: word[<span class="dv">0</span>],</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'stem'</span>: stem_s,</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'pos'</span>: pos_s,</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'tags'</span>: tags_s,</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'full'</span>: full_s}</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_metrics(an_part):  <span class="co"># an_part - то, для чего мы считаем метрики: 'stem' / 'pos' / 'tags' / 'full'</span></span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># можно получить метрики для каждого слова, а потом посчитать среднее</span></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    precision_s <span class="op">=</span> []  <span class="co"># для подсчёта средних метрик</span></span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    recall_s <span class="op">=</span> []</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    f1_s <span class="op">=</span> []</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># а можно считать метрики в конце, используя суммарные tp (good_s), fp (bad_s) и fn (not_found_s)</span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>    good_s <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>    bad_s <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>    not_found_s <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">id</span>, row <span class="kw">in</span> df_gold.iterrows():</span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>        gold <span class="op">=</span> row[an_part]</span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>        pred <span class="op">=</span> analysis[<span class="bu">id</span>][an_part]</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>        good <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> gold <span class="kw">in</span> pred <span class="cf">else</span> <span class="dv">0</span>  <span class="co"># наличие правильного предсказания</span></span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>        bad <span class="op">=</span> <span class="bu">len</span>(pred <span class="op">-</span> {gold})  <span class="co"># кол-во неправильных предсказаний</span></span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>        not_found <span class="op">=</span> <span class="bu">len</span>({gold}) <span class="op">-</span> good  <span class="co"># кол-во того, что не предсказали (хотя должны были)</span></span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>        good_s <span class="op">+=</span> good</span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>        bad_s <span class="op">+=</span> bad</span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>        not_found_s <span class="op">+=</span> not_found</span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(pred) <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>            precision <span class="op">=</span> good <span class="op">/</span> <span class="bu">len</span>(pred)  <span class="co"># good/(good+bad)</span></span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>            precision <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>({gold}) <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a>            recall <span class="op">=</span> good <span class="op">/</span> <span class="bu">len</span>({gold})  <span class="co"># good/(good+not_found)</span></span>
+<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a>            recall <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> precision<span class="op">+</span>recall <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a>            f1 <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(precision<span class="op">*</span>recall)<span class="op">/</span>(precision<span class="op">+</span>recall)</span>
+<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a>            f1 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a>        precision_s.append(precision)</span>
+<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a>        recall_s.append(recall)</span>
+<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a>        f1_s.append(f1)</span>
+<span id="cb16-82"><a href="#cb16-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-83"><a href="#cb16-83" aria-hidden="true" tabindex="-1"></a>    mean_precision <span class="op">=</span> <span class="bu">sum</span>(precision_s)<span class="op">/</span><span class="bu">len</span>(precision_s)</span>
+<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a>    mean_recall <span class="op">=</span> <span class="bu">sum</span>(recall_s)<span class="op">/</span><span class="bu">len</span>(recall_s)</span>
+<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a>    mean_f1 <span class="op">=</span> <span class="bu">sum</span>(f1_s)<span class="op">/</span><span class="bu">len</span>(f1_s)</span>
+<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a>    fin_precision <span class="op">=</span> good_s<span class="op">/</span>(good_s<span class="op">+</span>bad_s)</span>
+<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a>    fin_recall <span class="op">=</span> good_s<span class="op">/</span>(good_s<span class="op">+</span>not_found_s)</span>
+<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a>    fin_f1 <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(fin_precision<span class="op">*</span>fin_recall)<span class="op">/</span>(fin_precision<span class="op">+</span>fin_recall)</span>
+<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'mean_precision'</span>: mean_precision,</span>
+<span id="cb16-91"><a href="#cb16-91" aria-hidden="true" tabindex="-1"></a>            <span class="st">'mean_recall'</span>: mean_recall,</span>
+<span id="cb16-92"><a href="#cb16-92" aria-hidden="true" tabindex="-1"></a>            <span class="st">'mean_f1'</span>: mean_f1,</span>
+<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a>            <span class="st">'fin_precision'</span>: fin_precision,</span>
+<span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a>            <span class="st">'fin_recall'</span>: fin_recall,</span>
+<span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a>            <span class="st">'fin_f1'</span>: fin_f1}</span>
+<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a>an_part <span class="op">=</span> <span class="st">'full'</span></span>
+<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a>get_metrics(an_part)</span>
+<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -642,9 +741,9 @@ LEXICON Rest
 <section id="sec-tests" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="sec-tests"><span class="header-section-number">8.3</span> Развитие анализатора</h2>
 <p>Создание морфологического парсера, согласно моим ожиданиям, это многоступенчатая процедура, которая включает в себя работу с грамматиками, словарем и проверкой некоторых мер качества на корпусе. Разработка без того или иного ресурса возможна, но значительно усложняет работу. Этот факт немного подрывает наш тезис о том, что трансдьюсеры хороши в тех случаях, когда недостаточно данных для обучения нейросетей. В любом случае, получившийся результат по духу будет значительно ближе к лингвистическому описанию, поэтому мы называем его иногда <em>машиночитаемым лингвистическим описанием</em>. Как и в других видах разработки, имеет смысл покрывать некоторые фрагменты кода тестами. Для этого даже придумали свою меру — <a href="https://en.wikipedia.org/wiki/Code_coverage">code coverage</a>, которая показывает долю кода, покрытого тестами. Конечно, такие инструменты не будут работать с теми программами, которые мы обсуждали, однако все равно, имеет смысл создавать таблицу с формами и ожидаемыми разборами, чтобы можно было проверить, например, не поломали ли мы что-то, изменяя <code>twol</code> правила. Такого рода проверку легко организовать в виде файла со списком форм в формате, который выдает программа <code>hfst-fst2strings</code>, и дальше при помощи <code>grep</code> смотреть, есть ли записанные разборы в выдаче <code>hfst-fst2strings</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-xvf</span> file_with_tests.txt generated_forms.txt</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{shell}</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-xvf</span> file_with_tests.txt generated_forms.txt</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>В какой-то момент может наступить ситуация, когда основные части речи сделаны и дополнены данными словарей. В таком случае остается только нисходяще отсортировать нераспознанные формы, чтобы работать с единицами, которые, согласно распределению Ципфа, сильнее всего увеличивают метрики.</p>
 
 

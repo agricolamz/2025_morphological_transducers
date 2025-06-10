@@ -244,7 +244,8 @@ analysis |>
 ```
 
 ### Python
-```{python}
+
+```{{python}}
 # Возможно, удобнее посмотреть тетрадку: https://github.com/agricolamz/2025_morphological_transducers/blob/main/examples/08_quality_metrics.ipynb
 import pandas as pd
 import re
