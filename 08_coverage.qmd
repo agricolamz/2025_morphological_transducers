@@ -138,6 +138,8 @@ read_csv("examples/08_gold_standard.csv")
 
 Если будете делать сами, не забудьте несколько вещей. Во-первых, имеет смысл выкинуть дубликаты и отсортировать теги. Во-вторых, следует помнить, что отсутствие нечастеречных тегов может быть верным, а не ошибкой, например, в случае предлогов. В таком случае не стоит вводить штраф за отсутствие тегов.
 
+Код на R и на [Python](https://github.com/agricolamz/2025_morphological_transducers/blob/main/examples/08_quality_metrics.ipynb) используют немного разную логику.
+
 ::: panel-tabset
 
 ### R
@@ -243,6 +245,7 @@ analysis |>
 
 ### Python
 ```{python}
+# Возможно, удобнее посмотреть тетрадку: https://github.com/agricolamz/2025_morphological_transducers/blob/main/examples/08_quality_metrics.ipynb
 import pandas as pd
 import re
 
